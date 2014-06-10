@@ -1,7 +1,7 @@
-xservernetbin
-=============
+xservernet-bin
+==============
 
-A collection of samples for PTV xServer .NET that are (currently) not included in the SDK
+A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
 
 * CustomBgProfiles - shows how to switch the basemap profile
 * HereImagery - shows how to add here basemap tiles
