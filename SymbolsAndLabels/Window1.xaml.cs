@@ -47,7 +47,8 @@ namespace SymbolsAndLabels
         /// <param name="layer"></param>
         public void AddPinWithLabel(ShapeLayer layer)
         {
-            var pin = new Pin();
+            // text and symbol as two shapes
+            Control pin = new Pin();
             pin.Width = pin.Height = 30;
             ShapeCanvas.SetLocation(pin, new Point(8.4, 49));
             ShapeCanvas.SetAnchor(pin, LocationAnchor.RightBottom);
@@ -59,6 +60,31 @@ namespace SymbolsAndLabels
             ShapeCanvas.SetLocation(tb, new Point(8.4, 49));
             ShapeCanvas.SetAnchor(tb, LocationAnchor.LeftTop);
             layer.Shapes.Add(tb);
+
+
+            // text with symbol in a view box
+            var grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(50) });
+
+            var viewBox = new Viewbox() { Stretch = Stretch.Uniform };
+            pin = new Cube();
+            viewBox.Child = pin;
+            Grid.SetRow(viewBox, 0);
+            grid.Children.Add(viewBox);
+
+            viewBox = new Viewbox() { Stretch = Stretch.Uniform };
+            tb = new TextBlock { Text = "Hello" };
+            tb.Background = new SolidColorBrush(Colors.White);
+            tb.Foreground = new SolidColorBrush(Colors.Black);
+            viewBox.Child = tb;
+            Grid.SetRow(viewBox, 1);
+            grid.Children.Add(viewBox);
+
+            ShapeCanvas.SetLocation(grid, new Point(8.5, 49));
+            ShapeCanvas.SetScaleFactor(grid, .1);
+            layer.Shapes.Add(grid);
         }
     }
 }
