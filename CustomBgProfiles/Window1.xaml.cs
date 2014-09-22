@@ -1,7 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
+using Ptv.XServer.Controls.Map.Layers.Untiled;
 using Ptv.XServer.Controls.Map.TileProviders;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace CustomBgProfiles
 {
@@ -14,8 +16,8 @@ namespace CustomBgProfiles
         {
             InitializeComponent();
 
-            ((Map1.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile = "ajax-bg-greenzones";
-            ((Map2.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile = "ajax-bg-sandbox";
+            SetProfile(Map1, "sandbox");
+            SetProfile(Map2, "silkysand");
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -23,17 +25,30 @@ namespace CustomBgProfiles
             switch ((sender as RadioButton).Content.ToString())
             {
                 case "Standard":
-                    ((Map0.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile = null; // uses ajax-bg
-                    (Map0.Layers["Background"] as TiledLayer).Refresh();
+                    SetProfile(Map0, null);
                     break;
                 case "Greenzones":
-                    ((Map0.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile = "ajax-bg-greenzones";
-                    (Map0.Layers["Background"] as TiledLayer).Refresh();
+                    SetProfile(Map0, "sandbox");
                     break;
                 default:
-                    ((Map0.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile = "ajax-bg-sandbox";
-                    (Map0.Layers["Background"] as TiledLayer).Refresh();
+                    SetProfile(Map0, "silkysand");
                     break;
+            }
+        }
+
+        private void SetProfile(Map map, string mapProfile)
+        {
+            if (map.Layers["Background"] != null)
+            {
+                ((map.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile =
+                    string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-bg";
+                (map.Layers["Background"] as TiledLayer).Refresh();
+            }
+            if (map.Layers["Labels"] != null)
+            {
+                ((map.Layers["Labels"] as UntiledLayer).UntiledProvider as XMapTiledProvider).CustomProfile =
+                    string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-fg";
+                (map.Layers["Labels"] as UntiledLayer).Refresh();
             }
         }
     }
