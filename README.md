@@ -15,5 +15,5 @@ A bin of samples for PTV xServer .NET that are (currently) not included in the S
 * TourPlanningDemo - shows practices how to use the new xTour 1.18 job api @xServer internet
 * ToursAndStopsMultiCanvas - shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
 * Circles - shows how to render circles with a geographic radius
-
+* Mandelbrot - shows how to implement a client-side tile provider
 
