@@ -23,8 +23,16 @@ shows how to build custom shapes for the shape layer
 
 ![MapArrowDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MapArrowDemo.png "MapArrowDemo")
 
-* MFCMapDialog - shows how to add the map to an MFC applciation
-* MultipleContainers - Test for map controls in mutliple tab-, split, and dock-containers
+#### MFCMapDialog
+shows how to add the map to an MFC applciation
+
+![MFCMapDialog](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MFCMapDialog.png "MFCMapDialog")
+
+MultipleContainers
+Test for map controls in mutliple tab-, split, and dock-containers
+
+![MultipleContainers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MultipleContainers.png "MultipleContainers")
+
 * PieChartsAndExport - shows how to render arbitrary wpf elements and print/export the map content
 * SelectionDemo - shows how to render custom icons and select them by dragging a rubber band
 * SymbolsAndLabels - shows how to draw symbols with an attached label tag
