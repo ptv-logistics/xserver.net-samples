@@ -43,10 +43,27 @@ shows how to render custom icons and select them by dragging a rubber band
 
 ![SelectionDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SelectionDemo.png "SelectionDemo")
 
+#### SymbolsAndLabels
+shows how to draw symbols with an attached label tag
 
-* SymbolsAndLabels - shows how to draw symbols with an attached label tag
-* TourPlanningDemo - shows practices how to use the new xTour 1.18 job api @xServer internet
-* ToursAndStopsMultiCanvas - shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
-* Circles - shows how to render circles with a geographic radius
-* Mandelbrot - shows how to implement a client-side tile provider
+![SymbolsAndLabels](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SymbolsAndLabels.png "SymbolsAndLabels")
 
+#### TourPlanningDemo
+shows practices how to use the new xTour 1.18 job api @xServer internet
+
+![TourPlanningDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/TourPlanningDemo.png "TourPlanningDemo")
+
+#### ToursAndStopsMultiCanvas
+shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
+
+![ToursAndStopsMultiCanvas](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ToursAndStopsMultiCanvas.png "ToursAndStopsMultiCanvas")
+
+#### Circles
+shows how to render circles with a geographic radius
+
+![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
+
+#### Mandelbrot
+shows how to implement a client-side tile provider
+
+![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
