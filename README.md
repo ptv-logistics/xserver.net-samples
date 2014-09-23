@@ -3,9 +3,12 @@ xservernet-bin
 
 A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
 
-#### CustomBgProfiles - shows how to switch the basemap profile 
+#### CustomBgProfiles
+shows how to switch the basemap profile 
 * ![CustomBgProfiles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomBgProfiles.png "CustomBgProfiles")
-* HereImagery - shows how to add here basemap tiles
+#### HereImagery
+shows how to add here basemap tiles
+* ![HereImagery](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/HereImagery.png "HereImagery")
 * ManySymbols - shows practices to display many symbols without stuttering
 * MapArrowDemo - shows how to build custom shapes for the shape layer
 * MFCMapDialog - shows how to add the map to an MFC applciation
