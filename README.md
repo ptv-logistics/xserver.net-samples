@@ -3,7 +3,7 @@ xservernet-bin
 
 A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
 
-* CustomBgProfiles - shows how to switch the basemap profile 
+#### CustomBgProfiles - shows how to switch the basemap profile 
 * ![CustomBgProfiles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomBgProfiles.png "CustomBgProfiles")
 * HereImagery - shows how to add here basemap tiles
 * ManySymbols - shows practices to display many symbols without stuttering
