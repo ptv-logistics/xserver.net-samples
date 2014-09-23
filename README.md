@@ -28,7 +28,7 @@ shows how to add the map to an MFC applciation
 
 ![MFCMapDialog](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MFCMapDialog.png "MFCMapDialog")
 
-MultipleContainers
+#### MultipleContainers
 Test for map controls in mutliple tab-, split, and dock-containers
 
 ![MultipleContainers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MultipleContainers.png "MultipleContainers")
