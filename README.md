@@ -63,6 +63,11 @@ shows how to render circles with a geographic radius
 
 ![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
 
+#### DrawMode
+the basic code to add an interactor for drawing custom polygons
+
+![DrawMode](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DrawMode.png "DrawMode")
+
 #### Mandelbrot
 shows how to implement a client-side tile provider
 
