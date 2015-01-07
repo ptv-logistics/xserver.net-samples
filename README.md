@@ -3,15 +3,36 @@ xservernet-bin
 
 A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
 
+#### Circles
+shows how to render circles with a geographic radius
+
+![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
+
 #### CustomBgProfiles
 shows how to switch the basemap profile 
 
 ![CustomBgProfiles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomBgProfiles.png "CustomBgProfiles")
 
+#### CustomInit
+shows how to explicitly initialize the xMapServer base map
+
+#### DrawMode
+the basic code to add an interactor for drawing custom polygons
+
+![DrawMode](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DrawMode.png "DrawMode")
+
+#### ExtensibilityTest
+tests for customization and extensions of the map control
+
 #### HereImagery
 shows how to add here basemap tiles
 
 ![HereImagery](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/HereImagery.png "HereImagery")
+
+#### Mandelbrot
+shows how to implement a client-side tile provider
+
+![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
 
 #### ManySymbols
 shows practices to display many symbols without stuttering
@@ -43,6 +64,9 @@ shows how to render custom icons and select them by dragging a rubber band
 
 ![SelectionDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SelectionDemo.png "SelectionDemo")
 
+#### ServerSideRendering
+shows how to render additional xMap layers
+
 #### SymbolsAndLabels
 shows how to draw symbols with an attached label tag
 
@@ -58,17 +82,3 @@ shows how to build one logical layer containing differrent canvases rendered bef
 
 ![ToursAndStopsMultiCanvas](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ToursAndMultiCanvas.png "ToursAndStopsMultiCanvas")
 
-#### Circles
-shows how to render circles with a geographic radius
-
-![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
-
-#### DrawMode
-the basic code to add an interactor for drawing custom polygons
-
-![DrawMode](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DrawMode.png "DrawMode")
-
-#### Mandelbrot
-shows how to implement a client-side tile provider
-
-![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
