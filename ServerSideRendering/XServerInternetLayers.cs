@@ -6,8 +6,10 @@
 //--------------------------------------------------------------
 
 using Ptv.XServer.Controls.Map.Layers.Untiled;
-using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Tools;
+using System.Text.RegularExpressions;
+using xserver;
+using Map = Ptv.XServer.Controls.Map.Map;
 
 namespace Ptv.XServer.Demo.Tools
 {
@@ -144,6 +146,35 @@ namespace Ptv.XServer.Demo.Tools
                         visible = true 
                     }
                 }
+            };
+
+            map.Layers.Add(layer);
+        }
+
+        public static void InsertDataManagerLayer(this Map map, XMapMetaInfo xMapMetaInfo, string layerName, string layerId, string layerCaption, int minZoom = 0, bool markerIsBalloon = false)
+        {
+            var layer = new XMapLayer(layerName, xMapMetaInfo.Url, xMapMetaInfo.User, xMapMetaInfo.Password)
+            {
+                Caption = layerCaption,
+                MaxRequestSize = new System.Windows.Size(2048, 2048),
+                MinLevel = minZoom,
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/POI.png"),
+                CustomXMapLayers = new xserver.Layer[] {  
+                    new xserver.SMOLayer
+                    { 
+                        name = layerId + "." + layerId,
+                        // Request REFERENCEPOINT based object information to provide tool tips on the icons.
+                        objectInfos = xserver.ObjectInfoType.REFERENCEPOINT, 
+                        visible = true 
+                    }
+                },
+                Profile = "ajax-av",
+                CustomCallerContextProperties = new[] { new CallerContextProperty
+                {
+                    key = "ProfileXMLSnippet", value = "/profiles/datamanager/xmap/" + layerId
+                } },
+                MarkerIsBalloon = markerIsBalloon,
+                GetToolTipFromLayerObject = o => o.descr.Split('#')[1].Trim('|').Replace("|", "\n")
             };
 
             map.Layers.Add(layer);

@@ -47,22 +47,22 @@ namespace Ptv.XServer.Controls.Map
         public class XMapLayer : UntiledLayer
         {
             /// <summary>the map itself</summary>
-            UserControl map;
+            private UserControl map;
 
             /// <summary>main map canvas</summary>
-            MapCanvas canvas;
-            
+            private MapCanvas canvas;
+
             /// <summary>xMap object information</summary>
-            xserver.ObjectInfos[] objectInfos;
+            private xserver.ObjectInfos[] objectInfos;
 
             /// <summary>xMap image size</summary>
-            Size imageSize;
+            private Size imageSize;
 
             /// <summary>a timer for popping up the tool tips</summary>
-            readonly DispatcherTimer toolTipTimer = new DispatcherTimer();
+            private readonly DispatcherTimer toolTipTimer = new DispatcherTimer();
 
             /// <summary>active tool tip, may be null</summary>
-            ToolTip toolTip;
+            private ToolTip toolTip;
 
             /// <summary>
             /// Creates and initializes the xMap layer. Be sure to specify a xMap profile and the 
@@ -78,12 +78,14 @@ namespace Ptv.XServer.Controls.Map
                 InitializeFactory(CanvasCategory.Content, CreateCanvas);
 
                 var provider = new XMapProviderWithObjectInformation(url, user, password);
-
                 provider.MapUdpate += UdpateOjectInfos;
 
                 UntiledProvider = provider;
                 ToolTipDelay = ToolTipService.GetInitialShowDelay(new Canvas());
                 toolTipTimer.Tick += ShowToolTip;
+
+                // default - just return the description
+                GetToolTipFromLayerObject = o => o.descr;
             }
 
             /// <summary>
@@ -105,64 +107,103 @@ namespace Ptv.XServer.Controls.Map
             }
 
             /// <summary>
+            /// Property delegate. Reads or writes the set of custom Caller Contexts.
+            /// </summary>
+            public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties
+            {
+                get { return (UntiledProvider as XMapProviderWithObjectInformation).CustomCallerContextProperties; }
+                set { (UntiledProvider as XMapProviderWithObjectInformation).CustomCallerContextProperties = value; }
+            }
+
+            /// <summary>
+            /// Indicates the marker object is a ballon, so the hit-box is y-shifted
+            /// </summary>
+            public bool MarkerIsBalloon { get; set; }
+
+            /// <summary>
             /// Canvas factory. Sort of overridden; also used to store the main map and its canvas.
             /// </summary>
             /// <param name="mapView"></param>
             /// <returns></returns>
-            private UntiledCanvas CreateCanvas(MapView mapView)
+            private MapCanvas CreateCanvas(MapView mapView)
             {
-                var untiledCanvas = new UntiledCanvas(mapView, UntiledProvider)
-                {
-                    MaxRequestSize = MaxRequestSize,
-                    MinLevel = MinLevel
-                };
+                return
+                    canvas =
+                        new UntiledCanvas(mapView, UntiledProvider)
+                        {
+                            MaxRequestSize = MaxRequestSize,
+                            MinLevel = MinLevel
+                        };
+            }
 
+            /// <inheritdoc/>
+            public override void AddToMapView(MapView mapView)
+            {
                 if (mapView != null && mapView.Name == "Map")
                 {
                     map = mapView;
-                    canvas = untiledCanvas;
-
-                    this.map = map.FindAncestor<WpfMap>();
-                    map.MouseLeave += (s, e) => ToolTipUpdate();
-                    map.MouseEnter += (s, e) => ToolTipUpdate(e);
-                    map.PreviewMouseMove += (s, e) => ToolTipUpdate(e);
+                    map = map.FindAncestor<WpfMap>();
+                    map.MouseLeave += HandleMouseLeaveEvent;
+                    map.MouseEnter += HandleMouseEnterEvent;
+                    map.PreviewMouseMove += HandleMouseEnterEvent;
                 }
 
-                return untiledCanvas;
+                base.AddToMapView(mapView);
             }
 
-            /// <summary>
-            /// Stores the latest known position handled by UpdatePosition.
-            /// </summary>
-            private Point? LatestPosition
+
+            /// <inheritdoc/>
+            public override void RemoveFromMapView(MapView mapView)
             {
-                get;
-                set;
+                if (mapView != null && mapView.Name == "Map")
+                {
+                    map = mapView;
+                    map = map.FindAncestor<WpfMap>();
+                    map.MouseLeave -= HandleMouseLeaveEvent;
+                    map.MouseEnter -= HandleMouseEnterEvent;
+                    map.PreviewMouseMove -= HandleMouseEnterEvent;
+                }
+
+                base.RemoveFromMapView(mapView);
+            }
+
+            private void HandleMouseEnterEvent(object sender, MouseEventArgs e)
+            {
+                ToolTipUpdate(e);
+            }
+
+            private void HandleMouseLeaveEvent(object sender, MouseEventArgs e)
+            {
+                ToolTipUpdate();
             }
 
             /// <summary>
             /// Tests if the cursor position changed. If so, stores the new position and triggers a tool tip update.
             /// </summary>
             /// <param name="e">Event arguments</param>
-            private bool ToolTipUpdate(MouseEventArgs e = null)
+            private void ToolTipUpdate(MouseEventArgs e = null)
             {
-                Point? p = e == null ? null : (Point?)e.GetPosition(map);
+                Point? p = e == null ? null : (Point?) e.GetPosition(map);
 
                 // test if position has changed
-                if ((LatestPosition.HasValue != p.HasValue) || (p.HasValue && (LatestPosition.Value - p.Value).Length > 1e-4))
-                {
-                    // clear previous tool tip
-                    ClearToolTip();
-                  
-                    const MouseButtonState state = MouseButtonState.Released;
+                if ((LatestPosition.HasValue == p.HasValue) &&
+                    (!p.HasValue || ((LatestPosition.Value - p.Value).Length <= 1e-4)))
+                    return;
 
-                    // trigger update, if not mouse button is pressed
-                    if (Mouse.LeftButton == state && Mouse.MiddleButton == state && Mouse.RightButton == state)
-                        return DelayedToolTipUpdate(LatestPosition = p);
-                }
+                // clear previous tool tip
+                ClearToolTip();
 
-                return false;
+                const MouseButtonState state = MouseButtonState.Released;
+
+                // trigger update, if not mouse button is pressed
+                if (Mouse.LeftButton == state && Mouse.MiddleButton == state && Mouse.RightButton == state)
+                    DelayedToolTipUpdate(LatestPosition = p);
             }
+
+            /// <summary>
+            /// Stores the latest known position handled by UpdatePosition.
+            /// </summary>
+            private Point? LatestPosition { get; set; }
 
             /// <summary>
             /// Triggers a tool tip update
@@ -172,7 +213,6 @@ namespace Ptv.XServer.Controls.Map
             {
                 if (canvas == null)
                     return false;
-
 
                 // flag indicating if a tool tip is to be shown. 
                 // Initially, image and specified position must be valid.
@@ -203,11 +243,7 @@ namespace Ptv.XServer.Controls.Map
             /// <summary>
             /// Reads or writes the value (in [ms]) to delay tool tip display.
             /// </summary>
-            public int ToolTipDelay
-            {
-                get;
-                set;
-            }
+            public int ToolTipDelay { get; set; }
 
             /// <summary>
             /// Event handler: Tool tip timer has elapsed, tool tip is to be shown.
@@ -224,18 +260,17 @@ namespace Ptv.XServer.Controls.Map
                 string[] toolTips = GetToolTips(Mouse.GetPosition(map)).ToArray();
 
                 // if texts are valid
-                if (toolTips.Length > 0)
-                {
-                    // build tool tip text
-                    String toolTipString = toolTips.Aggregate("", (current, tt) => current + (tt + "\n"));
+                if (toolTips.Length <= 0) return;
 
-                    // create and show tool tip
-                    toolTip = new ToolTip
-                    {
-                        Content = toolTipString.Substring(0, toolTipString.Length - 1),
-                        IsOpen = true
-                    };
-                }
+                // build tool tip text
+                String toolTipString = toolTips.Aggregate("", (current, tt) => current + (tt + "\n"));
+
+                // create and show tool tip
+                toolTip = new ToolTip
+                {
+                    Content = toolTipString.Substring(0, toolTipString.Length - 1),
+                    IsOpen = true
+                };
             }
 
             /// <summary>
@@ -245,7 +280,8 @@ namespace Ptv.XServer.Controls.Map
             /// <param name="requestedSize">Requested image size.</param>
             public void UdpateOjectInfos(xserver.Map xServerMap, Size requestedSize)
             {
-                map.Dispatcher.Invoke((Action)(() => {
+                map.Dispatcher.Invoke((Action) (() =>
+                {
                     ClearToolTip();
 
                     objectInfos = xServerMap != null ? xServerMap.wrappedObjects : null;
@@ -264,7 +300,7 @@ namespace Ptv.XServer.Controls.Map
             /// <summary>
             /// Tries to get the layer's current map image.
             /// </summary>
-            Image Image
+            private Image Image
             {
                 get { return HasImage ? canvas.Children[0] as Image : null; }
             }
@@ -277,14 +313,14 @@ namespace Ptv.XServer.Controls.Map
             /// <returns>Matching layer objects</returns>
             private IEnumerable<xserver.LayerObject> GetLayerObjects(Point p)
             {
-                if (HasImage && objectInfos != null && objectInfos.Length > 0)
-                {
-                    p = new Point(p.X * imageSize.Width / map.ActualWidth, p.Y * imageSize.Height / map.ActualHeight);
+                if (!HasImage || objectInfos == null || objectInfos.Length <= 0) yield break;
 
-                    foreach (var layerObject in ToolTipHitTest(objectInfos, p))
-                        if (!String.IsNullOrEmpty(GetToolTipFromLayerObject(layerObject)))
-                            yield return layerObject;
-                }
+                p = new Point(p.X*imageSize.Width/map.ActualWidth, p.Y*imageSize.Height/map.ActualHeight);
+                foreach (
+                    var layerObject in
+                        ToolTipHitTest(objectInfos, p)
+                            .Where(layerObject => !String.IsNullOrEmpty(GetToolTipFromLayerObject(layerObject))))
+                    yield return layerObject;
             }
 
             /// <summary>
@@ -294,35 +330,45 @@ namespace Ptv.XServer.Controls.Map
             /// <param name="p">Point to test</param>
             /// <returns>Matching layer objects.</returns>
             /// <remarks>The default implementation simply returns objects within a range of 10 pixels of the given point.</remarks>
-            protected virtual IEnumerable<xserver.LayerObject> ToolTipHitTest(IEnumerable<xserver.ObjectInfos> infos, Point p)
+            protected virtual IEnumerable<xserver.LayerObject> ToolTipHitTest(IEnumerable<xserver.ObjectInfos> infos,
+                Point p)
             {
+                int hitradius = 10;
+                int yOffset = MarkerIsBalloon ? hitradius / 2 : 0;
+
                 foreach (var info in infos)
                 {
-                    if (info.wrappedObjects != null && info.wrappedObjects.Length > 0)
-                    {
-                        foreach (var o in info.wrappedObjects)
-                        {
-                            bool isMatch = false;
+                    if (info.wrappedObjects == null || info.wrappedObjects.Length <= 0)
+                        continue;
 
-                            if (o.geometry != null && o.geometry.pixelGeometry != null)
+                    foreach (var o in info.wrappedObjects)
+                    {
+                        bool isMatch = false;
+
+                        if (o.geometry != null && o.geometry.pixelGeometry != null)
+                        {
+                            var lineString = o.geometry.pixelGeometry as xserver.PlainLineString;
+                            if (lineString != null && lineString.wrappedPoints != null)
                             {
-                                var lineString = o.geometry.pixelGeometry as xserver.PlainLineString;
-                                if (lineString != null && lineString.wrappedPoints != null)
+                                if (lineString.wrappedPoints.Length > 1)
                                 {
-                                    if (lineString.wrappedPoints.Length > 1)
-                                    {
-                                        isMatch = PointInRangeOfLinestring(lineString.wrappedPoints.Select(pp => new Point(pp.x, pp.y)).ToArray(), p, 10);
-                                    }
-                                    else if (lineString.wrappedPoints.Length == 1)
-                                    {
-                                        isMatch = (p - new Point(lineString.wrappedPoints[0].x, lineString.wrappedPoints[0].y)).Length <= 10;
-                                    }
+                                    isMatch =
+                                        PointInRangeOfLinestring(
+                                            lineString.wrappedPoints.Select(pp => new Point(pp.x, pp.y)).ToArray(), p,
+                                            hitradius);
+                                }
+                                else if (lineString.wrappedPoints.Length == 1)
+                                {
+                                    isMatch =
+                                        (p - new Point(lineString.wrappedPoints[0].x, lineString.wrappedPoints[0].y))
+                                            .Length <= hitradius;
                                 }
                             }
-
-                            if (isMatch |= (p - new Point(o.pixel.x, o.pixel.y)).Length <= 10)
-                                yield return o;
                         }
+
+                        // ReSharper disable once RedundantAssignment
+                        if (isMatch |= (p - new Point(o.pixel.x, o.pixel.y - yOffset)).Length <= hitradius)
+                            yield return o;
                     }
                 }
             }
@@ -336,14 +382,14 @@ namespace Ptv.XServer.Controls.Map
             /// <returns></returns>
             public static bool PointInRangeOfLinestring(Point[] lineString, Point p, double range)
             {
-                double range2 = range * range; // square of range
+                double range2 = range*range; // square of range
 
                 for (int i = 0; i < lineString.Length - 1; i++)
                 {
                     Point c = ClosestPointOnSegment(lineString[i], lineString[i + 1], p);
                     var d = new Point(c.X - p.X, c.Y - p.Y); // distance vector
 
-                    if (d.X * d.X + d.Y * d.Y <= range2)
+                    if (d.X*d.X + d.Y*d.Y <= range2)
                         return true;
                 }
 
@@ -360,17 +406,14 @@ namespace Ptv.XServer.Controls.Map
             public static Point ClosestPointOnSegment(Point a, Point b, Point p)
             {
                 var d = new Point(b.X - a.X, b.Y - a.Y);
-                double number = (p.X - a.X) * d.X + (p.Y - a.Y) * d.Y;
+                double number = (p.X - a.X)*d.X + (p.Y - a.Y)*d.Y;
 
                 if (number <= 0.0)
                     return a;
 
-                double denom = d.X * d.X + d.Y * d.Y;
+                double denom = d.X*d.X + d.Y*d.Y;
 
-                if (number >= denom)
-                    return b;
-
-                return new Point(a.X + (number / denom) * d.X, a.Y + (number / denom) * d.Y);
+                return (number >= denom) ? b : new Point(a.X + (number/denom)*d.X, a.Y + (number/denom)*d.Y);
             }
 
             /// <summary>
@@ -379,10 +422,7 @@ namespace Ptv.XServer.Controls.Map
             /// <param name="o">LayerObject to get the tool tip for.</param>
             /// <returns>Tool tip string.</returns>
             /// <remarks>The default implementation returns the description of the layer object (as is).</remarks>
-            protected virtual String GetToolTipFromLayerObject(xserver.LayerObject o)
-            {
-                return o.descr;
-            }
+            public Func<xserver.LayerObject, string> GetToolTipFromLayerObject;
 
             /// <summary>
             /// Checks if there are tool tips for a given position.
@@ -401,7 +441,9 @@ namespace Ptv.XServer.Controls.Map
             /// <returns>Tool tip texts.</returns>
             private IEnumerable<String> GetToolTips(Point p)
             {
-                return GetLayerObjects(p).Select(GetToolTipFromLayerObject);
+                return
+                    GetLayerObjects(p)
+                        .Select(x => (GetToolTipFromLayerObject != null) ? GetToolTipFromLayerObject(x) : x.descr);
             }
 
             /// <summary>
@@ -409,12 +451,12 @@ namespace Ptv.XServer.Controls.Map
             /// </summary>
             private void ClearToolTip()
             {
-                if (toolTip != null)
-                {
-                    // close tool tip
-                    toolTip.IsOpen = false;
-                    toolTip = null;
-                }
+                if (toolTip == null)
+                    return;
+
+                // close tool tip
+                toolTip.IsOpen = false;
+                toolTip = null;
             }
         }
 
@@ -435,19 +477,15 @@ namespace Ptv.XServer.Controls.Map
 
                 var ce = obj as ContentElement;
 
-                if (ce != null)
-                {
-                    DependencyObject parent = ContentOperations.GetParent(ce);
+                if (ce == null) return VisualTreeHelper.GetParent(obj);
 
-                    if (parent != null)
-                        return parent;
+                DependencyObject parent = ContentOperations.GetParent(ce);
+                if (parent != null)
+                    return parent;
 
-                    var fce = ce as FrameworkContentElement;
+                var fce = ce as FrameworkContentElement;
 
-                    return fce != null ? fce.Parent : null;
-                }
-
-                return VisualTreeHelper.GetParent(obj);
+                return fce != null ? fce.Parent : null;
             }
 
             /// <summary>
@@ -484,17 +522,19 @@ namespace Ptv.XServer.Controls.Map
             {
                 HitTestResult result = null;
 
-                VisualTreeHelper.HitTest(visual, target => {
-                        var uiElement = target as UIElement;
-                        return ((uiElement != null) && (!uiElement.IsHitTestVisible ||!uiElement.IsVisible))
-                            ? HitTestFilterBehavior.ContinueSkipSelfAndChildren
-                            : HitTestFilterBehavior.Continue;
-                    }, target => {
-                        result = target;
-                        return HitTestResultBehavior.Stop;
-                    },
+                VisualTreeHelper.HitTest(visual, target =>
+                {
+                    var uiElement = target as UIElement;
+                    return ((uiElement != null) && (!uiElement.IsHitTestVisible || !uiElement.IsVisible))
+                        ? HitTestFilterBehavior.ContinueSkipSelfAndChildren
+                        : HitTestFilterBehavior.Continue;
+                }, target =>
+                {
+                    result = target;
+                    return HitTestResultBehavior.Stop;
+                },
                     new PointHitTestParameters(point)
-                );
+                    );
 
                 return result != null ? result.VisualHit : null;
             }
@@ -504,7 +544,7 @@ namespace Ptv.XServer.Controls.Map
     namespace TileProviders
     {
         using xserver;
-        
+
         /// <summary>
         /// Definition of a delegate handling map updates.
         /// </summary>
@@ -549,15 +589,12 @@ namespace Ptv.XServer.Controls.Map
             /// </summary>
             public event MapUpdateDelegate MapUdpate;
 
-            /// <inheritdoc/>
-            public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width, int height)
-            {
-                //
-                //
-                // see comments on XMapProviderWithObjectInformation above
-                //
-                //
+            public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties { get; set; }
 
+            /// <inheritdoc/>
+            public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width,
+                int height)
+            {
                 var size = new Size(width, height);
 
                 if (MapUdpate != null)
@@ -574,39 +611,20 @@ namespace Ptv.XServer.Controls.Map
                         rightBottom = new Point {point = new PlainPoint {x = right, y = bottom}}
                     };
 
-                    string profile = CustomProfile;
+                    string profile = (CustomProfile != null) ? CustomProfile : "ajax-av";
 
-                    var layers = new List<Layer>
+                    var ccProps = new List<CallerContextProperty>
                     {
-                        new StaticPoiLayer {name = "town", visible = false, category = -1, detailLevel = 0},
-                        new StaticPoiLayer {name = "street", visible = false, category = -1, detailLevel = 0},
-                        new StaticPoiLayer {name = "background", visible = false, category = -1, detailLevel = 0}
+                        new CallerContextProperty {key = "CoordFormat", value = "PTV_MERCATOR"},
+                        new CallerContextProperty {key = "Profile", value = profile}
                     };
 
-                    if ((CustomXMapLayers != null) && (layers.Count > 0))
-                    {
-                        foreach (Layer custLayer in CustomXMapLayers)
-                        {
-                            foreach (Layer layer in layers)
-                            {
-                                if (layer.GetType() == custLayer.GetType() && layer.name.Equals(custLayer.name))
-                                {
-                                    layers.Remove(layer);
-                                    break;
-                                }
-                            }
-                        }
-
-                        layers.AddRange(CustomXMapLayers);
-                    }
+                    if (CustomCallerContextProperties != null)
+                        ccProps.AddRange(CustomCallerContextProperties);
 
                     var cc = new CallerContext
                     {
-                        wrappedProperties = new[]
-                        {
-                            new CallerContextProperty {key = "CoordFormat", value = "PTV_MERCATOR"},
-                            new CallerContextProperty {key = "Profile", value = profile}
-                        }
+                        wrappedProperties = ccProps.ToArray()
                     };
 
 
@@ -623,7 +641,8 @@ namespace Ptv.XServer.Controls.Map
                     }
 
                     service.Timeout = 8000;
-                    var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo, layers.ToArray(), true, cc);
+                    var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo, CustomXMapLayers.ToArray(), true,
+                        cc);
 
                     if (MapUdpate != null)
                         MapUdpate(map, size);

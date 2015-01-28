@@ -5,6 +5,6 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8.4, 49" Zoom="12" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map" Center="8.4, 49" Zoom="12" />
     </Grid>
 </Window>
