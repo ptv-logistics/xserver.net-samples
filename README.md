@@ -16,6 +16,11 @@ shows how to switch the basemap profile
 #### CustomInit
 shows how to explicitly initialize the xMapServer base map
 
+#### CustomLayout
+shows how to set-up a map-layout with custom gadgets
+
+![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
+
 #### DrawMode
 the basic code to add an interactor for drawing custom polygons
 
@@ -23,6 +28,8 @@ the basic code to add an interactor for drawing custom polygons
 
 #### ExtensibilityTest
 tests for customization and extensions of the map control
+
+![ExtensibilityTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ExtensibilityTest.png "ExtensibilityTest")
 
 #### HereImagery
 shows how to add here basemap tiles
@@ -65,7 +72,9 @@ shows how to render custom icons and select them by dragging a rubber band
 ![SelectionDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SelectionDemo.png "SelectionDemo")
 
 #### ServerSideRendering
-shows how to render additional xMap layers
+shows how to render additional xMap layers with tooltip interaction
+
+![ServerSideRendering](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ServerSideRendering.png "ServerSideRendering")
 
 #### SymbolsAndLabels
 shows how to draw symbols with an attached label tag
