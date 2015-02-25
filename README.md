@@ -21,6 +21,11 @@ Shows how to set-up a map-layout with custom gadgets
 
 ![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
 
+#### CustomPanAndZoom
+Shows how to change the default behavior for pan/zoom interaction.
+
+![CustomPanAndZoom](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomPanAndZoom.png "CustomPanAndZoom")
+
 #### DrawMode
 The basic code to add an interactor for drawing custom polygons
 
