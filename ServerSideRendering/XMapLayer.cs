@@ -77,7 +77,7 @@ namespace Ptv.XServer.Controls.Map
             {
                 InitializeFactory(CanvasCategory.Content, CreateCanvas);
 
-                var provider = new XMapProviderWithObjectInformation(url, user, password);
+                var provider = new ExtendedXMapTiledProvider(url, user, password);
                 provider.MapUdpate += UdpateOjectInfos;
 
                 UntiledProvider = provider;
@@ -93,8 +93,8 @@ namespace Ptv.XServer.Controls.Map
             /// </summary>
             public String Profile
             {
-                get { return (UntiledProvider as XMapProviderWithObjectInformation).CustomProfile; }
-                set { (UntiledProvider as XMapProviderWithObjectInformation).CustomProfile = value; }
+                get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomProfile; }
+                set { (UntiledProvider as ExtendedXMapTiledProvider).CustomProfile = value; }
             }
 
             /// <summary>
@@ -102,8 +102,8 @@ namespace Ptv.XServer.Controls.Map
             /// </summary>
             public IEnumerable<xserver.Layer> CustomXMapLayers
             {
-                get { return (UntiledProvider as XMapProviderWithObjectInformation).CustomXMapLayers; }
-                set { (UntiledProvider as XMapProviderWithObjectInformation).CustomXMapLayers = value; }
+                get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomXMapLayers; }
+                set { (UntiledProvider as ExtendedXMapTiledProvider).CustomXMapLayers = value; }
             }
 
             /// <summary>
@@ -111,8 +111,8 @@ namespace Ptv.XServer.Controls.Map
             /// </summary>
             public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties
             {
-                get { return (UntiledProvider as XMapProviderWithObjectInformation).CustomCallerContextProperties; }
-                set { (UntiledProvider as XMapProviderWithObjectInformation).CustomCallerContextProperties = value; }
+                get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomCallerContextProperties; }
+                set { (UntiledProvider as ExtendedXMapTiledProvider).CustomCallerContextProperties = value; }
             }
 
             /// <summary>
@@ -557,12 +557,7 @@ namespace Ptv.XServer.Controls.Map
         /// <summary>
         /// Fetches and provides images from xMap Server.
         /// </summary>
-        /// <remarks>
-        /// This class is merely a duplicate of XMapTiledProvider. It has been enriched to provide additional 
-        /// object information through the delegates attached to MapUpdate. XMapMode is ignored for now. The 
-        /// code will be merged into one of the next PTV xServer .NET releases rendering this class obsolete.
-        /// </remarks>
-        internal class XMapProviderWithObjectInformation : XMapTiledProvider
+        internal class ExtendedXMapTiledProvider : XMapTiledProvider
         {
             /// <summary>
             /// url field
@@ -576,12 +571,26 @@ namespace Ptv.XServer.Controls.Map
             /// <param name="user">User name of the XMap authentication.</param>
             /// <param name="password">Password of the XMap authentication.</param>
 
-            public XMapProviderWithObjectInformation(string url, string user, string password)
+            public ExtendedXMapTiledProvider(string url, string user, string password)
                 : base(url, XMapMode.Custom)
             {
                 this.url = url;
                 User = user;
                 Password = password;
+            }
+
+            public override string CacheId
+            {
+                get
+                {
+                    string cacheId = base.CacheId;
+                    if (this.CustomCallerContextProperties != null)
+                    {
+                        foreach (var ccp in this.CustomCallerContextProperties)
+                            cacheId = cacheId + "/" + ccp.key + "/" + ccp.value;
+                    }
+                    return cacheId;
+                }
             }
 
             /// <summary>
@@ -611,7 +620,7 @@ namespace Ptv.XServer.Controls.Map
                         rightBottom = new Point {point = new PlainPoint {x = right, y = bottom}}
                     };
 
-                    string profile = (CustomProfile != null) ? CustomProfile : "ajax-av";
+                    string profile = CustomProfile?? "ajax-av";
 
                     var ccProps = new List<CallerContextProperty>
                     {
@@ -640,9 +649,8 @@ namespace Ptv.XServer.Controls.Map
                         service.Credentials = credentialCache;
                     }
 
-                    service.Timeout = 8000;
-                    var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo, CustomXMapLayers.ToArray(), true,
-                        cc);
+                    var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo, (CustomXMapLayers != null)? CustomXMapLayers.ToArray(): null,
+                        true, cc);
 
                     if (MapUdpate != null)
                         MapUdpate(map, size);

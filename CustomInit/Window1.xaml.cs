@@ -37,8 +37,8 @@ namespace CustomInit
         public void InsertXMapBaseLayers(LayerCollection layers, XMapMetaInfo meta)
         {
             var baseLayer = new TiledLayer("Background") 
-            {          
-                TiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Background) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key"},
+            {
+                TiledProvider = new XMapProviderWithObjectInformation(meta.Url, XMapMode.Background) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
                 Copyright = meta.CopyrightText,
                 Caption = MapLocalizer.GetString(MapStringId.Background),
                 IsBaseMapLayer = true,
@@ -47,7 +47,7 @@ namespace CustomInit
 
             var labelLayer = new UntiledLayer("Labels")
             {
-                UntiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Town) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
+                UntiledProvider = new XMapProviderWithObjectInformation(meta.Url, XMapMode.Town) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
                 Copyright = meta.CopyrightText,
                 MaxRequestSize = meta.MaxRequestSize,
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
