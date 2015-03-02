@@ -6,12 +6,16 @@
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8.4, 49" Zoom="13" XMapCopyright="PTV, TOMTOM" />
-        <ComboBox x:Name="dragMode"  VerticalAlignment="Top" HorizontalAlignment="Left" 
-                  Margin="10,100,0,0" SelectionChanged="Selection_Changed">
-            <ComboBoxItem IsSelected="True">Select on Shift</ComboBoxItem>
-            <ComboBoxItem>Pan</ComboBoxItem>
-            <ComboBoxItem>Select</ComboBoxItem>
-            <ComboBoxItem>None</ComboBoxItem>
-        </ComboBox>
+        <Border Margin="10,100,0,0" Background="White" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" CornerRadius="8,8,8,8">
+            <StackPanel Margin="10">
+                <ComboBox x:Name="dragMode" SelectionChanged="Selection_Changed">
+                    <ComboBoxItem IsSelected="True">Select on Shift</ComboBoxItem>
+                    <ComboBoxItem>Pan</ComboBoxItem>
+                    <ComboBoxItem>Select</ComboBoxItem>
+                    <ComboBoxItem>None</ComboBoxItem>
+                </ComboBox>
+                <CheckBox x:Name="doubleClickSelect" Checked="DoubleClickSelect_OnChecked" Unchecked="DoubleClickSelect_OnChecked" IsChecked="True">Double-Click Zoom</CheckBox>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

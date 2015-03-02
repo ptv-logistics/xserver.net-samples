@@ -35,6 +35,9 @@ namespace CustomPanAndZoom
         // NEW: setting the mouse mode externally
         public DragMode MouseDragMode = DragMode.SelectOnShift;
 
+        // NEW: zoom on Double click
+        public bool ZoomOnDoubleClick = true;
+
         #region private variables
         /// <summary> Start point of the interaction in world coordinates. </summary>
         private Point WorldStartPoint = new Point(0, 0);
@@ -219,7 +222,7 @@ namespace CustomPanAndZoom
                 return;
             }
 
-            if (e.ClickCount == 2)
+            if (ZoomOnDoubleClick && e.ClickCount == 2)
             {
                 Point p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
 

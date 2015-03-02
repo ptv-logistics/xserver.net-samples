@@ -48,5 +48,10 @@ namespace CustomPanAndZoom
                     break;
             }
         }
+
+        private void DoubleClickSelect_OnChecked(object sender, RoutedEventArgs e)
+        {
+            this.customPanAndZoom.ZoomOnDoubleClick = doubleClickSelect.IsChecked?? false;
+        }
     }
 }
