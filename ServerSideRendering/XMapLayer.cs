@@ -628,9 +628,6 @@ namespace Ptv.XServer.Controls.Map
                         new CallerContextProperty {key = "Profile", value = profile}
                     };
 
-                    if (!string.IsNullOrEmpty(ContextKey))
-                        ccProps.Add(new CallerContextProperty { key = "ContextKey", value = this.ContextKey });
-
                     if (CustomCallerContextProperties != null)
                         ccProps.AddRange(CustomCallerContextProperties);
 
