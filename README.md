@@ -96,6 +96,11 @@ Shows how to build one logical layer containing differrent canvases rendered bef
 
 ![ToursAndStopsMultiCanvas](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ToursAndMultiCanvas.png "ToursAndStopsMultiCanvas")
 
+#### VdiPerformance
+Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)
+
+![VdiPerformance](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/VdiPerformance.png "VdiPerformance")
+
 #### WmsTest
 Shows how to add WMS layers to the control
 
