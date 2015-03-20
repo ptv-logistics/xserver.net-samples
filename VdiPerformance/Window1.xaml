@@ -12,6 +12,7 @@
             <CheckBox x:Name="renderMode" Content="Software Rendering" Click="Button_Click"></CheckBox>
             <CheckBox x:Name="useAnimation" IsChecked="True" Content="Use Animation" Click="useAnimation_Click"></CheckBox>
             <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbor Scaling" Click="bilinearScaling_Click"></CheckBox>
+            <CheckBox x:Name="useSilkySand" Content="Use SilkySand" Click="useSilkySand_Click"></CheckBox>
         </StackPanel>
     </Grid>
 </Window>

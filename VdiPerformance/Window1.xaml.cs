@@ -122,5 +122,10 @@ namespace VdiPerformance
         {
             RenderOptions.SetBitmapScalingMode(this.Map, bilinearScaling.IsChecked.Value? BitmapScalingMode.NearestNeighbor : BitmapScalingMode.Unspecified );
         }
+
+        private void useSilkySand_Click(object sender, RoutedEventArgs e)
+        {
+            this.Map.XMapStyle = useSilkySand.IsChecked.Value ? "silkysand" : null;
+        }
     }
 }
