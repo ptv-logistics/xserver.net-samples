@@ -47,9 +47,14 @@ Shows how to implement a client-side tile provider
 ![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
 
 #### ManySymbols
-Shows practices to display many symbols without stuttering
+Shows practices to display many symbols with the ShapeLayer
 
 ![ManySymbols](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ManySymbols.png "ManySymbols")
+
+#### ManySymbols2
+Shows how to display even more symbols by implementing a custom layer
+
+![ManySymbols2](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ManySymbols2.png "ManySymbols2")
 
 #### MapArrowDemo
 Shows how to build custom shapes for the shape layer
