@@ -12,3 +12,5 @@ The symbols are WPF objects and support the full WPF event-hanling (Mouse-Over, 
 
 This practice is sufficient for up to about 100,000 locations. To display even more locations or other complex data, we recommend 
 either use clustering (see Clustering-Demo in the SDK) or switch from WPF to GDI-based rendering (see Map&Market/Shape-File Demo in the SDK).
+
+![ManySymbols2](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ManySymbols2.png "ManySymbols2")
