@@ -2,7 +2,7 @@
 
 We got some request for hints how to optimize the xServer .NET Control for scenarios where the memory for .NET is limited. This is mainly the case when the host applications runs at 32-Bit,for as Excel or Outlook plugin
 
-![xServer.NET control running in as (32-Bit) Mircosoft Word Plugin](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png)
+![xServer.NET control running in as (32-Bit) Mircosoft Word Plugin](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png =250x)
 
 ###1 Optimizations in the latest version
 WPF has some memory issues for bitmap images, and the map control uses many of these. We we applied some tweaks to release memory earlier for bitmaps. if you're interested in details about the optimization, read here http://code.logos.com/blog/2008/04/memory_leak_with_bitmapimage_and_memorystream.html. 
