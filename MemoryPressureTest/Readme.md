@@ -36,7 +36,7 @@ We continously search for memory leaks in xServer .NET, and workaround the memor
 ![3dcenter article about the LAA flag](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/scitech.png)
 
 ###5 Testing under critical contditions
-Our test project builds a 32-Bit applications and allocates a large pile of memory to test the optimizations. Get the source code here https://github.com/ptv-logistics/xservernet-bin/tree/master/MemoryPressureTest
+Our test project builds a 32-Bit application and allocates a large pile of memory to test the optimizations. Get the source code here https://github.com/ptv-logistics/xservernet-bin/tree/master/MemoryPressureTest
 
 ```
 private static IntPtr largeUnmanagedHeap;
