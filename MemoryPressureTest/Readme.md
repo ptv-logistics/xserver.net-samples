@@ -1,6 +1,6 @@
 ## xServer .NET under memory pressure
 
-![Alt text](/path/to/img.jpg)
+![xServer.NET control running in as Mircosoft Office Plugin (32-Bit)](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png)
 
 We got some request for hints how to optimize the xServer .NET Control for scenarios where the memory for .NET is limited. This is mainly the case when the host applications runs at 32-Bit,for as Excel or Outlook plugin
 
