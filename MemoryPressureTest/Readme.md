@@ -59,5 +59,3 @@ public MainWindow()
     InitializeComponent();
 }          
 ```
-##Conclusion
-Optimizing memory is a challenging task in a managed (garbage-collected) environment.
