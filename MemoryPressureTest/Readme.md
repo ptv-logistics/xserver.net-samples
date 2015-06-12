@@ -24,7 +24,9 @@ Ptv.XServer.Controls.Map.GlobalOptions.TileCacheSize = 128;
 
 ###3 Set the LAA-Flag
 
-32-Bit applications can use 2GB (31-Bit) of address space on a 32-Bit OS. The 32nd Bit is reserved by the Kernel Space. The 32nd Bit is also reserved on 64-Bit OS for compatibility reasons, even though the Kernel Space is outside this range. If your 32-Bit application doesn't abuse the 32nd-Bit for anything evil, you can set the LAA flag for the .exe-file to allow the process to use 4GB. This should be the case for normal application. Here is a very good article on this issue (in german) http://www.3dcenter.org/artikel/das-large-address-aware-flag
+32-Bit applications can use 2GB (31-Bit) of address space on a 32-Bit OS. The 32nd Bit is reserved by the Kernel Space. The 32nd Bit is also reserved on 64-Bit OS for compatibility reasons, even though the Kernel Space is outside this range. If your 32-Bit application doesn't abuse the 32nd-Bit for anything evil, you can set the LAA flag for the .exe-file to allow the process to use 4GB. This should be the case for any normal application. 
+
+Here is a very good article on this issue (in german) http://www.3dcenter.org/artikel/das-large-address-aware-flag
 
 <img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/64bitnolaa.png" alt="3dcenter article about the LAA flag" height="240"/>
 
