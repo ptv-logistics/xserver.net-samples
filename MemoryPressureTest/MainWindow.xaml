@@ -1,0 +1,18 @@
+﻿<!-- 
+// Copyright (c) PTV Group
+//  
+// For license details, please refer to the file COPYING, which 
+// should have been provided with this distribution.
+-->
+<Window x:Class="MemoryPressureTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"
+        Height="600"
+        Width="800" 
+        xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
+        Loaded="Window_Loaded">
+    <Grid>
+        <map:WpfMap x:Name="mapControl1" />
+    </Grid>
+</Window>
