@@ -2,7 +2,7 @@
 
 We got some request for hints how to optimize the xServer .NET Control for scenarios where the memory for .NET is limited. This is mainly the case when the host applications runs at 32-Bit,for as Excel or Outlook plugin
 
-<img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png"  alt="xServer.NET control running in as (32-Bit) Mircosoft Word Plugin" width="200" height="200"/>
+<img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png"  alt="xServer.NET control running in as (32-Bit) Mircosoft Word Plugin" height="240"/>
 
 ###1 Optimizations in the latest version
 WPF has some memory issues for bitmap images, and the map control uses many of these. We we applied some tweaks to release memory earlier for bitmaps. if you're interested in details about the optimization, read here http://code.logos.com/blog/2008/04/memory_leak_with_bitmapimage_and_memorystream.html. 
@@ -24,7 +24,7 @@ Ptv.XServer.Controls.Map.GlobalOptions.TileCacheSize = 128;
 
 32-Bit applications can use 2GB (31-Bit) of address space on a 32-Bit OS. The 32nd Bit is reserved by the Kernel Space. The 32nd Bit is also reserved on 64-Bit OS for compatibility reasons, even though the Kernel Space is outside this range. If your 32-Bit application doesn't abuse the 32nd-Bit for anything evil, you can set the LAA flag for the .exe-file to allow the process to use 4GB. This should be the case for normal application. Here is a very good article on this issue (in german) http://www.3dcenter.org/artikel/das-large-address-aware-flag
 
-![3dcenter article about the LAA flag](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/64bitnolaa.png)
+<img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/64bitnolaa.png" alt="3dcenter article about the LAA flag" height="240"/>
 
 ###4 Hunt down your memory leaks
 We continously search for memory leaks, and workaround the memory leaks inside WPF for the map control. It's a common misconception that the garbage collector prevents .NET from having memeory leaks. Especially UI applications are affected by this, as lapsed event listener are a hideous source for leaks. Tool like the SciTech memory profiler can help to search for leaks http://memprofiler.com/?gclid=CIDHmZHxicYCFWXLtAodzzsAIQ
