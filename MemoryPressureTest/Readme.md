@@ -1,6 +1,6 @@
 ## Tips to optimize xServer.NET for limited-memory scenarios
 
-We got some request for hints how to optimize the xServer .NET map control for scenarios where the memory for .NET is limited. This is mainly the case when the host application runs at 32-Bit, for example as Excel or Outlook plugin.
+We got some requests for hints how to optimize the xServer .NET map control for scenarios where the memory for .NET is limited. This is mainly the case when the host application runs at 32-Bit, for example as Excel or Outlook plugin.
 
 <img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/XServerNetOffice.png"  alt="xServer.NET control running in as (32-Bit) Mircosoft Word Plugin" height="240"/>
 
