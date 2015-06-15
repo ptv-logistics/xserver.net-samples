@@ -7,7 +7,7 @@ We got some requests for hints how to optimize the xServer .NET map control for 
 Optimizing memory is a challenging task, especially in a managed (i.e. garbage-collected) runtime like .NET. These are the tips to optimize your application.
 
 ###1 Optimizations in the latest version
-WPF has some memory issues for bitmap images, and the map control uses many of these. We we applied some tweaks to release memory earlier for bitmaps. If you're interested in details about the optimization, read here http://code.logos.com/blog/2008/04/memory_leak_with_bitmapimage_and_memorystream.html. 
+WPF has some memory issues for bitmap images, and the map control uses many of those. We applied some tweaks to release memory earlier for bitmaps. If you're interested in details about the optimization, read here http://code.logos.com/blog/2008/04/memory_leak_with_bitmapimage_and_memorystream.html. 
 
 You can get the latest stable version of the control with this optimization here https://github.com/ptv-logistics/xservernet-bin/tree/master/Lib
 
