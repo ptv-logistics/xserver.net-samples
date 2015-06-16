@@ -31,9 +31,9 @@ Here is a very good article on this issue (in german) http://www.3dcenter.org/ar
 <img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/64bitnolaa.png" alt="3dcenter article about the LAA flag" height="240"/>
 
 ###4 Hunt down your memory leaks
-We continously search for memory leaks in xServer .NET, and work around the memory leaks inside WPF for the map control. It's a common misconception that the garbage collector prevents .NET from having memeory leaks. Mainly UI applications are affected by this, as lapsed event listeners are a hideous source for leaks. 
+We continously search for memory leaks in xServer .NET, and work around the memory leaks inside WPF for the map control. It's a common misconception that the garbage collector prevents .NET from having memory leaks. Mainly UI applications are affected, as lapsed event listeners are a hideous source for leaks. 
 
-Tools like the SciTech memory profiler can help to search for leaks in your .NET application http://memprofiler.com/?gclid=CIDHmZHxicYCFWXLtAodzzsAIQ
+Tools like the SciTech memory profiler can help to search for leaks in your .NET application http://memprofiler.com
 
 ![3dcenter article about the LAA flag](https://github.com/ptv-logistics/xservernet-bin/blob/master/MemoryPressureTest/screenshots/scitech.png)
 
