@@ -1,0 +1,13 @@
+﻿<Window x:Class="CustomLocalizer.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow"
+    Height="600"
+    Width="800" 
+    xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map">
+    <Grid>
+        <map:WpfMap XMapUrl="http://80.146.239.180/xmap/ws/XMap" 
+                    XMapCopyright="PTV, TOMTOM" Zoom="10" Center="8.4, 49" 
+                    x:Name="mapControl1" />
+    </Grid>
+</Window>

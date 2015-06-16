@@ -21,6 +21,9 @@ Shows how to set-up a map-layout with custom gadgets
 
 ![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
 
+#### CustomLocalizer
+Shows how to user your own string resources to localize the texts of the control.
+
 #### CustomPanAndZoom
 Shows how to change the default behavior for pan/zoom interaction.
 
@@ -70,6 +73,9 @@ Shows how to add the map to an MFC applciation
 Test for map controls in mutliple tab-, split, and dock-containers
 
 ![MultipleContainers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MultipleContainers.png "MultipleContainers")
+
+#### MemoryPressureTest
+Tips to optimize xServer.NET for limited-memory scenarios
 
 #### PieChartsAndExport
 Shows how to render arbitrary wpf elements and print/export the map content
