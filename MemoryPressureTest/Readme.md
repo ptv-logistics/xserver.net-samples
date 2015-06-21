@@ -12,7 +12,9 @@ WPF has some memory issues for bitmap images, and the map control uses many of t
 You can get the latest stable version of the control with this optimization here https://github.com/ptv-logistics/xservernet-bin/tree/master/Lib
 
 ###2 Tweak the control
-WPF has a weird behavior for bitmap images that triggers the garbage collector very often. This causes a very annoying problem: An application that utilizes much memory (> 1GB) starts to stutter when scrolling in the map. For details read here http://stackoverflow.com/questions/7331735/gc-is-forced-when-working-with-small-images-4k-pixel-data. Because of this issue we bypass this behavior in the control. The latest stable version does this only for 64-Bit applications, for 32-Bit applications this may raise issues under memory pressure, so we use the standard behavior. You can override this automatic behavior with the global options property.
+WPF has a weird behavior for bitmap images that triggers the garbage collector very often. This causes a very annoying problem: An application that utilizes much memory (> 1GB) starts to stutter when scrolling in the map. For details read here http://stackoverflow.com/questions/7331735/gc-is-forced-when-working-with-small-images-4k-pixel-data. 
+
+Because of this issue we bypass this behavior in the control. The latest stable version does this only for 64-Bit applications, for 32-Bit applications this may raise issues under memory pressure, so we use the standard behavior. You can override this automatic behavior with the global options property.
 ```
 Ptv.XServer.Controls.Map.GlobalOptions.MemoryPressureMode = MemoryPressureMode.Enable;
 ```
