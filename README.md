@@ -39,6 +39,12 @@ Tests for customization and extensions of the map control
 
 ![ExtensibilityTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ExtensibilityTest.png "ExtensibilityTest")
 
+#### FormsMapCS
+Shows how to add the map to a Windows Forms application in C#
+
+#### FormsMapVB
+Shows how to add the map to a Windows Forms application in VB.NET
+
 #### HereImagery
 Shows how to add here basemap tiles
 
