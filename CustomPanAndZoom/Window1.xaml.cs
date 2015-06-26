@@ -1,4 +1,5 @@
-﻿using Ptv.XServer.Controls.Map;
+﻿using System;
+using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Tools;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ namespace CustomPanAndZoom
     public partial class Window1 : Window
     {
         PanAndZoom customPanAndZoom = new CustomPanAndZoom.PanAndZoom();
+
         public Window1()
         {
             InitializeComponent();
@@ -19,15 +21,11 @@ namespace CustomPanAndZoom
             var grid = MapElementExtensions.FindChild<Grid>(Map);
             // get the old interactor
             var pz = Map.FindRelative<Ptv.XServer.Controls.Map.Gadgets.PanAndZoom>();
-            // exchenage the interactor
+            // exchange the interactor
             grid.Children.Remove(pz);
             grid.Children.Add(customPanAndZoom);
 
-            this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
-        }
-
-        void Map_Loaded(object sender, RoutedEventArgs e)
-        {
+            Map.FitInWindow = true;
         }
 
         private void Selection_Changed(object sender, RoutedEventArgs e)
