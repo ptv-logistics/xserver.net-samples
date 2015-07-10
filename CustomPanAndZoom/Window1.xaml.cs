@@ -51,5 +51,10 @@ namespace CustomPanAndZoom
         {
             this.customPanAndZoom.ZoomOnDoubleClick = doubleClickSelect.IsChecked?? false;
         }
+
+        private void FitToWindow_OnChecked(object sender, RoutedEventArgs e)
+        {
+            Map.FitInWindow = fitToWindow.IsChecked ?? false;
+        }
     }
 }

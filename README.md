@@ -80,6 +80,9 @@ Test for map controls in mutliple tab-, split, and dock-containers
 
 ![MultipleContainers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MultipleContainers.png "MultipleContainers")
 
+#### MemAssertDemo
+A utility class + demo that helps to track-down memory-leaks in your code.
+
 #### MemoryPressureTest
 Tips to optimize xServer.NET for limited-memory scenarios
 

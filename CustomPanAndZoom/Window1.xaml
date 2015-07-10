@@ -15,6 +15,7 @@
                     <ComboBoxItem>None</ComboBoxItem>
                 </ComboBox>
                 <CheckBox x:Name="doubleClickSelect" Checked="DoubleClickSelect_OnChecked" Unchecked="DoubleClickSelect_OnChecked" IsChecked="True">Double-Click Zoom</CheckBox>
+                <CheckBox x:Name="fitToWindow" Checked="FitToWindow_OnChecked" Unchecked="FitToWindow_OnChecked" IsChecked="True">Fit To Window</CheckBox>
             </StackPanel>
         </Border>
     </Grid>
