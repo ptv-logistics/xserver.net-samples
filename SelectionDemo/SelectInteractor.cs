@@ -104,6 +104,20 @@ namespace SilverMap.UseCases.SharpMap
                 }
                 e.Handled = true;
             }
+            if (selectMode == SelectMode.Rectangle)
+            {
+                dragPolygon.Points.Clear();
+                foreach (var point in polyPoints)
+                {
+                    var g2 = CanvasToPtvMercator(e.GetPosition(this));
+
+                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g1.Y)));
+                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g1.Y)));
+                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g2.Y)));
+                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g2.Y)));
+                }
+                e.Handled = true;
+            }
         }
 
         Point g1;
@@ -117,9 +131,9 @@ namespace SilverMap.UseCases.SharpMap
 
             g1 = CanvasToPtvMercator(e.GetPosition(this));
 
-            if ((Keyboard.Modifiers & ModifierKeys.Alt) != 0)
+            if ((Keyboard.Modifiers & (ModifierKeys.Alt | ModifierKeys.Control)) != 0)
             {
-                selectMode = SelectMode.Polygon;
+                selectMode = ((Keyboard.Modifiers & ModifierKeys.Alt) != 0)? SelectMode.Polygon : SelectMode.Rectangle;
 //                mapControl.PanAndZoom.IsActive = false;
                 polyPoints = new List<Point> { g1 };
                 dragPolygon = new Polygon
@@ -153,9 +167,8 @@ namespace SilverMap.UseCases.SharpMap
                     }
                 }
             }
-            else if (selectMode == SelectMode.Polygon)
+            else if (selectMode == SelectMode.Polygon || selectMode == SelectMode.Rectangle)
             {
-                Point g2 = this.CanvasToPtvMercator(e.GetPosition(map));
 //                mapControl.PanAndZoom.IsActive = true;
                 polyPoints.Add(polyPoints[0]);
 
@@ -211,6 +224,7 @@ namespace SilverMap.UseCases.SharpMap
     {
         None,
         Click,
-        Polygon
+        Polygon,
+        Rectangle
     }
 }
