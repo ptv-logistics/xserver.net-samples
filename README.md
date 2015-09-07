@@ -45,6 +45,8 @@ Shows how to add the map to a Windows Forms application in C#
 #### FormsMapVB
 Shows how to add the map to a Windows Forms application in VB.NET
 
+![FormsMapVB](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/FormsMapVB.png "FormsMapVB")
+
 #### HereImagery
 Shows how to add here basemap tiles
 
