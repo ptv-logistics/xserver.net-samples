@@ -6,11 +6,13 @@ using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Tools;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
+using System.Threading.Tasks;
 
 namespace CustomInit
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// This class shows the advanced initialization of the xServer layer. It shows how the initialization can be customized
+    /// and gets the xServer meta data in a separate thread, without blocking the ui.
     /// </summary>
     public partial class Window1 : Window
     {
@@ -18,27 +20,43 @@ namespace CustomInit
         {
             InitializeComponent();
 
-            this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
+            InitializeMap();
         }
 
-        private void Map_Loaded(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Asynchronous initialization of the map
+        /// </summary>
+        private async void InitializeMap()
         {
-            // the tools class XMapMetaInfo contains the information required to intialize the xServer layers
-            // When instantiated with the url, it tries to read the attribution text and the maximum request size from the xMap configuration
-            var meta = new XMapMetaInfo("http://80.146.239.180/xm/xmap/ws/XMap"); // custom xmap with reverse proxy
+            // Get meta info in separate task and await
+            var meta = await Task.Run(() => GetMetaInfo());
 
-            // var meta = new XMapMetaInfo("https://xmap-eu-n.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            // meta.SetCredentials("xtok", "<your token>"); // set the basic authentication properties, e.g. xtok/token for xserver internet
-
-            // Insert the layers
+            // Initialize the map
             InsertXMapBaseLayers(Map.Layers, meta);
         }
 
+        /// <summary>
+        /// Get the meta info from xServer
+        /// </summary>
+        /// <returns></returns>
+        private XMapMetaInfo GetMetaInfo()
+        {            
+            // the tools class XMapMetaInfo contains the information required to intialize the xServer layers
+            // When instantiated with the url, it tries to read the attribution text and the maximum request size from the xMap configuration
+            // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
+
+            var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
+            meta.SetCredentials("xtok", "561677741926322"); // set the basic authentication properties, e.g. xtok/token for xserver internet
+
+            return meta;
+        }
+
+        // Initialize the xServer base map layers
         public void InsertXMapBaseLayers(LayerCollection layers, XMapMetaInfo meta)
         {
             var baseLayer = new TiledLayer("Background") 
             {
-                TiledProvider = new XMapProviderWithObjectInformation(meta.Url, XMapMode.Background) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
+                TiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Background) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
                 Copyright = meta.CopyrightText,
                 Caption = MapLocalizer.GetString(MapStringId.Background),
                 IsBaseMapLayer = true,
@@ -47,7 +65,7 @@ namespace CustomInit
 
             var labelLayer = new UntiledLayer("Labels")
             {
-                UntiledProvider = new XMapProviderWithObjectInformation(meta.Url, XMapMode.Town) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
+                UntiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Town) { User = meta.User, Password = meta.Password, ContextKey = "in case of context key" },
                 Copyright = meta.CopyrightText,
                 MaxRequestSize = meta.MaxRequestSize,
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
