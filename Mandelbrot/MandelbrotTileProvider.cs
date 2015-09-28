@@ -84,7 +84,7 @@ namespace Mandelbrot
 
         public int MaxZoom
         {
-            get { return 20; }
+            get { return 30; }
         }
 
         #endregion
