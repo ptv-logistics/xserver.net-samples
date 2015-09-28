@@ -53,7 +53,7 @@ Shows how to add here basemap tiles
 ![HereImagery](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/HereImagery.png "HereImagery")
 
 #### Mandelbrot
-Shows how to implement a client-side tile provider
+Shows how to implement a client-side tile provider and demonstrates the "Infinite Zoom" feature
 
 ![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
 
