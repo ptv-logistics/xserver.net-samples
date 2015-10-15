@@ -34,6 +34,11 @@ The basic code to add an interactor for drawing custom polygons
 
 ![DrawMode](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DrawMode.png "DrawMode")
 
+#### DragAndDrop
+Shows how to implement drag&drop for elements on the map.
+
+![DragAndDrop](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DragAndDrop.png "DragAndDrop")
+
 #### ExtensibilityTest
 Tests for customization and extensions of the map control
 
