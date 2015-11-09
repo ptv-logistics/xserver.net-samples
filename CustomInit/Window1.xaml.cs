@@ -46,7 +46,7 @@ namespace CustomInit
             // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
 
             var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            meta.SetCredentials("xtok", "561677741926322"); // set the basic authentication properties, e.g. xtok/token for xserver internet
+            meta.SetCredentials("xtok", "145080320094443"); // set the basic authentication properties, e.g. xtok/token for xserver internet
 
             return meta;
         }
