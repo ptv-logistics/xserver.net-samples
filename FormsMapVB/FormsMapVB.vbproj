@@ -56,6 +56,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -102,6 +104,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Service References\XRouteServiceReference\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -125,6 +132,109 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.AdvancedTour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.BulkRouteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateAdvancedTourResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateBulkRouteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateExtendedRouteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateIsochronesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateMatrixInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateReachableObjectsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateRouteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateRouteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.calculateTourResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.deleteJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.ExtendedRoute.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.fetchBulkRouteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.fetchMatrixInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.Isochrone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.MatrixInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.Reach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.ReachableObjects.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.Route.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.RouteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.searchForReachableObjectsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.startCalculateBulkRouteInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.startCalculateMatrixInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.stopJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.Tour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\FormsMapVB.XRouteServiceReference.watchJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XRouteServiceReference\XRouteWSService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\XRouteServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XRouteServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XRouteServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XRouteServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
