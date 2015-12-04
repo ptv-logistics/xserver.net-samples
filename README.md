@@ -98,6 +98,9 @@ Shows how to render arbitrary wpf elements and print/export the map content
 
 ![PieChartsAndExport](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/PieChartsAndExport.png "PieChartsAndExport")
 
+#### RoutingVB
+Shows how to add drag&drop routing to a Visual Basic project.
+
 #### SelectionDemo
 Shows how to render custom icons and select them by dragging a rubber band
 
