@@ -8,7 +8,7 @@ Imports Point = System.Windows.Point
 Imports Ptv.XServer.Demo.UseCases.RoutingDragAndDrop
 
 Public Class Form1
-    Dim token = "145080320094443"
+    Dim token = "870241687284044"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()
