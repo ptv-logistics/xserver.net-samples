@@ -44,6 +44,11 @@ Tests for customization and extensions of the map control
 
 ![ExtensibilityTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ExtensibilityTest.png "ExtensibilityTest")
 
+#### FeatureLayers
+Shows how to render Feature Layers on the control
+
+![FeatureLayers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/FeatureLayers.png "FeatureLayers")
+
 #### FormsMapCS
 Shows how to add the map to a Windows Forms application in C#
 
