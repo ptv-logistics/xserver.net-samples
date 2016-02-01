@@ -6,6 +6,7 @@ using Ptv.XServer.Controls.Map.Localization;
 using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Tools;
 using Ptv.XServer.Demo.UseCases.FeatureLayer;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -50,7 +51,7 @@ namespace ServerSideRendering
             // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
 
             var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            meta.SetCredentials("xtok", "870241687284044"); // set the basic authentication properties, e.g. xtok/token for xserver internet
+            meta.SetCredentials("xtok", "678890783139995"); // set the basic authentication properties, e.g. xtok/token for xserver internet
 
             return meta;
         }
@@ -82,16 +83,28 @@ namespace ServerSideRendering
             InitFeatureLayers();
         }
 
+        private FeatureLayerPresenter flPresenter;
         private void InitFeatureLayers()
         {
-            var l = new FeatureLayerPresenter(this.Map);
+            flPresenter = new FeatureLayerPresenter(this.Map);
+            flPresenter.ReferenceTime = referenceTime.Value;
 
-            l.UseTrafficIncidents = true;
-            l.UseRestrictionZones = true;
-            l.UseTruckAttributes = true;
-            // l.UseSpeedPatterns = true;
+            flPresenter.UseTrafficIncidents = true;
+            flPresenter.UseRestrictionZones = true;
+            flPresenter.UseTruckAttributes = true;
+            flPresenter.UseSpeedPatterns = true;
 
-            l.RefreshMap();
+            flPresenter.RefreshMap();
+        }
+
+        private void referenceTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (flPresenter != null)
+            {
+                flPresenter.ReferenceTime = referenceTime.Value;
+
+                flPresenter.RefreshMap();
+            }
         }
     }
 }

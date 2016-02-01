@@ -72,6 +72,11 @@ namespace FeatureLayers
         /// <summary> Gets or sets the custom layers of the xMapServer. </summary>
         public IEnumerable<Layer> CustomXMapLayers { get; set; }
 
+        /// <summary>
+        /// The reference time
+        /// </summary>
+        public DateTime? ReferenceTime { get; set; }
+
         /// <inheritdoc/>
         public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width, int height)
         {
@@ -157,6 +162,9 @@ namespace FeatureLayers
                     callerContextProps.Add(new CallerContextProperty {key = "ContextKey", value = ContextKey});
 
                 var cc = new CallerContext {wrappedProperties = callerContextProps.ToArray()};
+
+                if(ReferenceTime.HasValue)
+                    mapParams.referenceTime = ReferenceTime.Value.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
 
                 service.Timeout = 8000;
                 var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo, layers.ToArray(), true, cc);
@@ -262,6 +270,8 @@ namespace FeatureLayers
                     cacheId += "pwd=" + Password;
                 if(!string.IsNullOrEmpty(CustomProfile))
                     cacheId += "custProfile=" + CustomProfile;
+                if(ReferenceTime.HasValue)
+                    cacheId += ReferenceTime.ToString();
 
                 if (CustomCallerContextProperties != null)
                 {

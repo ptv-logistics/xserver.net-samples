@@ -49,6 +49,8 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         /// </summary>
         private readonly Map map;
 
+        public DateTime? ReferenceTime { get; set; }
+
 
         /// <summary>
         /// Constructor of this use case, which tries to determine which Feature Layers are configured for the currently selected map.
@@ -140,6 +142,8 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
             foreach (var refreshInfo in RefreshInfos())
             {
                 refreshInfo.provider.CustomCallerContextProperties = new[] {new xserver.CallerContextProperty {key = "ProfileXMLSnippet", value = snippet}};
+                refreshInfo.provider.ReferenceTime = this.ReferenceTime;
+
                 if (refreshInfo.layer.Name == "Labels")
                 {
                     // The insertion of xserver.FeatureLayer objects into the CustomXMapLayers results in a providing of ObjectInfo objects in the return value

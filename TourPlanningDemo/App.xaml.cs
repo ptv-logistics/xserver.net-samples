@@ -12,6 +12,6 @@ namespace TourPlanningDemo
     /// </summary>
     public partial class App : Application
     {
-        public const string Token = "870241687284044";
+        public const string Token = "678890783139995";
     }
 }
