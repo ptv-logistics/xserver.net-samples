@@ -3,10 +3,16 @@ xservernet-bin
 
 A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
 
+#### BasemapTooltips
+Shows how to display city/street information as tool tip by reverse locating
+
+![BasemapTooltips](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/BasemapTooltips.png "BasemapTooltips")
+
 #### Circles
 Shows how to render circles with a geographic radius
 
 ![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
+
 
 #### CustomBgProfiles
 Shows how to switch the basemap profile 

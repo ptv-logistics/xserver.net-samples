@@ -1,0 +1,3502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:ns2="http://common.xserver.ptvag.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jwsdp.xlocate.xserver.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://exception.core.jabba.ptvag.com" name="XLocateWSService" targetNamespace="http://jwsdp.xlocate.xserver.ptvag.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema xmlns:tns="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://wrappertypes.service.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://exception.core.jabba.ptvag.com">
+      <xsd:complexType name="StackElement">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="cause" nillable="true" type="tns:StackElement" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="wrappedContext" nillable="true" type="ns0:ArrayOfString" />
+        </xsd:sequence>
+        <xsd:attribute name="className" type="xsd:string" use="optional" />
+        <xsd:attribute name="errorKey" type="xsd:string" use="optional" />
+        <xsd:attribute name="message" type="xsd:string" use="optional" />
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="DatabaseException" type="tns:DatabaseException" />
+      <xsd:complexType name="ParameterNotSetException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:IllegalParameterException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ParameterNotSetException" type="tns:ParameterNotSetException" />
+      <xsd:complexType name="IllegalParameterException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:BusinessException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="IllegalParameterException" type="tns:IllegalParameterException" />
+      <xsd:complexType name="UnexpectedException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="UnexpectedException" type="tns:UnexpectedException" />
+      <xsd:complexType name="OptimisticRollbackException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="OptimisticRollbackException" type="tns:OptimisticRollbackException" />
+      <xsd:complexType name="ConstraintViolationException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ConstraintViolationException" type="tns:ConstraintViolationException" />
+      <xsd:complexType name="TableNotFoundException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="TableNotFoundException" type="tns:TableNotFoundException" />
+      <xsd:complexType name="RemoteAccessException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RemoteAccessException" type="tns:RemoteAccessException" />
+      <xsd:complexType name="BaseException">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="stackElement" nillable="true" type="tns:StackElement" />
+        </xsd:sequence>
+        <xsd:attribute name="transactionId" type="xsd:string" use="optional" />
+      </xsd:complexType>
+      <xsd:element name="BaseException" type="tns:BaseException" />
+      <xsd:complexType name="SystemException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:BaseException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="SystemException" type="tns:SystemException" />
+      <xsd:complexType name="BusinessException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:BaseException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="BusinessException" type="tns:BusinessException" />
+      <xsd:complexType name="CreateException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="CreateException" type="tns:CreateException" />
+      <xsd:complexType name="RemoveException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="RemoveException" type="tns:RemoveException" />
+      <xsd:complexType name="FinderException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SystemException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="FinderException" type="tns:FinderException" />
+      <xsd:complexType name="ObjectNotFoundException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:FinderException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="ObjectNotFoundException" type="tns:ObjectNotFoundException" />
+      <xsd:complexType name="DuplicateKeyException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:CreateException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="DuplicateKeyException" type="tns:DuplicateKeyException" />
+    </xsd:schema>
+    <xsd:schema xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://value.core.jabba.ptvag.com">
+      <xsd:complexType name="TransientVO" abstract="true">
+        <xsd:sequence />
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://baseservices.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://value.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://baseservices.service.jabba.ptvag.com">
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
+      <xsd:complexType name="CallerContext">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedProperties" nillable="true" type="tns:ArrayOfCallerContextProperty" />
+            </xsd:sequence>
+            <xsd:attribute name="log1" type="xsd:string" use="optional" />
+            <xsd:attribute name="log2" type="xsd:string" use="optional" />
+            <xsd:attribute name="log3" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="CallerContextProperty">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="key" type="xsd:string" use="optional" />
+            <xsd:attribute name="value" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCallerContextProperty">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CallerContextProperty" nillable="true" type="tns:CallerContextProperty" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:tns="http://wrappertypes.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://wrappertypes.service.jabba.ptvag.com">
+      <xsd:complexType name="ArrayOfCalendar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Calendar" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfCalendar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCalendar" nillable="true" type="tns:ArrayOfCalendar" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="String" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfByte">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfByte" nillable="true" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfShort">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Short" type="xsd:short" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfShort">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfShort" nillable="true" type="tns:ArrayOfShort" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfInt">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Int" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfInt">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLong">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Long" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfLong">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfLong" nillable="true" type="tns:ArrayOfLong" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfFloat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Float" type="xsd:float" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfFloat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfFloat" nillable="true" type="tns:ArrayOfFloat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDouble">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Double" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDouble">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDouble" nillable="true" type="tns:ArrayOfDouble" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfBoolean">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Boolean" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfBoolean">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfBoolean" nillable="true" type="tns:ArrayOfBoolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:ns2="http://exception.core.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://wrappertypes.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://value.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
+      <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
+      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
+      <xsd:complexType name="RequestOptions">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedResponseGeometry" nillable="true" type="tns:ArrayOfGeometryEncoding" />
+            </xsd:sequence>
+            <xsd:attribute name="coordFormat" type="tns:CoordFormat" use="required" />
+            <xsd:attribute name="profile" type="xsd:string" use="optional" />
+            <xsd:attribute name="profileXMLSnippet" type="xsd:string" use="optional" />
+            <xsd:attribute name="srId" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRequestOptions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RequestOptions" nillable="true" type="tns:RequestOptions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfRequestOptions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfRequestOptions" nillable="true" type="tns:ArrayOfRequestOptions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="GeometryEncoding">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="PLAIN" />
+          <xsd:enumeration value="WKB" />
+          <xsd:enumeration value="WKT" />
+          <xsd:enumeration value="KML" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfGeometryEncoding">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="GeometryEncoding" type="tns:GeometryEncoding" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfGeometryEncoding">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfGeometryEncoding" nillable="true" type="tns:ArrayOfGeometryEncoding" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="CoordFormat">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="OG_GEODECIMAL" />
+          <xsd:enumeration value="PTV_MERCATOR" />
+          <xsd:enumeration value="PTV_GEOMINSEC" />
+          <xsd:enumeration value="PTV_GEODECIMAL" />
+          <xsd:enumeration value="PTV_CONFORM" />
+          <xsd:enumeration value="PTV_SUPERCONFORM" />
+          <xsd:enumeration value="PTV_SMARTUNITS" />
+          <xsd:enumeration value="OG_SRID" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfCoordFormat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CoordFormat" type="tns:CoordFormat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfCoordFormat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCoordFormat" nillable="true" type="tns:ArrayOfCoordFormat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BoundingBox">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="leftTop" nillable="true" type="tns:Point" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="rightBottom" nillable="true" type="tns:Point" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfBoundingBox">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="BoundingBox" nillable="true" type="tns:BoundingBox" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfBoundingBox">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfBoundingBox" nillable="true" type="tns:ArrayOfBoundingBox" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EncodedGeometry" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="kml" nillable="true" type="tns:KML" />
+            </xsd:sequence>
+            <xsd:attribute name="wkb" type="xsd:base64Binary" use="optional" />
+            <xsd:attribute name="wkt" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfEncodedGeometry">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="EncodedGeometry" nillable="true" type="tns:EncodedGeometry" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfEncodedGeometry">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfEncodedGeometry" nillable="true" type="tns:ArrayOfEncodedGeometry" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LinearRing">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="linearRing" nillable="true" type="tns:PlainLinearRing" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLinearRing">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LinearRing" nillable="true" type="tns:LinearRing" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfLinearRing">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfLinearRing" nillable="true" type="tns:ArrayOfLinearRing" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainLinearRing">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedPoints" nillable="true" type="tns:ArrayOfPlainPoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainLinearRing">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainLinearRing" nillable="true" type="tns:PlainLinearRing" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainLinearRing">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainLinearRing" nillable="true" type="tns:ArrayOfPlainLinearRing" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Polygon">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="polygon" nillable="true" type="tns:PlainPolygon" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Polygon" nillable="true" type="tns:Polygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPolygon" nillable="true" type="tns:ArrayOfPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainPolygon">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedLinearRings" nillable="true" type="tns:ArrayOfPlainLinearRing" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainPolygon" nillable="true" type="tns:PlainPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainPolygon" nillable="true" type="tns:ArrayOfPlainPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LineString">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="lineString" nillable="true" type="tns:PlainLineString" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LineString" nillable="true" type="tns:LineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfLineString" nillable="true" type="tns:ArrayOfLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainLineString">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedPoints" nillable="true" type="tns:ArrayOfPlainPoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainLineString" nillable="true" type="tns:PlainLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainLineString" nillable="true" type="tns:ArrayOfPlainLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Point">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="point" nillable="true" type="tns:PlainPoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Point" nillable="true" type="tns:Point" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoint" nillable="true" type="tns:ArrayOfPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="XServiceException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns2:BusinessException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="XServiceException" type="tns:XServiceException" />
+      <xsd:complexType name="PlainMultiPoint">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedPoints" nillable="true" type="tns:ArrayOfPlainPoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainMultiPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainMultiPoint" nillable="true" type="tns:PlainMultiPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainMultiPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainMultiPoint" nillable="true" type="tns:ArrayOfPlainMultiPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainMultiLineString">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedLineStrings" nillable="true" type="tns:ArrayOfPlainLineString" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainMultiLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainMultiLineString" nillable="true" type="tns:PlainMultiLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainMultiLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainMultiLineString" nillable="true" type="tns:ArrayOfPlainMultiLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainMultiPolygon">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedPolygons" nillable="true" type="tns:ArrayOfPlainPolygon" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainMultiPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainMultiPolygon" nillable="true" type="tns:PlainMultiPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainMultiPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainMultiPolygon" nillable="true" type="tns:ArrayOfPlainMultiPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainGeometryCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence>
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedGeometries" nillable="true" type="tns:ArrayOfPlainGeometryBase" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainGeometryCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainGeometryCollection" nillable="true" type="tns:PlainGeometryCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainGeometryCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainGeometryCollection" nillable="true" type="tns:ArrayOfPlainGeometryCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MultiPoint">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="multiPoint" nillable="true" type="tns:PlainMultiPoint" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMultiPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MultiPoint" nillable="true" type="tns:MultiPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfMultiPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfMultiPoint" nillable="true" type="tns:ArrayOfMultiPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MultiLineString">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="multiLineString" nillable="true" type="tns:PlainMultiLineString" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMultiLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MultiLineString" nillable="true" type="tns:MultiLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfMultiLineString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfMultiLineString" nillable="true" type="tns:ArrayOfMultiLineString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MultiPolygon">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="multiPolygon" nillable="true" type="tns:PlainMultiPolygon" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMultiPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MultiPolygon" nillable="true" type="tns:MultiPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfMultiPolygon">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfMultiPolygon" nillable="true" type="tns:ArrayOfMultiPolygon" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GeometryCollection">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:EncodedGeometry">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="geometryCollection" nillable="true" type="tns:PlainGeometryCollection" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfGeometryCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="GeometryCollection" nillable="true" type="tns:GeometryCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfGeometryCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfGeometryCollection" nillable="true" type="tns:ArrayOfGeometryCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainGeometryBase">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainGeometryBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainGeometryBase" nillable="true" type="tns:PlainGeometryBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainGeometryBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainGeometryBase" nillable="true" type="tns:ArrayOfPlainGeometryBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlainPoint">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:PlainGeometryBase">
+            <xsd:sequence />
+            <xsd:attribute name="x" type="xsd:double" use="required" />
+            <xsd:attribute name="y" type="xsd:double" use="required" />
+            <xsd:attribute name="z" type="xsd:double" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlainPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlainPoint" nillable="true" type="tns:PlainPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlainPoint">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlainPoint" nillable="true" type="tns:ArrayOfPlainPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EncodedGeometryBase" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfEncodedGeometryBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="EncodedGeometryBase" nillable="true" type="tns:EncodedGeometryBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfEncodedGeometryBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfEncodedGeometryBase" nillable="true" type="tns:ArrayOfEncodedGeometryBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ErrorCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="REQUEST_INVALID_WKT" />
+          <xsd:enumeration value="REQUEST_INVALID_WKB" />
+          <xsd:enumeration value="REQUEST_INVALID_KML" />
+          <xsd:enumeration value="KML_PLACEMARK_NOT_FOUND" />
+          <xsd:enumeration value="CONVERT_GEOMETRY_OBJECT" />
+          <xsd:enumeration value="CONVERT_COORDINATE_FORMAT" />
+          <xsd:enumeration value="GEOMETRY_ENCODING" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfErrorCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrorCode" type="tns:ErrorCode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfErrorCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfErrorCode" nillable="true" type="tns:ArrayOfErrorCode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="KML">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns1:ArrayOfString" />
+            </xsd:sequence>
+            <xsd:attribute name="kml" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfKML">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="KML" nillable="true" type="tns:KML" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfKML">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfKML" nillable="true" type="tns:ArrayOfKML" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="JobStatus">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="QUEUING" />
+          <xsd:enumeration value="RUNNING" />
+          <xsd:enumeration value="STOPPING" />
+          <xsd:enumeration value="SUCCEEDED" />
+          <xsd:enumeration value="FAILED" />
+          <xsd:enumeration value="DELETED" />
+          <xsd:enumeration value="UNKNOWN" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfJobStatus">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="JobStatus" type="tns:JobStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfJobStatus">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfJobStatus" nillable="true" type="tns:ArrayOfJobStatus" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Job">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="progress" nillable="true" type="tns:JobProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="elapsedTime" type="xsd:int" use="required" />
+            <xsd:attribute name="id" type="xsd:string" use="optional" />
+            <xsd:attribute name="status" type="tns:JobStatus" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfJob">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Job" nillable="true" type="tns:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfJob">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="JobProgress" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfJobProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="JobProgress" nillable="true" type="tns:JobProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfJobProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfJobProgress" nillable="true" type="tns:ArrayOfJobProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BulkProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence />
+            <xsd:attribute name="failed" type="xsd:int" use="required" />
+            <xsd:attribute name="remaining" type="xsd:int" use="required" />
+            <xsd:attribute name="successful" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfBulkProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="BulkProgress" nillable="true" type="tns:BulkProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfBulkProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfBulkProgress" nillable="true" type="tns:ArrayOfBulkProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DistanceMatrixProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence />
+            <xsd:attribute name="currentRowIndex" type="xsd:int" use="required" />
+            <xsd:attribute name="lastRowIndex" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDistanceMatrixProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DistanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDistanceMatrixProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDistanceMatrixProgress" nillable="true" type="tns:ArrayOfDistanceMatrixProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="WatchOptions">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="maximumPollingPeriod" type="xsd:int" use="optional" />
+            <xsd:attribute name="progressUpdatePeriod" type="xsd:int" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfWatchOptions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="WatchOptions" nillable="true" type="tns:WatchOptions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfWatchOptions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfWatchOptions" nillable="true" type="tns:ArrayOfWatchOptions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PlanProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="distanceMatrixCalculationProgress" nillable="true" type="tns:DistanceMatrixCalculationProgress" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="improvementProgress" nillable="true" type="tns:ImprovementProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPlanProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PlanProgress" nillable="true" type="tns:PlanProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPlanProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPlanProgress" nillable="true" type="tns:ArrayOfPlanProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DistanceMatrixCalculationProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="currentDistanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="currentDimaIndex" type="xsd:int" use="required" />
+            <xsd:attribute name="dimaId" type="xsd:int" use="required" />
+            <xsd:attribute name="lastDimaIndex" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDistanceMatrixCalculationProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DistanceMatrixCalculationProgress" nillable="true" type="tns:DistanceMatrixCalculationProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDistanceMatrixCalculationProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDistanceMatrixCalculationProgress" nillable="true" type="tns:ArrayOfDistanceMatrixCalculationProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ImprovementProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="bestPlan" nillable="true" type="tns:KeyFigures" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="currentPlan" nillable="true" type="tns:KeyFigures" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="initialPlan" nillable="true" type="tns:KeyFigures" />
+            </xsd:sequence>
+            <xsd:attribute name="availableMachineTime" type="xsd:int" use="required" />
+            <xsd:attribute name="iterationIndex" type="xsd:int" use="required" />
+            <xsd:attribute name="numberOfImprovements" type="xsd:int" use="required" />
+            <xsd:attribute name="usedMachineTime" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfImprovementProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ImprovementProgress" nillable="true" type="tns:ImprovementProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfImprovementProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfImprovementProgress" nillable="true" type="tns:ArrayOfImprovementProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="KeyFigures">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="costOfObjectiveFunction" type="xsd:int" use="required" />
+            <xsd:attribute name="numberOfInfeasibleOrders" type="xsd:int" use="required" />
+            <xsd:attribute name="numberOfScheduledOrders" type="xsd:int" use="required" />
+            <xsd:attribute name="numberOfScheduledVehicles" type="xsd:int" use="required" />
+            <xsd:attribute name="numberOfUnscheduledOrders" type="xsd:int" use="required" />
+            <xsd:attribute name="totalChainCost" type="xsd:int" use="required" />
+            <xsd:attribute name="totalChainPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourCost" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourCount" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourDistance" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourDrivingPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="totalTourWaitingPeriod" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfKeyFigures">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="KeyFigures" nillable="true" type="tns:KeyFigures" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfKeyFigures">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfKeyFigures" nillable="true" type="tns:ArrayOfKeyFigures" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OptimizationProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns0:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="currentLoopIndex" type="xsd:int" use="required" />
+            <xsd:attribute name="lastLoopIndex" type="xsd:int" use="required" />
+            <xsd:attribute name="progress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfOptimizationProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="OptimizationProgress" nillable="true" type="tns:OptimizationProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfOptimizationProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfOptimizationProgress" nillable="true" type="tns:ArrayOfOptimizationProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ClusterProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="distanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="optimizationProgress" nillable="true" type="tns:OptimizationProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfClusterProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ClusterProgress" nillable="true" type="tns:ClusterProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfClusterProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfClusterProgress" nillable="true" type="tns:ArrayOfClusterProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TerritoryProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="distanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TerritoryProgress" nillable="true" type="tns:TerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfTerritoryProgress" nillable="true" type="tns:ArrayOfTerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZoneLoadingProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence />
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ZoneLoadingProgress" nillable="true" type="tns:ZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfZoneLoadingProgress" nillable="true" type="tns:ArrayOfZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://xlocate.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xlocate.xserver.ptvag.com">
+      <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
+      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
+      <xsd:import namespace="http://common.xserver.ptvag.com" />
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
+      <xsd:simpleType name="SortOrder">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ASCENDING" />
+          <xsd:enumeration value="DESCENDING" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfSortOrder">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SortOrder" type="tns:SortOrder" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSortOrder">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSortOrder" nillable="true" type="tns:ArrayOfSortOrder" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ClassificationDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="NOT_CLASSIFIED" />
+          <xsd:enumeration value="LOW" />
+          <xsd:enumeration value="MEDIUM" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="EXACT" />
+          <xsd:enumeration value="UNIQUE" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfClassificationDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ClassificationDescription" type="tns:ClassificationDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfClassificationDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfClassificationDescription" nillable="true" type="tns:ArrayOfClassificationDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ResultField">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="COUNTRY" />
+          <xsd:enumeration value="STATE" />
+          <xsd:enumeration value="ADMINREGION" />
+          <xsd:enumeration value="CITY" />
+          <xsd:enumeration value="CITY2" />
+          <xsd:enumeration value="POSTCODE" />
+          <xsd:enumeration value="STREET" />
+          <xsd:enumeration value="HOUSENR" />
+          <xsd:enumeration value="COORDX" />
+          <xsd:enumeration value="COORDY" />
+          <xsd:enumeration value="DETAILLEVEL" />
+          <xsd:enumeration value="DETAILLEVEL_DESCRIPTION" />
+          <xsd:enumeration value="POPULATION" />
+          <xsd:enumeration value="EXTENSIONCLASS" />
+          <xsd:enumeration value="LEVEL" />
+          <xsd:enumeration value="ISCITYDISTRICT" />
+          <xsd:enumeration value="COUNTRY_ISO2" />
+          <xsd:enumeration value="COUNTRY_ISO3" />
+          <xsd:enumeration value="COUNTRY_COUNTRYCODEPLATE" />
+          <xsd:enumeration value="COUNTRY_DIALINGCODE" />
+          <xsd:enumeration value="COUNTRY_CAPITAL" />
+          <xsd:enumeration value="COUNTRY_NAME" />
+          <xsd:enumeration value="HOUSENR_SIDE" />
+          <xsd:enumeration value="HOUSENR_STRUCTURE" />
+          <xsd:enumeration value="HOUSENR_STARTFORMAT" />
+          <xsd:enumeration value="HOUSENR_ENDFORMAT" />
+          <xsd:enumeration value="APPENDIX" />
+          <xsd:enumeration value="SCORE_TOTALSCORE" />
+          <xsd:enumeration value="SCORE_FINALPENALTY" />
+          <xsd:enumeration value="FOUNDBY_CITY" />
+          <xsd:enumeration value="FOUNDBY_CITY2" />
+          <xsd:enumeration value="FOUNDBY_POSTCODE" />
+          <xsd:enumeration value="FOUNDBY_STREET" />
+          <xsd:enumeration value="CLASSIFICATION" />
+          <xsd:enumeration value="CLASSIFICATION_DESCRIPTION" />
+          <xsd:enumeration value="SWAPANDSPLITMODE" />
+          <xsd:enumeration value="POPUPINFO" />
+          <xsd:enumeration value="PHONENUMBER" />
+          <xsd:enumeration value="GENERIC_1" />
+          <xsd:enumeration value="GENERIC_2" />
+          <xsd:enumeration value="GENERIC_3" />
+          <xsd:enumeration value="GENERIC_4" />
+          <xsd:enumeration value="GENERIC_5" />
+          <xsd:enumeration value="SEGMENT_ID" />
+          <xsd:enumeration value="SEGMENT_COUNTRY" />
+          <xsd:enumeration value="SEGMENT_DIRECTION" />
+          <xsd:enumeration value="XYN" />
+          <xsd:enumeration value="POINAME" />
+          <xsd:enumeration value="POITYPE" />
+          <xsd:enumeration value="ADDRESS_CLASSIFICATION" />
+          <xsd:enumeration value="ADDRESS_CLASSIFICATION_DESCRIPTION" />
+          <xsd:enumeration value="POSTCODE_CLASSIFICATION" />
+          <xsd:enumeration value="TOWN_CLASSIFICATION" />
+          <xsd:enumeration value="STREET_CLASSIFICATION" />
+          <xsd:enumeration value="HOUSENR_CLASSIFICATION" />
+          <xsd:enumeration value="POSTCODE_CHARACTERISTICS" />
+          <xsd:enumeration value="TOWN_CHARACTERISTICS" />
+          <xsd:enumeration value="STREET_CHARACTERISTICS" />
+          <xsd:enumeration value="HOUSENR_CHARACTERISTICS" />
+          <xsd:enumeration value="UNMATCHED_WORDS" />
+          <xsd:enumeration value="UNMATCHED_WORDS_COUNT" />
+          <xsd:enumeration value="STREETX" />
+          <xsd:enumeration value="STREETY" />
+          <xsd:enumeration value="ADMINX" />
+          <xsd:enumeration value="ADMINY" />
+          <xsd:enumeration value="DESTINATION_LOCATION_NODE_N" />
+          <xsd:enumeration value="DESTINATION_LOCATION_NODE_Y" />
+          <xsd:enumeration value="DESTINATION_LOCATION_NODE_X" />
+          <xsd:enumeration value="DESTINATION_LOCATION_TILE_Y" />
+          <xsd:enumeration value="DESTINATION_LOCATION_TILE_X" />
+          <xsd:enumeration value="DESTINATION_LOCATION_COUNTRYCODE" />
+          <xsd:enumeration value="START_LOCATION_NODE_N" />
+          <xsd:enumeration value="START_LOCATION_NODE_Y" />
+          <xsd:enumeration value="START_LOCATION_NODE_X" />
+          <xsd:enumeration value="START_LOCATION_TILE_Y" />
+          <xsd:enumeration value="START_LOCATION_TILE_X" />
+          <xsd:enumeration value="START_LOCATION_COUNTRYCODE" />
+          <xsd:enumeration value="ISBLOCKEDFORPEDESTRIANS" />
+          <xsd:enumeration value="ISBLOCKEDFORBICYCLES" />
+          <xsd:enumeration value="ISBLOCKEDFORMOTORCYCLES" />
+          <xsd:enumeration value="ISBLOCKEDFORCARS" />
+          <xsd:enumeration value="ISBLOCKEDFORVANS" />
+          <xsd:enumeration value="ISBLOCKEDFORCAMPERS" />
+          <xsd:enumeration value="ISBLOCKEDFORBUSES" />
+          <xsd:enumeration value="ISBLOCKEDFORHAZARDOUSGOODS" />
+          <xsd:enumeration value="ISBLOCKEDFORCOMBUSTIBLEGOODS" />
+          <xsd:enumeration value="ISBLOCKEDFORTRUCKS" />
+          <xsd:enumeration value="ARTIFICIALTOWNCHARACTERIZATION" />
+          <xsd:enumeration value="CITY_LEVEL" />
+          <xsd:enumeration value="STREETNUMBER" />
+          <xsd:enumeration value="HOUSENR_ATINPUTCOORDINATESIDE" />
+          <xsd:enumeration value="PROVINCE" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfResultField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultField" type="tns:ResultField" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfResultField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfResultField" nillable="true" type="tns:ArrayOfResultField" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="SearchParameter">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="COUNTRY_CODETYPE" />
+          <xsd:enumeration value="SEARCH_BINARY" />
+          <xsd:enumeration value="SEARCH_PHONETIC" />
+          <xsd:enumeration value="SEARCH_FUZZY" />
+          <xsd:enumeration value="SWAPANDSPLITMODE" />
+          <xsd:enumeration value="STREET_HNRPOSITION" />
+          <xsd:enumeration value="STREET_RETURNALLHNR" />
+          <xsd:enumeration value="RESULT_LANGUAGE" />
+          <xsd:enumeration value="CITY_RETURNALLCITY2" />
+          <xsd:enumeration value="MULTIWORDINDEX_ENABLE" />
+          <xsd:enumeration value="POSTCODE_AGGREGATE" />
+          <xsd:enumeration value="ASTERISKMODE" />
+          <xsd:enumeration value="INTERSECTIONS_ENABLE" />
+          <xsd:enumeration value="HNR_OFFSET" />
+          <xsd:enumeration value="MAX_RESULT" />
+          <xsd:enumeration value="SINGLE_FIELD_SEPARATORS" />
+          <xsd:enumeration value="ENGINE_ADDRESSSEARCH_ENABLE" />
+          <xsd:enumeration value="ENGINE_COMBINEDTRANSPORTSEARCH_ENABLE" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SearchParameter" type="tns:SearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSearchParameter" nillable="true" type="tns:ArrayOfSearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="XLocateException">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns3:BusinessException">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="XLocateException" type="tns:XLocateException" />
+      <xsd:simpleType name="DetailLevelDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="COUNTRY" />
+          <xsd:enumeration value="STATE" />
+          <xsd:enumeration value="EXTPOSTCODE" />
+          <xsd:enumeration value="CITY" />
+          <xsd:enumeration value="CITY2" />
+          <xsd:enumeration value="POSTCODE" />
+          <xsd:enumeration value="STREET" />
+          <xsd:enumeration value="HNRSECTION" />
+          <xsd:enumeration value="HNRLINK" />
+          <xsd:enumeration value="HNRINTERPOLATED" />
+          <xsd:enumeration value="HNREXACT" />
+          <xsd:enumeration value="INTERSECTION" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfDetailLevelDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DetailLevelDescription" type="tns:DetailLevelDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDetailLevelDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDetailLevelDescription" nillable="true" type="tns:ArrayOfDetailLevelDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ErrorCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ENGINE_ERROR" />
+          <xsd:enumeration value="UNSPECIFIED_DATA_PATH" />
+          <xsd:enumeration value="INITIALIZATION_ERROR" />
+          <xsd:enumeration value="ENUMERATION_ERROR" />
+          <xsd:enumeration value="INVALID_SEARCH_OPTION" />
+          <xsd:enumeration value="INVALID_ADDITIONAL_FIELD" />
+          <xsd:enumeration value="PATH_PROBLEM" />
+          <xsd:enumeration value="INVALID_MAP_LICENSE" />
+          <xsd:enumeration value="INVALID_PARAMETERS" />
+          <xsd:enumeration value="LIST_EXCEEDED_MAXLENGTH" />
+          <xsd:enumeration value="EMPTY_INPUT_ADDRESS" />
+          <xsd:enumeration value="EMPTY_INPUT_LOCATION" />
+          <xsd:enumeration value="INVALID_INPUT_LOCATION" />
+          <xsd:enumeration value="STOPPED_REQUEST" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfErrorCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ErrorCode" type="tns:ErrorCode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfErrorCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfErrorCode" nillable="true" type="tns:ArrayOfErrorCode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ReverseSearchParameter">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="COUNTRY_CODETYPE" />
+          <xsd:enumeration value="RESULT_LANGUAGE" />
+          <xsd:enumeration value="ENGINE_TOLERANCE" />
+          <xsd:enumeration value="ENGINE_TARGETSIZE" />
+          <xsd:enumeration value="ENGINE_FILTERMODE" />
+          <xsd:enumeration value="ENGINE_SEARCHRANGE" />
+          <xsd:enumeration value="ENGINE_SEARCHDETAILLEVEL" />
+          <xsd:enumeration value="ENGINE_MINPOPULATION" />
+          <xsd:enumeration value="ENGINE_MINSIZE" />
+          <xsd:enumeration value="ENGINE_RETURNALLEQUALDISTANCES" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfReverseSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReverseSearchParameter" type="tns:ReverseSearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfReverseSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfReverseSearchParameter" nillable="true" type="tns:ArrayOfReverseSearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="PoiSearchParameter">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="LANGUAGE" />
+          <xsd:enumeration value="MAX_RESULT" />
+          <xsd:enumeration value="COUNTRYCODE_TYPE" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfPoiSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiSearchParameter" type="tns:PoiSearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiSearchParameter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiSearchParameter" nillable="true" type="tns:ArrayOfPoiSearchParameter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="FieldClassificationDescription">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="NOT_CLASSIFIED" />
+          <xsd:enumeration value="NO_RESULT" />
+          <xsd:enumeration value="NO_INPUT" />
+          <xsd:enumeration value="LOW" />
+          <xsd:enumeration value="MEDIUM" />
+          <xsd:enumeration value="HIGH" />
+          <xsd:enumeration value="PARTIALLY_EXACT" />
+          <xsd:enumeration value="EXACT" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ArrayOfFieldClassificationDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="FieldClassificationDescription" type="tns:FieldClassificationDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfFieldClassificationDescription">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfFieldClassificationDescription" nillable="true" type="tns:ArrayOfFieldClassificationDescription" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Location">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="coordinate" nillable="true" type="ns0:Point" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfLocation" nillable="true" type="tns:ArrayOfLocation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Address">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="city" type="xsd:string" use="optional" />
+            <xsd:attribute name="city2" type="xsd:string" use="optional" />
+            <xsd:attribute name="country" type="xsd:string" use="optional" />
+            <xsd:attribute name="houseNumber" type="xsd:string" use="optional" />
+            <xsd:attribute name="postCode" type="xsd:string" use="optional" />
+            <xsd:attribute name="state" type="xsd:string" use="optional" />
+            <xsd:attribute name="street" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Address" nillable="true" type="tns:Address" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAddress" nillable="true" type="tns:ArrayOfAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PoiResultAddress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:ResultAddress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDatabaseFields" nillable="true" type="tns:ArrayOfDatabaseFieldBase" />
+            </xsd:sequence>
+            <xsd:attribute name="poiName" type="xsd:string" use="optional" />
+            <xsd:attribute name="poiType" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoiResultAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiResultAddress" nillable="true" type="tns:PoiResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiResultAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiResultAddress" nillable="true" type="tns:ArrayOfPoiResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PoiAddress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:Address">
+            <xsd:sequence />
+            <xsd:attribute name="geoDataSourceLayer" type="xsd:string" use="optional" />
+            <xsd:attribute name="poiName" type="xsd:string" use="optional" />
+            <xsd:attribute name="poiType" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoiAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiAddress" nillable="true" type="tns:PoiAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiAddress" nillable="true" type="tns:ArrayOfPoiAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultCombinedTransport">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedCombinedTransportFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="destination" nillable="true" type="tns:CombinedTransportLocation" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="start" nillable="true" type="tns:CombinedTransportLocation" />
+            </xsd:sequence>
+            <xsd:attribute name="distance" type="xsd:double" use="required" />
+            <xsd:attribute name="duration" type="xsd:int" use="required" />
+            <xsd:attribute name="id" type="xsd:string" use="optional" />
+            <xsd:attribute name="name" type="xsd:string" use="optional" />
+            <xsd:attribute name="type" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfResultCombinedTransport">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultCombinedTransport" nillable="true" type="tns:ResultCombinedTransport" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfResultCombinedTransport">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfResultCombinedTransport" nillable="true" type="tns:ArrayOfResultCombinedTransport" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultAddress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:Address">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAdditionalFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="coordinates" nillable="true" type="ns0:Point" />
+            </xsd:sequence>
+            <xsd:attribute name="adminRegion" type="xsd:string" use="optional" />
+            <xsd:attribute name="appendix" type="xsd:string" use="optional" />
+            <xsd:attribute name="classificationDescription" type="tns:ClassificationDescription" use="required" />
+            <xsd:attribute name="countryCapital" type="xsd:string" use="optional" />
+            <xsd:attribute name="detailLevelDescription" type="tns:DetailLevelDescription" use="required" />
+            <xsd:attribute name="totalScore" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfResultAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultAddress" nillable="true" type="tns:ResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfResultAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfResultAddress" nillable="true" type="tns:ArrayOfResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PoiLocation">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:Location">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="poiArea" nillable="true" type="ns0:Polygon" />
+            </xsd:sequence>
+            <xsd:attribute name="geoDataSourceLayer" type="xsd:string" use="optional" />
+            <xsd:attribute name="poiName" type="xsd:string" use="optional" />
+            <xsd:attribute name="poiSearchRange" type="xsd:int" use="required" />
+            <xsd:attribute name="poiType" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoiLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiLocation" nillable="true" type="tns:PoiLocation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiLocation" nillable="true" type="tns:ArrayOfPoiLocation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CombinedTransportLocation">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="coordinate" nillable="true" type="ns0:Point" />
+            </xsd:sequence>
+            <xsd:attribute name="country" type="xsd:string" use="optional" />
+            <xsd:attribute name="name" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCombinedTransportLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CombinedTransportLocation" nillable="true" type="tns:CombinedTransportLocation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfCombinedTransportLocation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCombinedTransportLocation" nillable="true" type="tns:ArrayOfCombinedTransportLocation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SortOption">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="field" type="tns:ResultField" use="required" />
+            <xsd:attribute name="order" type="tns:SortOrder" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSortOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SortOption" nillable="true" type="tns:SortOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSortOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSortOption" nillable="true" type="tns:ArrayOfSortOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseFieldString">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseFieldBase">
+            <xsd:sequence />
+            <xsd:attribute name="value" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDatabaseFieldString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DatabaseFieldString" nillable="true" type="tns:DatabaseFieldString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDatabaseFieldString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDatabaseFieldString" nillable="true" type="tns:ArrayOfDatabaseFieldString" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseFieldFloat">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseFieldBase">
+            <xsd:sequence />
+            <xsd:attribute name="value" type="xsd:float" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDatabaseFieldFloat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DatabaseFieldFloat" nillable="true" type="tns:DatabaseFieldFloat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDatabaseFieldFloat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDatabaseFieldFloat" nillable="true" type="tns:ArrayOfDatabaseFieldFloat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PoiSearchOption">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SearchOptionBase">
+            <xsd:sequence />
+            <xsd:attribute name="param" type="tns:PoiSearchParameter" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoiSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiSearchOption" nillable="true" type="tns:PoiSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiSearchOption" nillable="true" type="tns:ArrayOfPoiSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseFieldBlob">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseFieldBase">
+            <xsd:sequence />
+            <xsd:attribute name="value" type="xsd:base64Binary" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDatabaseFieldBlob">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DatabaseFieldBlob" nillable="true" type="tns:DatabaseFieldBlob" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDatabaseFieldBlob">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDatabaseFieldBlob" nillable="true" type="tns:ArrayOfDatabaseFieldBlob" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SearchOption">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SearchOptionBase">
+            <xsd:sequence />
+            <xsd:attribute name="param" type="tns:SearchParameter" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SearchOption" nillable="true" type="tns:SearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSearchOption" nillable="true" type="tns:ArrayOfSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AdditionalField">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="field" type="tns:ResultField" use="required" />
+            <xsd:attribute name="value" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAdditionalField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AdditionalField" nillable="true" type="tns:AdditionalField" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfAdditionalField">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAdditionalField" nillable="true" type="tns:ArrayOfAdditionalField" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReverseSearchOption">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SearchOptionBase">
+            <xsd:sequence />
+            <xsd:attribute name="param" type="tns:ReverseSearchParameter" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfReverseSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReverseSearchOption" nillable="true" type="tns:ReverseSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfReverseSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfReverseSearchOption" nillable="true" type="tns:ArrayOfReverseSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseFieldInteger">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:DatabaseFieldBase">
+            <xsd:sequence />
+            <xsd:attribute name="value" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDatabaseFieldInteger">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DatabaseFieldInteger" nillable="true" type="tns:DatabaseFieldInteger" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDatabaseFieldInteger">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDatabaseFieldInteger" nillable="true" type="tns:ArrayOfDatabaseFieldInteger" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DatabaseFieldBase" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="field" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDatabaseFieldBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DatabaseFieldBase" nillable="true" type="tns:DatabaseFieldBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfDatabaseFieldBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDatabaseFieldBase" nillable="true" type="tns:ArrayOfDatabaseFieldBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NamedSearchOption">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:SearchOptionBase">
+            <xsd:sequence />
+            <xsd:attribute name="param" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfNamedSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="NamedSearchOption" nillable="true" type="tns:NamedSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfNamedSearchOption">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfNamedSearchOption" nillable="true" type="tns:ArrayOfNamedSearchOption" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SearchOptionBase" abstract="true">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="value" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSearchOptionBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SearchOptionBase" nillable="true" type="tns:SearchOptionBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSearchOptionBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSearchOptionBase" nillable="true" type="tns:ArrayOfSearchOptionBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultAddress" />
+            </xsd:sequence>
+            <xsd:attribute name="errorCode" type="xsd:int" use="required" />
+            <xsd:attribute name="errorDescription" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAddressResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AddressResponse" nillable="true" type="tns:AddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfAddressResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAddressResponse" nillable="true" type="tns:ArrayOfAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CombinedTransportResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultCombinedTransport" />
+            </xsd:sequence>
+            <xsd:attribute name="errorCode" type="xsd:int" use="required" />
+            <xsd:attribute name="errorDescription" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCombinedTransportResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CombinedTransportResponse" nillable="true" type="tns:CombinedTransportResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfCombinedTransportResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCombinedTransportResponse" nillable="true" type="tns:ArrayOfCombinedTransportResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PoiAddressResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfPoiResultAddress" />
+            </xsd:sequence>
+            <xsd:attribute name="errorCode" type="xsd:int" use="required" />
+            <xsd:attribute name="errorDescription" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPoiAddressResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PoiAddressResponse" nillable="true" type="tns:PoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfPoiAddressResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfPoiAddressResponse" nillable="true" type="tns:ArrayOfPoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ObjectResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultObject" />
+            </xsd:sequence>
+            <xsd:attribute name="errorCode" type="xsd:int" use="required" />
+            <xsd:attribute name="errorDescription" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfObjectResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ObjectResponse" nillable="true" type="tns:ObjectResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfObjectResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfObjectResponse" nillable="true" type="tns:ArrayOfObjectResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ResultObject">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="address" nillable="true" type="tns:ResultAddress" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="combinedTransport" nillable="true" type="tns:ResultCombinedTransport" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfResultObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ResultObject" nillable="true" type="tns:ResultObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfResultObject">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfResultObject" nillable="true" type="tns:ArrayOfResultObject" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SuggestionResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedSuggestionList" nillable="true" type="tns:ArrayOfSuggestion" />
+            </xsd:sequence>
+            <xsd:attribute name="errorDescription" type="xsd:string" use="optional" />
+            <xsd:attribute name="errorcode" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSuggestionResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SuggestionResponse" nillable="true" type="tns:SuggestionResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSuggestionResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSuggestionResponse" nillable="true" type="tns:ArrayOfSuggestionResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Suggestion">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAdditionalFields" nillable="true" type="tns:ArrayOfAdditionalField" />
+            </xsd:sequence>
+            <xsd:attribute name="text" type="xsd:string" use="optional" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfSuggestion">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Suggestion" nillable="true" type="tns:Suggestion" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfSuggestion">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfSuggestion" nillable="true" type="tns:ArrayOfSuggestion" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns:ns2="http://xlocate.xserver.ptvag.com" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://types.xlocate.xserver.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:common="http://common.xserver.ptvag.com" xmlns:ns3="http://baseservices.service.jabba.ptvag.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://types.xlocate.xserver.ptvag.com">
+      <xsd:complexType name="fetchAddressResponses">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="CallerContext_2" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fetchAddressResponsesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fetchPoiAddressResponses">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="CallerContext_2" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fetchPoiAddressResponsesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfPoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddress">
+        <xsd:sequence>
+          <xsd:element name="Address_1" nillable="true" type="ns2:Address" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddressResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:AddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddressByText">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="String_2" nillable="true" type="xsd:string" />
+          <xsd:element name="ArrayOfSearchOptionBase_3" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_4" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_5" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_6" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddressByTextResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:AddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddresses">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfAddress_1" nillable="true" type="ns2:ArrayOfAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findAddressesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findCombinedTransportByLocation">
+        <xsd:sequence>
+          <xsd:element name="Location_1" nillable="true" type="ns2:Location" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfResultField_3" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_4" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findCombinedTransportByLocationResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:CombinedTransportResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findLocation">
+        <xsd:sequence>
+          <xsd:element name="Location_1" nillable="true" type="ns2:Location" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findLocationResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:AddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findLocations">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfLocation_1" nillable="true" type="ns2:ArrayOfLocation" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findObjectByText">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="String_2" nillable="true" type="xsd:string" />
+          <xsd:element name="ArrayOfSearchOptionBase_3" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_4" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_5" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_6" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findObjectByTextResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ObjectResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByAddress">
+        <xsd:sequence>
+          <xsd:element name="PoiAddress_1" nillable="true" type="ns2:PoiAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByAddressResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:PoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByAddresses">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfPoiAddress_1" nillable="true" type="ns2:ArrayOfPoiAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByAddressesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfPoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByLocation">
+        <xsd:sequence>
+          <xsd:element name="PoiLocation_1" nillable="true" type="ns2:PoiLocation" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByLocationResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:PoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByLocations">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfPoiLocation_1" nillable="true" type="ns2:ArrayOfPoiLocation" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findPoiByLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfPoiAddressResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findSuggestion">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="String_2" nillable="true" type="xsd:string" />
+          <xsd:element name="String_3" nillable="true" type="xsd:string" />
+          <xsd:element name="ArrayOfSearchOptionBase_4" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_5" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_6" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_7" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="findSuggestionResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:SuggestionResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchAddress">
+        <xsd:sequence>
+          <xsd:element name="Address_1" nillable="true" type="ns2:Address" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchAddressResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchAddresses">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfAddress_1" nillable="true" type="ns2:ArrayOfAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchAddressesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfArrayOfResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchLocation">
+        <xsd:sequence>
+          <xsd:element name="Point_1" nillable="true" type="common:Point" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchLocationResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchLocations">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfPoint_1" nillable="true" type="common:ArrayOfPoint" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="matchLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="ns2:ArrayOfArrayOfResultAddress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindAddresses">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfAddress_1" nillable="true" type="ns2:ArrayOfAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindAddressesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindLocations">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfLocation_1" nillable="true" type="ns2:ArrayOfLocation" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindPoiByAddresses">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfPoiAddress_1" nillable="true" type="ns2:ArrayOfPoiAddress" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindPoiByAddressesResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindPoiByLocations">
+        <xsd:sequence>
+          <xsd:element name="ArrayOfPoiLocation_1" nillable="true" type="ns2:ArrayOfPoiLocation" />
+          <xsd:element name="ArrayOfSearchOptionBase_2" nillable="true" type="ns2:ArrayOfSearchOptionBase" />
+          <xsd:element name="ArrayOfSortOption_3" nillable="true" type="ns2:ArrayOfSortOption" />
+          <xsd:element name="ArrayOfResultField_4" nillable="true" type="ns2:ArrayOfResultField" />
+          <xsd:element name="CallerContext_5" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="startFindPoiByLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="watchJob">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="WatchOptions_2" nillable="true" type="common:WatchOptions" />
+          <xsd:element name="CallerContext_3" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="watchJobResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="stopJob">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="CallerContext_2" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="stopJobResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="deleteJob">
+        <xsd:sequence>
+          <xsd:element name="String_1" nillable="true" type="xsd:string" />
+          <xsd:element name="CallerContext_2" nillable="true" type="ns3:CallerContext" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="deleteJobResponse">
+        <xsd:sequence>
+          <xsd:element name="result" nillable="true" type="common:Job" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="fetchAddressResponses" type="tns:fetchAddressResponses" />
+      <xsd:element name="fetchAddressResponsesResponse" type="tns:fetchAddressResponsesResponse" />
+      <xsd:element name="fetchPoiAddressResponses" type="tns:fetchPoiAddressResponses" />
+      <xsd:element name="fetchPoiAddressResponsesResponse" type="tns:fetchPoiAddressResponsesResponse" />
+      <xsd:element name="findAddress" type="tns:findAddress" />
+      <xsd:element name="findAddressResponse" type="tns:findAddressResponse" />
+      <xsd:element name="findAddressByText" type="tns:findAddressByText" />
+      <xsd:element name="findAddressByTextResponse" type="tns:findAddressByTextResponse" />
+      <xsd:element name="findAddresses" type="tns:findAddresses" />
+      <xsd:element name="findAddressesResponse" type="tns:findAddressesResponse" />
+      <xsd:element name="findCombinedTransportByLocation" type="tns:findCombinedTransportByLocation" />
+      <xsd:element name="findCombinedTransportByLocationResponse" type="tns:findCombinedTransportByLocationResponse" />
+      <xsd:element name="findLocation" type="tns:findLocation" />
+      <xsd:element name="findLocationResponse" type="tns:findLocationResponse" />
+      <xsd:element name="findLocations" type="tns:findLocations" />
+      <xsd:element name="findLocationsResponse" type="tns:findLocationsResponse" />
+      <xsd:element name="findObjectByText" type="tns:findObjectByText" />
+      <xsd:element name="findObjectByTextResponse" type="tns:findObjectByTextResponse" />
+      <xsd:element name="findPoiByAddress" type="tns:findPoiByAddress" />
+      <xsd:element name="findPoiByAddressResponse" type="tns:findPoiByAddressResponse" />
+      <xsd:element name="findPoiByAddresses" type="tns:findPoiByAddresses" />
+      <xsd:element name="findPoiByAddressesResponse" type="tns:findPoiByAddressesResponse" />
+      <xsd:element name="findPoiByLocation" type="tns:findPoiByLocation" />
+      <xsd:element name="findPoiByLocationResponse" type="tns:findPoiByLocationResponse" />
+      <xsd:element name="findPoiByLocations" type="tns:findPoiByLocations" />
+      <xsd:element name="findPoiByLocationsResponse" type="tns:findPoiByLocationsResponse" />
+      <xsd:element name="findSuggestion" type="tns:findSuggestion" />
+      <xsd:element name="findSuggestionResponse" type="tns:findSuggestionResponse" />
+      <xsd:element name="matchAddress" type="tns:matchAddress" />
+      <xsd:element name="matchAddressResponse" type="tns:matchAddressResponse" />
+      <xsd:element name="matchAddresses" type="tns:matchAddresses" />
+      <xsd:element name="matchAddressesResponse" type="tns:matchAddressesResponse" />
+      <xsd:element name="matchLocation" type="tns:matchLocation" />
+      <xsd:element name="matchLocationResponse" type="tns:matchLocationResponse" />
+      <xsd:element name="matchLocations" type="tns:matchLocations" />
+      <xsd:element name="matchLocationsResponse" type="tns:matchLocationsResponse" />
+      <xsd:element name="startFindAddresses" type="tns:startFindAddresses" />
+      <xsd:element name="startFindAddressesResponse" type="tns:startFindAddressesResponse" />
+      <xsd:element name="startFindLocations" type="tns:startFindLocations" />
+      <xsd:element name="startFindLocationsResponse" type="tns:startFindLocationsResponse" />
+      <xsd:element name="startFindPoiByAddresses" type="tns:startFindPoiByAddresses" />
+      <xsd:element name="startFindPoiByAddressesResponse" type="tns:startFindPoiByAddressesResponse" />
+      <xsd:element name="startFindPoiByLocations" type="tns:startFindPoiByLocations" />
+      <xsd:element name="startFindPoiByLocationsResponse" type="tns:startFindPoiByLocationsResponse" />
+      <xsd:element name="watchJob" type="tns:watchJob" />
+      <xsd:element name="watchJobResponse" type="tns:watchJobResponse" />
+      <xsd:element name="deleteJob" type="tns:deleteJob" />
+      <xsd:element name="deleteJobResponse" type="tns:deleteJobResponse" />
+      <xsd:element name="stopJob" type="tns:stopJob" />
+      <xsd:element name="stopJobResponse" type="tns:stopJobResponse" />
+    </xsd:schema>
+  </types>
+  <message name="XLocateWS_startFindAddressesResponse">
+    <part name="parameters" element="ns0:startFindAddressesResponse" />
+  </message>
+  <message name="XLocateWS_matchLocation">
+    <part name="parameters" element="ns0:matchLocation" />
+  </message>
+  <message name="DatabaseException">
+    <part name="DatabaseException" element="ns3:DatabaseException" />
+  </message>
+  <message name="XLocateWS_fetchAddressResponsesResponse">
+    <part name="parameters" element="ns0:fetchAddressResponsesResponse" />
+  </message>
+  <message name="XLocateWS_watchJobResponse">
+    <part name="parameters" element="ns0:watchJobResponse" />
+  </message>
+  <message name="XLocateWS_findSuggestion">
+    <part name="parameters" element="ns0:findSuggestion" />
+  </message>
+  <message name="XLocateWS_findLocations">
+    <part name="parameters" element="ns0:findLocations" />
+  </message>
+  <message name="XLocateWS_findLocationsResponse">
+    <part name="parameters" element="ns0:findLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findObjectByText">
+    <part name="parameters" element="ns0:findObjectByText" />
+  </message>
+  <message name="UnexpectedException">
+    <part name="UnexpectedException" element="ns3:UnexpectedException" />
+  </message>
+  <message name="XLocateWS_findAddressesResponse">
+    <part name="parameters" element="ns0:findAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocations">
+    <part name="parameters" element="ns0:findPoiByLocations" />
+  </message>
+  <message name="XLocateWS_findLocationResponse">
+    <part name="parameters" element="ns0:findLocationResponse" />
+  </message>
+  <message name="OptimisticRollbackException">
+    <part name="OptimisticRollbackException" element="ns3:OptimisticRollbackException" />
+  </message>
+  <message name="XLocateWS_fetchPoiAddressResponsesResponse">
+    <part name="parameters" element="ns0:fetchPoiAddressResponsesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocation">
+    <part name="parameters" element="ns0:findPoiByLocation" />
+  </message>
+  <message name="XLocateWS_deleteJobResponse">
+    <part name="parameters" element="ns0:deleteJobResponse" />
+  </message>
+  <message name="XLocateWS_startFindPoiByLocationsResponse">
+    <part name="parameters" element="ns0:startFindPoiByLocationsResponse" />
+  </message>
+  <message name="TableNotFoundException">
+    <part name="TableNotFoundException" element="ns3:TableNotFoundException" />
+  </message>
+  <message name="XLocateWS_startFindPoiByLocations">
+    <part name="parameters" element="ns0:startFindPoiByLocations" />
+  </message>
+  <message name="XLocateWS_startFindLocations">
+    <part name="parameters" element="ns0:startFindLocations" />
+  </message>
+  <message name="XLocateWS_deleteJob">
+    <part name="parameters" element="ns0:deleteJob" />
+  </message>
+  <message name="XLocateWS_startFindPoiByAddressesResponse">
+    <part name="parameters" element="ns0:startFindPoiByAddressesResponse" />
+  </message>
+  <message name="XLocateWS_stopJob">
+    <part name="parameters" element="ns0:stopJob" />
+  </message>
+  <message name="ConstraintViolationException">
+    <part name="ConstraintViolationException" element="ns3:ConstraintViolationException" />
+  </message>
+  <message name="XLocateWS_matchLocationsResponse">
+    <part name="parameters" element="ns0:matchLocationsResponse" />
+  </message>
+  <message name="XLocateWS_matchAddressesResponse">
+    <part name="parameters" element="ns0:matchAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocationsResponse">
+    <part name="parameters" element="ns0:findPoiByLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByAddressesResponse">
+    <part name="parameters" element="ns0:findPoiByAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByAddresses">
+    <part name="parameters" element="ns0:findPoiByAddresses" />
+  </message>
+  <message name="XLocateWS_matchLocations">
+    <part name="parameters" element="ns0:matchLocations" />
+  </message>
+  <message name="XLocateWS_findAddressByText">
+    <part name="parameters" element="ns0:findAddressByText" />
+  </message>
+  <message name="XLocateWS_findCombinedTransportByLocationResponse">
+    <part name="parameters" element="ns0:findCombinedTransportByLocationResponse" />
+  </message>
+  <message name="XLocateWS_fetchPoiAddressResponses">
+    <part name="parameters" element="ns0:fetchPoiAddressResponses" />
+  </message>
+  <message name="XLocateWS_watchJob">
+    <part name="parameters" element="ns0:watchJob" />
+  </message>
+  <message name="XLocateWS_findAddressResponse">
+    <part name="parameters" element="ns0:findAddressResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByAddress">
+    <part name="parameters" element="ns0:findPoiByAddress" />
+  </message>
+  <message name="XServiceException">
+    <part name="XServiceException" element="ns2:XServiceException" />
+  </message>
+  <message name="XLocateWS_findAddresses">
+    <part name="parameters" element="ns0:findAddresses" />
+  </message>
+  <message name="XLocateWS_findCombinedTransportByLocation">
+    <part name="parameters" element="ns0:findCombinedTransportByLocation" />
+  </message>
+  <message name="XLocateWS_fetchAddressResponses">
+    <part name="parameters" element="ns0:fetchAddressResponses" />
+  </message>
+  <message name="XLocateException">
+    <part name="XLocateException" element="ns1:XLocateException" />
+  </message>
+  <message name="XLocateWS_startFindPoiByAddresses">
+    <part name="parameters" element="ns0:startFindPoiByAddresses" />
+  </message>
+  <message name="XLocateWS_matchLocationResponse">
+    <part name="parameters" element="ns0:matchLocationResponse" />
+  </message>
+  <message name="XLocateWS_startFindAddresses">
+    <part name="parameters" element="ns0:startFindAddresses" />
+  </message>
+  <message name="XLocateWS_findPoiByAddressResponse">
+    <part name="parameters" element="ns0:findPoiByAddressResponse" />
+  </message>
+  <message name="SystemException">
+    <part name="SystemException" element="ns3:SystemException" />
+  </message>
+  <message name="XLocateWS_findAddressByTextResponse">
+    <part name="parameters" element="ns0:findAddressByTextResponse" />
+  </message>
+  <message name="XLocateWS_startFindLocationsResponse">
+    <part name="parameters" element="ns0:startFindLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findObjectByTextResponse">
+    <part name="parameters" element="ns0:findObjectByTextResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocationResponse">
+    <part name="parameters" element="ns0:findPoiByLocationResponse" />
+  </message>
+  <message name="XLocateWS_findLocation">
+    <part name="parameters" element="ns0:findLocation" />
+  </message>
+  <message name="XLocateWS_matchAddressResponse">
+    <part name="parameters" element="ns0:matchAddressResponse" />
+  </message>
+  <message name="XLocateWS_findSuggestionResponse">
+    <part name="parameters" element="ns0:findSuggestionResponse" />
+  </message>
+  <message name="XLocateWS_stopJobResponse">
+    <part name="parameters" element="ns0:stopJobResponse" />
+  </message>
+  <message name="XLocateWS_findAddress">
+    <part name="parameters" element="ns0:findAddress" />
+  </message>
+  <message name="XLocateWS_matchAddress">
+    <part name="parameters" element="ns0:matchAddress" />
+  </message>
+  <message name="XLocateWS_matchAddresses">
+    <part name="parameters" element="ns0:matchAddresses" />
+  </message>
+  <portType name="XLocateWS">
+    <operation name="fetchAddressResponses">
+      <input message="tns:XLocateWS_fetchAddressResponses" />
+      <output message="tns:XLocateWS_fetchAddressResponsesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+    </operation>
+    <operation name="fetchPoiAddressResponses">
+      <input message="tns:XLocateWS_fetchPoiAddressResponses" />
+      <output message="tns:XLocateWS_fetchPoiAddressResponsesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+    </operation>
+    <operation name="findAddress">
+      <input message="tns:XLocateWS_findAddress" />
+      <output message="tns:XLocateWS_findAddressResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findAddressByText">
+      <input message="tns:XLocateWS_findAddressByText" />
+      <output message="tns:XLocateWS_findAddressByTextResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findAddresses">
+      <input message="tns:XLocateWS_findAddresses" />
+      <output message="tns:XLocateWS_findAddressesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findCombinedTransportByLocation">
+      <input message="tns:XLocateWS_findCombinedTransportByLocation" />
+      <output message="tns:XLocateWS_findCombinedTransportByLocationResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findLocation">
+      <input message="tns:XLocateWS_findLocation" />
+      <output message="tns:XLocateWS_findLocationResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findLocations">
+      <input message="tns:XLocateWS_findLocations" />
+      <output message="tns:XLocateWS_findLocationsResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findObjectByText">
+      <input message="tns:XLocateWS_findObjectByText" />
+      <output message="tns:XLocateWS_findObjectByTextResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findPoiByAddress">
+      <input message="tns:XLocateWS_findPoiByAddress" />
+      <output message="tns:XLocateWS_findPoiByAddressResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findPoiByAddresses">
+      <input message="tns:XLocateWS_findPoiByAddresses" />
+      <output message="tns:XLocateWS_findPoiByAddressesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findPoiByLocation">
+      <input message="tns:XLocateWS_findPoiByLocation" />
+      <output message="tns:XLocateWS_findPoiByLocationResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findPoiByLocations">
+      <input message="tns:XLocateWS_findPoiByLocations" />
+      <output message="tns:XLocateWS_findPoiByLocationsResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="findSuggestion">
+      <input message="tns:XLocateWS_findSuggestion" />
+      <output message="tns:XLocateWS_findSuggestionResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="matchAddress">
+      <input message="tns:XLocateWS_matchAddress" />
+      <output message="tns:XLocateWS_matchAddressResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="matchAddresses">
+      <input message="tns:XLocateWS_matchAddresses" />
+      <output message="tns:XLocateWS_matchAddressesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="matchLocation">
+      <input message="tns:XLocateWS_matchLocation" />
+      <output message="tns:XLocateWS_matchLocationResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="matchLocations">
+      <input message="tns:XLocateWS_matchLocations" />
+      <output message="tns:XLocateWS_matchLocationsResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="startFindAddresses">
+      <input message="tns:XLocateWS_startFindAddresses" />
+      <output message="tns:XLocateWS_startFindAddressesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="startFindLocations">
+      <input message="tns:XLocateWS_startFindLocations" />
+      <output message="tns:XLocateWS_startFindLocationsResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="startFindPoiByAddresses">
+      <input message="tns:XLocateWS_startFindPoiByAddresses" />
+      <output message="tns:XLocateWS_startFindPoiByAddressesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="startFindPoiByLocations">
+      <input message="tns:XLocateWS_startFindPoiByLocations" />
+      <output message="tns:XLocateWS_startFindPoiByLocationsResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
+    </operation>
+    <operation name="watchJob">
+      <input message="tns:XLocateWS_watchJob" />
+      <output message="tns:XLocateWS_watchJobResponse" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+    </operation>
+    <operation name="deleteJob">
+      <input message="tns:XLocateWS_deleteJob" />
+      <output message="tns:XLocateWS_deleteJobResponse" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+    </operation>
+    <operation name="stopJob">
+      <input message="tns:XLocateWS_stopJob" />
+      <output message="tns:XLocateWS_stopJobResponse" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+    </operation>
+  </portType>
+  <binding name="XLocateWSBinding" type="tns:XLocateWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="fetchAddressResponses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="fetchPoiAddressResponses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findAddress">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findAddressByText">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findAddresses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findCombinedTransportByLocation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findLocation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findLocations">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findObjectByText">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findPoiByAddress">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findPoiByAddresses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findPoiByLocation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findPoiByLocations">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="findSuggestion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="matchAddress">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="matchAddresses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="matchLocation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="matchLocations">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="startFindAddresses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="startFindLocations">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="startFindPoiByAddresses">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="startFindPoiByLocations">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
+      <fault name="ConstraintViolationException">
+        <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
+      </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
+      <fault name="DatabaseException">
+        <soap:fault use="literal" name="DatabaseException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="watchJob">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="deleteJob">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="stopJob">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="XLocateWSService">
+    <port name="XLocateWSPort" binding="tns:XLocateWSBinding">
+      <soap:address location="https://api-test.cloud.ptvgroup.com/xlocate/ws/XLocate" />
+    </port>
+  </service>
+</definitions>
