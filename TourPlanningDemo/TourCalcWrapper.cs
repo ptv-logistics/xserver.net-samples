@@ -147,8 +147,8 @@ namespace TourPlanningDemo
                               {
                                   point = new PlainPoint
                                   {
-                                      x = d.Latitude,
-                                      y = d.Longitude
+                                      y = d.Latitude,
+                                      x = d.Longitude
                                   }
                               }                          
                           }).ToArray();
