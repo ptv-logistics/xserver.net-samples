@@ -17,10 +17,7 @@ namespace TourPlanningDemo
         public List<Order> Orders;
         public List<Depot> Depots;
         public List<Tour> Tours;
-        public int NumDepots { get; set; }
-        public int NumVehiclesPerDepot { get; set; }
-        public int NumOrdersPerVehicle { get; set; }
-        public int OperatingPeriod { get; set; }
+        public TimeSpan OperatingPeriod { get; set; }
     }
 
     public class Vehicle

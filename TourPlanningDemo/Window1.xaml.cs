@@ -3,6 +3,7 @@ using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Symbols;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -17,6 +18,9 @@ namespace TourPlanningDemo
     {
         public Window1()
         {
+            // infinite zoom makes the map more smooth at deep zoom levels
+            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
+
             InitializeComponent();
 
             tourLayer = new ShapeLayer("Tours");
@@ -34,8 +38,9 @@ namespace TourPlanningDemo
         ShapeLayer tourLayer;
         ShapeLayer orderLayer;
         ShapeLayer depotLayer;
+
         Scenario scenario;
-        Color unplannedColor = Color.FromRgb(255, 64, 64);
+        Color unplannedColor = Colors.LightGray;
         TourCalcWrapper tourCalcWrapper;
 
         bool firstTime = true;
@@ -50,8 +55,9 @@ namespace TourPlanningDemo
             tourLayer.Shapes.Clear();
             orderLayer.Shapes.Clear();
             depotLayer.Shapes.Clear();
-
-            foreach (var order in scenario.Orders)
+            
+            // add orders, oder by latitude so they overlap nicely on the map
+            foreach (var order in from o in scenario.Orders orderby o.Latitude descending select o)
             {
                 var pin = new Ptv.XServer.Controls.Map.Symbols.Cube();
                 pin.Color = unplannedColor;
@@ -61,7 +67,8 @@ namespace TourPlanningDemo
                 pin.Tag = order;
             }
 
-            foreach (var depot in scenario.Depots)
+            // add depots, oder by latitude so they overlap nicely on the map
+            foreach (var depot in from d in scenario.Depots orderby d.Latitude descending select d)
             {
                 var pin = new Ptv.XServer.Controls.Map.Symbols.Pyramid();
                 pin.Width = pin.Height = 30;
@@ -69,7 +76,6 @@ namespace TourPlanningDemo
                 ShapeCanvas.SetLocation(pin, new Point(depot.Longitude, depot.Latitude));
                 depotLayer.Shapes.Add(pin);
             }
-
 
             if (firstTime)
             {
@@ -81,7 +87,8 @@ namespace TourPlanningDemo
                     "* Visualizing the tour plan with the xServer .NET control\n" +
                     "* Mapping your application objects from and to xServer objects\n" +
                     "* Invoking PTV xServers from a windows application in a non-blocking way\n" +
-                    "* Using the job API to control and display the tour calculation progress", "Info");
+                    "* Using the job API to control and display the tour calculation progress",
+                    "What's this?");
             }
         }
 
@@ -105,12 +112,10 @@ namespace TourPlanningDemo
                 if (order.Tour != null)
                 {
                     cube.Color = order.Tour.Vehicle.Depot.Color;
-                    ShapeCanvas.SetZIndex(cube, 1); // bring to front
                 }
                 else
                 {
                     cube.Color = unplannedColor;
-                    ShapeCanvas.SetZIndex(cube, 0); // bring to back
                 }
             }
         }
@@ -119,13 +124,15 @@ namespace TourPlanningDemo
         {
             MapPolyline poly = new MapPolyline();
             poly.Points = pc;
-            poly.MapStrokeThickness = 30;
+            poly.MapStrokeThickness = 20;
             poly.StrokeLineJoin = PenLineJoin.Round;
             poly.StrokeStartLineCap = PenLineCap.Flat;
             poly.StrokeEndLineCap = PenLineCap.Triangle;
             poly.Stroke = new SolidColorBrush(color);
             poly.ScaleFactor = .2;
             poly.ToolTip = toolTip;
+            poly.MouseEnter += (s, e) => poly.Stroke = new SolidColorBrush(Colors.Cyan);
+            poly.MouseLeave += (s, e) => poly.Stroke = new SolidColorBrush(color);
             layer.Shapes.Add(poly);
         }
 
@@ -133,7 +140,7 @@ namespace TourPlanningDemo
         {
             MapPolyline animDashLine = new MapPolyline()
             {
-                MapStrokeThickness = 20,
+                MapStrokeThickness = 16,
                 Points = pc,
                 ScaleFactor = 0.2
             };
@@ -184,20 +191,27 @@ namespace TourPlanningDemo
             ScenarioComboBox.IsEnabled = true;
         }
 
-        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private async void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if(statusLabel != null)
+            if (statusLabel != null)
                 statusLabel.Content = "Initializing...";
 
-//            var center = new System.Windows.Point(6.130833, 49.611389); // LUX
-            var center = new System.Windows.Point(8.4, 49); // KA
-            var radius = .2; // radius in degrees of latitude
+            var center = new System.Windows.Point(6.130833, 49.611389); // LUX
+            //var center = new System.Windows.Point(8.4, 49); // KA
+            var radius = 7.5; // radius in km
             var scenario = (ScenarioSize)System.Enum.Parse(typeof(ScenarioSize), ((string)((ComboBoxItem)e.AddedItems[0]).Content));
 
-            Tools.AsyncUIHelper(() => ScenarioBuilder.CreateRandomScenario(scenario, center, radius),
-                         (s) => { Map.SetMapLocation(center, 10); SetScenario(s); },
-                        (ex) => { MessageBox.Show(ex.Message); });
+            try
+            {
+                var s = await Task.Run(() => RandomScenarioBuilder.CreateScenario(scenario, center, radius));
 
+                Map.SetMapLocation(center, 10);
+                SetScenario(s);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message);
+            }
         }
     }
 }

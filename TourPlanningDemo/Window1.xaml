@@ -3,10 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TourPlanningDemo"
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
-    Title="Window1" Height="600" Width="800">
+    Title="Tour Planning Demo" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map" XMapUrl="https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                        XMapCredentials="{x:Static local:Window1.XMapCredentials}" XMapCopyright="PTV, HERE"  />
+                        XMapCredentials="{x:Static local:Window1.XMapCredentials}" XMapStyle="Silkysand" />
         <StackPanel VerticalAlignment="Bottom" Background="LightGray" HorizontalAlignment="Left" Margin="8,0,0,38">
             <ComboBox Name="ScenarioComboBox" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem Content="Tiny" IsSelected="True"></ComboBoxItem>
