@@ -25,7 +25,7 @@ namespace CustomInit
             // v1: Use Meta info
             InitializeMap(Map1, url, token);
 
-            // v2: direct initialization
+            // v2: direct initialization for xServer-internet
             InsertXMapBaseLayers(Map2.Layers, url, "PTV, TomTom", new Size(3840, 2400), "xtok", token);
         }
 
