@@ -5,6 +5,11 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" Center="8.4, 49" Zoom="14"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <mapcore:WpfMap Grid.Column="0" Name="Map1" Center="8.4, 49" Zoom="14"/>
+        <mapcore:WpfMap Grid.Column="1" Name="Map2" Center="8.4, 49" Zoom="14"/>
     </Grid>
 </Window>
