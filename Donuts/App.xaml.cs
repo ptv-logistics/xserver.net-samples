@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace SymbolsAndLabels
+namespace Donuts
 {
     /// <summary>
     /// Interaction logic for App.xaml

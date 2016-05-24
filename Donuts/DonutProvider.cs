@@ -5,7 +5,7 @@ using Ptv.XServer.Demo.MapMarket;
 using System;
 using System.Collections.Generic;
 
-namespace SymbolsAndLabels
+namespace Donuts
 {
     /// <summary>
     /// The donut provider creates an in-memory set of computed shapes and stores them as OCG binaries

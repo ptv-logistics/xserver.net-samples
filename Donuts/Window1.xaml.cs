@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Drawing.Drawing2D;
 using System.Windows;
 
-namespace SymbolsAndLabels
+namespace Donuts
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
