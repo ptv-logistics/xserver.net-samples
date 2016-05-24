@@ -35,6 +35,11 @@ Shows how to change the default behavior for pan/zoom interaction.
 
 ![CustomPanAndZoom](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomPanAndZoom.png "CustomPanAndZoom")
 
+#### Donuts
+Shows how to build a datasource and renderer for in-memory computed shapes.
+
+![Donuts](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Donuts.png "Donuts")
+
 #### DrawMode
 The basic code to add an interactor for drawing custom polygons
 
