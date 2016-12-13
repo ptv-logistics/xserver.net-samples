@@ -29,6 +29,8 @@ namespace CustomPinchZoom
         private Rectangle dragRectangle;
         /// <summary> Flag showing if the map has lately been panned. </summary>
         private bool wasPanned;
+        /// <summary>Stores the map zoom level at the beginning of a ManipulationDelta event.</summary>
+        private double manipulationDeltaInitialZoom;
         #endregion
 
         #region public variables
@@ -55,62 +57,23 @@ namespace CustomPinchZoom
             mapView.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(map_ManipulationDelta);
         }
 
-        void mapView_StylusButtonUp(object sender, StylusButtonEventArgs e)
-        {
-            if (wasPanned)
-                e.Handled = true;
-        }
+        /// <summary>Gets the current position of the map in screen coordinates.</summary>
+        private Point CurrentScreenPosition => mapView.PtvMercatorToCanvas(this, new Point(mapView.CurrentX, mapView.CurrentY));
 
-        void mapView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
+        /// <summary>
+        /// Helper; moves the map to a new position while keeping the map zoom.
+        /// </summary>
+        /// <param name="moveTo">Position to move the map top.</param>
+        /// <param name="screen">Set to false if moveTo is given in world coordinates.</param>
+        private void MoveMap(Point moveTo, bool screenCoordinates = true)
         {
-            wasPanned = false;
-        }
+            if (screenCoordinates)
+                moveTo = mapView.CanvasToPtvMercator(this, moveTo);
 
-        void mapView_StylusDown(object sender, StylusDownEventArgs e)
-        {
-            if (e.TapCount == 2)
-            {
-                var p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
-                MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
-                e.Handled = true;
-            }
+            mapView.SetXYZ(moveTo.X, moveTo.Y, mapView.CurrentZoom, false);
         }
 
         #endregion
-
-        double manipulationDeltaInitialZoom;
-
-        void map_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
-        {
-            // store initial zoom on first event. 
-            // The initial zoom is used below for calculating the current zoom out of the scale value.
-
-            if (!wasPanned)
-                manipulationDeltaInitialZoom = mapView.CurrentZoom;
-
-            // FIRST, use the delta information for adjusting the map position (while keeping the map zoom)
-
-            var currentScreen = mapView.PtvMercatorToCanvas(this, new Point(mapView.CurrentX, mapView.CurrentY));
-
-            currentScreen.X -= e.DeltaManipulation.Translation.X;
-            currentScreen.Y -= e.DeltaManipulation.Translation.Y;
-
-            var newWorld = mapView.CanvasToPtvMercator(this, currentScreen);
-
-            mapView.SetXYZ(newWorld.X, newWorld.Y, mapView.CurrentZoom, false);
-
-            // SECOND, use the cumulative scale and set zoom at current ManipulationOrigin
-
-            var scale = Math.Max(Math.Abs(e.CumulativeManipulation.Scale.X), Math.Abs(e.CumulativeManipulation.Scale.Y));
-            var zoom = Math.Log(Math.Pow(2, manipulationDeltaInitialZoom) * scale, 2);
-
-            mapView.ZoomAround(mapView.CanvasToPtvMercator(this, e.ManipulationOrigin), zoom, false);
-
-            // done, handled
-
-            wasPanned = true;
-            e.Handled = true;
-        }
 
         #region event handling
         /// <summary> Event handler for pressing a key. Scrolls or zooms the map depending on the pressed key. </summary>
@@ -336,7 +299,7 @@ namespace CustomPinchZoom
             {
                 var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
-                if ((WorldStartPoint.X == physicalPoint.X) && (WorldStartPoint.Y == physicalPoint.Y))
+                if ((Math.Abs(WorldStartPoint.X - physicalPoint.X) < 1e-4) && (Math.Abs(WorldStartPoint.Y - physicalPoint.Y) < 1e-4))
                     return;
 
                 double x = mapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
@@ -356,6 +319,70 @@ namespace CustomPinchZoom
                 dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
             }
 
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// Event handler for stylus up; needs to be handled when map was previously panned.
+        /// </summary>
+        /// <param name="sender">Sender of the StylusButtonUp event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_StylusButtonUp(object sender, StylusButtonEventArgs e)
+        {
+            if (wasPanned)
+                e.Handled = true;
+        }
+
+        /// <summary>
+        /// Event
+        /// </summary>
+        /// <param name="sender">Sender of the ManipulationStarting event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
+        {
+            // reset panned flag
+            wasPanned = false;
+
+            // store initial zoom on for follow up ManipulationDelta events. 
+            manipulationDeltaInitialZoom = mapView.CurrentZoom;
+        }
+
+        /// <summary>
+        /// Event handler for the StylusDown event. Implements a zoom operation for a double tap.
+        /// </summary>
+        /// <param name="sender">Sender of the StylusDown event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_StylusDown(object sender, StylusDownEventArgs e)
+        {
+            if (e.TapCount == 2)
+            {
+                var p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
+                MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Event handler for the ManipulationDelta event; implements the pinch zoom and pan.
+        /// </summary>
+        /// <param name="sender">Sender of the ManipulationDelta event.</param>
+        /// <param name="e">Event parameters.</param>
+        void map_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        {
+            // Use the delta information for adjusting the map position (while keeping the map zoom)
+
+            MoveMap(CurrentScreenPosition - e.DeltaManipulation.Translation);
+
+            // SECOND, use the cumulative scale and set zoom at current ManipulationOrigin
+
+            var scale = Math.Max(Math.Abs(e.CumulativeManipulation.Scale.X), Math.Abs(e.CumulativeManipulation.Scale.Y));
+            var zoom = Math.Log(Math.Pow(2, manipulationDeltaInitialZoom) * scale, 2);
+
+            mapView.ZoomAround(mapView.CanvasToPtvMercator(this, e.ManipulationOrigin), zoom, false);
+
+            // done, handled
+
+            wasPanned = true;
             e.Handled = true;
         }
         #endregion
