@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://80.146.239.180/rrxroute/xroute/ws/XRoute?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://176.95.37.53/rrxroute/xroute/ws/XRoute?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="XRouteWSService.wsdl" MetadataType="Wsdl" ID="9c3d21ef-c21b-40c5-921a-f5c16e40dab3" SourceId="1" SourceUrl="http://80.146.239.180/rrxroute/xroute/ws/XRoute?WSDL" />
+    <MetadataFile FileName="XRouteWSService.wsdl" MetadataType="Wsdl" ID="9c3d21ef-c21b-40c5-921a-f5c16e40dab3" SourceId="1" SourceUrl="http://176.95.37.53/rrxroute/xroute/ws/XRoute?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

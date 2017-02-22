@@ -99,7 +99,7 @@ BOOL CMFCMapDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	m_mapCtrl->XMapUrl = gcnew System::String("http://80.146.239.180/xmap/ws/XMap");
+	m_mapCtrl->XMapUrl = gcnew System::String("http://176.95.37.53/xmap/ws/XMap");
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

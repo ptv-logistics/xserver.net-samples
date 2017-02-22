@@ -10,7 +10,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
         <Border Background="White" BorderBrush="Black" BorderThickness="2" Padding="8" HorizontalAlignment="Left"  VerticalAlignment="Center">
         <StackPanel Margin="8,8,8,8"  >
             <Label Content="xMap Profile" />
@@ -19,7 +19,7 @@
             <RadioButton Content="Silkysand"  Checked="RadioButton_Checked" />
         </StackPanel>
         </Border>
-        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
-        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
     </Grid>
 </Window>

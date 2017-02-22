@@ -6,15 +6,15 @@
     Title="Window1" Height="600" Width="800">
     <TabControl>
         <TabItem Header="Map 1">
-            <mapcore:WpfMap Name="Map1" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+            <mapcore:WpfMap Name="Map1" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
         </TabItem>
         <TabItem Header="Map 2">
-            <mapcore:WpfMap Name="Map2" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+            <mapcore:WpfMap Name="Map2" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
         </TabItem>
         <TabItem Header="Map 3">
             <DockPanel Height="Auto" Width="Auto" LastChildFill="True">
-                <mapcore:WpfMap Name="Map3" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
-                <mapcore:WpfMap Name="Map4" XMapUrl="http://80.146.239.180/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+                <mapcore:WpfMap Name="Map3" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+                <mapcore:WpfMap Name="Map4" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
             </DockPanel>
         </TabItem>
     </TabControl>

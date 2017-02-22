@@ -57,7 +57,7 @@ namespace MemoryPressureTest
 
             // add xmap base layers
             mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            mapControl1.XMapCredentials = "xtok:678890783139995";
+            mapControl1.XMapCredentials = "xtok:6DFA9638-D83C-47DC-9524-009CCF730E38";
 
             // goto KA
             mapControl1.SetMapLocation(new Point(10, 50), 6);

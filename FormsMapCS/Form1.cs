@@ -14,7 +14,7 @@ namespace FormsMapCS
 {
     public partial class Form1 : Form
     {
-        private const string token = "678890783139995";
+        private const string token = "6DFA9638-D83C-47DC-9524-009CCF730E38";
 
         public Form1()
         {
