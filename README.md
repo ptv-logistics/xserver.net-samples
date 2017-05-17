@@ -6,7 +6,7 @@ A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.ne
 #### Also have a look on these projects for PTV xServer @.NET
 
 * [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
-* [SpatialTutorial](https://github.com/ptv-logistics/SpatialTutorial) - A tutorial that shows some practices to visualize, analyze and manipulate spatial data with PTV xServer, ASP.NET and JavaScript
+* [SpatialTutorial](https://github.com/ptv-logistics/SpatialTutorial/wiki) - A tutorial that shows some practices to visualize, analyze and manipulate spatial data with PTV xServer, ASP.NET and JavaScript
 
 ### The samples
 
