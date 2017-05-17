@@ -40,7 +40,7 @@ namespace Ptv.XServer.Demo.MapMarket
     /// <para>See the <conceptualLink target="d705537f-f7fe-435c-bd80-d4d399ee4410"/> topic for an example.</para> </summary>
     public interface IGeoProvider
     {
-        /// <summary> Return all items within a bounding box. </summary>
+        /// <summary> Return all items whose envelope are within a bounding box. </summary>
         /// <param name="xmin"> The minimum x value of the bounding box. </param>
         /// <param name="ymin"> The maximum x value of the bounding box. </param>
         /// <param name="xmax"> The minimum y value of the bounding box. </param>
@@ -48,5 +48,12 @@ namespace Ptv.XServer.Demo.MapMarket
         /// <param name="attributes"> Additional attributes to be delivered. </param>
         /// <returns> The enumeration of the GeoItem result set. </returns>
         IEnumerable<GeoItem> QueryBBox(double xmin, double ymin, double xmax, double ymax, string[] attributes);
+
+        /// <summary> Return all which hit a point. </summary>
+        /// <param name="x"> The minimum x value of the bounding box. </param>
+        /// <param name="y"> The maximum x value of the bounding box. </param>
+        /// <param name="attributes"> Additional attributes to be delivered. </param>
+        /// <returns> The enumeration of the GeoItem result set. </returns>
+        IEnumerable<GeoItem> QueryPoint(double x, double y, string[] attributes);
     }
 }

@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private static string myToken = "C9ECD48F-BE8A-4113-88A4-67158B8BD9CB";
+        private static string myToken = "06DEED74-0CA6-43F1-99F3-298E4B394631";
 
         public Form1()
         {
@@ -40,6 +40,7 @@ namespace XSTwo
             // the maixum zoom level of the map
             formsMap1.MaxZoom = 22;
 
+            // set the map center to Karlsruhe
             formsMap1.SetMapLocation(center, 16);
 
             // insert base map layer

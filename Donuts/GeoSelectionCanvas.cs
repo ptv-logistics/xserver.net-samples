@@ -8,12 +8,13 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Media;
 using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Tools;
 using Ptv.XServer.Controls.Map.Canvases;
-
+using System.Linq;
+using Nts = GisSharpBlog.NetTopologySuite;
 
 namespace Ptv.XServer.Demo.MapMarket
 {
@@ -27,7 +28,7 @@ namespace Ptv.XServer.Demo.MapMarket
         private readonly IGeoProvider provider;
 
         /// <summary> All selected geometries. </summary>
-        private readonly ObservableCollection<Geometry> geometries;
+        private readonly ObservableCollection<Path> geometries;
         #endregion
 
         #region constructor
@@ -35,7 +36,7 @@ namespace Ptv.XServer.Demo.MapMarket
         /// <param name="mapView"> The parent map content. </param>
         /// <param name="provider"> The provider to query the geo data source. </param>
         /// <param name="geometries"> All selected geometries. </param>
-        public SelectionCanvas(MapView mapView, IGeoProvider provider, ObservableCollection<Geometry> geometries)
+        public SelectionCanvas(MapView mapView, IGeoProvider provider, ObservableCollection<Path> geometries)
             : base(mapView)
         {
             this.provider = provider;
@@ -80,24 +81,40 @@ namespace Ptv.XServer.Demo.MapMarket
                 return;
 
             // get clicked coordinate and transform to PTV Mercator
-            var canvasPoint = e.GetPosition(this);
-            var mercatorPoint = CanvasToPtvMercator(canvasPoint);
+            var geoPoint = CanvasToGeo(e.GetPosition(this));
 
             // ctrl-key adds the selected polygon
             if (!(Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
                 geometries.Clear();
 
-            // query the items for a point (which is a rectangle of size 0)
-            foreach (var geoItem in provider.QueryBBox(mercatorPoint.X, mercatorPoint.Y, mercatorPoint.X, mercatorPoint.Y, null))
+            // query the topmost item for a point
+            var geoItem = provider.QueryPoint(geoPoint.X, geoPoint.Y, null).LastOrDefault();
+            if(geoItem.Wkb != null)
             {
                 // parse the geometry from the wkb to a WPF path
                 // transform to canvas coordinates
-                var geometry = WkbToWpf.Parse(geoItem.Wkb, PtvMercatorToCanvas);
+                var shape = WkbToWpf.Parse(geoItem.Wkb, GeoToCanvas);
 
-                // The result set conains all geometries whose *envelope* contains the point.
-                // Check for exact containment
-                if (geometry.FillContains(canvasPoint))
-                    geometries.Add(geometry);
+                geometries.Add(new Path { Fill = Brushes.White, Data = shape });
+
+                // sample how draw the polygon inverted to fade out the background
+                // http://xserver.ptvgroup.com/forum/viewtopic.php?f=14&t=469
+                // read the polygon
+                var polygon = new Nts.IO.WKBReader().Read(geoItem.Wkb);
+                // create a rectangle for the whole world
+                var worldRect = Nts.Geometries.Geometry.DefaultFactory.CreatePolygon(
+                Nts.Geometries.Geometry.DefaultFactory.CreateLinearRing(new Nts.Geometries.Coordinate[] {
+                     new Nts.Geometries.Coordinate(-180, 85),
+                     new Nts.Geometries.Coordinate(180, 85),
+                     new Nts.Geometries.Coordinate(180, -85),
+                     new Nts.Geometries.Coordinate(-180, -85),
+                     new Nts.Geometries.Coordinate(-180, 85)}), null);
+                // now substract the polygon from the "world" polygon
+                var invertedPolygon = worldRect.Difference(polygon);
+                // serialize to wkb
+                var wkbInverted = new Nts.IO.WKBWriter().Write(invertedPolygon);
+                var invertedShape = WkbToWpf.Parse(wkbInverted, GeoToCanvas);
+                geometries.Add(new Path { Fill = new SolidColorBrush(Color.FromArgb(255, 64, 64, 64)), Data = invertedShape });
             }
         }
         #endregion
@@ -109,7 +126,7 @@ namespace Ptv.XServer.Demo.MapMarket
             Children.Clear();
 
             foreach (var geometry in geometries)
-                Children.Add(new Path { Fill = Brushes.Red, Data = geometry });
+                Children.Add(geometry);
         }
 
         /// <inheritdoc/>

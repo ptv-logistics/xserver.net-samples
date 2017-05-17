@@ -62,7 +62,7 @@ namespace Donuts
             };
 
             // the collection of selected elements
-            var selectedRegions = new ObservableCollection<System.Windows.Media.Geometry>();
+            var selectedRegions = new ObservableCollection<System.Windows.Shapes.Path>();
 
             // insert layer with two canvases
             layer = new BaseLayer("CustomShapes")

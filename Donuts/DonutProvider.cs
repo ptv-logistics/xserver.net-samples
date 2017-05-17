@@ -64,7 +64,9 @@ namespace Donuts
                     var xPos = mercP.X - (radiusX * Math.Sin(arc)) * Math.Sin(rot * Math.PI) + (radiusY * Math.Cos(arc)) * Math.Cos(rot * Math.PI);
                     var yPos = mercP.Y + (radiusY * Math.Cos(arc)) * Math.Sin(rot * Math.PI) + (radiusX * Math.Sin(arc)) * Math.Cos(rot * Math.PI);
 
-                    shell.Add(new Coordinate(xPos, yPos));
+                    var wgsPoint = Ptv.XServer.Controls.Map.Tools.GeoTransform.PtvMercatorToWGS(new System.Windows.Point(xPos, yPos));
+
+                    shell.Add(new Coordinate(wgsPoint.X, wgsPoint.Y));
                 }
                 shell.Add(shell[0]); // close ring
 
@@ -77,7 +79,9 @@ namespace Donuts
                     var xPos = mercP.X - ((radiusX - buffer) * Math.Sin(arc)) * Math.Sin(rot * Math.PI) + ((radiusY - buffer) * Math.Cos(arc)) * Math.Cos(rot * Math.PI);
                     var yPos = mercP.Y + ((radiusY - buffer) * Math.Cos(arc)) * Math.Sin(rot * Math.PI) + ((radiusX - buffer) * Math.Sin(arc)) * Math.Cos(rot * Math.PI);
 
-                    hole.Add(new Coordinate(xPos, yPos));
+                    var wgsPoint = Ptv.XServer.Controls.Map.Tools.GeoTransform.PtvMercatorToWGS(new System.Windows.Point(xPos, yPos));
+
+                   hole.Add(new Coordinate(wgsPoint.X, wgsPoint.Y));
                 }
                 hole.Add(hole[0]); // close ring
 
@@ -110,11 +114,21 @@ namespace Donuts
             var p1 = new Point(xmin, ymin);
             var p2 = new Point(xmax, ymax);
             var e = new Envelope(p1.X, p2.X, p1.Y, p2.Y);
-            var q = quadTree.Query(e);
 
-            foreach(GeoItem gi in q)
+            foreach (GeoItem gi in quadTree.Query(e))
             {
-                yield return gi;
+                if (e.Intersects(new Envelope(gi.XMin, gi.YMin, gi.XMax, gi.YMax)))
+                    yield return gi;       
+            }
+        }
+        public IEnumerable<GeoItem> QueryPoint(double x, double y, string[] attributes)
+        {
+            var point = Geometry.DefaultFactory.CreatePoint(new Coordinate(x, y));
+            foreach (var gi in QueryBBox(x, y, x, y, attributes))
+            {
+                var geometry = new GisSharpBlog.NetTopologySuite.IO.WKBReader().Read(gi.Wkb);
+                if (geometry.Contains(point))
+                    yield return gi;
             }
         }
     }

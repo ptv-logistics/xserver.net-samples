@@ -45,7 +45,7 @@ namespace ServerSideRendering
             Map.Layers.Clear();
 
             var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvgroup.com/xmap/ws/XMap");
-            xmapMetaInfo.SetCredentials("xtok", "C9ECD48F-BE8A-4113-88A4-67158B8BD9CB");
+            xmapMetaInfo.SetCredentials("xtok", "06DEED74-0CA6-43F1-99F3-298E4B394631");
             InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, GetProfile());
 
             UpdateFeatureLayers();

@@ -64,23 +64,30 @@ namespace Ptv.XServer.Demo.MapMarket
             {
                 // calc rect from tile key
                 var rect = GeoTransform.TileToPtvMercatorAtZoom(x, y, zoom);
+                var wgsRect = new System.Windows.Rect(GeoTransform.PtvMercatorToWGS(rect.TopLeft), 
+                    GeoTransform.PtvMercatorToWGS(rect.BottomRight));
 
                 // PTV_Mercator to Image function
-                Func<double, double, Point> mercatorToImage =
-                    (mercatorX, mercatorY) => new Point(
-                        x = (int)((mercatorX - rect.Left) / (rect.Right - rect.Left) * 256),
-                        y = 256 + (int)-((mercatorY - rect.Top) / (rect.Bottom - rect.Top) * 256));
+                Func <double, double, Point> wgsToImage =
+                    (lon, lat) =>
+                    {
+                        var mercatorP = GeoTransform.WGSToPtvMercator(new System.Windows.Point(lon, lat));
+                        var p = new Point(
+          x = (int)((mercatorP.X - rect.Left) / (rect.Right - rect.Left) * 256),
+          y = 256 + (int)-((mercatorP.Y - rect.Top) / (rect.Bottom - rect.Top) * 256));
+                        return p;
+                    };
 
                 // get graphics from bitmap
                 using (var graphics = Graphics.FromImage(bmp))
                 {
                     // query the provider for the items in the envelope
-                    var result = Provider.QueryBBox(rect.Left, rect.Top, rect.Right, rect.Bottom, Theme.RequiredFields);
+                    var result = Provider.QueryBBox(wgsRect.Left, wgsRect.Top, wgsRect.Right, wgsRect.Bottom, Theme.RequiredFields);
 
                     foreach (var item in result)
                     {
                         // create GDI path from wkb
-                        var path = WkbToGdi.Parse(item.Wkb, mercatorToImage);
+                        var path = WkbToGdi.Parse(item.Wkb, wgsToImage);
 
                         // evalutate style
                         var style = Theme.Mapping(item);
