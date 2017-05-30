@@ -20,7 +20,7 @@ namespace CustomInit
             InitializeComponent();
 
             string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            string token = "06DEED74-0CA6-43F1-99F3-298E4B394631"; // just a test-token here. Use your own token
+            string token = "FEDD9EB7-1C81-4EFA-97ED-BA4103C75A5B"; // just a test-token here. Use your own token
 
             // v1: Use Meta info
             InitializeMap(Map1, url, token);

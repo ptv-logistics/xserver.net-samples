@@ -152,4 +152,9 @@ Shows how to add WMS layers to the control
 
 ![WmsTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/WmsTest.png "WmsTest")
 
+#### WmsTest
+Shows how to select and render xServer XYN-Segments
+
+![XYNSegments](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/XYNSegments.png "XYNSegments")
+
 

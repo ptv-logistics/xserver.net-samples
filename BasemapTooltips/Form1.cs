@@ -8,7 +8,7 @@ namespace BasemapTooltips
     {
         // Temporary demo token for xServer-internet
         // Use your own test-token or your on-premise xServer when migrating the code
-        private const string token = "06DEED74-0CA6-43F1-99F3-298E4B394631";
+        private const string token = "FEDD9EB7-1C81-4EFA-97ED-BA4103C75A5B";
 
         public Form1()
         {
@@ -48,7 +48,7 @@ namespace BasemapTooltips
                                 point = new XLocateServiceReference.PlainPoint {x = x, y = y}
                             }
                     },
-                    null, null, null,
+                    null, null, new[] { XLocateServiceReference.ResultField.XYN },
                     new XLocateServiceReference.CallerContext
                     {
                         wrappedProperties = new[]
