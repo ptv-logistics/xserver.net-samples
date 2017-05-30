@@ -1,7 +1,14 @@
 xservernet-bin
 ==============
 
-A bin of samples for PTV xServer .NET that are (currently) not included in the SDK
+A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/) that are not included in the SDK.
+
+#### Also have a look on these projects for PTV xServer @.NET
+
+* [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
+* [SpatialTutorial](https://github.com/ptv-logistics/SpatialTutorial/wiki) - A tutorial that shows some practices to visualize, analyze and manipulate spatial data with PTV xServer, ASP.NET and JavaScript
+
+### The samples
 
 #### BasemapTooltips
 Shows how to display city/street information as tool tip by reverse locating
