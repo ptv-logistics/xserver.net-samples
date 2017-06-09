@@ -28,7 +28,7 @@ namespace MemoryDemo
 
             // initialize the map
             formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:FEDD9EB7-1C81-4EFA-97ED-BA4103C75A5B";
+            formsMap1.XMapCredentials = "xtok:30BD1C85-51B0-4CE0-98A9-575837BA9708";
 
             // This event-listener will create a reference from the map-control to the form.
             // So if the objects of the map aren't freed properly, the form will also leak memory.
