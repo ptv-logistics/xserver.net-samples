@@ -11,6 +11,11 @@ A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.ne
 ### The samples
 
 #### BasemapTooltips
+Shows how to use the map as ActiveX control
+
+![ActiveX](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ActiveX.png "ActiveX")
+
+#### BasemapTooltips
 Shows how to display city/street information as tool tip by reverse locating
 
 ![BasemapTooltips](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/BasemapTooltips.png "BasemapTooltips")
@@ -19,7 +24,6 @@ Shows how to display city/street information as tool tip by reverse locating
 Shows how to render circles with a geographic radius
 
 ![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
-
 
 #### CustomBgProfiles
 Shows how to switch the basemap profile 
