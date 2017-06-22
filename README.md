@@ -10,7 +10,7 @@ A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.ne
 
 ### The samples
 
-#### BasemapTooltips
+#### ActiveX
 Shows how to use the map as ActiveX control
 
 ![ActiveX](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ActiveX.png "ActiveX")
@@ -163,7 +163,7 @@ Shows how to add WMS layers to the control
 
 ![WmsTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/WmsTest.png "WmsTest")
 
-#### WmsTest
+#### XYNSegments
 Shows how to select and render xServer XYN-Segments
 
 ![XYNSegments](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/XYNSegments.png "XYNSegments")
