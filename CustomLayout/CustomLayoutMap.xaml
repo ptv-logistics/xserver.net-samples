@@ -19,6 +19,7 @@
         <gadgets:PanAndZoom x:Name="PanAndZoom"/>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <gadgets:ScaleGadget x:Name="ScaleGadget" />
+            <gadgets:DimmerGadget x:Name="DimmerGadget" />
             <gadgets:CopyrightGadget x:Name="CopyrightGadget" HorizontalAlignment="Right"/>
         </StackPanel>
         <StackPanel Name="CopyrightImagePanel" Visibility="Hidden" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="33" Width="79" Margin="0,0,0,24" IsHitTestVisible="False" />

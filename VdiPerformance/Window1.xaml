@@ -5,14 +5,16 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="http://176.95.37.53/xmap/ws/XMap" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map"/>
         <StackPanel Margin="10,0,0,60"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
             <TextBlock x:Name="fps"></TextBlock>
             <TextBlock x:Name="hardwareLevel"></TextBlock>
             <CheckBox x:Name="renderMode" Content="Software Rendering" Click="Button_Click"></CheckBox>
             <CheckBox x:Name="useAnimation" IsChecked="True" Content="Use Animation" Click="useAnimation_Click"></CheckBox>
-            <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbor Scaling" Click="bilinearScaling_Click"></CheckBox>
-            <CheckBox x:Name="useSilkySand" Content="Use SilkySand" Click="useSilkySand_Click"></CheckBox>
+            <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbour Fliter" Click="bilinearScaling_Click"></CheckBox>
+            <CheckBox x:Name="useReucedProfile" Content="Reduced Smartour Profile" Click="useReucedProfile_Checked"></CheckBox>
+            <CheckBox x:Name="useSingleTileBG" Content="Single Tile Background" Click="useSingleTileBG_Checked"></CheckBox>
+            <CheckBox x:Name="useSingleLayerBaseMap" Content="Single Layer Base Map" Click="useSingleLayerBaseMap_Checked" ></CheckBox>
         </StackPanel>
     </Grid>
 </Window>
