@@ -18,7 +18,7 @@ This tool lets you play live with these options. You can start it on your remote
 These options use different initializations for the xMapServer layers to reduce the count and content for dynamic updates, so that less images have to be transferred.
 - **Flat Profile:** Uses the *gravelpit*-profile instead of the *ajax*-profile for the xServer map. *gravelpit* has no textured forests, and therefore less pixels.
 - **Single Tile Background:** Renders the background in a single image (= non-tiled) instead of multiple tiles. This also reduces the traffic.
-- **Single Layer BaseMap:** Render the whole xServer map (-bg + -fg) as one single image. *Note:* With this option it is not possible to display client objects under the xMap-labels.
+- **Single Layer BaseMap:** Render the whole xServer map (-bg + -fg) as one single image. **Note:** With this option it is not possible to display client objects under the xMap-labels.
 
 ### Navigation Options
 These are options to change the behaviour when navigating (zooming, panning) on the map. **Note:** The first two options are implemented by exchanging the xServer.NET "PanAndZoom gadget" with a modified one.
