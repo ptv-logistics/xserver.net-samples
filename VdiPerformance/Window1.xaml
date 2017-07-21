@@ -3,18 +3,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:SymbolsAndLabels"
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
-    Title="Window1" Height="600" Width="800">
+    Title="VDI Performance Test" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map"/>
-        <StackPanel Margin="10,0,0,60"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
-            <TextBlock x:Name="fps"></TextBlock>
-            <TextBlock x:Name="hardwareLevel"></TextBlock>
-            <CheckBox x:Name="renderMode" Content="Software Rendering" Click="Button_Click"></CheckBox>
-            <CheckBox x:Name="useAnimation" IsChecked="True" Content="Use Animation" Click="useAnimation_Click"></CheckBox>
-            <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbour Fliter" Click="bilinearScaling_Click"></CheckBox>
-            <CheckBox x:Name="useReucedProfile" Content="Reduced Smartour Profile" Click="useReucedProfile_Checked"></CheckBox>
-            <CheckBox x:Name="useSingleTileBG" Content="Single Tile Background" Click="useSingleTileBG_Checked"></CheckBox>
-            <CheckBox x:Name="useSingleLayerBaseMap" Content="Single Layer Base Map" Click="useSingleLayerBaseMap_Checked" ></CheckBox>
-        </StackPanel>
+        <Border Background="White" VerticalAlignment="Bottom" HorizontalAlignment="left" Margin="10,0,0,10" BorderBrush="Black" BorderThickness="2" Padding="15">
+            <StackPanel >
+                <TextBlock x:Name="fps"></TextBlock>
+                <TextBlock x:Name="hardwareLevel"></TextBlock>
+                <Label Margin="0,4,0,0" >Generic Options</Label>
+                <CheckBox x:Name="renderMode" Content="Software Rendering" Click="Button_Click"></CheckBox>
+                <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbour Filter" Click="bilinearScaling_Click"></CheckBox>
+                <Label Margin="0,4,0,0" >Base Map</Label>
+                <CheckBox x:Name="useReucedProfile" Content="Flat Profile" Click="useReucedProfile_Checked"></CheckBox>
+                <CheckBox x:Name="useSingleTileBG" Content="Single Tile Background" Click="useSingleTileBG_Checked"></CheckBox>
+                <CheckBox x:Name="useSingleLayerBaseMap" Content="Single Layer Base Map" Click="useSingleLayerBaseMap_Checked" ></CheckBox>
+                <Label Margin="0,4,0,0" >Navigation Options</Label>
+                <CheckBox x:Name="moveWhileDragging" IsChecked="True" Content="Move While Dragging" Click="moveWhileDragging_Click" ></CheckBox>
+                <CheckBox x:Name="useFilledShape" IsChecked="True" Content="Use Filled Pan Shape" Click="useFilledShape_Click" ></CheckBox>
+                <CheckBox x:Name="useAnimation" IsChecked="True" Content="Use Animation" Click="useAnimation_Click"></CheckBox>
+                <Label Margin="0,4,0,0" >Symbol Options</Label>
+                <CheckBox x:Name="useSymbolLazyUpdate" Content="Lazy Update" IsChecked="true" Click="useSymbolLazyUpdate_Click" ></CheckBox>
+                <CheckBox x:Name="useBitmapCaching" Content="Use Bitmap Caching" IsChecked="true" Click="useBitmapCaching_Click" ></CheckBox>
+                <TextBlock HorizontalAlignment="Center" Margin="0,4,0,0">
+                <Hyperlink NavigateUri="https://github.com/ptv-logistics/xservernet-bin/tree/master/VdiPerformance/Readme.md" RequestNavigate="Hyperlink_RequestNavigate">About ...</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

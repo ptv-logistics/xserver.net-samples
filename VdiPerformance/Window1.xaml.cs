@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Linq;
 using Ptv.XServer.Controls.Map.Gadgets;
+using System.Diagnostics;
 
 namespace VdiPerformance
 {
@@ -28,11 +29,15 @@ namespace VdiPerformance
         {
             InitializeComponent();
 
+            // can set InfiniteZoom = true
+            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
+
             this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
+
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
 
-        // ToDo: is this really accurate?
+        // for displaying fps (is this really accurate)?
         List<long> FrameDurations = new List<long>();
         void CompositionTarget_Rendering(object sender, EventArgs e)
         {
@@ -51,24 +56,82 @@ namespace VdiPerformance
             FrameDurations.Add(t);
         }
 
-        string profile = "ajax";
-        bool singleTileBackground = false;
-        bool useSingleLayerBM = false;
+        string profile = "ajax"; // specific basemap profile
+        bool singleTileBackground = false; // render background layer as single tile (non-tiled)
+        bool useSingleLayerBM = false; // render basemap as one single image
+
+        bool useSymLazyUpdate = true;  // recalculate the sizes only after EndViewportChanged
+        bool useSymBitmapCaching = true;  // use bitmap caching for WPF symbols
+
+        bool usePanSimpleShape = false; // use a simlple / non-filled shape for the drag/select rectangle
+        bool usePanMoveWhileDragging = true; // move the map while panning
+        
+        // some /random coodinates
+        List<Point> coordinates;
+
+        // our tweaked PanAndZoom interactor
+        PanAndZoom customPanAndZoom;
+
+        // the cache for bitmaps
+        private Dictionary<Tuple<Color, double>, BitmapSource> bitmapCache = new Dictionary<Tuple<Color, double>, BitmapSource>();
 
         void Map_Loaded(object sender, RoutedEventArgs e)
         {
             this.hardwareLevel.Text = "Hardware Level: " + (RenderCapability.Tier >> 16).ToString();
 
+            var center = new System.Windows.Point(8.4, 49); // KA
+                
             InitiaizeBasemap();
 
-            this.Map.Gadgets.Add(Ptv.XServer.Controls.Map.Gadgets.GadgetType.Copyright, new DimmerGadget());
+            // Map.MouseDragMode = DragMode.SelectOnShift;
+            // replace the standard pan/zoom interactor with an extened VDI interactor
+            customPanAndZoom = new VdiPerformance.PanAndZoom() { MoveWhileDragigng = usePanMoveWhileDragging, UseSimpleSelectShape = usePanSimpleShape };
+            // get the map container grid
+            var grid = MapElementExtensions.FindChild<Grid>(Map);
+            // get the old interactor
+            var pz = Map.FindRelative<Ptv.XServer.Controls.Map.Gadgets.PanAndZoom>();
+            // exchange the interactor
+            grid.Children.Remove(pz);
+            grid.Children.Add(customPanAndZoom);
 
-            var myLayer = new ShapeLayer("MyLayer");
-            myLayer.LazyUpdate = true; // recalculate the sizes only after EndViewportChanged
-            Map.Layers.Add(myLayer);
-            //            Map.Layers.SetVisible(myLayer, false);
+            // create some random coordnates
+            CreateCoordinates(center);
 
-            AddSymbols(myLayer, true);
+            // initialize the symbol layer
+            AddSymbols(useSymBitmapCaching, useSymLazyUpdate);
+
+            // set map center
+            this.Map.SetMapLocation(center, 9);
+        }
+
+        public void CreateCoordinates(Point center)
+        {
+            var radius = 1; // radius in degrees of latitude
+            
+            var rand = new Random();
+            Func<Point, double, Point> randomCoordinate = (c, r) =>
+            {
+                // we wnat a circle, so we aopt longitude factor
+                var conf = Math.Cos(center.Y / 360 * 2 * Math.PI);
+
+                var angle = rand.NextDouble() * 2 * Math.PI;
+                var distance = r * Math.Sqrt(rand.NextDouble());
+
+                return new System.Windows.Point
+                {
+                    X = c.X + distance / conf * Math.Cos(angle),
+                    Y = c.Y + distance * Math.Sin(angle)
+                };
+            };
+
+            coordinates = new List<Point>();
+            for (int i = 0; i < 1000; i++)
+            {
+                coordinates.Add(randomCoordinate(center, radius));
+            }
+
+            // sort points by y, so the overlap nicely on the map
+            coordinates = coordinates.OrderBy(p => -p.Y).ToList(); // has no effect?
         }
 
         public void InitiaizeBasemap()
@@ -83,7 +146,7 @@ namespace VdiPerformance
             var copyrightText = "PTV, TomTom";
             var maxRequestSize = new Size(3840, 2400);
             var user = "xtok";
-            var password = "30BD1C85-51B0-4CE0-98A9-575837BA9708";
+            var password = "A0745352-F757-439C-96F1-F640910F2F6A"; // this token is only for test purpose
             var url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
 
             ILayer baseLayer;
@@ -114,7 +177,7 @@ namespace VdiPerformance
             {
                 var labelLayer = new UntiledLayer("Labels")
                 {
-                    UntiledProvider = new XMapTiledProvider(url, XMapMode.Town) { User = user, Password = password, CustomProfile = "reduced-fg" },
+                    UntiledProvider = new XMapTiledProvider(url, XMapMode.Town) { User = user, Password = password, CustomProfile = profile + "-fg" },
                     Copyright = copyrightText,
                     MaxRequestSize = maxRequestSize,
                     Caption = MapLocalizer.GetString(MapStringId.Labels),
@@ -126,78 +189,67 @@ namespace VdiPerformance
             Map.Layers.Insert(0, baseLayer);
         }
 
-        public void AddSymbols(ShapeLayer layer, bool useBitmapCache)
+        public void AddSymbols(bool bitmapCache, bool lazyUpdate)
         {
-            layer.Shapes.Clear();
-            var center = new System.Windows.Point(8.4, 49); // KA
-            var radius = 1; // radius in degrees of latitude
-            
-            var rand = new Random();
-            Func<Point, double, Point> randomCoordinate = (c, r) =>
-            {
-                var angle = rand.NextDouble() * 2 * Math.PI;
-                var distance = r * Math.Sqrt(rand.NextDouble());
+            var layer = Map.Layers["Symbols"];
+            if (layer != null)
+                Map.Layers.Remove(layer);
 
-                return new System.Windows.Point
-                {
-                    X = c.X + distance * Math.Cos(angle),
-                    Y = c.Y + distance * Math.Sin(angle)
-                };
-            };
-
-            List<Point> coordinates = new List<Point>();
-            for (int i = 0; i < 2500; i++)
-            {
-                coordinates.Add(randomCoordinate(center, radius));
-            }
-
-            // sort points by y, so the overlap nicely on the map
-            coordinates = coordinates.OrderBy(p => p.Y).ToList();
-
-            var symbolSize = 40;
-
-            RenderTargetBitmap bitmap = null;
-            if (useBitmapCache)
-            {
-                var pin = new Pyramid();
-                pin.Width = pin.Height = symbolSize;
-
-                pin.Measure(new Size(pin.Width, pin.Height));
-                pin.Arrange(new Rect(0, 0, pin.Width, pin.Height));
-
-                useBitmapCache = true;
-
-                double hdFactor = 2; // resultion relative to 96 DPI
-                bitmap = new RenderTargetBitmap((int)(pin.Width * hdFactor), (int)(pin.Height * hdFactor),
-                    96 * hdFactor, 96 * hdFactor, PixelFormats.Pbgra32);
-                bitmap.Render(pin);
-                bitmap.Freeze();
-            }
+            var symbolLayer = new ShapeLayer("Symbols");
+            symbolLayer.LazyUpdate = lazyUpdate;
+            Map.Layers.Add(symbolLayer);
 
             for (int i = 0; i < coordinates.Count; i++)
             {
+                var symbolSize = 25;
+                var color = (i % 3 == 0) ? Colors.Blue : (i % 3 == 1) ? Colors.Green : Colors.Red;
+
                 FrameworkElement symbol = null;
-                if (bitmap != null)
+                if (useSymBitmapCaching)
                 {
+                    var bitmap = GetCachedBitap(color, symbolSize);
                     symbol = new Image { Source = bitmap };
                 }
                 else
                 {
-                    symbol = new Pyramid();
+                    symbol = new Pyramid() { Color = color };
                     symbol.Width = symbol.Height = symbolSize;
                 }
 
                 // log-scaling parameters
                 ShapeCanvas.SetScale(symbol, 10);
-                ShapeCanvas.SetScaleFactor(symbol, 0.5);
+                ShapeCanvas.SetScaleFactor(symbol, 0.4);
 
-                ShapeCanvas.SetLocation(symbol, randomCoordinate(center, radius));
-                Panel.SetZIndex(symbol, i * 10);
+                ShapeCanvas.SetLocation(symbol, coordinates[i]);
                 symbol.ToolTip = "Hello";
-                layer.Shapes.Add(symbol);
+                symbolLayer.Shapes.Add(symbol);
             }
+        }
 
-            this.Map.SetMapLocation(center, 9);
+        private ImageSource GetCachedBitap(Color color, double size)
+        {
+            var key = Tuple.Create(color, size);
+            if (bitmapCache.ContainsKey(key))
+                return bitmapCache[key];
+            else
+            {
+                var pin = new Pyramid();
+                pin.Width = pin.Height = size;
+                pin.Color = color;
+
+                pin.Measure(new Size(pin.Width, pin.Height));
+                pin.Arrange(new Rect(0, 0, pin.Width, pin.Height));
+
+                double hdFactor = 2; // resultion relative to 96 DPI
+                var bitmap = new RenderTargetBitmap((int)(pin.Width * hdFactor), (int)(pin.Height * hdFactor),
+                    96 * hdFactor, 96 * hdFactor, PixelFormats.Pbgra32);
+
+                bitmap.Render(pin);
+                bitmap.Freeze();
+
+                bitmapCache[key] = bitmap;
+                return bitmap;
+            }            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -231,21 +283,38 @@ namespace VdiPerformance
 
         private void useReucedProfile_Checked(object sender, RoutedEventArgs e)
         {
-            profile = useReucedProfile.IsChecked.Value ? "reduced" : "ajax";
+            profile = useReucedProfile.IsChecked.Value ? "gravelpit" : "ajax";
             InitiaizeBasemap();
         }
-    }
 
-    public class CoordinatesBasedComparer : IComparer<Point>
-    {
-        public int Compare(Point a, Point b)
+        private void useSymbolLazyUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if ((a.X == b.X) && (a.Y == b.Y))
-                return 0;
-            if ((a.Y > b.Y) || ((a.Y == b.Y) && (a.X > b.X)))
-                return -1;
+            useSymLazyUpdate = useSymbolLazyUpdate.IsChecked.Value;
+            AddSymbols(useSymBitmapCaching, useSymLazyUpdate);
+        }
 
-            return 1;
+        private void useBitmapCaching_Click(object sender, RoutedEventArgs e)
+        {
+            useSymBitmapCaching = useBitmapCaching.IsChecked.Value;
+            AddSymbols(useSymBitmapCaching, useSymLazyUpdate);
+        }
+
+        private void useFilledShape_Click(object sender, RoutedEventArgs e)
+        {
+            usePanSimpleShape = !useFilledShape.IsChecked.Value;
+            customPanAndZoom.UseSimpleSelectShape = usePanSimpleShape; 
+        }
+
+        private void moveWhileDragging_Click(object sender, RoutedEventArgs e)
+        {
+            usePanMoveWhileDragging = moveWhileDragging.IsChecked.Value;
+            customPanAndZoom.MoveWhileDragigng = usePanMoveWhileDragging;
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

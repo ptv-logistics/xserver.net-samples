@@ -4,12 +4,14 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Ptv.XServer.Controls.Map.Tools;
-using Ptv.XServer.Controls.Map.Gadgets;
 using Ptv.XServer.Controls.Map;
+using Ptv.XServer.Controls.Map.Gadgets;
+using Ptv.XServer.Controls.Map.Tools;
 
-
-namespace CustomPanAndZoom
+/// <summary>
+/// This is the original code of ther xServer.NET (v 1.5) PanAndZoom Interactor
+/// </summary>
+namespace Ptv.XServer.Controls.Map.Gadgets
 {
     /// <summary><para> Mode describing what is to be done when clicking in the map. </para>
     /// <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
@@ -23,7 +25,9 @@ namespace CustomPanAndZoom
         /// <summary> Clicking in the map starts a zoom selection. If the mouse button is clicked and the mouse is
         /// moved, a rectangle is shown. When releasing the mouse, the map is zoomed to this rectangle. </summary>
         Select,
-        /// <summary> Use Select if Shift is hold, otherwist pan. </summary>
+        /// <summary>
+        /// The same as Select, but the Shift button has to be pressed for select, otherwise the map is panned.
+        /// </summary>
         SelectOnShift,
     }
 
@@ -32,12 +36,6 @@ namespace CustomPanAndZoom
     /// <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
     public class PanAndZoom : MapGadget
     {
-        // NEW: setting the mouse mode externally
-        public DragMode MouseDragMode = DragMode.SelectOnShift;
-
-        // NEW: zoom on Double click
-        public bool ZoomOnDoubleClick = true;
-
         #region private variables
         /// <summary> Start point of the interaction in world coordinates. </summary>
         private Point WorldStartPoint = new Point(0, 0);
@@ -45,12 +43,16 @@ namespace CustomPanAndZoom
         private Point ScreenStartPoint = new Point(0, 0);
         /// <summary> Map on which the interaction is to be executed. </summary>
         private MapView mapView;
-        /// <resummary> Interaction mode defining whether a panning or a zoom selection is to be executed. </summary>
+        /// <summary> Interaction mode defining whether a panning or a zoom selection is to be executed. </summary>
         private DragMode dragMode;
         /// <summary> Rectangle used for zoom selection. The map will be zoomed to this section. </summary>
         private Rectangle dragRectangle;
         /// <summary> Flag showing if the map has lately been panned. </summary>
-        private bool wasPanned = false;
+        private bool wasPanned;
+#if PINCHZOOM
+        /// <summary>Stores the map zoom level at the beginning of a ManipulationDelta event.</summary>
+        private double manipulationDeltaInitialZoom;
+#endif
         #endregion
 
         #region public variables
@@ -64,12 +66,39 @@ namespace CustomPanAndZoom
         private void Setup()
         {
             mapView.Focusable = true;
-            mapView.KeyDown += new KeyEventHandler(map_KeyDown);
-            mapView.MouseMove += new MouseEventHandler(control_MouseMove);
-            mapView.MouseDown += new MouseButtonEventHandler(source_MouseDown);
-            mapView.MouseUp += new MouseButtonEventHandler(source_MouseUp);
-            mapView.MouseWheel += new MouseWheelEventHandler(source_MouseWheel);
+#if PINCHZOOM
+            mapView.IsManipulationEnabled = true;
+#endif
+            mapView.KeyDown += map_KeyDown;
+            mapView.MouseMove += control_MouseMove;
+            mapView.MouseDown += source_MouseDown;
+            mapView.MouseUp += source_MouseUp;
+            mapView.MouseWheel += source_MouseWheel;
+#if PINCHZOOM
+            mapView.StylusDown += mapView_StylusDown;
+            mapView.StylusButtonUp += mapView_StylusButtonUp;
+            mapView.ManipulationStarting += mapView_ManipulationStarting;
+            mapView.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(map_ManipulationDelta);
+#endif
         }
+
+#if PINCHZOOM
+        /// <summary>Gets the current position of the map in screen coordinates.</summary>
+        private Point CurrentScreenPosition => mapView.PtvMercatorToCanvas(this, new Point(mapView.CurrentX, mapView.CurrentY));
+
+        /// <summary>
+        /// Helper; moves the map to a new position while keeping the map zoom.
+        /// </summary>
+        /// <param name="moveTo">Position to move the map top.</param>
+        /// <param name="screen">Set to false if moveTo is given in world coordinates.</param>
+        private void MoveMap(Point moveTo, bool screenCoordinates = true)
+        {
+            if (screenCoordinates)
+                moveTo = mapView.CanvasToPtvMercator(this, moveTo);
+
+            mapView.SetXYZ(moveTo.X, moveTo.Y, mapView.CurrentZoom, false);
+        }
+#endif
         #endregion
 
         #region event handling
@@ -81,7 +110,7 @@ namespace CustomPanAndZoom
             if (!mapView.IsFocused)
                 return;
 
-            double panOffset = .25;
+            const double panOffset = .25;
 
             MapRectangle rect = mapView.FinalEnvelope;
             double dX = rect.Width * panOffset;
@@ -140,7 +169,7 @@ namespace CustomPanAndZoom
 
             double oldZoom = mapView.FinalZoom;
 
-            double delta = (double)e.Delta * Map.MouseWheelSpeed / 120;
+            double delta = e.Delta * Map.MouseWheelSpeed / 120;
             if (Map.InvertMouseWheel)
                 delta = -delta;
 
@@ -186,22 +215,21 @@ namespace CustomPanAndZoom
                 Point p1 = mapView.TranslatePoint(new Point(minx, miny), mapView.GeoCanvas);
                 Point p2 = mapView.TranslatePoint(new Point(maxx, maxy), mapView.GeoCanvas);
 
-
                 mapView.SetEnvelope(new MapRectangle(
-                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2),
+                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y,
+                    -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y),
                     Map.UseAnimation);
 
                 e.Handled = true;
             }
-            if (wasPanned)
-            {
-                wasPanned = false;
-                e.Handled = true;
-            }
-        }        
+            
+            if (!wasPanned) return;
+
+            wasPanned = false;
+            e.Handled = true;
+        }
 
         /// <summary> Event handler for pressing the mouse button. A double click with the left mouse button results in
         /// zooming in the map. A double click with the right mouse button results in zooming out the map. Pressing the
@@ -216,13 +244,13 @@ namespace CustomPanAndZoom
             mapView.Focus();
 
             // NEW: Skip MouseDragMode == None
-            if (MouseDragMode == DragMode.None)
+            if (Map.MouseDragMode == DragMode.None)
             {
                 e.Handled = true;
                 return;
             }
 
-            if (ZoomOnDoubleClick && e.ClickCount == 2)
+            if (Map.MouseDoubleClickZoom && e.ClickCount == 2)
             {
                 Point p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
 
@@ -244,28 +272,30 @@ namespace CustomPanAndZoom
             }
 
             // Save starting point, used later when determining how much to scroll.
-            this.ScreenStartPoint = e.GetPosition(mapView);
-            this.WorldStartPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
+            ScreenStartPoint = e.GetPosition(mapView);
+            WorldStartPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
             // NEW: check for MouseDragMode
-            if (e.LeftButton == MouseButtonState.Pressed && (MouseDragMode == DragMode.Select ||
-                 MouseDragMode == DragMode.SelectOnShift && (Keyboard.Modifiers & ModifierKeys.Shift) > 0)) // was && (Keyboard.Modifiers & ModifierKeys.Shift) > 0))
+            if (e.LeftButton == MouseButtonState.Pressed && (Map.MouseDragMode == DragMode.Select ||
+                 Map.MouseDragMode == DragMode.SelectOnShift && (Keyboard.Modifiers & ModifierKeys.Shift) > 0)) // was && (Keyboard.Modifiers & ModifierKeys.Shift) > 0))
             {
                 mapView.Cursor = Cursors.Arrow;
 
                 if (dragRectangle != null)
                     mapView.ForePaneCanvas.Children.Remove(dragRectangle);
 
-                dragRectangle = new Rectangle();
-                dragRectangle.IsHitTestVisible = false;
-                dragRectangle.Fill = new SolidColorBrush(Color.FromArgb(0x3e, 0x11, 0x57, 0xdc));
-                dragRectangle.Stroke = new SolidColorBrush(Color.FromArgb(0x55, 0x07, 0x81, 0xf7));
-                dragRectangle.StrokeDashArray = new DoubleCollection(new double[] { 20, 8 });
-                dragRectangle.StrokeEndLineCap = PenLineCap.Round;
-                dragRectangle.StrokeDashCap = PenLineCap.Round;
-                dragRectangle.StrokeThickness = 1.5;
-                dragRectangle.RadiusX = 8;
-                dragRectangle.RadiusY = 8;
+                dragRectangle = new Rectangle
+                {
+                    IsHitTestVisible = false,
+                    Fill = new SolidColorBrush(Color.FromArgb(0x3e, 0x11, 0x57, 0xdc)),
+                    Stroke = new SolidColorBrush(Color.FromArgb(0x55, 0x07, 0x81, 0xf7)),
+                    StrokeDashArray = new DoubleCollection(new double[] {20, 8}),
+                    StrokeEndLineCap = PenLineCap.Round,
+                    StrokeDashCap = PenLineCap.Round,
+                    StrokeThickness = 1.5,
+                    RadiusX = 8,
+                    RadiusY = 8
+                };
 
                 Canvas.SetZIndex(dragRectangle, 266);
                 Canvas.SetLeft(dragRectangle, ScreenStartPoint.X);
@@ -288,38 +318,101 @@ namespace CustomPanAndZoom
         /// <param name="e"> Event parameters. </param>
         private void control_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!IsActive)
+            if (!IsActive || !mapView.IsMouseCaptured)
                 return;
 
-            if (mapView.IsMouseCaptured)
+            if (dragMode == DragMode.Pan)
             {
-                if (dragMode == DragMode.Pan)
-                {
-                    var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
+                var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
-                    if ((this.WorldStartPoint.X == physicalPoint.X) && (this.WorldStartPoint.Y == physicalPoint.Y))
-                        return;
+                if ((Math.Abs(WorldStartPoint.X - physicalPoint.X) < 1e-4) && (Math.Abs(WorldStartPoint.Y - physicalPoint.Y) < 1e-4))
+                    return;
 
-                    double x = mapView.CurrentX + this.WorldStartPoint.X - physicalPoint.X;
-                    double y = mapView.CurrentY + this.WorldStartPoint.Y - physicalPoint.Y;
+                double x = mapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
+                double y = mapView.CurrentY + WorldStartPoint.Y - physicalPoint.Y;
 
-                    wasPanned = true;
+                wasPanned = true;
 
-                    mapView.SetXYZ(x, y, mapView.CurrentZoom, Map.UseAnimation);
-                }
-                else if (dragMode == DragMode.Select)
-                {
-                    var physicalPoint = e.GetPosition(mapView);
+                mapView.SetXYZ(x, y, mapView.CurrentZoom, Map.UseAnimation);
+            }
+            else if (dragMode == DragMode.Select)
+            {
+                var physicalPoint = e.GetPosition(mapView);
 
-                    Canvas.SetLeft(dragRectangle, physicalPoint.X < ScreenStartPoint.X ? physicalPoint.X : ScreenStartPoint.X);
-                    Canvas.SetTop(dragRectangle, physicalPoint.Y < ScreenStartPoint.Y ? physicalPoint.Y : ScreenStartPoint.Y);
-                    dragRectangle.Width = Math.Abs(physicalPoint.X - ScreenStartPoint.X);
-                    dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
-                }
+                Canvas.SetLeft(dragRectangle, physicalPoint.X < ScreenStartPoint.X ? physicalPoint.X : ScreenStartPoint.X);
+                Canvas.SetTop(dragRectangle, physicalPoint.Y < ScreenStartPoint.Y ? physicalPoint.Y : ScreenStartPoint.Y);
+                dragRectangle.Width = Math.Abs(physicalPoint.X - ScreenStartPoint.X);
+                dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
+            }
 
+            e.Handled = true;
+        }
+
+#if PINCHZOOM
+        /// <summary>
+        /// Event handler for stylus up; needs to be handled when map was previously panned.
+        /// </summary>
+        /// <param name="sender">Sender of the StylusButtonUp event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_StylusButtonUp(object sender, StylusButtonEventArgs e)
+        {
+            if (wasPanned)
+                e.Handled = true;
+        }
+
+        /// <summary>
+        /// Event
+        /// </summary>
+        /// <param name="sender">Sender of the ManipulationStarting event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
+        {
+            // reset panned flag
+            wasPanned = false;
+
+            // store initial zoom on for follow up ManipulationDelta events. 
+            manipulationDeltaInitialZoom = mapView.CurrentZoom;
+        }
+
+        /// <summary>
+        /// Event handler for the StylusDown event. Implements a zoom operation for a double tap.
+        /// </summary>
+        /// <param name="sender">Sender of the StylusDown event.</param>
+        /// <param name="e">Event parameters.</param>
+        void mapView_StylusDown(object sender, StylusDownEventArgs e)
+        {
+            if (e.TapCount == 2)
+            {
+                var p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
+                MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
                 e.Handled = true;
             }
         }
+
+        /// <summary>
+        /// Event handler for the ManipulationDelta event; implements the pinch zoom and pan.
+        /// </summary>
+        /// <param name="sender">Sender of the ManipulationDelta event.</param>
+        /// <param name="e">Event parameters.</param>
+        void map_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        {
+            // Use the delta information for adjusting the map position (while keeping the map zoom)
+
+            MoveMap(CurrentScreenPosition - e.DeltaManipulation.Translation);
+
+            // SECOND, use the cumulative scale and set zoom at current ManipulationOrigin
+
+            var scale = Math.Max(Math.Abs(e.CumulativeManipulation.Scale.X), Math.Abs(e.CumulativeManipulation.Scale.Y));
+            var zoom = Math.Log(Math.Pow(2, manipulationDeltaInitialZoom) * scale, 2);
+
+            mapView.ZoomAround(mapView.CanvasToPtvMercator(this, e.ManipulationOrigin), zoom, false);
+
+            // done, handled
+
+            wasPanned = true;
+            e.Handled = true;
+        }
+#endif
         #endregion
 
         #region protected methods
@@ -329,7 +422,7 @@ namespace CustomPanAndZoom
             base.Initialize();
 
             IsActive = true;
-            this.mapView = MapView;
+            mapView = MapView;
             Setup();
         }
         #endregion
