@@ -27,6 +27,8 @@ These are options to change the behaviour when navigation (zooming, panning) on 
 - **Use Animation:** When deactivated, transitions from one map viewport to an other vieweport are not animated. There is also no fade-in effect for tiles.
 
 ### Symbol Options
-These are some generic options for the xServer.NET Sape Layer. These option generally improve the performance, not only for VDI.
+These are some generic options for the xServer.NET Shape Layer. These option generally improve the performance, not only for VDI.
 - **Lazy Update:** Symbols are only updated after a map transition
 - **Use Bitmap Caching:** The symbols aren't rendered directly as WPF shape, but cached using *RenderTargetBitmap();*
+
+![VdiPerformance](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/VdiPerformance.png "VdiPerformance")
