@@ -8,7 +8,7 @@ This tool lets you play live with these options. You can start it on your remote
 
 ### The information panel
 - **fps:** Displays the estimated frames per second on the host system
-- **Hardware Level:** Displays the hardware acceleration level on the host system. 0: No hardware acceleration, 1: DirectX => 7.0, 2: DirectX >= 9.0
+- **Hardware Level:** Displays the hardware acceleration level on the host system. 0: No hardware acceleration, 1: DirectX >= 7.0, 2: DirectX >= 9.0
 
 ### Generic Options
 - **Software Rendering:** Disables the hardware rendering, if available
