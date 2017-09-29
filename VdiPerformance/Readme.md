@@ -8,7 +8,7 @@ This tool lets you play live with these options. You can start it on your remote
 
 ### The information panel
 - **fps:** Displays the estimated frames per second on the host system
-- **Hardware Level:** Displays the hardware acceleration level on the host system. 0: No hardware acceleration, 1: DirectX => 7.0, 2: DirectX >= 9.0
+- **Hardware Level:** Displays the hardware acceleration level on the host system. 0: No hardware acceleration, 1: DirectX >= 7.0, 2: DirectX >= 9.0
 
 ### Generic Options
 - **Software Rendering:** Disables the hardware rendering, if available
@@ -23,7 +23,7 @@ These options use different initializations for the xMapServer layers to reduce 
 ### Navigation Options
 These are options to change the behaviour when navigating (zooming, panning) on the map. **Note:** The first two options are implemented by exchanging the xServer.NET "PanAndZoom gadget" with a modified one.
 - **Move While Dragging:** When deactivated the map is only dragged after the mouse button is released.
-- **Use Filled Pan Shape:** When deactived the rectangle for panning an selecting is not rendered with a semi-opaque filling.
+- **Use Filled Pan Shape:** When deactived the rectangle for panning and selecting is not rendered with a semi-opaque filling.
 - **Use Animation:** When deactivated transitions from one map viewport to an other vieweport are not animated. Moreover there's no fade-in effect for tiles.
 
 ### Symbol Options
