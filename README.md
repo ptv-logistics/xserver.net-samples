@@ -138,6 +138,11 @@ Shows how to render additional xMap layers with tooltip interaction
 
 ![ServerSideRendering](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ServerSideRendering.png "ServerSideRendering")
 
+#### SimpleWms
+Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
+
+![SimpleWms](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/WmsTest.png "SimpleWms")
+
 #### SymbolsAndLabels
 Shows how to draw symbols with an attached label tag
 
@@ -157,11 +162,6 @@ Shows how to build one logical layer containing differrent canvases rendered bef
 Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)
 
 ![VdiPerformance](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/VdiPerformance.png "VdiPerformance")
-
-#### WmsTest
-Shows how to add WMS layers to the control
-
-![WmsTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/WmsTest.png "WmsTest")
 
 #### XYNSegments
 Shows how to select and render xServer XYN-Segments

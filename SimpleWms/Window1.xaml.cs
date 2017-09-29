@@ -34,6 +34,7 @@ namespace Circles
         {
             InitializeComponent();
 
+            GlobalOptions.InfiniteZoom = true;
             this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
         }
 
@@ -49,12 +50,11 @@ namespace Circles
                 Copyright = "© terrestris",
                 IsBaseMapLayer = true // overlay layers cannot be moved under a basemap layer
             });
-            
 
             Map.Layers.Add(new UntiledLayer("BUSSTOPS") { 
                 Caption = "Bus Stops",
                 UntiledProvider = new WmsUntiledProvider(
-                    "http://ows.terrestris.de/osm-haltestellen?LAYERS=OSM-Bushaltestellen&TRANSPARENT=true&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A900913", 19),
+                    "http://ows.terrestris.de/osm-haltestellen?service=WMS&request=GetMap&version=1.1.1&layers=OSM-Bushaltestellen&styles=&format=image%2Fpng&transparent=true&srs=EPSG%3A3857", 19),
                 Copyright = "© terrestris"
 
             });
