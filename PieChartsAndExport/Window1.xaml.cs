@@ -86,7 +86,8 @@ namespace PieCharts
                 // Add to map
                 ShapeCanvas.SetLocation(chartView, new Point(store.Longitude, store.Latitude));
                 ShapeCanvas.SetAnchor(chartView, LocationAnchor.Center);
-                ShapeCanvas.SetScaleFactor(chartView, .1); // adopt the element to the scale factor
+                ShapeCanvas.SetScale(chartView, 2);
+                ShapeCanvas.SetScaleFactor(chartView, .25); // adopt the element to the scale factor
                 layer.Shapes.Add(chartView);
             }
         }

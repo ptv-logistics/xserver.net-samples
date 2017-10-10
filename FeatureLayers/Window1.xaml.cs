@@ -51,7 +51,7 @@ namespace ServerSideRendering
             // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
 
             var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            meta.SetCredentials("xtok", "A0745352-F757-439C-96F1-F640910F2F6A"); // set the basic authentication properties, e.g. xtok/token for xserver internet
+            meta.SetCredentials("xtok", "BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35"); // set the basic authentication properties, e.g. xtok/token for xserver internet
 
             return meta;
         }

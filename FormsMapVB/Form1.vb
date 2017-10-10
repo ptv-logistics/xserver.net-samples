@@ -7,7 +7,7 @@ Imports Ptv.XServer.Controls.Map
 Imports Point = System.Windows.Point
 
 Public Class Form1
-    Dim token = "A0745352-F757-439C-96F1-F640910F2F6A"
+    Dim token = "BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()
