@@ -36,7 +36,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         {
             // add xmap base layers
             mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            mapControl1.XMapCredentials = "xtok:BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35";
+            mapControl1.XMapCredentials = "xtok:0B5DE87D-8A43-46BD-8606-81877BAF244F";
 
             // goto KA
             mapControl1.SetMapLocation(new Point(8.4277, 49.0136), 12.6);

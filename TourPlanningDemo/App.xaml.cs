@@ -13,6 +13,6 @@ namespace TourPlanningDemo
     public partial class App : Application
     {
         // this is just a demo token. Use your own test-token for xserver-internet
-        public const string Token = "BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35";
+        public const string Token = "0B5DE87D-8A43-46BD-8606-81877BAF244F";
     }
 }

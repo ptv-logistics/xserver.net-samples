@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private static string myToken = "BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35";
+        private static string myToken = "0B5DE87D-8A43-46BD-8606-81877BAF244F";
 
         public Form1()
         {
@@ -51,7 +51,7 @@ namespace XSTwo
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&xtok={5}",
-                        "1234"[(x ^ y) % 4], z, x, y, "silkysand", myToken)
+                        "1234"[(x ^ y) % 4], z, x, y, "blackmarble", myToken)
                 },
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
@@ -83,7 +83,7 @@ namespace XSTwo
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&layers=background,transport&xtok={5}",
-                        "1234"[(x ^ y) % 4], z, x, y, "silkysand", myToken)
+                        "1234"[(x ^ y) % 4], z, x, y, "blackmarble", myToken)
                 },
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
@@ -104,7 +104,7 @@ namespace XSTwo
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&layers=labels&xtok={5}",
-                        "1234"[(x ^ y) % 4], z, x, y, "silkysand", myToken)
+                        "1234"[(x ^ y) % 4], z, x, y, "gravelpit", myToken) // use "gravelpit-foreground" for better contrast
                 },
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png"),
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
@@ -130,7 +130,7 @@ namespace XSTwo
                 Width = ellipseSize,
                 Height = ellipseSize,
                 Fill = new SolidColorBrush(Color.FromArgb(128, 0, 0, 255)),
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = new SolidColorBrush(Colors.LightBlue),
                 StrokeThickness = 25
             };
 

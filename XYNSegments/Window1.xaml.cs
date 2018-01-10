@@ -16,7 +16,7 @@ namespace XynSegments
     /// </summary>
     public partial class Window1 : Window
     {
-        private static string token = "BAF14D4E-E89D-46CB-9AEC-4866C1ABFA35";
+        private static string token = "0B5DE87D-8A43-46BD-8606-81877BAF244F";
 
         public Window1()
         {
