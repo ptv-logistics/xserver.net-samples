@@ -8,7 +8,7 @@ namespace BasemapTooltips
     {
         // Temporary demo token for xServer-internet
         // Use your own test-token or your on-premise xServer when migrating the code
-        private const string token = "0B5DE87D-8A43-46BD-8606-81877BAF244F";
+        private const string token = "E4B0D376-16FD-422A-B402-8A3980B1E589";
 
         public Form1()
         {

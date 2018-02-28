@@ -146,7 +146,7 @@ namespace VdiPerformance
             var copyrightText = "PTV, TomTom";
             var maxRequestSize = new Size(3840, 2400);
             var user = "xtok";
-            var password = "0B5DE87D-8A43-46BD-8606-81877BAF244F"; // this token is only for test purpose
+            var password = "E4B0D376-16FD-422A-B402-8A3980B1E589"; // this token is only for test purpose
             var url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
 
             ILayer baseLayer;

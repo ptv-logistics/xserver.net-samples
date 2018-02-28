@@ -5,7 +5,7 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapCredentials="xtok:0B5DE87D-8A43-46BD-8606-81877BAF244F" XMapUrl="https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" Zoom="13" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map" XMapCredentials="xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" XMapUrl="https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" Zoom="13" XMapCopyright="PTV, TOMTOM" />
         <Border Margin="10,100,0,0" Background="White" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" CornerRadius="8,8,8,8">
             <StackPanel Margin="10">
                 <ComboBox x:Name="dragMode" SelectionChanged="Selection_Changed">
