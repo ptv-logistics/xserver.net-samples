@@ -6,6 +6,6 @@
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                        XMapCredentials="xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8, 49" Zoom="9"/>
+                        XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Center="8, 49" Zoom="9"/>
     </Grid>
 </Window>

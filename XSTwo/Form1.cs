@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private static string myToken = "E4B0D376-16FD-422A-B402-8A3980B1E589";
+        private static string myToken = "FBB7CABE-0CC9-4831-A252-5FE650FF225A";
 
         public Form1()
         {
