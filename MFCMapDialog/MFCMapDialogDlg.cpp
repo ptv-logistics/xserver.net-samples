@@ -99,7 +99,8 @@ BOOL CMFCMapDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	m_mapCtrl->XMapUrl = gcnew System::String("http://176.95.37.53/xmap/ws/XMap");
+	m_mapCtrl->XMapUrl = gcnew System::String("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
+	m_mapCtrl->XMapCredentials = gcnew System::String("xtok:E4B0D376-16FD-422A-B402-8A3980B1E589");
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

@@ -6,8 +6,8 @@
     Width="800" 
     xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map">
     <Grid>
-        <map:WpfMap XMapUrl="http://176.95.37.53/xmap/ws/XMap" 
-                    XMapCopyright="PTV, TOMTOM" Zoom="10" Center="8.4, 49" 
+        <map:WpfMap XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                    XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Zoom="10" Center="8.4, 49" 
                     x:Name="mapControl1" />
     </Grid>
 </Window>

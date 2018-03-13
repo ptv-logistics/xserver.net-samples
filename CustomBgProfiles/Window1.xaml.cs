@@ -18,6 +18,7 @@ namespace CustomBgProfiles
 
             SetProfile(Map1, "sandbox");
             SetProfile(Map2, "silkysand");
+            SetProfile(Map2, "gravelpit");
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -27,11 +28,14 @@ namespace CustomBgProfiles
                 case "Standard":
                     SetProfile(Map0, null);
                     break;
-                case "Greenzones":
+                case "Sandbox":
                     SetProfile(Map0, "sandbox");
                     break;
-                default:
+                case "Silkysand":
                     SetProfile(Map0, "silkysand");
+                    break;
+                default:
+                    SetProfile(Map0, "gravelpit");
                     break;
             }
         }

@@ -6,15 +6,19 @@
     Title="Window1" Height="600" Width="800">
     <TabControl>
         <TabItem Header="Map 1">
-            <mapcore:WpfMap Name="Map1" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+            <mapcore:WpfMap Name="Map1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                            XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8, 49" Zoom="9" />
         </TabItem>
         <TabItem Header="Map 2">
-            <mapcore:WpfMap Name="Map2" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+            <mapcore:WpfMap Name="Map2" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                            XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8, 49" Zoom="9" />
         </TabItem>
         <TabItem Header="Map 3">
             <DockPanel Height="Auto" Width="Auto" LastChildFill="True">
-                <mapcore:WpfMap Name="Map3" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
-                <mapcore:WpfMap Name="Map4" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8, 49" Zoom="9" XMapCopyright="PTV, TOMTOM" />
+                <mapcore:WpfMap Name="Map3" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                                XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8, 49" Zoom="9" />
+                <mapcore:WpfMap Name="Map4" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                                XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8, 49" Zoom="9" />
             </DockPanel>
         </TabItem>
     </TabControl>

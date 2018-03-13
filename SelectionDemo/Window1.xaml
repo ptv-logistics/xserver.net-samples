@@ -5,7 +5,8 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="http://176.95.37.53/xmap/ws/XMap" Center="8.4, 49" Zoom="13" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+                        XMapCredentials = "xtok:E4B0D376-16FD-422A-B402-8A3980B1E589" Center="8.4, 49" Zoom="13" />
         <StackPanel  Width="100" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <Button Content="Clear" Click="Button_Click" ></Button>
             <ListView x:Name="listView"></ListView>

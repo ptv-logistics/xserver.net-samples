@@ -11,7 +11,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
              xmlns:gadgets="clr-namespace:Ptv.XServer.Controls.Map.Gadgets;assembly=Ptv.XServer.Controls.Map"
-             mc:Ignorable="d"             d:DesignHeight="400"
+             mc:Ignorable="d"             
+             d:DesignHeight="400"
              d:DesignWidth="600" >
     <Grid x:Name="LayoutRoot">
         <gadgets:NavigationGadget x:Name="Navigation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
