@@ -73,6 +73,7 @@
       <DependentUpon>CustomMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapShapes.cs" />
+    <Compile Include="MyScreenCanvasLayer.cs" />
     <Compile Include="VectorLayer.cs" />
     <Compile Include="MyXamlLayer.xaml.cs">
       <DependentUpon>MyXamlLayer.xaml</DependentUpon>
