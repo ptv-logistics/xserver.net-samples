@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private static string myToken = "FBB7CABE-0CC9-4831-A252-5FE650FF225A";
+        private static string myToken = "74BBCCA9-FE98-463D-AC9F-5C269E744284";
 
         public Form1()
         {
@@ -51,7 +51,7 @@ namespace XSTwo
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&xtok={5}",
-                        "1234"[(x ^ y) % 4], z, x, y, "blackmarble", myToken)
+                        "1234"[(x ^ y) % 4], z, x, y, "gravelpit", myToken)
                 },
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
@@ -83,7 +83,7 @@ namespace XSTwo
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&layers=background,transport&xtok={5}",
-                        "1234"[(x ^ y) % 4], z, x, y, "blackmarble", myToken)
+                        "1234"[(x ^ y) % 4], z, x, y, "gravelpit", myToken)
                 },
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),

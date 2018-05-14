@@ -6,7 +6,7 @@
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                        XMapCredentials = "xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Center="8.4, 49" Zoom="13" />
+                        XMapCredentials = "xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Center="8.4, 49" Zoom="13" />
         <StackPanel  Width="100" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <Button Content="Clear" Click="Button_Click" ></Button>
             <ListView x:Name="listView"></ListView>

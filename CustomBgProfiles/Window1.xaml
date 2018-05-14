@@ -10,7 +10,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
         <Border Background="White" BorderBrush="Black" BorderThickness="2" Padding="8" HorizontalAlignment="Left"  VerticalAlignment="Center">
         <StackPanel Margin="8,8,8,8"  >
             <Label Content="xMap Profile" />
@@ -20,7 +20,7 @@
                 <RadioButton Content="Gravelpit"  Checked="RadioButton_Checked" />
             </StackPanel>
         </Border>
-        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
-        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Center="8.4, 49" Zoom="10" XMapCopyright="PTV, TOMTOM" />
+        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" XMapCredentials="xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Zoom="10" XMapCopyright="PTV, TOMTOM" />
     </Grid>
 </Window>

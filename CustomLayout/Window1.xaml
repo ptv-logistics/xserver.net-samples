@@ -9,8 +9,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <local:DefaultLayoutMap Grid.Column="0" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                                XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Zoom="10" Center="8.4, 49" />
+                                XMapCredentials="xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Zoom="10" Center="8.4, 49" />
         <local:CustomLayoutMap Grid.Column="1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap"  
-                               XMapCredentials="xtok:FBB7CABE-0CC9-4831-A252-5FE650FF225A" Zoom="10" Center="8.4, 49"/>
+                               XMapCredentials="xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Zoom="10" Center="8.4, 49"/>
     </Grid>
 </Window>
