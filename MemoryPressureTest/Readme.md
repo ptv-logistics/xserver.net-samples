@@ -42,7 +42,7 @@ Tools like the SciTech memory profiler can help to search for leaks in your .NET
 Another option is to check for memory leaks directly in your applicatin. We provide a helper class to check if objects are properly freed when no longer needed. 
 For more infos about this helper class, check here: https://github.com/ptv-logistics/xservernet-bin/tree/master/MemAssertDemo
 
-###5 Testing under critical conditions
+5. Testing under critical conditions
 Our test project builds a 32-Bit application and allocates a large pile of memory to test the optimizations. Get the source code here https://github.com/ptv-logistics/xservernet-bin/tree/master/MemoryPressureTest
 
 ```
