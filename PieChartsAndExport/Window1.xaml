@@ -5,7 +5,7 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284" Center="8.4, 49" Zoom="12" />
+        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "xtok:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E" Center="8.4, 49" Zoom="12" />
         <Button Content="Print" Height="23" HorizontalAlignment="Left" Margin="0,104,0,0" Name="button1" VerticalAlignment="Top" Width="100" Click="print_Click" />
         <Button Content="Print scaling" Height="23" HorizontalAlignment="Left" Margin="0,0,0,405" Name="button2" VerticalAlignment="Bottom" Width="100" Click="printScaling_Click" />
         <Button Content="Export" Height="23" HorizontalAlignment="Left" Margin="0,162,0,0" Name="button3" VerticalAlignment="Top" Width="100" Click="export_Click" />

@@ -64,7 +64,7 @@ namespace Ptv.XServer.Controls
 
             // test initialization
             this.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            this.XMapCredentials = "xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284";
+            this.XMapCredentials = "xtok:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E";
             this.Shapes.AddMarker(42, 8.3, 49, 100, "#f00", "Pin", "Hello");
         }
 

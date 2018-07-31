@@ -37,7 +37,7 @@ namespace FormsMapCS
 
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:74BBCCA9-FE98-463D-AC9F-5C269E744284";
+            formsMap1.XMapCredentials = "xtok:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E";
 
             // go to Karlsruhe
             formsMap1.SetMapLocation(new Point(8.4, 49.05), 10);
