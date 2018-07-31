@@ -57,7 +57,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                 {
                     IsTransparentLayer = true,
                     TiledProvider = new RemoteTiledProvider{RequestBuilderDelegate = (x, y, level) =>
-                        string.Format("http://80.146.239.139/ShapeTiles/ShapeTileHandler.ashx?x={0}&y={1}&z={2}&layer=someLayer&style=someStyle",
+                        string.Format("http://176.95.37.29/ShapeTiles/ShapeTileHandler.ashx?x={0}&y={1}&z={2}&layer=someLayer&style=someStyle",
                         x, y, level)}
                 });
 
@@ -118,6 +118,13 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                     Radius = 250, Description = "250 meters around ptv headquarters"
                 }
             };
+
+            mapControl1.Layers.Add(
+                new BaseLayer("MyScreenCanvasLayer")
+                {
+                    CanvasCategories = new CanvasCategory[] { CanvasCategory.Content },
+                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { (mapControl) => new MyScreenCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
+                });
             //mapControl1.Layers.Add(
             //    new CanvasPainterLayer("MultiCanvas")
             //    {
