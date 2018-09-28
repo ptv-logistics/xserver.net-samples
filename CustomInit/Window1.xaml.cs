@@ -26,7 +26,7 @@ namespace CustomInit
             InitializeMap(Map1, url, token);
 
             // v2: direct initialization for xServer-internet
-            InsertXMapBaseLayers(Map2.Layers, url, "PTV, TomTom", new Size(3840, 2400), "EBB3ABF6-C1FD-4B01-9D69-349332944AD9", token);
+            InsertXMapBaseLayers(Map2.Layers, url, "PTV, TomTom", new Size(3840, 2400), "xtok", token);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace CustomInit
             // When instantiated with the url, it tries to read the attribution text and the maximum request size from the xMap configuration
             // To avoid blocking the application init, call it asynchronously
             var meta = await Task.Run(() => new XMapMetaInfo(url));
-            meta.SetCredentials("EBB3ABF6-C1FD-4B01-9D69-349332944AD9", token); // set the basic authentication properties, e.g. EBB3ABF6-C1FD-4B01-9D69-349332944AD9/token for xserver internet
+            meta.SetCredentials("xtok", token); // set the basic authentication properties, e.g. xtok/token for xserver internet
 
             // Initialize the map
             InsertXMapBaseLayers(map.Layers, meta);

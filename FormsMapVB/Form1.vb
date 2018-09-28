@@ -16,7 +16,7 @@ Public Class Form1
     Private Async Sub Initialize()
         ' initialize base map (for xServer internet)
         FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"
-        FormsMap1.XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:" + token
+        FormsMap1.XMapCredentials = "xtok:" + token
 
         ' add a new Shape Layer
         Dim layer = New ShapeLayer("MyShapes")
@@ -67,7 +67,7 @@ Public Class Form1
     Private Function CalcRoute(lat1, lon1, lat2, lon2)
         Dim xRouteClient = New XRouteWSClient()
 
-        xRouteClient.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
+        xRouteClient.ClientCredentials.UserName.UserName = "xtok"
         xRouteClient.ClientCredentials.UserName.Password = token
 
         ' just need the distance

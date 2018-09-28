@@ -113,7 +113,7 @@ namespace TourPlanningDemo
                 o.Tour = null;
 
             var xtour = new XTourWSClient();
-            xtour.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            xtour.ClientCredentials.UserName.UserName = "xtok";
             xtour.ClientCredentials.UserName.Password = App.Token;
             var orders = (from o in scenario.Orders
                           select new TransportDepot

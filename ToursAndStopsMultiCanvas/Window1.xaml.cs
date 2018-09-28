@@ -84,7 +84,7 @@ namespace ToursAndStops
         public Route CalcRoute(double lat1, double lon1, double lat2, double lon2)
         {
             var xroute = new XRouteWSClient();
-            xroute.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            xroute.ClientCredentials.UserName.UserName = "xtok";
             xroute.ClientCredentials.UserName.Password = "9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E";
             return xroute.calculateRoute(new[]{
                 new WaypointDesc{wrappedCoords = new []{new ToursAndStops.XRouteServiceReference.Point{point = new PlainPoint{x = lon1, y = lat1}}}},

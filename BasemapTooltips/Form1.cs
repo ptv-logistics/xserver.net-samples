@@ -24,7 +24,7 @@ namespace BasemapTooltips
         {
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:" + token;
+            formsMap1.XMapCredentials = "xtok:" + token;
 
             // initialize our tool tip handler
             var tt = new BaseMapToolTips(formsMap1.WrappedMap);
@@ -36,7 +36,7 @@ namespace BasemapTooltips
             try
             {
                 var xlocate = new XLocateServiceReference.XLocateWSClient();
-                xlocate.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+                xlocate.ClientCredentials.UserName.UserName = "xtok";
                 xlocate.ClientCredentials.UserName.Password = token;
 
                 var result = xlocate.findLocation(

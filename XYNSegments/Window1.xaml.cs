@@ -34,7 +34,7 @@ namespace XynSegments
             Map.Layers.Clear();
 
             var xmapMetaInfo = new XMapMetaInfo("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
-            xmapMetaInfo.SetCredentials("EBB3ABF6-C1FD-4B01-9D69-349332944AD9", token);
+            xmapMetaInfo.SetCredentials("xtok", token);
             InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, "silkysand");
 
             xynLayer = new XynLayer(xmapMetaInfo, "Segments", "Selected Segments");
@@ -51,7 +51,7 @@ namespace XynSegments
             var wgs = Map.MouseToGeo(e);
 
             var xlocate = new XLocateServiceReference.XLocateWSClient();
-            xlocate.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            xlocate.ClientCredentials.UserName.UserName = "xtok";
             xlocate.ClientCredentials.UserName.Password = token;
 
             var result = xlocate.findLocation(
