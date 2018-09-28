@@ -113,7 +113,7 @@ namespace TourPlanningDemo
                             };
 
             var xlocate = new XLocateWSClient();
-            xlocate.ClientCredentials.UserName.UserName = "xtok";
+            xlocate.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
             xlocate.ClientCredentials.UserName.Password = App.Token;
 
             var result = xlocate.findLocations(locations.ToArray(), new[] {

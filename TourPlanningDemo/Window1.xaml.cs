@@ -33,7 +33,7 @@ namespace TourPlanningDemo
             Map.Layers.Add(depotLayer);
         }
 
-        public const string XMapCredentials = "xtok:" + App.Token;
+        public const string XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:" + App.Token;
 
         ShapeLayer tourLayer;
         ShapeLayer orderLayer;

@@ -22,7 +22,7 @@ namespace CustomPinchZoom
             // set map parameters
             Map.XMapStyle = "silkysand";
             Map.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            Map.XMapCredentials = "xtok:<insert-your-token-here>";
+            Map.XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:<insert-your-token-here>";
 
             // get the map container grid
             var grid = MapElementExtensions.FindChild<Grid>(Map);
