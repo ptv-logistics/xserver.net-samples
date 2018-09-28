@@ -17,7 +17,7 @@ Public Class Form1
     Private Async Sub Initialize()
         ' initialize base map (for xServer internet)
         FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"
-        FormsMap1.XMapCredentials = "xtok:" + token
+        FormsMap1.XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:" + token
 
         Dim startPoint = New Point(8.4, 49)
         Dim destPoint = New Point(8.4, 50)
@@ -25,7 +25,7 @@ Public Class Form1
         ' set map view
         FormsMap1.SetEnvelope(New MapRectangle({startPoint, destPoint}).Inflate(1.25))
 
-        Dim dd = New RoutingDragAndDropUseCase(FormsMap1.WrappedMap, "https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute", "xtok", token)
+        Dim dd = New RoutingDragAndDropUseCase(FormsMap1.WrappedMap, "https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute", "EBB3ABF6-C1FD-4B01-9D69-349332944AD9", token)
         dd.SetRoute(startPoint, destPoint)
         dd.Enable()
 

@@ -5,6 +5,6 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "xtok:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E" XMapStyle="silkysand" />
+        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E" XMapStyle="silkysand" />
     </Grid>
 </Window>

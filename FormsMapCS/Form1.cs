@@ -30,7 +30,7 @@ namespace FormsMapCS
         {
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:" + token;
+            formsMap1.XMapCredentials = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9:" + token;
 
             // add a new Shape Layer
             var layer = new ShapeLayer("MyShapes");
@@ -80,7 +80,7 @@ namespace FormsMapCS
         {
             var xroute = new XRouteWSClient();
 
-            xroute.ClientCredentials.UserName.UserName = "xtok";
+            xroute.ClientCredentials.UserName.UserName = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
             xroute.ClientCredentials.UserName.Password = token;
 
             return xroute.calculateRoute(new[]
