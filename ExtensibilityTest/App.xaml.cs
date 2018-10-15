@@ -13,5 +13,10 @@ namespace Ptv.XServer.Net.ExtensibilityTest
     /// <summary> Interaction logic for App.xaml </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            // TODO refactor for InfiniteZoom
+            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = false;
+        }
     }
 }

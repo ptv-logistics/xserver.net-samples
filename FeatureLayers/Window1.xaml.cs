@@ -10,18 +10,16 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ServerSideRendering
+namespace FeatureLayers
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
-        private bool initialized;
         public Window1()
         {
             InitializeComponent();
-            initialized = true;
 
             InitializeMap();
 

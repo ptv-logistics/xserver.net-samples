@@ -35,19 +35,27 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ptv.XServer.Controls.Map">
@@ -73,11 +81,13 @@
       <DependentUpon>CustomMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="MapShapes.cs" />
+    <Compile Include="MyCanvasLayer.cs" />
     <Compile Include="MyScreenCanvasLayer.cs" />
-    <Compile Include="VectorLayer.cs" />
+    <Compile Include="MyVectorLayer.cs" />
     <Compile Include="MyXamlLayer.xaml.cs">
       <DependentUpon>MyXamlLayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VectorLayer.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,12 +114,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyCanvasLayer.cs" />
     <Compile Include="MyHybridLayer.cs" />
     <Compile Include="MyMultiCanvasLayer.cs" />
     <Compile Include="MyOverlayLayer.cs" />
     <Compile Include="MyTileLayer.cs" />
-    <Compile Include="MyVectorLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

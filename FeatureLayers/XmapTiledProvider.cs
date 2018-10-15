@@ -6,13 +6,14 @@ using System.Net;
 using Ptv.XServer.Controls.Map.Tools;
 using xserver;
 using Ptv.XServer.Controls.Map.TileProviders;
+using Ptv.XServer.Controls.Map.Layers.Untiled;
 
 namespace FeatureLayers
 {
 
 
     /// <summary> A provider implementation for the xMapServer delivering tiled bitmaps. </summary>
-    public class XMapTiledProviderEx : XMapTiledProviderBase, IObjectInfoProvider
+    public class XMapTiledProviderEx : XMapTiledProviderBase
     {
         /// <summary> Logging restricted to this class. </summary>
         private static readonly Logger logger = new Logger("XMapTiledProviderEx");
@@ -63,10 +64,6 @@ namespace FeatureLayers
         /// <param name="mode"> The mode of this tiled provider instance. </param>
         public XMapTiledProviderEx(string url, XMapMode mode) : this(url, string.Empty, string.Empty, mode) { }
 
-
-        /// <summary> MapUpdate event. See remarks on <see cref="MapUpdateDelegate"/>. </summary>
-        public event MapUpdateDelegate MapUdpate;
-
         public IEnumerable<CallerContextProperty> CustomCallerContextProperties { get; set; }
 
         /// <summary> Gets or sets the custom layers of the xMapServer. </summary>
@@ -78,12 +75,9 @@ namespace FeatureLayers
         public DateTime? ReferenceTime { get; set; }
 
         /// <inheritdoc/>
-        public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width, int height)
+        public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width, int height, out IEnumerable<IMapObject> mapObjects)
         {
             var size = new System.Windows.Size(width, height);
-
-            if (MapUdpate != null)
-                MapUdpate(null, size);
 
             using (var service = new XMapWSServiceImpl(url))
             {
@@ -93,22 +87,22 @@ namespace FeatureLayers
                     service.Credentials = new CredentialCache { { new Uri(url), "Basic", new NetworkCredential(User, Password) } };
                 }
 
-                var mapParams = new MapParams {showScale = false, useMiles = false};
-                var imageInfo = new ImageInfo {format = ImageFileFormat.GIF, height = height, width = width};
+                var mapParams = new MapParams { showScale = false, useMiles = false };
+                var imageInfo = new ImageInfo { format = ImageFileFormat.GIF, height = height, width = width };
                 var bbox = new BoundingBox
                 {
-                    leftTop = new Point {point = new PlainPoint {x = left, y = top}},
-                    rightBottom = new Point {point = new PlainPoint {x = right, y = bottom}}
+                    leftTop = new Point { point = new PlainPoint { x = left, y = top } },
+                    rightBottom = new Point { point = new PlainPoint { x = right, y = bottom } }
                 };
-                
+
                 var profile = string.Empty;
                 var layers = new List<Layer>();
                 switch (mode)
                 {
                     case XMapMode.Street: // only streets
                         profile = "ajax-bg";
-                        layers.Add(new StaticPoiLayer {name = "town", visible = false, category = -1, detailLevel = 0});
-                        layers.Add(new StaticPoiLayer {name = "background", visible = false, category = -1, detailLevel = 0});
+                        layers.Add(new StaticPoiLayer { name = "town", visible = false, category = -1, detailLevel = 0 });
+                        layers.Add(new StaticPoiLayer { name = "background", visible = false, category = -1, detailLevel = 0 });
                         break;
 
                     case XMapMode.Town: // only labels
@@ -117,14 +111,14 @@ namespace FeatureLayers
 
                     case XMapMode.Custom: // no base layer
                         profile = "ajax-fg";
-                        layers.Add(new StaticPoiLayer {name = "town", visible = false, category = -1, detailLevel = 0});
-                        layers.Add(new StaticPoiLayer {name = "street", visible = false, category = -1, detailLevel = 0});
-                        layers.Add(new StaticPoiLayer {name = "background", visible = false, category = -1, detailLevel = 0});
+                        layers.Add(new StaticPoiLayer { name = "town", visible = false, category = -1, detailLevel = 0 });
+                        layers.Add(new StaticPoiLayer { name = "street", visible = false, category = -1, detailLevel = 0 });
+                        layers.Add(new StaticPoiLayer { name = "background", visible = false, category = -1, detailLevel = 0 });
                         break;
 
                     case XMapMode.Background: // only streets and polygones
                         profile = "ajax-bg";
-                        layers.Add(new StaticPoiLayer {name = "town", visible = false, category = -1, detailLevel = 0});
+                        layers.Add(new StaticPoiLayer { name = "town", visible = false, category = -1, detailLevel = 0 });
                         break;
                 }
 
@@ -159,11 +153,11 @@ namespace FeatureLayers
                     callerContextProps.AddRange(CustomCallerContextProperties);
 
                 if (!string.IsNullOrEmpty(ContextKey))
-                    callerContextProps.Add(new CallerContextProperty {key = "ContextKey", value = ContextKey});
+                    callerContextProps.Add(new CallerContextProperty { key = "ContextKey", value = ContextKey });
 
-                var cc = new CallerContext {wrappedProperties = callerContextProps.ToArray()};
+                var cc = new CallerContext { wrappedProperties = callerContextProps.ToArray() };
 
-                if(ReferenceTime.HasValue)
+                if (ReferenceTime.HasValue)
                     mapParams.referenceTime = ReferenceTime.Value.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'");
 
                 service.Timeout = 8000;
@@ -173,9 +167,10 @@ namespace FeatureLayers
                 if (!BoundingBoxesAreEqual(bbox, map.visibleSection.boundingBox))
                     IssueBoundingBoxWarning(bbox, map.visibleSection.boundingBox, width, height, profile);
 #endif
-
-                if (MapUdpate != null)
-                    MapUdpate(map, size);
+                mapObjects = map?.wrappedObjects?
+                    .Select(objects => objects.wrappedObjects?.Select(layerObject => new XMap1MapObject(objects, layerObject)))
+                    .Where(objects => objects != null && objects.Any())
+                    .SelectMany(objects => objects);
 
                 return map.image.rawImage;
             }
@@ -259,18 +254,18 @@ namespace FeatureLayers
 #endif
 
         /// <inheritdoc/>
-        public override string CacheId 
-        { 
-            get 
-            { 
+        public override string CacheId
+        {
+            get
+            {
                 var cacheId = "PtvXMap" + url + mode;
                 if (!string.IsNullOrEmpty(User))
                     cacheId += "usr=" + User;
                 if (!string.IsNullOrEmpty(Password))
                     cacheId += "pwd=" + Password;
-                if(!string.IsNullOrEmpty(CustomProfile))
+                if (!string.IsNullOrEmpty(CustomProfile))
                     cacheId += "custProfile=" + CustomProfile;
-                if(ReferenceTime.HasValue)
+                if (ReferenceTime.HasValue)
                     cacheId += ReferenceTime.ToString();
 
                 if (CustomCallerContextProperties != null)
@@ -278,7 +273,7 @@ namespace FeatureLayers
                     cacheId = CustomCallerContextProperties.Aggregate(cacheId, (current, ccp) => current + ("/" + ccp.key + "/" + ccp.value));
                 }
                 return cacheId;
-            } 
+            }
         }
     }
 }

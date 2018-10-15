@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ServerSideRendering")]
+[assembly: AssemblyTitle("FeatureLayers")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PTV AG")]
-[assembly: AssemblyProduct("ServerSideRendering")]
+[assembly: AssemblyProduct("FeatureLayers")]
 [assembly: AssemblyCopyright("Copyright © PTV AG 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
