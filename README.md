@@ -12,10 +12,8 @@ A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.ne
 
 ### The samples
 
-#### ActiveX
-Shows how to use the map as ActiveX control
-
-![ActiveX](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ActiveX.png "ActiveX")
+#### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
+<img src="https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ActiveX.png" height="249" title="ActiveX">
 
 #### BasemapTooltips
 Shows how to display city/street information as tool tip by reverse locating
