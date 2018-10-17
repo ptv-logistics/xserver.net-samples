@@ -1,7 +1,7 @@
 xservernet-bin
 ==============
 
-A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/) that are not included in the SDK.
+A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
 #### Also have a look on these projects for PTV xServer @.NET
 
