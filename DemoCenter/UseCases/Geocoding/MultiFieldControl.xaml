@@ -1,0 +1,62 @@
+﻿<!-- 
+// Copyright (c) PTV Group
+//  
+// For license details, please refer to the file COPYING, which 
+// should have been provided with this distribution.
+-->
+<UserControl x:Class="Ptv.XServer.Demo.Geocoding.MultiFieldControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ptv.XServer.Demo.Geocoding"
+             mc:Ignorable="d" 
+             d:DesignHeight="73" d:DesignWidth="818" Background="{StaticResource NormalBrush}" IsVisibleChanged="UserControl_IsVisibleChanged">
+  <UserControl.Resources>
+    <local:MultiFieldData x:Key="MultiFieldDataSource"></local:MultiFieldData>
+    <local:GeocoderDemo x:Key="Geocoder"/>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="60" />
+      <ColumnDefinition Width="160*" />
+      <ColumnDefinition Width="60" />
+      <ColumnDefinition Width="160*" />
+      <ColumnDefinition Width="80" />
+      <ColumnDefinition Width="160*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.Resources>
+      <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+        <Setter Property="Height" Value="16"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+      </Style>
+      <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Height" Value="23"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="MinWidth" Value="120"/>
+      </Style>
+    </Grid.Resources>
+
+    <Label Name="multicountrylabel" Grid.Row="0" Grid.Column="0" Content="Country" />
+    <TextBox Name="countrybox" Grid.Row="0" Grid.Column="1" Text="{Binding Source={StaticResource MultiFieldDataSource}, Path=Country}" KeyDown="box_KeyDown" />
+
+    <Label Name="multistatelabel" Grid.Row="0" Grid.Column="2" Content="State" />
+    <TextBox Name="statebox" Grid.Row="0" Grid.Column="3" Text="{Binding Source={StaticResource MultiFieldDataSource}, Path=State}" KeyDown="box_KeyDown"/>
+
+    <Label Name="multicountrycodelabel" Grid.Row="0" Grid.Column="4" Content="Postal code" />
+    <TextBox Name="countrycodebox" Grid.Row="0" Grid.Column="5" Text="{Binding Source={StaticResource MultiFieldDataSource}, Path=PostalCode}" KeyDown="box_KeyDown"/>
+
+    <Label Name="multicitylabel" Grid.Row="1" Grid.Column="0" Content="City" />
+    <TextBox Name="citybox" Grid.Row="1" Grid.Column="1" Text="{Binding Source={StaticResource MultiFieldDataSource}, Path=City}" KeyDown="box_KeyDown"/>
+
+    <Label Name="multistreetlabel" Grid.Row="1" Grid.Column="2" Content="Street" />
+    <TextBox Name="streetbox" Grid.Row="1" Grid.Column="3" Text="{Binding Source={StaticResource MultiFieldDataSource}, Path=Street}" KeyDown="box_KeyDown"/>
+
+    <Button Name="locateButton" Content="Geocode" Height="23" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="180" Click="LocateButton_Click" />
+  </Grid>
+</UserControl>

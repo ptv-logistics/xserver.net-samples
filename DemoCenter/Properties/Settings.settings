@@ -1,0 +1,109 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Ptv.XServer.Demo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="XUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">api-eu-test</Value>
+    </Setting>
+    <Setting Name="XToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BingKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HereAppId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HereAppCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IntroSkipped" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DragDropIntroSkipped" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="FeatureLayerEurope" Type="System.String" Scope="User">
+      <Value Profile="(Default)">        &lt;Profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+          &lt;FeatureLayer majorVersion="1" minorVersion="0"&gt;
+            &lt;GlobalSettings enableTimeDependency="true"/&gt;
+            &lt;Themes&gt;
+              &lt;Theme id="PTV_TrafficIncidents" enabled="false" priorityLevel="0"/&gt;
+              &lt;Theme id="PTV_TruckAttributes" enabled="false" priorityLevel="0"/&gt;
+              &lt;Theme id="PTV_RestrictionZones" enabled="false" priorityLevel="0"/&gt;
+              &lt;Theme id="PTV_SpeedPatterns" enabled="false" priorityLevel="0"/&gt;
+            &lt;/Themes&gt;
+          &lt;/FeatureLayer&gt;
+          &lt;Routing majorVersion="2" minorVersion="0"&gt;
+            &lt;Course&gt;
+              &lt;AdditionalDataRules enabled="true" /&gt;
+              &lt;DynamicRouting limitDynamicSpeedToStaticSpeed="false" /&gt;
+            &lt;/Course&gt;
+            &lt;Vehicle&gt;
+              &lt;Load hazardousGoodsType="HAZARDOUS" /&gt;
+            &lt;/Vehicle&gt;
+          &lt;/Routing&gt;
+        &lt;/Profile&gt;
+</Value>
+    </Setting>
+    <Setting Name="FeatureLayerNorthAmerica" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;Profile
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+    &lt;FeatureLayer majorVersion="1" minorVersion="0"&gt;
+        &lt;GlobalSettings enableTimeDependency="true"/&gt;
+        &lt;Themes&gt;
+            &lt;Theme id="PTV_PreferredRoutes" enabled="false" priorityLevel="0"&gt;
+                &lt;PropertyValue id='preferredRouteType' value='1'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='2'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='3'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='4'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='5'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='7'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='18'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='21'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='22'/&gt;
+            &lt;/Theme&gt;
+            &lt;Theme id="PTV_SpeedPatterns" enabled="false" priorityLevel="0"/&gt;
+        &lt;/Themes&gt;
+    &lt;/FeatureLayer&gt;
+    &lt;Routing majorVersion="2" minorVersion="0"&gt;
+        &lt;Course&gt;
+            &lt;AdditionalDataRules enabled="true" /&gt;
+            &lt;DynamicRouting limitDynamicSpeedToStaticSpeed="false" /&gt;
+        &lt;/Course&gt;
+        &lt;Vehicle&gt;
+            &lt;Load hazardousGoodsType="HAZARDOUS" /&gt;
+        &lt;/Vehicle&gt;
+    &lt;/Routing&gt;
+&lt;/Profile&gt;</Value>
+    </Setting>
+    <Setting Name="FeatureLayerAustralia" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;Profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+          &lt;FeatureLayer majorVersion="1" minorVersion="0"&gt;
+            &lt;GlobalSettings enableTimeDependency="true"/&gt;
+            &lt;Themes&gt;
+              &lt;Theme id="PTV_PreferredRoutes" enabled="false" priorityLevel="0"&gt;
+                &lt;PropertyValue id='preferredRouteType' value='9'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='17'/&gt;
+                &lt;PropertyValue id='preferredRouteType' value='23'/&gt;
+            &lt;/Theme&gt;
+              &lt;Theme id="PTV_TruckAttributes" enabled="false" priorityLevel="0"/&gt;
+              &lt;Theme id="PTV_SpeedPatterns" enabled="false" priorityLevel="0"/&gt;
+            &lt;/Themes&gt;
+          &lt;/FeatureLayer&gt;
+          &lt;Routing majorVersion="2" minorVersion="0"&gt;
+            &lt;Course&gt;
+              &lt;AdditionalDataRules enabled="true" /&gt;
+              &lt;DynamicRouting limitDynamicSpeedToStaticSpeed="false" /&gt;
+            &lt;/Course&gt;
+            &lt;Vehicle&gt;
+              &lt;Load hazardousGoodsType="HAZARDOUS" /&gt;
+			  &lt;Physical&gt;
+			    &lt;Dimension height='480'/&gt;
+			  &lt;/Physical&gt;
+            &lt;/Vehicle&gt;
+          &lt;/Routing&gt;
+        &lt;/Profile&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

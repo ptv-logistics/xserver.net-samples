@@ -1,0 +1,20 @@
+﻿<!-- 
+// Copyright (c) PTV Group
+//  
+// For license details, please refer to the file COPYING, which 
+// should have been provided with this distribution.
+-->
+<Application x:Class="Ptv.XServer.Demo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+  <Application.Resources>
+
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources\Themes\DemoCenter.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+  </Application.Resources>
+</Application>

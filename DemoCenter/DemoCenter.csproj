@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF02A908-B887-4F8A-B5D9-A7AF77B9863A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ptv.XServer.Demo</RootNamespace>
+    <AssemblyName>PTV xServer .NET Demo Center</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>\bin\Debug\PTV xServer .NET Demo Center.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>\bin\Release\PTV xServer .NET Demo Center.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aviad.WPF.Controls">
+      <HintPath>..\Lib\Aviad.WPF.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Lib\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\Lib\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNET">
+      <HintPath>..\Lib\ProjNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Ptv.Components.Projections">
+      <HintPath>..\Lib\Ptv.Components.Projections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ptv.XServer.Controls.Map">
+      <HintPath>..\Lib\Ptv.XServer.Controls.Map.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpMap">
+      <HintPath>..\Lib\SharpMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
+      <HintPath>..\Lib\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Resources\MessageBox\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\MessageBox\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\XtourService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Token.cs" />
+    <Compile Include="SplashWindow.cs" />
+    <Compile Include="Tools\ClusterRegions.cs" />
+    <Compile Include="Tools\ControlTools.cs" />
+    <Compile Include="Tools\XMapLayer.cs" />
+    <Compile Include="Tools\XServerInternetLayers.cs" />
+    <Compile Include="Tools\XServerWithToken.cs" />
+    <Compile Include="Resources\Intro\IntroManager.cs" />
+    <Compile Include="UseCases\DataManager\DataManager.cs" />
+    <Compile Include="UseCases\FeatureLayer\FeatureLayer.cs" />
+    <Compile Include="UseCases\Selection\SelectInteractor.cs" />
+    <Compile Include="UseCases\Selection\Selection.cs" />
+    <Compile Include="UseCases\UseCase.cs" />
+    <Compile Include="Resources\Intro\IntroControl.xaml.cs">
+      <DependentUpon>IntroControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UseCases\Bing\Bing.cs" />
+    <Compile Include="UseCases\Clustering\Clustering.cs" />
+    <Compile Include="UseCases\GeoRss\GeoRss.cs" />
+    <Compile Include="UseCases\Here\Here.cs" />
+    <Compile Include="UseCases\MapProfile\MapProfile.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\DragDrop.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\Extensions.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\Layer.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\Route.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\RoutingDragAndDrop.cs" />
+    <Compile Include="UseCases\RoutingDragAndDrop\WayPoints.cs" />
+    <Compile Include="UseCases\RoutePolyline.cs" />
+    <Compile Include="UseCases\ShapeFile\ShapeFile.cs" />
+    <Compile Include="UseCases\TourPlanning\RandomScenarioBuilder.cs" />
+    <Compile Include="UseCases\TourPlanning\ScenarioModel.cs" />
+    <Compile Include="UseCases\TourPlanning\TourCalculationWrapper.cs" />
+    <Compile Include="UseCases\TourPlanning\TourPlanningUseCase.cs" />
+    <Compile Include="UseCases\WMS\WMS.cs" />
+    <EmbeddedResource Include="Resources\MessageBox\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <Page Include="Resources\Themes\DemoCenter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <EmbeddedResource Include="Resources\Themes\PTVBlack.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\PTVBlue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\PTVDefault.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\PTVGreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Themes\PTVSilver.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Page Include="UseCases\Geocoding\MultiFieldControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UseCases\Geocoding\SingleFieldControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UseCases\Routing\RoutingUseCase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\XlocateService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UseCases\Clustering\ClusterDemo.cs" />
+    <Compile Include="UseCases\Clustering\CSVReader.cs" />
+    <Compile Include="UseCases\Geocoding\GeocoderBase.cs" />
+    <Compile Include="UseCases\Geocoding\GeocodeResultsLayer.cs" />
+    <Compile Include="UseCases\Geocoding\GeocoderTemplateSelector.cs" />
+    <Compile Include="UseCases\Geocoding\GeocoderDemo.cs" />
+    <Compile Include="UseCases\Geocoding\MultiFieldControl.xaml.cs">
+      <DependentUpon>MultiFieldControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UseCases\Geocoding\MultiFieldData.cs" />
+    <Compile Include="UseCases\Geocoding\MultiFieldGeocoder.cs" />
+    <Compile Include="UseCases\Geocoding\SingleFieldControl.xaml.cs">
+      <DependentUpon>SingleFieldControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UseCases\Geocoding\SingleFieldGeocoder.cs" />
+    <Compile Include="UseCases\ShapeFile\ShapeSelectionCanvas.cs" />
+    <Compile Include="UseCases\ShapeFile\SharpMapTiledProvider.cs" />
+    <Compile Include="UseCases\Shapes\DifferentShapesUseCase.cs" />
+    <Page Include="Resources\Intro\IntroControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\XrouteService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UseCases\GeoRss\ColorBlend.cs" />
+    <Compile Include="UseCases\GeoRss\GeoRssCanvas.cs" />
+    <Compile Include="UseCases\MapMarket\MapMarketController.cs" />
+    <Compile Include="UseCases\MapMarket\SelectionCanvas.cs" />
+    <Compile Include="UseCases\MapMarket\MMProvider.cs" />
+    <Compile Include="UseCases\MapMarket\IGeoProvider.cs" />
+    <Compile Include="UseCases\MapMarket\TileRenderer.cs" />
+    <Compile Include="UseCases\Routing\RoutingUseCase.xaml.cs">
+      <DependentUpon>RoutingUseCase.xaml</DependentUpon>
+    </Compile>
+    <Resource Include="Resources\xServer.jpg" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\XLocateWSService1.wsdl" />
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.AdvancedTour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\XRouteWSService1.wsdl" />
+    <None Include="Service References\XtourService\Ptv.XServer.Demo.XtourService.AssignVehicleProposal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XtourService\Ptv.XServer.Demo.XtourService.InsertOrderProposal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XtourService\Ptv.XServer.Demo.XtourService.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XtourService\Ptv.XServer.Demo.XtourService.Plan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XtourService\Ptv.XServer.Demo.XtourService.SequencingPlan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XtourService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\XtourService\configuration.svcinfo" />
+    <None Include="Service References\XtourService\configuration91.svcinfo" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Resources\back.png" />
+    <Content Include="Resources\ClusterData\wikilocations.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\xserverinternet.png" />
+    <Resource Include="Resources\octocat.png" />
+    <Resource Include="Resources\key_dark.png" />
+    <Resource Include="Resources\key_light.png" />
+    <Resource Include="Resources\cross.png" />
+    <Resource Include="Resources\forward.png" />
+    <Resource Include="Resources\reset.png" />
+    <Resource Include="Resources\Forum.png" />
+    <Content Include="Resources\ShapeData\world_countries_boundary_file_world_2002.dbf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ShapeData\world_countries_boundary_file_world_2002.README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ShapeData\world_countries_boundary_file_world_2002.shp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ShapeData\world_countries_boundary_file_world_2002.shx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.AddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.CombinedTransportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.ObjectResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.PoiAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.ResultAddress.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XlocateService\Ptv.XServer.Demo.XlocateService.SuggestionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.BulkRouteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.ExtendedRoute.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.Isochrone.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.MatrixInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.Reach.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.ReachableObjects.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.Route.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.RouteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\XrouteService\Ptv.XServer.Demo.XrouteService.Tour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\XtourService\XTourWSService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\XlocateService\" />
+    <WCFMetadataStorage Include="Service References\XrouteService\" />
+    <WCFMetadataStorage Include="Service References\XtourService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XrouteService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XrouteService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XrouteService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XlocateService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XlocateService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\XlocateService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bg_page.png" />
+    <Resource Include="Resources\PTV_Group_Logo_RGB_trns.png" />
+    <Resource Include="Resources\Splash_PTV Group_640x478_e_white.jpg" />
+    <Resource Include="Resources\SharpMapLogo.png" />
+    <Resource Include="Resources\delete.png" />
+    <Resource Include="Resources\CalculatorHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Districts.mdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

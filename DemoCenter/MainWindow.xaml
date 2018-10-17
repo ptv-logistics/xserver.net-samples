@@ -1,0 +1,427 @@
+﻿<!-- 
+// Copyright (c) PTV Group
+//  
+// For license details, please refer to the file COPYING, which 
+// should have been provided with this distribution.
+-->
+<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localuc="clr-namespace:Ptv.XServer.Demo.Geocoding"
+    xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map"
+    xmlns:UseCases="clr-namespace:Ptv.XServer.Demo.UseCases" xmlns:local="clr-namespace:Ptv.XServer.Demo" x:Class="Ptv.XServer.Demo.MainWindow"
+    Loaded="Window_Loaded"
+    Title="PTV xServer .NET Demo Center"
+    Height="900"
+    Width="1200" Icon="/PTV xServer .NET Demo Center;component/Resources/Icon.ico" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" DataContext="{Binding}">
+  <Window.Resources>
+    <!-- BEGIN Resources for the AutoCompleteTextBox of the geocoding use case -->
+    <DataTemplate x:Key="GeocoderSuggestionTemplate">
+        <!-- The preview handlers prevents triggering underlying controls from bubbling up events -->
+        <TextBlock Text="{Binding text}" Margin="2,2,4,2" PreviewKeyDown="PreventBubblingUpHandler" PreviewKeyUp="PreventBubblingUpHandler"  PreviewMouseDown="PreventBubblingUpHandler" PreviewMouseUp="PreventBubblingUpHandler"/>
+    </DataTemplate>
+    <DataTemplate x:Key="WaitTemplate">
+      <TextBlock Text="{Binding}"/>
+    </DataTemplate>
+    <!-- END Resources for the AutoCompleteTextBox of the geocoding use case -->
+  </Window.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="70" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="70" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="70" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="70" />
+    </Grid.RowDefinitions>
+    <Image x:Name="BackgroundImage" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" Stretch="Fill">
+      <Image.Source>
+        <BitmapImage UriSource="Resources/bg_page.png" />
+      </Image.Source>
+    </Image>
+    <TextBlock x:Name="Headline" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF5B5B5B" FontSize="24" FontWeight="Bold"><Run Text="PTV xServer .NET Demo Center"/></TextBlock>
+    <Image x:Name="Logo" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Width="90" HorizontalAlignment="Right" Margin="0,27,5,3" MouseLeftButtonUp="Logo_MouseLeftButtonUp" MouseEnter="Logo_MouseEnter" MouseLeave="Logo_MouseLeave">
+      <Image.Source>
+        <BitmapImage DecodePixelWidth="100" UriSource="Resources/PTV_Group_Logo_RGB_trns.png" />
+      </Image.Source>
+    </Image>
+    <Button x:Name="CloseButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Width="25" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseButton_Click">
+      <Path Fill="{Binding Foreground, ElementName=CloseButton}">
+        <Path.Data>
+          <PathGeometry>
+            <PathFigure StartPoint="0,2">
+              <LineSegment Point="2,0" IsSmoothJoin="True"/>
+              <LineSegment Point="6,4" IsSmoothJoin="True"/>
+              <LineSegment Point="10,0" IsSmoothJoin="True"/>
+              <LineSegment Point="12,2" IsSmoothJoin="True"/>
+              <LineSegment Point="8,6" IsSmoothJoin="True"/>
+              <LineSegment Point="12,10" IsSmoothJoin="True"/>
+              <LineSegment Point="10,12" IsSmoothJoin="True"/>
+              <LineSegment Point="6,8" IsSmoothJoin="True"/>
+              <LineSegment Point="2,12" IsSmoothJoin="True"/>
+              <LineSegment Point="0,10" IsSmoothJoin="True"/>
+              <LineSegment Point="4,6" IsSmoothJoin="True"/>
+              <LineSegment Point="0,2" IsSmoothJoin="True"/>
+            </PathFigure>
+          </PathGeometry>
+        </Path.Data>
+      </Path>
+    </Button>
+    <Button x:Name="MaximizeButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Width="25" Height="20" Margin="0,0,25,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="MaximizeButton_Click">
+      <Path Fill="{Binding Foreground, ElementName=CloseButton}">
+        <Path.Data>
+          <GeometryGroup>
+            <RectangleGeometry Rect="0,0 12,12"/>
+            <RectangleGeometry Rect="2,2 8,8"/>
+          </GeometryGroup>
+        </Path.Data>
+      </Path>
+    </Button>
+    <Button x:Name="MinimizeButton" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Width="25" Height="20" Margin="0,0,50,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="MinimizeButton_Click">
+      <Path Fill="{Binding Foreground, ElementName=CloseButton}">
+        <Path.Data>
+          <RectangleGeometry Rect="0,10 12,2"/>
+        </Path.Data>
+      </Path>
+    </Button>
+
+    <DockPanel Grid.Column="1" Grid.Row="1" Background="#FF5B5B5B" VerticalAlignment="Stretch">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height ="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height ="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Expander Panel.ZIndex="50" x:Name="Menu" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Header="" Margin="3" ExpandDirection="Right" IsExpanded="True">
+          <ScrollViewer Width="220" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="5">
+              <StackPanel.Resources>
+                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                  <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="{x:Type ProgressBar}" BasedOn="{StaticResource {x:Type ProgressBar}}">
+                  <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                  <Setter Property="Margin" Value="5"/>
+                  <Setter Property="TextWrapping" Value="Wrap"/>
+                  <Setter Property="Foreground" Value="LightGray"/>
+                </Style>
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                  <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                  <Setter Property="Margin" Value="2"/>
+                </Style>
+                <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
+                  <Setter Property="IsChecked" Value="False"/>
+                  <Setter Property="VerticalAlignment" Value="Top"/>
+                  <Setter Property="Margin" Value="2"/>
+                  <EventSetter Event="ToggleButton.Checked" Handler="CheckBox_CheckedChanged"/>
+                  <EventSetter Event="ToggleButton.Unchecked" Handler="CheckBox_CheckedChanged"/>
+                </Style>
+              </StackPanel.Resources>
+
+              <Expander Name="xServerExpander" Panel.ZIndex="100" Header="xServer">
+                <StackPanel>
+                  <TextBlock><Run Text="Define the xMap URL and xToken, if PTV xServer is used on Azure."/></TextBlock>
+                  <ComboBox x:Name="XURLComboBox" IsEditable="True">
+                    <ComboBoxItem Content="api-eu-test"/>
+                    <ComboBoxItem Content="localhost"/>
+                    <ComboBoxItem Tag="80.146.239.180" Content="Legacy xServer DEV"/>
+                  </ComboBox>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="22"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox GotFocus="XTokenTextBox_GotFocus" TextChanged="XTokenTextBox_TextChanged" Grid.Column="0" x:Name="XTokenTextBox">
+                      <TextBox.Style>
+                        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                          <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=XTokenToggleButton}" Value="True">
+                                <Setter Property="IsReadOnly" Value="True" />
+                                <Setter Property="FontStyle" Value="Italic" />
+                                <Setter Property="Foreground" Value="Gray" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=XTokenToggleButton}" Value="False">
+                                <Setter Property="IsReadOnly" Value="False" />
+                                <Setter Property="FontStyle" Value="Normal" />
+                                <Setter Property="Foreground" Value="White" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                        </Style>
+                      </TextBox.Style>
+                    </TextBox>
+                    <ToggleButton Grid.Column="1" Checked="XTokenToggleButton_CheckedChanged" Unchecked="XTokenToggleButton_CheckedChanged" IsChecked="True" Margin="0 1 2 1" Width="20" x:Name="XTokenToggleButton">
+                      <Image Stretch="Uniform" x:Name="XTokenIcon">
+                        <Image.Style>
+                          <Style TargetType="{x:Type Image}">
+                            <Style.Triggers>
+                              <DataTrigger Binding="{Binding IsChecked, ElementName=XTokenToggleButton}" Value="True">
+                                <Setter Property="Source" Value="/Resources/key_dark.png" />
+                                <Setter Property="ToolTip" Value="Click to use own token" />
+                              </DataTrigger>
+                              <DataTrigger Binding="{Binding IsChecked, ElementName=XTokenToggleButton}" Value="False">
+                                <Setter Property="Source" Value="/Resources/key_light.png" />
+                                <Setter Property="ToolTip" Value="Click to use demo token" />
+                              </DataTrigger>
+                            </Style.Triggers>
+                          </Style>
+                        </Image.Style>
+                      </Image>
+                    </ToggleButton>
+                  </Grid>
+                  <Button x:Name="XServerOKButton" IsEnabled="True" Click="XServerOKButton_Click" Content="OK"/>
+                  <Ellipse Name="ConnectionIntroEllpise" Visibility="Hidden" Margin="0,-81,-8,11" StrokeThickness="2" Panel.ZIndex="10" Height="70" Width="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stroke="#E02129">
+                    <Ellipse.BitmapEffect>
+                        <DropShadowBitmapEffect Color="#FFE02129" Direction="270" ShadowDepth="2" Opacity="1" Softness="1"/>
+                    </Ellipse.BitmapEffect>
+                    <Ellipse.Triggers>
+                      <EventTrigger RoutedEvent="Ellipse.Loaded">
+                        <EventTrigger.Actions>
+                          <BeginStoryboard>
+                            <Storyboard>
+                              <DoubleAnimation Storyboard.TargetName="ConnectionIntroEllpise"
+                                                Storyboard.TargetProperty="Opacity"
+                                                From="1"
+                                                To="0.3"
+                                                Duration="0:0:0.7"
+                                                AutoReverse="True"
+                                                RepeatBehavior="Forever"/>
+                            </Storyboard>
+                          </BeginStoryboard>
+                        </EventTrigger.Actions>
+                      </EventTrigger>
+                    </Ellipse.Triggers>
+                  </Ellipse>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="HereExpander" Header="HERE Satellite View">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows a HERE Satellite layer combined with the labels of an xMap server."/></TextBlock>
+                  <CheckBox x:Name="HereCheckBox" Content="Activate HERE layer"/>
+                  <TextBox x:Name="HereAppIdTextBox"  IsEnabled="false" KeyDown="HereAppIdTextBox_KeyDown" Text="Enter AppId here"/>
+                  <TextBox x:Name="HereAppCodeTextBox"  IsEnabled="false" KeyDown="HereAppCodeTextBox_KeyDown" Text="Enter AppCode here"/>
+                  <Button x:Name="HereOkButton"  IsEnabled="false" Click="HereOKButton_Click" Content="OK"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="ClusteringExpander" Header="Clustering">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows how to cluster data to minimize WPF elements on the map."/></TextBlock>
+                  <CheckBox x:Name="ClusteringCheckBox" Content="Activate clustering layer"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="DifferentShapesExpander"  Header="Different shapes">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows different shapes including an animated one."/></TextBlock>
+                  <CheckBox x:Name="DifferentShapesCheckBox" Content="Activate different shapes"/>
+                  <CheckBox x:Name="ShapesUseLabelsCheckBox" Checked="ShapesUseLabelsCheckBox_OnChecked" Unchecked="ShapesUseLabelsCheckBox_OnChecked" Content="Use labels" IsEnabled="False"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="AdditionalWPFMapExpander" Header="Additional WPF map">
+                <StackPanel>
+                  <TextBlock><Run Text="Divides the central grid into two parts and shows an additional WPF map on the right side."/></TextBlock>
+                  <CheckBox x:Name="AddWpfMapCheckBox" Content="Show additional map"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="GeoRSSExpander" Header="GeoRSS">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows the recent earth quakes. The size and color of the pins depends on the earthquake magnitude. Moving the mouse over a pin shows the magnitude and location as a tool tip."/></TextBlock>
+                  <CheckBox x:Name="GeoRSSCheckBox" Content="Show recent earth quakes"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="MapMarketExpander" Header="Map&amp;Market">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows clickable thematic Map&amp;Market regions."/></TextBlock>
+                  <CheckBox x:Name="MapMarketCheckBox" Content="Activate Map&amp;Market regions"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="DataManagerExpander" Header="Data manager">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows a layer which is provided by the Data Manager infrastructure."/></TextBlock>
+                  <CheckBox x:Name="DataManagerCheckBox" Content="Activate Data Manager layer"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="ShapeFileExpander" Header="ShapeFile">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows how data of a shape file can be rendered with SharpMap."/></TextBlock>
+                  <CheckBox x:Name="ShapeFileCheckBox" Content="Show shape file data"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="WmsExpander" Header="Web Map Services">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows map data retrieved from a Web Map Service (WMS)."/></TextBlock>
+                  <CheckBox x:Name="WmsEnableCheckBox" Content="Show Web Map Services"/>
+                  <CheckBox x:Name="WmsUseTiledLayerCheckBox" Content="Use tiled layer of Geobase data" IsEnabled="False"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="ManySymbolsExpander" Header="Selection">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows how to select a set of symbols. You can either click on a symbol or hold ALT to drag a rubber band around it. You can add new elements to the existing set by holding the SHIFT key."/></TextBlock>
+                  <CheckBox x:Name="ManySymbolsCheckBox" Content="Activate Selection"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="UIThemeExpander" Header="Switch UI theme">
+                <StackPanel>
+                  <TextBlock><Run Text="Shows how to switch WPF themes for user interface."/></TextBlock>
+                  <ComboBox x:Name="UIThemeComboBox" SelectedValuePath="Content" IsEditable="False" IsReadOnly="True" SelectionChanged="UIThemeComboBox_OnSelectionChanged">
+                    <ComboBoxItem Content="Black"/>
+                    <ComboBoxItem Content="Blue"/>
+                    <ComboBoxItem Content="Default"/>
+                    <ComboBoxItem Content="Green"/>
+                    <ComboBoxItem Content="Silver"/>
+                  </ComboBox>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="ProfileExpander" Header="Switch map style">
+                <StackPanel>
+                  <TextBlock><Run Text="Demonstrates the usage of different map styles provided by profiles. Pre-defined profiles are available from xMap 1.18.1.0."/></TextBlock>
+                  <ComboBox x:Name="ProfileComboBox" IsEditable="True">
+                    <!-- TextBoxBase.TextChanged="ProfileComboBox_OnTextChanged"-->
+                    <ComboBoxItem Content="Default"/>
+                    <ComboBoxItem Content="Sandbox"/>
+                    <ComboBoxItem Content="Silkysand"/>
+                    <ComboBoxItem Content="Gravelpit"/>
+                  </ComboBox>
+                  <Button x:Name="ProfileOKButton" IsEnabled="True" Click="ProfileOKButton_OnClick" Content="OK"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="GeocodingExpander" Header="Geocoding">
+                <StackPanel>
+                  <TextBlock><Run Text="Demonstrates the geocoding use case by using a single field or multi field user control."/></TextBlock>
+                  <RadioButton x:Name="DeactivatedGeocodingRadiobutton" Content="Deactivated"/>
+                  <RadioButton x:Name="SingleFieldRadioButton" Checked="SingleFieldLocatingRB_Checked" Unchecked="SingleFieldLocatingRB_Checked" Content="Single-field search"/>
+                  <RadioButton x:Name="MultiFieldRadioButton" Checked="MultiFieldLocatingRB_Checked" Unchecked="MultiFieldLocatingRB_Checked" Content="Multi-field search"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander Name="RoutingExpander"  Header="Elementary routing">
+                <StackPanel>
+                  <TextBlock><Run Text="Moving the mouse over the route shows the summarized routing time and distance. Click right in the map to add a way point or to calculate the route. Click right on a way point to remove it or move it up or down in the station list."/></TextBlock>
+                  <CheckBox x:Name="ElementaryRoutingCheckBox" Content="Activate elementary routing"/>
+                  <Ellipse Name="PossibilitiesIntroEllpise" Visibility="Hidden" Margin="-5,-30,0,-5" StrokeThickness="2" Panel.ZIndex="10" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Stroke="#E02129">
+                    <Ellipse.BitmapEffect>
+                      <DropShadowBitmapEffect Color="#FFE02129" Direction="270" ShadowDepth="2" Opacity="1" Softness="1"/>
+                    </Ellipse.BitmapEffect>
+                    <Ellipse.Triggers>
+                      <EventTrigger RoutedEvent="Ellipse.Loaded">
+                        <EventTrigger.Actions>
+                          <BeginStoryboard>
+                            <Storyboard>
+                              <DoubleAnimation Storyboard.TargetName="PossibilitiesIntroEllpise"
+                                                Storyboard.TargetProperty="Opacity"
+                                                From="1"
+                                                To="0.3"
+                                                Duration="0:0:0.7"
+                                                AutoReverse="True"
+                                                RepeatBehavior="Forever"/>
+                            </Storyboard>
+                          </BeginStoryboard>
+                        </EventTrigger.Actions>
+                      </EventTrigger>
+                    </Ellipse.Triggers>
+                  </Ellipse>
+                </StackPanel>
+              </Expander>
+                
+              <Expander x:Name="XRouteDragAndDropExpander" Header="Drag &amp; Drop routing">
+                <StackPanel>
+                  <TextBlock><Run Text="To start, use map's context menu to define some initial way points. The rest should be pretty self-explanatory. This sample does not correct any way point being unsuitable for route calculation. If routing fails, a simple red line is displayed in the map with its tooltip describing the error that occurred."/></TextBlock>
+                  <CheckBox x:Name="XRouteDragAndDropCheckBox" Content="Activate Drag&amp;Drop routing"/>
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="FeatureLayerExpander" Header="Feature Layer">
+                <StackPanel>
+                  <StackPanel.Resources>
+                    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                      <Setter Property="Margin" Value="20,2,2,2"/>
+                      <Setter Property="IsEditable" Value="False"/>
+                      <Setter Property="IsEnabled" Value="False"/>
+                    </Style>
+                  </StackPanel.Resources>
+
+                  <TextBlock><Run Text="Activates different Feature Layer themes and shows optionally a basic route colored grey and a green route regarding the chosen Feature Layer."/></TextBlock>
+                  <CheckBox x:Name="TrafficIncidentsCheckBox" Content="Traffic incidents"/>
+                  <ComboBox x:Name="TrafficIncidentsComboBox" SelectionChanged="FeatureLayerComboBox_SelectionChanged" />
+                  <CheckBox x:Name="TruckAttributesCheckBox" Content="Truck attributes"/>
+                  <ComboBox x:Name="TruckAttributesComboBox" SelectionChanged="FeatureLayerComboBox_SelectionChanged" />
+                  <CheckBox x:Name="PreferredRoutesCheckBox" Content="Preferred routes"/>
+                  <ComboBox x:Name="PreferredRoutesComboBox" SelectionChanged="FeatureLayerComboBox_SelectionChanged" />
+                  <CheckBox x:Name="RestrictionZonesCheckBox" Content="Restriction zones"/>
+                  <ComboBox x:Name="RestrictionZonesComboBox" SelectionChanged="FeatureLayerComboBox_SelectionChanged" />
+                  <CheckBox x:Name="SpeedPatternsCheckBox" Content="Speed patterns"/>
+                  <ComboBox x:Name="SpeedPatternsComboBox" SelectionChanged="FeatureLayerComboBox_SelectionChanged" />
+                </StackPanel>
+              </Expander>
+
+              <Expander x:Name="TourPlanningExpander" Header="Tour planning">
+                <StackPanel>
+                  <TextBlock><Run Text="In this sample the invoking of PTV xServers is demonstrated in a non-blocking way and using the job API to control and display the tour calculation progress."/></TextBlock>
+                  <ComboBox x:Name="TourScenarioComboBox" IsEditable="False" IsReadOnly="True" SelectionChanged="TourScenarioComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Deactivated (no scenario)"/>
+                    <ComboBoxItem Content="Tiny"/>
+                    <ComboBoxItem Content="Small"/>
+                    <ComboBoxItem Content="Medium"/>
+                    <ComboBoxItem Content="Large"/>
+                  </ComboBox>
+                  <Label Margin="2 0 2 0" x:Name="TourPlanningStatus"/>
+                  <ProgressBar x:Name="TourPlanningProgressBar" Height="20"/>
+                  <Button x:Name="TourPlanningStart" Click="TourPlanningStartButton_Click" Content="Start planning"/>
+                </StackPanel>
+              </Expander>
+            </StackPanel>
+          </ScrollViewer>
+        </Expander>
+
+        <ScrollViewer Grid.Row="0" Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Visibility="Visible">
+            <localuc:SingleFieldControl x:Name="SingleFieldInput"/>
+        </ScrollViewer>
+        <Grid Panel.ZIndex="20" x:Name="MapGrid" Grid.Row="1" Grid.Column="1" DockPanel.Dock="Right" Margin="0,3,3,3">
+            <map:WpfMap x:Name="wpfMap" Grid.Column="0" Background="#FFE5E8E4" UseDefaultTheme="True" />
+        </Grid>
+        <Grid Panel.ZIndex="21" x:Name="IntroGrid" Grid.Row="1" Grid.Column="1" DockPanel.Dock="Right" Margin="0,3,3,3">
+        </Grid>
+        <ScrollViewer Grid.Row="2" Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Visibility="Visible">
+            <localuc:MultiFieldControl x:Name="MultiFieldInput" />
+        </ScrollViewer>
+      </Grid>
+    </DockPanel>
+    <StackPanel Margin="0 0 210 10" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseLeftButtonUp="Forum_OnMouseLeftButtonUp" MouseEnter="Logo_MouseEnter" MouseLeave="Logo_MouseLeave">
+        <Image Height="30" Source="/Resources/Forum.png" />
+        <TextBlock TextDecorations="Underline" FontWeight="Bold"><Run Text="Forum"/></TextBlock>
+    </StackPanel>
+    <StackPanel Margin="0 0 105 10" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseLeftButtonUp="XServerInternet_OnMouseLeftButtonUp" MouseEnter="Logo_MouseEnter" MouseLeave="Logo_MouseLeave">
+        <Image Height="30" Source="/Resources/xserverinternet.png" />
+        <TextBlock TextDecorations="Underline" FontWeight="Bold"><Run Text="xServer internet"/></TextBlock>
+    </StackPanel>
+    <StackPanel Margin="0 0 15 10" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" MouseLeftButtonUp="FurtherSamples_OnMouseLeftButtonUp" MouseEnter="Logo_MouseEnter" MouseLeave="Logo_MouseLeave">
+        <Image Height="30" Source="/Resources/octocat.png" />
+        <TextBlock TextDecorations="Underline" FontWeight="Bold"><Run Text="More samples"/></TextBlock>
+    </StackPanel>
+    <StackPanel Margin="15 0 0 10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" MouseLeftButtonUp="ResetDemos_OnMouseLeftButtonUp" MouseEnter="Logo_MouseEnter" MouseLeave="Logo_MouseLeave">
+        <Image Height="30" Source="/Resources/reset.png" />
+        <TextBlock FontWeight="Bold"><Run Text="Reset demos"/></TextBlock>
+    </StackPanel>
+  </Grid>
+</Window>
