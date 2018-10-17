@@ -77,8 +77,6 @@ namespace FeatureLayers
         /// <inheritdoc/>
         public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width, int height, out IEnumerable<IMapObject> mapObjects)
         {
-            var size = new System.Windows.Size(width, height);
-
             using (var service = new XMapWSServiceImpl(url))
             {
                 if (!string.IsNullOrEmpty(User) && !string.IsNullOrEmpty(Password))
@@ -167,7 +165,7 @@ namespace FeatureLayers
                 if (!BoundingBoxesAreEqual(bbox, map.visibleSection.boundingBox))
                     IssueBoundingBoxWarning(bbox, map.visibleSection.boundingBox, width, height, profile);
 #endif
-                mapObjects = map?.wrappedObjects?
+                mapObjects = map.wrappedObjects?
                     .Select(objects => objects.wrappedObjects?.Select(layerObject => new XMap1MapObject(objects, layerObject)))
                     .Where(objects => objects != null && objects.Any())
                     .SelectMany(objects => objects);

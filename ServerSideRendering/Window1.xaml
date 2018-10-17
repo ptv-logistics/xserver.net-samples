@@ -6,22 +6,5 @@
     Title="Server-Side Rendering" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
         <mapcore:WpfMap Name="Map"/>
-        <Border  Margin="10,100,0,0" Background="White" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="1" CornerRadius="8,8,8,8">
-            <StackPanel Background="White" 
-                  Margin="4,4,4,4">
-                <ComboBox x:Name="mapCluster" SelectionChanged="Cluster_Changed">
-                    <ComboBoxItem IsSelected="True">eu-n-test</ComboBoxItem>
-                    <ComboBoxItem>na-n-test</ComboBoxItem>
-                    <ComboBoxItem>au-n-test</ComboBoxItem>
-                </ComboBox>
-                <ComboBox x:Name="mapProfile" SelectionChanged="Profile_Changed">
-                    <ComboBoxItem IsSelected="True">Silkysand</ComboBoxItem>
-                    <ComboBoxItem>Sandbox</ComboBoxItem>
-                    <ComboBoxItem>Classic</ComboBoxItem>
-                </ComboBox>
-                <CheckBox IsChecked="True" x:Name="restrictionZones" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Restriction Zones</CheckBox>
-                <CheckBox IsChecked="True" x:Name="preferredRoutes" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Preferred Routes</CheckBox>
-            </StackPanel>
-        </Border>
     </Grid>
 </Window>

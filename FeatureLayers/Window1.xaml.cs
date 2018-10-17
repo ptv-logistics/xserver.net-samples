@@ -21,6 +21,8 @@ namespace FeatureLayers
         {
             InitializeComponent();
 
+            referenceTime.Value = DateTime.Now;        
+
             InitializeMap();
 
             Map.SetMapLocation(new Point(8.4, 49), 14);
@@ -88,21 +90,34 @@ namespace FeatureLayers
             flPresenter.ReferenceTime = referenceTime.Value;
 
             flPresenter.UseTrafficIncidents = true;
-            flPresenter.UseRestrictionZones = true;
-            flPresenter.UseTruckAttributes = true;
-            flPresenter.UseSpeedPatterns = true;
+            flPresenter.UseRestrictionZones = false;
+            flPresenter.UseTruckAttributes = false;
+            flPresenter.UseSpeedPatterns = false;
 
             flPresenter.RefreshMap();
         }
 
         private void referenceTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (flPresenter != null)
-            {
-                flPresenter.ReferenceTime = referenceTime.Value;
+            if (flPresenter == null)
+                return;
 
-                flPresenter.RefreshMap();
-            }
+            flPresenter.ReferenceTime = referenceTime.Value;
+
+            flPresenter.RefreshMap();
+        }
+
+        private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (flPresenter == null)
+                return;
+
+            flPresenter.UseTrafficIncidents = trafficIncidents.IsChecked.Value;
+            flPresenter.UseRestrictionZones = restrictionZones.IsChecked.Value;
+            flPresenter.UseTruckAttributes = truckAttributes.IsChecked.Value;
+            flPresenter.UseSpeedPatterns = speedPatterns.IsChecked.Value;
+
+            flPresenter.RefreshMap();
         }
     }
 }

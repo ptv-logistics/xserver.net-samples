@@ -9,6 +9,10 @@
         <mapcore:WpfMap Name="Map"/>
         <StackPanel Margin="10,0,0,60"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
             <wpfTool:DateTimePicker x:Name="referenceTime" ValueChanged="referenceTime_ValueChanged"></wpfTool:DateTimePicker>
+            <CheckBox IsChecked="True" x:Name="trafficIncidents" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Traffic Incidents</CheckBox>
+            <CheckBox IsChecked="False" x:Name="truckAttributes" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Truck Attributes</CheckBox>
+            <CheckBox IsChecked="False" x:Name="restrictionZones" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Restriction Zones</CheckBox>
+            <CheckBox IsChecked="False" x:Name="speedPatterns" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Speed Patterns</CheckBox>
         </StackPanel>
     </Grid>
 </Window>

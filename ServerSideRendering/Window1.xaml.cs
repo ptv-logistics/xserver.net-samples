@@ -19,80 +19,24 @@ namespace ServerSideRendering
         public Window1()
         {
             InitializeComponent();
-            initialized = true;
 
-            Cluster_Changed(this, null);
+            InitMapLayers();
         }
 
         private void InitMapLayers()
         {
-            string cluster = GetCluster();
+            string cluster = "eu-n-test";
 
-            switch (cluster)
-            {
-                case "eu-n-test":
-                    Map.SetMapLocation(new System.Windows.Point(9.182778, 48.775556), 12);
-                    break;
-                case "au-n-test":
-                    Map.SetMapLocation(new System.Windows.Point(138.6, -34.92), 12);
-                    break;
-                case "na-n-test":
-                    Map.SetMapLocation(new System.Windows.Point(-71.415, 41.830833), 12);
-                    break;
-            }
-
-
-            Map.Layers.Clear();
+            Map.SetMapLocation(new System.Windows.Point(9.182778, 48.775556), 12);
 
             var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvgroup.com/xmap/ws/XMap");
             xmapMetaInfo.SetCredentials("xtok", "EBB3ABF6-C1FD-4B01-9D69-349332944AD9");
-            InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, GetProfile());
-
-            UpdateFeatureLayers();
+            InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, "gravelpit");
 
             Map.InsertTrafficInfoLayer(xmapMetaInfo, "Traffic", "traffic.ptv-traffic", "Traffic information");
             Map.InsertRoadEditorLayer(xmapMetaInfo, "TruckAttributes", "truckattributes", "truckattributes", "Truck attributes");
             Map.InsertPoiLayer(xmapMetaInfo, "Poi", "default.points-of-interest", "Points of interest");
-
-            if (cluster == "eu-n-test")
-                Map.InsertDataManagerLayer(xmapMetaInfo, "POS", "t_f07ef3f0_ce7a_4913_90ea_b072ec07e6ff", "Points Of Sales", 10, true);
         }
-
-        public void UpdateFeatureLayers()
-        {
-            var bgLayer = ((TiledLayer)Map.Layers["Background"]);
-            var bgProvider = ((ExtendedXMapTiledProvider) bgLayer.TiledProvider);
-
-            if (GetPreferredRoutes() || GetRestrictionZones())
-            {
-                string xmlSnippet =
-                    @"<Profile xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><FeatureLayer majorVersion=""1"" minorVersion=""0""><GlobalSettings enableTimeDependency=""true""/><Themes>";
-                if (GetRestrictionZones())
-                    xmlSnippet = xmlSnippet + @"<Theme id=""PTV_RestrictionZones"" enabled=""true"" priorityLevel=""0""></Theme>";
-                if (GetPreferredRoutes())
-                    xmlSnippet = xmlSnippet + @"<Theme id=""PTV_PreferredRoutes"" enabled=""true"" priorityLevel=""0""></Theme>";
-                xmlSnippet = xmlSnippet + @"</Themes></FeatureLayer></Profile>";
-                bgProvider.CustomCallerContextProperties = new[]
-                {
-                    new CallerContextProperty
-                    {
-                        key = "ProfileXMLSnippet",
-                        value = xmlSnippet                            
-                    }
-                };
-            }
-            else
-                ((ExtendedXMapTiledProvider) bgLayer.TiledProvider).CustomCallerContextProperties = null;
-
-            bgProvider.CustomProfile = GetProfile() + "-bg";
-            bgLayer.Refresh();
-
-            var fgLayer = ((UntiledLayer)Map.Layers["Labels"]);
-            var fgProvider = ((XMapTiledProvider)fgLayer.UntiledProvider);
-            fgProvider.CustomProfile = GetProfile() + "-fg";
-            fgLayer.Refresh();
-        }
-
         public void InsertXMapBaseLayers(LayerCollection layers, XMapMetaInfo meta, string profile)
         {
             var baseLayer = new TiledLayer("Background")
@@ -124,56 +68,6 @@ namespace ServerSideRendering
 
             layers.Add(baseLayer);
             layers.Add(labelLayer);
-        }
-
-        private string GetCluster()
-        {
-            var clusters = new[] { "eu-n-test", "na-n-test", "au-n-test" };
-            return clusters[mapCluster.SelectedIndex];
-        }
-
-        private string GetProfile()
-        {
-            var profiles = new[] { "silkysand", "sandbox", "ajax" };
-            return profiles[mapProfile.SelectedIndex];
-        }
-
-        private bool GetPreferredRoutes()
-        {
-            return preferredRoutes.IsEnabled && (preferredRoutes.IsChecked?? false);
-        }
-
-        private bool GetRestrictionZones()
-        {
-            return restrictionZones.IsEnabled && (restrictionZones.IsChecked ?? false);
-        }
-
-        private void Profile_Changed(object sender, RoutedEventArgs e)
-        {
-            if (!initialized)
-                return;
-
-            UpdateFeatureLayers();
-        }
-
-        private void Cluster_Changed(object sender, RoutedEventArgs e)
-        {
-            if (!initialized)
-                return;
-
-            string cluster = GetCluster();
-            restrictionZones.IsEnabled = (cluster == "eu-n-test");
-            preferredRoutes.IsEnabled = (cluster != "eu-n-test");
-
-            InitMapLayers();
-        }
-
-        private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
-        {
-            if (!initialized)
-                return;
-
-            UpdateFeatureLayers();
         }
     }
 }
