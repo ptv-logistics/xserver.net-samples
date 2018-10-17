@@ -94,7 +94,7 @@ namespace ToursAndStops
         {
             var xroute = new XRouteWSClient();
             xroute.ClientCredentials.UserName.UserName = "xtok";
-            xroute.ClientCredentials.UserName.Password = "9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E";
+            xroute.ClientCredentials.UserName.Password = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
             return xroute.calculateRoute(new[]
                 {
                     new WaypointDesc
