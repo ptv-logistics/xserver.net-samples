@@ -1,7 +1,7 @@
 xservernet-bin
 ==============
 
-A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/) that are not included in the SDK.
+A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
 #### Also have a look on these projects for PTV xServer @.NET
 
@@ -12,15 +12,11 @@ A bin of samples for [PTV xServer .NET](https://xserverinternet.azurewebsites.ne
 
 ### The samples
 
-#### ActiveX
-Shows how to use the map as ActiveX control
+#### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
+<img src="Screenshots/ActiveX.png" height="240" title="ActiveX">
 
-![ActiveX](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ActiveX.png "ActiveX")
-
-#### BasemapTooltips
-Shows how to display city/street information as tool tip by reverse locating
-
-![BasemapTooltips](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/BasemapTooltips.png "BasemapTooltips")
+#### [BasemapTooltips](BasemapTooltips) Shows how to display city/street information as tool tip by reverse locating
+<img src="Screenshots/BasemapTooltips.png" height="240" title="BasemapTooltips">
 
 #### Circles
 Shows how to render circles with a geographic radius
