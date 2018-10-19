@@ -12,9 +12,8 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 
 ### The samples
 
-#### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Shows how to render circles with a geographic radius
-
-![Xmap2LayerFactoryTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Xmap2LayerFactoryTest.png "Xmap2LayerFactoryTest")
+#### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Demonstrates the API for native Xmap2/FeatureLayer support.
+<img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
 #### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
 <img src="Screenshots/ActiveX.png" height="240" title="ActiveX">
