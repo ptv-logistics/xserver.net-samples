@@ -12,7 +12,7 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 
 ### The samples
 
-#### [Xmap2LayerFactoryTest]Xmap2LayerFactoryTest) Shows how to render circles with a geographic radius
+#### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Shows how to render circles with a geographic radius
 
 ![Xmap2LayerFactoryTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Xmap2LayerFactoryTest.png "Xmap2LayerFactoryTest")
 
