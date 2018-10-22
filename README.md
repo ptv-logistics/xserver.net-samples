@@ -3,17 +3,17 @@ xservernet-bin
 
 A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
-#### Also have a look on these projects for PTV xServer @.NET
+#### 
 
 * [xserver.net](https://github.com/ptv-logistics/xserver.net) - Source code for PTV xServer.NET
-* [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
-* [SharpMap.Ptv](https://github.com/ptv-logistics/SharpMap.Ptv) - SharpMap Addons for PTV Services and Data
-* [SpatialTutorial](https://github.com/ptv-logistics/SpatialTutorial/wiki) - A tutorial that shows some practices to visualize, analyze and manipulate spatial data with PTV xServer, ASP.NET and JavaScript
 
 ### The samples
 
 #### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Demonstrates the API for native Xmap2/FeatureLayer support.
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
+
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
+<img src=https://github.com/ptv-logistics/SharpMap.Widgets/blob/master/Doc/SharpMap.Win.png" height="240" title="/SharpMap.Widgets">
 
 #### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
 <img src="Screenshots/ActiveX.png" height="240" title="ActiveX">
