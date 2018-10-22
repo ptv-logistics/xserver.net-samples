@@ -13,7 +13,7 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
 #### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
-<img src=https://github.com/ptv-logistics/SharpMap.Widgets/blob/master/Doc/SharpMap.Win.png" height="240" title="/SharpMap.Widgets">
+<img src=https://github.com/ptv-logistics/SharpMap.Widgets/blob/master/Doc/SharpMap.Win.png" height="240" title="SharpMap.Widgets">
 
 #### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
 <img src="Screenshots/ActiveX.png" height="240" title="ActiveX">
