@@ -3,9 +3,12 @@ xservernet-bin
 
 A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
-#### 
+
+### Resources
 
 * [xserver.net](https://github.com/ptv-logistics/xserver.net) - Source code for PTV xServer.NET
+* [xserver.net-docs](https://ptv-logistics.github.io/xserver.net-docs) - API documentation for xServer.NET
+
 
 ### The samples
 
