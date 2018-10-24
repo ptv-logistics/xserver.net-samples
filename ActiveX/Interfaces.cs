@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace Ptv.XServer.Controls
 {
@@ -14,7 +13,7 @@ namespace Ptv.XServer.Controls
         /// <see cref="OnShapeClicked"/> is fired when the user clicks on any 
         /// user-defined shape that was defined through <see cref="IShape"/>.
         /// </summary>
-        /// <param name="id">The ID of the cliecked shape, as specified in the call 
+        /// <param name="id">The ID of the clicked shape, as specified in the call 
         /// to the corresponding <see cref="IShape"/> method.</param>
         [DispId(1)]
         void OnShapeClicked(int id);
@@ -45,7 +44,7 @@ namespace Ptv.XServer.Controls
         /// </summary>
         /// <param name="id">Unique shape ID.</param>
         /// <param name="x">x-coordinate of the marker.</param>
-        /// <param name="y">y-coordiante of the marker.</param>
+        /// <param name="y">y-coordinate of the marker.</param>
         /// <param name="size">Size of the marker, in pixels.</param>
         /// <param name="color">Color, specified in as HTML string. See remarks.</param>
         /// <param name="Symbol">The name of the marker to display. Defaults to "Pin" if empty. See remarks.</param>
@@ -101,13 +100,13 @@ namespace Ptv.XServer.Controls
         /// Gets or sets the URLs of PTV's xMap Server.
         /// </summary>
         [DispId(1)]
-        String XMapUrl { get; set; }
+        string XMapUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the copyright string to be shown in the map.
         /// </summary>
         [DispId(2)]
-        String XMapCopyright { get; set; }
+        string XMapCopyright { get; set; }
 
         /// <summary>
         /// Sets the map's center and zoom level.
