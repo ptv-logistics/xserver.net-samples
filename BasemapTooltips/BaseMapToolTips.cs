@@ -7,12 +7,12 @@ namespace BasemapTooltips
 {
     public class BaseMapToolTips
     {
-        private WpfMap map;
+        private readonly WpfMap map;
         private System.Windows.Controls.ToolTip tooltip;
-        private DispatcherTimer toolTipTimer;
+        private readonly DispatcherTimer toolTipTimer;
 
         /// <summary>
-        /// The delagate for reverse locating
+        /// The delegate for reverse locating
         /// </summary>
         public Func<double, double, LocationTooltipInfo> ReverseLocatingFunc;
 
@@ -21,7 +21,7 @@ namespace BasemapTooltips
         /// </summary>
         /// <param name="map">The map control</param>
         /// <param name="delay">The delay for displaying tool tips</param>
-        public BaseMapToolTips(WpfMap map, int delay = 1000)
+        public BaseMapToolTips(WpfMap map, int delay = 500)
         {
             this.map = map;
             map.MouseMove += Map_MouseMove;
@@ -30,7 +30,7 @@ namespace BasemapTooltips
             toolTipTimer.Tick += toolTipTimer_Tick;
         }
 
-        async void toolTipTimer_Tick(object sender, EventArgs ea)
+        private async void toolTipTimer_Tick(object sender, EventArgs ea)
         {
             toolTipTimer.Stop();
 
@@ -41,26 +41,23 @@ namespace BasemapTooltips
                 tooltip = new System.Windows.Controls.ToolTip();
 
             var result = await Task.Run(() => ReverseLocatingFunc(geo.X, geo.Y));
+            if (result == null) return;
 
-            if (result != null)
-            {
-                string toolTipString = result.Country;
+            var toolTipString = result.Country;
 
-                if (map.Zoom > 4 && !string.IsNullOrEmpty(result.City))
-                    toolTipString += "\n" + result.City;
+            if (map.Zoom > 4 && !string.IsNullOrEmpty(result.City))
+                toolTipString += "\n" + result.City;
 
-                if(map.Zoom > 10 && !string.IsNullOrEmpty(result.Street))
-                    toolTipString += "\n" + result.Street;
+            if(map.Zoom > 10 && !string.IsNullOrEmpty(result.Street))
+                toolTipString += "\n" + result.Street;
 
-                if (!string.IsNullOrEmpty(toolTipString))
-                {
-                    tooltip.Content = toolTipString;
-                    tooltip.IsOpen = true;                    
-                }
-            }
+            if (string.IsNullOrEmpty(toolTipString)) return;
+
+            tooltip.Content = toolTipString;
+            tooltip.IsOpen = true;
         }
 
-        void Map_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Map_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (tooltip != null)
             {

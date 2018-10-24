@@ -20,15 +20,14 @@ namespace BasemapTooltips
             Initialize();
         }
 
-        public async void Initialize()
+        public void Initialize()
         {
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
             formsMap1.XMapCredentials = "xtok:" + token;
 
             // initialize our tool tip handler
-            var tt = new BaseMapToolTips(formsMap1.WrappedMap);
-            tt.ReverseLocatingFunc = ReverseLocate;
+            var tt = new BaseMapToolTips(formsMap1.WrappedMap) { ReverseLocatingFunc = ReverseLocate };
         }
 
         public static LocationTooltipInfo ReverseLocate(double x, double y)
