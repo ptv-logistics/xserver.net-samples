@@ -32,19 +32,19 @@ namespace XMap2FactoryTest
             };
 
             // White list which contains only themes that can be rendered.
-            var whiteList = new List<string>() { "PTV_PreferredRoutes", "PTV_RestrictionZones", "PTV_TruckAttributes", "PTV_TrafficIncidents",  /* "PTV_SpeedPatterns" */ };
+            var whiteList = new List<string> { "PTV_PreferredRoutes", "PTV_RestrictionZones", "PTV_TruckAttributes", "PTV_TrafficIncidents", "PTV_SpeedPatterns" };
 
             // Fill the checked list box with all relevant Feature Layer themes by means of the white list.
-            foreach(var theme in layerFactory.FeatureLayers.AvailableThemes
-                .Where(theme => whiteList.Contains(theme)))
-              form.featureLayerCheckedListBox.Items.Add(theme, true);
+            layerFactory.FeatureLayers.AvailableThemes
+                .Where(theme => whiteList.Contains(theme))
+                .ToList().ForEach(theme => form.featureLayerCheckedListBox.Items.Add(theme, theme != "PTV_SpeedPatterns"));
 
             // For text boxes the Leave event is used instead of TextChanged because during editing inconsistent results may arise.
             form.noneTimeConsiderationRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.optimisticRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.snapshotRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.timeSpanRadioButton.CheckedChanged += SetTimeConsiderationScenario;
-            form.snapshotRadioButton.Checked = true;
+            form.noneTimeConsiderationRadioButton.Checked = true;
 
             form.referenceTimeDatePicker.ValueChanged += SetReferenceTime;
             form.referenceTimeTimePicker.ValueChanged += SetReferenceTime;
@@ -57,11 +57,11 @@ namespace XMap2FactoryTest
             form.showOnlyRelevantCheckBox.CheckedChanged += SetShowOnlyRelevantByTime;
             SetShowOnlyRelevantByTime(null, null);
 
-            form.contentSnapshotsComboBox.Items.Add("<No shapshot selected>");
-            var contentSnapshots = layerFactory.FeatureLayers.AvailableContentSnapshots;
-            if (contentSnapshots.Any())
+            form.contentSnapshotsComboBox.Items.Add("<No snapshot selected>");
+            var contentSnapshotDescriptions = layerFactory.FeatureLayers.AvailableContentSnapshots.ToList();
+            if (contentSnapshotDescriptions.Any())
             {
-                foreach (var description in contentSnapshots)
+                foreach (var description in contentSnapshotDescriptions)
                     form.contentSnapshotsComboBox.Items.Add($"{description.label} ({description.id})");
             }
             else
@@ -107,7 +107,7 @@ namespace XMap2FactoryTest
 
         private void SetSnapshotID(object sender, EventArgs e) => layerFactory.FeatureLayers.ContentSnapshotId = ExtractId(form.contentSnapshotsComboBox.Text);
 
-        private string ExtractId(string comboBoxEntry)
+        private static string ExtractId(string comboBoxEntry)
         {
             var match = Regex.Match(comboBoxEntry, @"\((.*)\)");
             return match.Success ? match.Groups[1].Value : string.Empty;

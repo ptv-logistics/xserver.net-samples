@@ -71,21 +71,20 @@
             this.featureLayerCheckedListBox.CheckOnClick = true;
             this.featureLayerCheckedListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.featureLayerCheckedListBox.FormattingEnabled = true;
-            this.featureLayerCheckedListBox.Location = new System.Drawing.Point(9, 24);
+            this.featureLayerCheckedListBox.Location = new System.Drawing.Point(7, 20);
             this.featureLayerCheckedListBox.Margin = new System.Windows.Forms.Padding(0);
             this.featureLayerCheckedListBox.Name = "featureLayerCheckedListBox";
-            this.featureLayerCheckedListBox.Size = new System.Drawing.Size(253, 123);
+            this.featureLayerCheckedListBox.Size = new System.Drawing.Size(189, 100);
             this.featureLayerCheckedListBox.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.featureLayerCheckedListBox);
-            this.groupBox1.Location = new System.Drawing.Point(1112, 188);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(834, 153);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
-            this.groupBox1.Size = new System.Drawing.Size(271, 156);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(7);
+            this.groupBox1.Size = new System.Drawing.Size(203, 127);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Feature layers";
@@ -99,11 +98,9 @@
             this.groupBox2.Controls.Add(this.optimisticRadioButton);
             this.groupBox2.Controls.Add(this.snapshotRadioButton);
             this.groupBox2.Controls.Add(this.noneTimeConsiderationRadioButton);
-            this.groupBox2.Location = new System.Drawing.Point(1112, 353);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(834, 287);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(271, 145);
+            this.groupBox2.Size = new System.Drawing.Size(203, 118);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Time consideration";
@@ -111,28 +108,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(181, 111);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(136, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 17);
+            this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "h";
             // 
             // timeSpanTextBox
             // 
-            this.timeSpanTextBox.Location = new System.Drawing.Point(112, 108);
-            this.timeSpanTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timeSpanTextBox.Location = new System.Drawing.Point(84, 88);
             this.timeSpanTextBox.Name = "timeSpanTextBox";
-            this.timeSpanTextBox.Size = new System.Drawing.Size(60, 22);
+            this.timeSpanTextBox.Size = new System.Drawing.Size(46, 20);
             this.timeSpanTextBox.TabIndex = 4;
             // 
             // timeSpanRadioButton
             // 
             this.timeSpanRadioButton.AutoSize = true;
-            this.timeSpanRadioButton.Location = new System.Drawing.Point(9, 108);
-            this.timeSpanRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timeSpanRadioButton.Location = new System.Drawing.Point(7, 88);
             this.timeSpanRadioButton.Name = "timeSpanRadioButton";
-            this.timeSpanRadioButton.Size = new System.Drawing.Size(91, 21);
+            this.timeSpanRadioButton.Size = new System.Drawing.Size(71, 17);
             this.timeSpanRadioButton.TabIndex = 3;
             this.timeSpanRadioButton.Text = "Timespan";
             this.timeSpanRadioButton.UseVisualStyleBackColor = true;
@@ -140,10 +134,9 @@
             // optimisticRadioButton
             // 
             this.optimisticRadioButton.AutoSize = true;
-            this.optimisticRadioButton.Location = new System.Drawing.Point(9, 57);
-            this.optimisticRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.optimisticRadioButton.Location = new System.Drawing.Point(7, 46);
             this.optimisticRadioButton.Name = "optimisticRadioButton";
-            this.optimisticRadioButton.Size = new System.Drawing.Size(90, 21);
+            this.optimisticRadioButton.Size = new System.Drawing.Size(70, 17);
             this.optimisticRadioButton.TabIndex = 1;
             this.optimisticRadioButton.Text = "Optimistic";
             this.optimisticRadioButton.UseVisualStyleBackColor = true;
@@ -151,10 +144,9 @@
             // snapshotRadioButton
             // 
             this.snapshotRadioButton.AutoSize = true;
-            this.snapshotRadioButton.Location = new System.Drawing.Point(9, 82);
-            this.snapshotRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.snapshotRadioButton.Location = new System.Drawing.Point(7, 67);
             this.snapshotRadioButton.Name = "snapshotRadioButton";
-            this.snapshotRadioButton.Size = new System.Drawing.Size(89, 21);
+            this.snapshotRadioButton.Size = new System.Drawing.Size(70, 17);
             this.snapshotRadioButton.TabIndex = 2;
             this.snapshotRadioButton.Text = "Snapshot";
             this.snapshotRadioButton.UseVisualStyleBackColor = true;
@@ -162,10 +154,9 @@
             // noneTimeConsiderationRadioButton
             // 
             this.noneTimeConsiderationRadioButton.AutoSize = true;
-            this.noneTimeConsiderationRadioButton.Location = new System.Drawing.Point(9, 31);
-            this.noneTimeConsiderationRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.noneTimeConsiderationRadioButton.Location = new System.Drawing.Point(7, 25);
             this.noneTimeConsiderationRadioButton.Name = "noneTimeConsiderationRadioButton";
-            this.noneTimeConsiderationRadioButton.Size = new System.Drawing.Size(63, 21);
+            this.noneTimeConsiderationRadioButton.Size = new System.Drawing.Size(51, 17);
             this.noneTimeConsiderationRadioButton.TabIndex = 0;
             this.noneTimeConsiderationRadioButton.Text = "None";
             this.noneTimeConsiderationRadioButton.UseVisualStyleBackColor = true;
@@ -178,21 +169,18 @@
             this.groupBox3.Controls.Add(this.showOnlyRelevantCheckBox);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.referenceTimeDatePicker);
-            this.groupBox3.Location = new System.Drawing.Point(1112, 510);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Location = new System.Drawing.Point(834, 414);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(271, 133);
+            this.groupBox3.Size = new System.Drawing.Size(203, 108);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Reference time";
             // 
             // timeZoneTextBox
             // 
-            this.timeZoneTextBox.Location = new System.Drawing.Point(143, 58);
-            this.timeZoneTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timeZoneTextBox.Location = new System.Drawing.Point(107, 47);
             this.timeZoneTextBox.Name = "timeZoneTextBox";
-            this.timeZoneTextBox.Size = new System.Drawing.Size(115, 22);
+            this.timeZoneTextBox.Size = new System.Drawing.Size(87, 20);
             this.timeZoneTextBox.TabIndex = 2;
             this.timeZoneTextBox.Text = "+02:00";
             // 
@@ -200,20 +188,18 @@
             // 
             this.referenceTimeTimePicker.CustomFormat = "";
             this.referenceTimeTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.referenceTimeTimePicker.Location = new System.Drawing.Point(143, 23);
-            this.referenceTimeTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.referenceTimeTimePicker.Location = new System.Drawing.Point(107, 19);
             this.referenceTimeTimePicker.Name = "referenceTimeTimePicker";
             this.referenceTimeTimePicker.ShowUpDown = true;
-            this.referenceTimeTimePicker.Size = new System.Drawing.Size(115, 22);
+            this.referenceTimeTimePicker.Size = new System.Drawing.Size(87, 20);
             this.referenceTimeTimePicker.TabIndex = 1;
             // 
             // showOnlyRelevantCheckBox
             // 
             this.showOnlyRelevantCheckBox.AutoSize = true;
-            this.showOnlyRelevantCheckBox.Location = new System.Drawing.Point(9, 96);
-            this.showOnlyRelevantCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.showOnlyRelevantCheckBox.Location = new System.Drawing.Point(7, 78);
             this.showOnlyRelevantCheckBox.Name = "showOnlyRelevantCheckBox";
-            this.showOnlyRelevantCheckBox.Size = new System.Drawing.Size(208, 21);
+            this.showOnlyRelevantCheckBox.Size = new System.Drawing.Size(158, 17);
             this.showOnlyRelevantCheckBox.TabIndex = 3;
             this.showOnlyRelevantCheckBox.Text = "Show only relevant (by time)";
             this.showOnlyRelevantCheckBox.UseVisualStyleBackColor = true;
@@ -221,10 +207,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 17);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Time zone (UTC)";
             // 
@@ -232,10 +217,9 @@
             // 
             this.referenceTimeDatePicker.CustomFormat = "";
             this.referenceTimeDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.referenceTimeDatePicker.Location = new System.Drawing.Point(8, 23);
-            this.referenceTimeDatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.referenceTimeDatePicker.Location = new System.Drawing.Point(6, 19);
             this.referenceTimeDatePicker.Name = "referenceTimeDatePicker";
-            this.referenceTimeDatePicker.Size = new System.Drawing.Size(115, 22);
+            this.referenceTimeDatePicker.Size = new System.Drawing.Size(87, 20);
             this.referenceTimeDatePicker.TabIndex = 0;
             // 
             // groupBox4
@@ -245,50 +229,44 @@
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.trafficIncidentsLanguageTextBox);
-            this.groupBox4.Location = new System.Drawing.Point(1112, 87);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Location = new System.Drawing.Point(834, 71);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox4.Size = new System.Drawing.Size(271, 92);
+            this.groupBox4.Size = new System.Drawing.Size(203, 75);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Language settings for";
             // 
             // mapLanguageTextBox
             // 
-            this.mapLanguageTextBox.Location = new System.Drawing.Point(185, 58);
-            this.mapLanguageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mapLanguageTextBox.Location = new System.Drawing.Point(139, 47);
             this.mapLanguageTextBox.Name = "mapLanguageTextBox";
-            this.mapLanguageTextBox.Size = new System.Drawing.Size(75, 22);
+            this.mapLanguageTextBox.Size = new System.Drawing.Size(57, 20);
             this.mapLanguageTextBox.TabIndex = 1;
             this.mapLanguageTextBox.Text = "x-ptv-DFT";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 62);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(6, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 17);
+            this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Towns and streets";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 32);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(6, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 17);
+            this.label3.Size = new System.Drawing.Size(132, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Traffic incidents messages";
             // 
             // trafficIncidentsLanguageTextBox
             // 
-            this.trafficIncidentsLanguageTextBox.Location = new System.Drawing.Point(185, 28);
-            this.trafficIncidentsLanguageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trafficIncidentsLanguageTextBox.Location = new System.Drawing.Point(139, 23);
             this.trafficIncidentsLanguageTextBox.Name = "trafficIncidentsLanguageTextBox";
-            this.trafficIncidentsLanguageTextBox.Size = new System.Drawing.Size(75, 22);
+            this.trafficIncidentsLanguageTextBox.Size = new System.Drawing.Size(57, 20);
             this.trafficIncidentsLanguageTextBox.TabIndex = 0;
             this.trafficIncidentsLanguageTextBox.Text = "en";
             // 
@@ -302,7 +280,7 @@
             this.formsMap.FitInWindow = false;
             this.formsMap.InvertMouseWheel = false;
             this.formsMap.Location = new System.Drawing.Point(0, 0);
-            this.formsMap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.formsMap.Margin = new System.Windows.Forms.Padding(2);
             this.formsMap.MaxZoom = 19;
             this.formsMap.MinZoom = 0;
             this.formsMap.MouseDoubleClickZoom = true;
@@ -316,7 +294,7 @@
             this.formsMap.ShowOverview = true;
             this.formsMap.ShowScale = true;
             this.formsMap.ShowZoomSlider = true;
-            this.formsMap.Size = new System.Drawing.Size(1105, 719);
+            this.formsMap.Size = new System.Drawing.Size(829, 584);
             this.formsMap.TabIndex = 3;
             this.formsMap.UseAnimation = true;
             this.formsMap.UseDefaultTheme = true;
@@ -331,11 +309,9 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.mapStylesComboBox);
-            this.groupBox5.Location = new System.Drawing.Point(1112, 14);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Location = new System.Drawing.Point(834, 11);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox5.Size = new System.Drawing.Size(269, 66);
+            this.groupBox5.Size = new System.Drawing.Size(202, 54);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Map styles";
@@ -343,10 +319,9 @@
             // mapStylesComboBox
             // 
             this.mapStylesComboBox.FormattingEnabled = true;
-            this.mapStylesComboBox.Location = new System.Drawing.Point(9, 25);
-            this.mapStylesComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mapStylesComboBox.Location = new System.Drawing.Point(7, 20);
             this.mapStylesComboBox.Name = "mapStylesComboBox";
-            this.mapStylesComboBox.Size = new System.Drawing.Size(248, 24);
+            this.mapStylesComboBox.Size = new System.Drawing.Size(187, 21);
             this.mapStylesComboBox.TabIndex = 0;
             // 
             // groupBox6
@@ -354,11 +329,9 @@
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.contentSnapshotsComboBox);
             this.groupBox6.Controls.Add(this.label5);
-            this.groupBox6.Location = new System.Drawing.Point(1112, 655);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Location = new System.Drawing.Point(834, 532);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox6.Size = new System.Drawing.Size(268, 64);
+            this.groupBox6.Size = new System.Drawing.Size(201, 52);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Content snapshots";
@@ -366,19 +339,17 @@
             // contentSnapshotsComboBox
             // 
             this.contentSnapshotsComboBox.FormattingEnabled = true;
-            this.contentSnapshotsComboBox.Location = new System.Drawing.Point(43, 26);
-            this.contentSnapshotsComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.contentSnapshotsComboBox.Location = new System.Drawing.Point(32, 21);
             this.contentSnapshotsComboBox.Name = "contentSnapshotsComboBox";
-            this.contentSnapshotsComboBox.Size = new System.Drawing.Size(215, 24);
+            this.contentSnapshotsComboBox.Size = new System.Drawing.Size(162, 21);
             this.contentSnapshotsComboBox.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 30);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(8, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 17);
+            this.label5.Size = new System.Drawing.Size(18, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "ID";
             // 
@@ -387,11 +358,9 @@
             this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.requestLoggingTextBox);
-            this.groupBox7.Location = new System.Drawing.Point(0, 726);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Location = new System.Drawing.Point(0, 590);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox7.Size = new System.Drawing.Size(1380, 161);
+            this.groupBox7.Size = new System.Drawing.Size(1035, 131);
             this.groupBox7.TabIndex = 11;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Request logging";
@@ -401,12 +370,11 @@
             this.requestLoggingTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.requestLoggingTextBox.Location = new System.Drawing.Point(8, 23);
-            this.requestLoggingTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.requestLoggingTextBox.Location = new System.Drawing.Point(6, 19);
             this.requestLoggingTextBox.Multiline = true;
             this.requestLoggingTextBox.Name = "requestLoggingTextBox";
             this.requestLoggingTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.requestLoggingTextBox.Size = new System.Drawing.Size(1361, 126);
+            this.requestLoggingTextBox.Size = new System.Drawing.Size(1022, 103);
             this.requestLoggingTextBox.TabIndex = 0;
             this.requestLoggingTextBox.TabStop = false;
             this.requestLoggingTextBox.Text = "Start logging:";
@@ -414,9 +382,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1392, 891);
+            this.ClientSize = new System.Drawing.Size(1044, 724);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
@@ -425,7 +393,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.formsMap);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "XMap2 Layer Factory";
             this.groupBox1.ResumeLayout(false);
