@@ -70,22 +70,40 @@ namespace Ptv.XServer.Controls
         /// <inheritdoc/>
         public string XMapUrl
         {
-            get => formsMap.XMapUrl;
-            set => formsMap.XMapUrl = value;
+            get
+            {
+                return formsMap.XMapUrl;
+            }
+            set
+            {
+                formsMap.XMapUrl = value;
+            }
         }
 
         /// <inheritdoc/>
         public string XMapCredentials
         {
-            get => formsMap.XMapCredentials;
-            set => formsMap.XMapCredentials = value;
+            get
+            {
+                return formsMap.XMapCredentials;
+            }
+            set
+            {
+                formsMap.XMapCredentials = value;
+            }
         }
 
         /// <inheritdoc/>
         public string XMapCopyright
         {
-            get => formsMap.XMapCopyright;
-            set => formsMap.XMapCopyright = value;
+            get
+            {
+                return formsMap.XMapCopyright;
+            }
+            set
+            {
+                formsMap.XMapCopyright = value;
+            }
         }
 
         /// <inheritdoc/>
@@ -109,8 +127,11 @@ namespace Ptv.XServer.Controls
         [ComVisible(false)]
         public void FireShapeClicked(int id)
         {
-            try { OnShapeClicked?.Invoke(id); }
-            catch { }
+            if (OnShapeClicked != null)
+            {
+                try { this.OnShapeClicked(id); }
+                catch { }
+            }
         }
 
         /// <summary>
@@ -128,7 +149,7 @@ namespace Ptv.XServer.Controls
 
         /// <summary>
         /// Hook that removes additional information written by <see cref="RegisterClass"/> 
-        /// from to the Windows' registry, fully unregistered this control as an ActiveX control.
+        /// from to the Windows' registry, fully unregistering this control as an ActiveX control.
         /// </summary>
         /// <param name="key">The key of the control to be registered.</param>
         /// <remarks>Please refer to the sample documentation for further information. 
@@ -181,7 +202,13 @@ namespace Ptv.XServer.Controls
 
 
         /// <inheritdoc/>
-        public int Count => shapeLayer.Shapes.Count;
+        public int Count
+        {
+            get
+            {
+                return shapeLayer.Shapes.Count;
+            }
+        }
 
         /// <inheritdoc/>
         public void Clear()
@@ -261,7 +288,7 @@ namespace Ptv.XServer.Controls
                 return;
 
             // dynamically try to get the "Color" property, then set the converted color.
-            symbol.GetType().GetProperty("Color")?.SetValue(symbol, ColorConverter.ConvertFromString(argbColor), null);
+            symbol.GetType().GetProperty("Color").SetValue(symbol, ColorConverter.ConvertFromString(argbColor), null);
         }
 
         /// <inheritdoc/>

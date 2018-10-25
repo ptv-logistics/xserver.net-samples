@@ -29,21 +29,21 @@ namespace Ptv.XServer.Controls
             {
                 // change title to ProgID
                 object progIdAttribute = t.GetCustomAttributes(typeof(ProgIdAttribute), false)[0];
-                registryKey?.SetValue(null, ((ProgIdAttribute)progIdAttribute).Value);
+                registryKey.SetValue(null, ((ProgIdAttribute)progIdAttribute).Value);
 
                 // add version information
-                using (var versionKey = registryKey?.CreateSubKey("Version"))
-                    versionKey?.SetValue(null, t.Assembly.GetName().Version);
+                using (var versionKey = registryKey.CreateSubKey("Version"))
+                    versionKey.SetValue(null, t.Assembly.GetName().Version);
 
                 // And create the 'Control' key - this allows it to show up in 
                 // the ActiveX control container 
-                using (registryKey?.CreateSubKey("Control"))
+                using (registryKey.CreateSubKey("Control"))
                 {}
 
                 // Add TypeLib key - this is not done by regasm
                 object guidAttribute = t.Assembly.GetCustomAttributes(typeof(GuidAttribute), false)[0];
                 using (var typeLibKey = registryKey.CreateSubKey("TypeLib"))
-                    typeLibKey?.SetValue(null, "{" + ((GuidAttribute) guidAttribute).Value + "}");
+                    typeLibKey.SetValue(null, "{" + ((GuidAttribute) guidAttribute).Value + "}");
             }
         }
 
