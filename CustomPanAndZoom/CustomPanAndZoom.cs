@@ -23,8 +23,8 @@ namespace CustomPanAndZoom
         /// <summary> Clicking in the map starts a zoom selection. If the mouse button is clicked and the mouse is
         /// moved, a rectangle is shown. When releasing the mouse, the map is zoomed to this rectangle. </summary>
         Select,
-        /// <summary> Use Select if Shift is hold, otherwist pan. </summary>
-        SelectOnShift,
+        /// <summary> Use Select if Shift is hold, otherwise pan. </summary>
+        SelectOnShift
     }
 
     /// <summary><para> User control for the <see cref="MapView"/>-object, translating user interactions into modification
@@ -45,12 +45,12 @@ namespace CustomPanAndZoom
         private Point ScreenStartPoint = new Point(0, 0);
         /// <summary> Map on which the interaction is to be executed. </summary>
         private MapView mapView;
-        /// <resummary> Interaction mode defining whether a panning or a zoom selection is to be executed. </summary>
+        /// <summary> Interaction mode defining whether a panning or a zoom selection is to be executed. </summary>
         private DragMode dragMode;
         /// <summary> Rectangle used for zoom selection. The map will be zoomed to this section. </summary>
         private Rectangle dragRectangle;
         /// <summary> Flag showing if the map has lately been panned. </summary>
-        private bool wasPanned = false;
+        private bool wasPanned;
         #endregion
 
         #region public variables
@@ -64,11 +64,11 @@ namespace CustomPanAndZoom
         private void Setup()
         {
             mapView.Focusable = true;
-            mapView.KeyDown += new KeyEventHandler(map_KeyDown);
-            mapView.MouseMove += new MouseEventHandler(control_MouseMove);
-            mapView.MouseDown += new MouseButtonEventHandler(source_MouseDown);
-            mapView.MouseUp += new MouseButtonEventHandler(source_MouseUp);
-            mapView.MouseWheel += new MouseWheelEventHandler(source_MouseWheel);
+            mapView.KeyDown += map_KeyDown;
+            mapView.MouseMove += control_MouseMove;
+            mapView.MouseDown += source_MouseDown;
+            mapView.MouseUp += source_MouseUp;
+            mapView.MouseWheel += source_MouseWheel;
         }
         #endregion
 
@@ -81,7 +81,7 @@ namespace CustomPanAndZoom
             if (!mapView.IsFocused)
                 return;
 
-            double panOffset = .25;
+            const double panOffset = .25;
 
             MapRectangle rect = mapView.FinalEnvelope;
             double dX = rect.Width * panOffset;
@@ -140,7 +140,7 @@ namespace CustomPanAndZoom
 
             double oldZoom = mapView.FinalZoom;
 
-            double delta = (double)e.Delta * Map.MouseWheelSpeed / 120;
+            double delta = e.Delta * Map.MouseWheelSpeed / 120;
             if (Map.InvertMouseWheel)
                 delta = -delta;
 
@@ -188,19 +188,19 @@ namespace CustomPanAndZoom
 
 
                 mapView.SetEnvelope(new MapRectangle(
-                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
+                    p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
+                    p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
                     -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
                     -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2),
                     Map.UseAnimation);
 
                 e.Handled = true;
             }
-            if (wasPanned)
-            {
-                wasPanned = false;
-                e.Handled = true;
-            }
+
+            if (!wasPanned) return;
+
+            wasPanned = false;
+            e.Handled = true;
         }        
 
         /// <summary> Event handler for pressing the mouse button. A double click with the left mouse button results in
@@ -244,8 +244,8 @@ namespace CustomPanAndZoom
             }
 
             // Save starting point, used later when determining how much to scroll.
-            this.ScreenStartPoint = e.GetPosition(mapView);
-            this.WorldStartPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
+            ScreenStartPoint = e.GetPosition(mapView);
+            WorldStartPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
             // NEW: check for MouseDragMode
             if (e.LeftButton == MouseButtonState.Pressed && (MouseDragMode == DragMode.Select ||
@@ -267,7 +267,7 @@ namespace CustomPanAndZoom
                 dragRectangle.RadiusX = 8;
                 dragRectangle.RadiusY = 8;
 
-                Canvas.SetZIndex(dragRectangle, 266);
+                Panel.SetZIndex(dragRectangle, 266);
                 Canvas.SetLeft(dragRectangle, ScreenStartPoint.X);
                 Canvas.SetTop(dragRectangle, ScreenStartPoint.Y);
                 mapView.ForePaneCanvas.Children.Add(dragRectangle);
@@ -288,26 +288,27 @@ namespace CustomPanAndZoom
         /// <param name="e"> Event parameters. </param>
         private void control_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!IsActive)
+            if (!IsActive || !mapView.IsMouseCaptured)
                 return;
 
-            if (mapView.IsMouseCaptured)
+            switch (dragMode)
             {
-                if (dragMode == DragMode.Pan)
+                case DragMode.Pan:
                 {
                     var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
-                    if ((this.WorldStartPoint.X == physicalPoint.X) && (this.WorldStartPoint.Y == physicalPoint.Y))
+                    if (WorldStartPoint.X == physicalPoint.X && WorldStartPoint.Y == physicalPoint.Y)
                         return;
 
-                    double x = mapView.CurrentX + this.WorldStartPoint.X - physicalPoint.X;
-                    double y = mapView.CurrentY + this.WorldStartPoint.Y - physicalPoint.Y;
+                    double x = mapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
+                    double y = mapView.CurrentY + WorldStartPoint.Y - physicalPoint.Y;
 
                     wasPanned = true;
 
                     mapView.SetXYZ(x, y, mapView.CurrentZoom, Map.UseAnimation);
+                    break;
                 }
-                else if (dragMode == DragMode.Select)
+                case DragMode.Select:
                 {
                     var physicalPoint = e.GetPosition(mapView);
 
@@ -315,10 +316,11 @@ namespace CustomPanAndZoom
                     Canvas.SetTop(dragRectangle, physicalPoint.Y < ScreenStartPoint.Y ? physicalPoint.Y : ScreenStartPoint.Y);
                     dragRectangle.Width = Math.Abs(physicalPoint.X - ScreenStartPoint.X);
                     dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
+                    break;
                 }
-
-                e.Handled = true;
             }
+
+            e.Handled = true;
         }
         #endregion
 
@@ -329,7 +331,7 @@ namespace CustomPanAndZoom
             base.Initialize();
 
             IsActive = true;
-            this.mapView = MapView;
+            mapView = MapView;
             Setup();
         }
         #endregion
