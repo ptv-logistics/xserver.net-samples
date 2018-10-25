@@ -52,9 +52,9 @@ namespace Ptvag.Dawn.Tools
                 mode = AssertMode.Never;
 
             // check if assertion should be executed
-            bool doAssert =
-                (mode == AssertMode.Always) ||
-                (mode == AssertMode.IfDebuggerIsAttached && Debugger.IsAttached);
+            var doAssert =
+                mode == AssertMode.Always ||
+                mode == AssertMode.IfDebuggerIsAttached && Debugger.IsAttached;
 
             if (doAssert)
                 new DawnMemAssert<T>(new WeakReference(o));
@@ -69,7 +69,7 @@ namespace Ptvag.Dawn.Tools
         /// <summary>
         /// Holds the weak reference to the object
         /// </summary>
-        WeakReference weakReference;
+        private readonly WeakReference weakReference;
 
         /// <summary>
         /// Creates an instance of the assert object
@@ -78,10 +78,10 @@ namespace Ptvag.Dawn.Tools
         private DawnMemAssert(WeakReference wr)
         {
             // set the weak reference
-            this.weakReference = wr;
+            weakReference = wr;
 
             // attach to the idle-event, so we'll leave the call-stack
-            Application.Idle += new EventHandler(Application_Idle);
+            Application.Idle += Application_Idle;
         }
 
         private void Application_Idle(object sender, EventArgs e)
@@ -102,8 +102,8 @@ namespace Ptvag.Dawn.Tools
                     return;
             }
 
-            // detach from idle-event
-            Application.Idle -= new EventHandler(Application_Idle);
+            // detach from idle event
+            Application.Idle -= Application_Idle;
         }
     }
 }

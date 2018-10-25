@@ -14,7 +14,7 @@ namespace MemoryDemo
         // our child-form
         private MapForm mapForm;
 
-        // this flag tests our memore-leak detection by provoking memory-leak
+        // This flag tests our memory leak detection by provoking memory-leak
         private bool hasMemoryLeak;
 
         private void openMapWindow1_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace MemoryDemo
             mapForm.Closed += mapForm_Closed;
         }
 
-        void mapForm_Closed(object sender, EventArgs e)
+        private void mapForm_Closed(object sender, EventArgs e)
         {
             // change button states
             openMapWindow1.Enabled = true;
@@ -69,7 +69,7 @@ namespace MemoryDemo
             // At this point dlg should be the last reference to the modal dialog
             // If the dialog causes a memory leak, a box will appear.
             // It is possible that the box appears because the map control still
-            // loads tiles from xMapServer. In this case the box should disapper after
+            // loads tiles from xMap server. In this case the box should disappear after
             // pressing retry.
             DawnMemAssert<MapForm>.SetNullAndAssertDead(ref mapForm);
         }
