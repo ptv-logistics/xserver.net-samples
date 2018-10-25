@@ -23,7 +23,7 @@ namespace CustomBgProfiles
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            switch ((sender as RadioButton)?.Content.ToString())
+            switch ((sender as RadioButton).Content.ToString())
             {
                 case "Standard": SetProfile(Map0, null); break;
                 case "Sandbox": SetProfile(Map0, "sandbox"); break;
@@ -34,15 +34,17 @@ namespace CustomBgProfiles
 
         private static void SetProfile(IMap map, string mapProfile)
         {
-            if (map.Layers["Background"] is TiledLayer tiledLayer)
+            if (map.Layers["Background"] != null)
             {
-                ((XMapTiledProvider) tiledLayer.TiledProvider).CustomProfile = string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-bg";
-                tiledLayer.Refresh();
+                ((map.Layers["Background"] as TiledLayer).TiledProvider as XMapTiledProvider).CustomProfile =
+                    string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-bg";
+                (map.Layers["Background"] as TiledLayer).Refresh();
             }
-            if (map.Layers["Labels"] is UntiledLayer untiledLayer)
+            if (map.Layers["Labels"] != null)
             {
-                ((XMapTiledProvider) untiledLayer.UntiledProvider).CustomProfile = string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-fg";
-                untiledLayer.Refresh();
+                ((map.Layers["Labels"] as UntiledLayer).UntiledProvider as XMapTiledProvider).CustomProfile =
+                    string.IsNullOrEmpty(mapProfile) ? null : mapProfile + "-fg";
+                (map.Layers["Labels"] as UntiledLayer).Refresh();
             }
         }
     }
