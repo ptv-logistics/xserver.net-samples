@@ -89,10 +89,10 @@ namespace Ptv.XServer.Demo.MapMarket
                         // create GDI path from wkb
                         var path = WkbToGdi.Parse(item.Wkb, wgsToImage);
 
-                        // evalutate style
+                        // evaluate style
                         var style = Theme.Mapping(item);
 
-                        // fill polyong
+                        // fill polygon
                         if (style.Fill != null)
                             graphics.FillPath(style.Fill, path);
 

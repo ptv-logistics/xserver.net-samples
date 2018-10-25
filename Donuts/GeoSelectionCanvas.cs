@@ -89,33 +89,32 @@ namespace Ptv.XServer.Demo.MapMarket
 
             // query the topmost item for a point
             var geoItem = provider.QueryPoint(geoPoint.X, geoPoint.Y, null).LastOrDefault();
-            if(geoItem.Wkb != null)
-            {
-                // parse the geometry from the wkb to a WPF path
-                // transform to canvas coordinates
-                var shape = WkbToWpf.Parse(geoItem.Wkb, GeoToCanvas);
+            if (geoItem.Wkb == null) return;
 
-                geometries.Add(new Path { Fill = Brushes.White, Data = shape });
+            // parse the geometry from the wkb to a WPF path
+            // transform to canvas coordinates
+            var shape = WkbToWpf.Parse(geoItem.Wkb, GeoToCanvas);
 
-                // sample how draw the polygon inverted to fade out the background
-                // http://xserver.ptvgroup.com/forum/viewtopic.php?f=14&t=469
-                // read the polygon
-                var polygon = new Nts.IO.WKBReader().Read(geoItem.Wkb);
-                // create a rectangle for the whole world
-                var worldRect = Nts.Geometries.Geometry.DefaultFactory.CreatePolygon(
+            geometries.Add(new Path { Fill = Brushes.White, Data = shape });
+
+            // sample how draw the polygon inverted to fade out the background
+            // http://xserver.ptvgroup.com/forum/viewtopic.php?f=14&t=469
+            // read the polygon
+            var polygon = new Nts.IO.WKBReader().Read(geoItem.Wkb);
+            // create a rectangle for the whole world
+            var worldRect = Nts.Geometries.Geometry.DefaultFactory.CreatePolygon(
                 Nts.Geometries.Geometry.DefaultFactory.CreateLinearRing(new Nts.Geometries.Coordinate[] {
-                     new Nts.Geometries.Coordinate(-180, 85),
-                     new Nts.Geometries.Coordinate(180, 85),
-                     new Nts.Geometries.Coordinate(180, -85),
-                     new Nts.Geometries.Coordinate(-180, -85),
-                     new Nts.Geometries.Coordinate(-180, 85)}), null);
-                // now substract the polygon from the "world" polygon
-                var invertedPolygon = worldRect.Difference(polygon);
-                // serialize to wkb
-                var wkbInverted = new Nts.IO.WKBWriter().Write(invertedPolygon);
-                var invertedShape = WkbToWpf.Parse(wkbInverted, GeoToCanvas);
-                geometries.Add(new Path { Fill = new SolidColorBrush(Color.FromArgb(255, 64, 64, 64)), Data = invertedShape });
-            }
+                    new Nts.Geometries.Coordinate(-180, 85),
+                    new Nts.Geometries.Coordinate(180, 85),
+                    new Nts.Geometries.Coordinate(180, -85),
+                    new Nts.Geometries.Coordinate(-180, -85),
+                    new Nts.Geometries.Coordinate(-180, 85)}), null);
+            // now substract the polygon from the "world" polygon
+            var invertedPolygon = worldRect.Difference(polygon);
+            // serialize to wkb
+            var wkbInverted = new Nts.IO.WKBWriter().Write(invertedPolygon);
+            var invertedShape = WkbToWpf.Parse(wkbInverted, GeoToCanvas);
+            geometries.Add(new Path { Fill = new SolidColorBrush(Color.FromArgb(255, 64, 64, 64)), Data = invertedShape });
         }
         #endregion
 
