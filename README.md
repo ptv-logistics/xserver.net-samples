@@ -46,7 +46,7 @@ Shows how to set-up a map-layout with custom gadgets
 ![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
 
 #### CustomLocalizer
-Shows how to user your own string resources to localize the texts of the control.
+Shows how to use your own string resources to localize the texts of the control.
 
 #### CustomPanAndZoom
 Shows how to change the default behavior for pan/zoom interaction.
