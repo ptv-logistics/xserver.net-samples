@@ -15,6 +15,9 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 #### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Demonstrates the API for native Xmap2/FeatureLayer support.
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
+#### [WMTSLayer](WMTSLayer) Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
+<img src="Screenshots/WMTSLayer.png" height="240" title="WMTSLayer">
+
 #### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
 <img src="Screenshots/SharpMap.Win.png" height="240" title="SharpMap.Widgets">
 
@@ -43,7 +46,7 @@ Shows how to set-up a map-layout with custom gadgets
 ![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
 
 #### CustomLocalizer
-Shows how to user your own string resources to localize the texts of the control.
+Shows how to use your own string resources to localize the texts of the control.
 
 #### CustomPanAndZoom
 Shows how to change the default behavior for pan/zoom interaction.
