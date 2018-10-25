@@ -13,14 +13,14 @@ namespace CustomInit
     /// This class shows the advanced initialization of the xServer layer. It shows how the initialization can be customized
     /// and gets the xServer meta data in a separate thread, without blocking the ui.
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
             InitializeComponent();
 
-            string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            string token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"; // just a test-token here. Use your own token
+            const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            const string token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"; // just a test-token here. Use your own token
 
             // v1: Use Meta info
             InitializeMap(Map1, url, token);
@@ -32,13 +32,13 @@ namespace CustomInit
         /// <summary>
         /// Asynchronous initialization of the map
         /// </summary>
-        private async void InitializeMap(WpfMap map, string url, string token)
+        private async void InitializeMap(IMap map, string url, string token)
         {
-            // the tools class XMapMetaInfo contains the information required to intialize the xServer layers
+            // the tools class XMapMetaInfo contains the information required to initialize the xServer layers
             // When instantiated with the url, it tries to read the attribution text and the maximum request size from the xMap configuration
             // To avoid blocking the application init, call it asynchronously
             var meta = await Task.Run(() => new XMapMetaInfo(url));
-            meta.SetCredentials("xtok", token); // set the basic authentication properties, e.g. xtok/token for xserver internet
+            meta.SetCredentials("xtok", token); // set the basic authentication properties, e.g. xtok/token for xServer internet
 
             // Initialize the map
             InsertXMapBaseLayers(map.Layers, meta);
@@ -58,7 +58,7 @@ namespace CustomInit
                 Copyright = copyrightText,
                 Caption = MapLocalizer.GetString(MapStringId.Background),
                 IsBaseMapLayer = true,
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")
             };
 
             var labelLayer = new UntiledLayer("Labels")
@@ -67,7 +67,7 @@ namespace CustomInit
                 Copyright = copyrightText,
                 MaxRequestSize = maxRequestSize,
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png"),
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png")
             };
 
             layers.Add(baseLayer);
