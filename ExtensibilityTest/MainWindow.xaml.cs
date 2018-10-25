@@ -5,7 +5,6 @@
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using Ptv.XServer.Controls.Map.Layers;
@@ -18,7 +17,7 @@ using Ptv.XServer.Controls.Map.Layers.Tiled;
 namespace Ptv.XServer.Net.ExtensibilityTest
 {
     /// <summary> Interaction logic for MainWindow.xaml </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         #region constructor
         /// <summary> Constructor of the main window. </summary>
@@ -74,24 +73,24 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             mapControl1.Layers.Add(
                 new UntiledLayer("UntiledOverlay")
                 {
-                    UntiledProvider = new MyOverlayRenderer() { Locations = MyOverlayRenderer.CreateTestLocations(10000), SymbolColor = Colors.Purple }
+                    UntiledProvider = new MyOverlayRenderer { Locations = MyOverlayRenderer.CreateTestLocations(10000), SymbolColor = Colors.Purple }
                 });
 
             // hybrid canvas Layer
             mapControl1.Layers.Add(
                 new BaseLayer("HybridCanvas")
                 {
-                    CanvasCategories = new CanvasCategory[]{CanvasCategory.Content},
+                    CanvasCategories = new[] { CanvasCategory.Content },
                     CanvasFactories = new BaseLayer.CanvasFactoryDelegate[]{
-                        (mapControl) => new MyHybridLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(10000), SymbolColor = Colors.Green }}
+                        mapControl => new MyHybridLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(10000), SymbolColor = Colors.Green }}
                 });
 
             // (dynamic) vector layer defined by code
             mapControl1.Layers.Add(
                 new BaseLayer("VectorLayer")
                 {
-                    CanvasCategories = new CanvasCategory[]{CanvasCategory.Content},
-                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[]{(mapControl) => new MyVectorCanvas(mapControl) { }}
+                    CanvasCategories = new[] { CanvasCategory.Content },
+                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { mapControl => new MyVectorCanvas(mapControl) }
                 });
 
             // (static) vector layer defined in Xaml
@@ -105,25 +104,16 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             mapControl1.Layers.Add(
                 new BaseLayer("CanvasLayer")
                 {
-                    CanvasCategories = new CanvasCategory[]{CanvasCategory.Content},
-                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[]{(mapControl) => new MyCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow }}
+                    CanvasCategories = new[] { CanvasCategory.Content },
+                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { mapControl => new MyCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
                 });
 
             // canvas painter layer
-            var locations = new List<Location>()
-            {
-                new Location
-                { 
-                    Latitude = 49.0136, Longitude = 8.4277, 
-                    Radius = 250, Description = "250 meters around ptv headquarters"
-                }
-            };
-
             mapControl1.Layers.Add(
                 new BaseLayer("MyScreenCanvasLayer")
                 {
-                    CanvasCategories = new CanvasCategory[] { CanvasCategory.Content },
-                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { (mapControl) => new MyScreenCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
+                    CanvasCategories = new[] { CanvasCategory.Content },
+                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { mapControl => new MyScreenCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
                 });
             //mapControl1.Layers.Add(
             //    new CanvasPainterLayer("MultiCanvas")

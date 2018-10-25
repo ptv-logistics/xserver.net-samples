@@ -7,11 +7,9 @@
 
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Ptv.XServer.Controls.Map;
-using Ptv.XServer.Controls.Map.Layers;
 using Ptv.XServer.Controls.Map.Canvases;
 
 
@@ -20,11 +18,6 @@ namespace Ptv.XServer.Net.ExtensibilityTest
     /// <summary>  </summary>
     public class MyScreenCanvasLayer : ScreenCanvas
     {
-        #region private variables
-        /// <summary>  </summary>
-        private ScaleTransform adjustTransform = new ScaleTransform();
-        #endregion
-
         #region public variables
         /// <summary> Data source. </summary>
         public List<LatLon> Locations { get; set; }
@@ -46,10 +39,11 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         /// <summary> Event handler for entering an ellipse with the mouse. </summary>
         /// <param name="sender"> Sender of the MouseEnter event. </param>
         /// <param name="e"> Event parameters. </param>
-        private void ellipse_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private static void ellipse_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             var ellipse = sender as Ellipse;
-            ellipse.Fill = new SolidColorBrush(Colors.Red);
+            if (ellipse != null)
+                ellipse.Fill = new SolidColorBrush(Colors.Red);
         }
 
         /// <summary> Event handler for leaving an ellipse with the mouse. </summary>
@@ -58,7 +52,8 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         private void ellipse_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             var ellipse = sender as Ellipse;
-            ellipse.Fill = new SolidColorBrush(SymbolColor);
+            if (ellipse != null)
+                ellipse.Fill = new SolidColorBrush(SymbolColor);
         }
         #endregion
 
@@ -77,43 +72,43 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                         Point canvasPoint = GeoToCanvas(new Point(location.Longitude, location.Latitude));
 
                         // Create the ellipse and insert it to our canvas
-                        Ellipse ellipse = new Ellipse
+                        var ellipse = new Ellipse
                         {
                             Width = SymbolSize,
                             Height = SymbolSize,
                             Fill = new SolidColorBrush(SymbolColor),
                             Stroke = new SolidColorBrush(Colors.Black),
+                            Tag = location
                         };
 
-                        ellipse.Tag = location;
                         // set position and add to map
-                        Canvas.SetLeft(ellipse, canvasPoint.X - SymbolSize / 2);
-                        Canvas.SetTop(ellipse, canvasPoint.Y - SymbolSize / 2);
+                        SetLeft(ellipse, canvasPoint.X - SymbolSize / 2);
+                        SetTop(ellipse, canvasPoint.Y - SymbolSize / 2);
+                        
+                        // ellipse.RenderTransformOrigin = new Point(0, 0);
 
- //                       ellipse.RenderTransformOrigin = new Point(0, 0);
-
-                        // higlight ellipse (only for main map)
+                        // highlight ellipse (only for main map)
                         if (MapView.Name == "Map")
                         {
-                            ellipse.MouseEnter += new System.Windows.Input.MouseEventHandler(ellipse_MouseEnter);
-                            ellipse.MouseLeave += new System.Windows.Input.MouseEventHandler(ellipse_MouseLeave);
+                            ellipse.MouseEnter += ellipse_MouseEnter;
+                            ellipse.MouseLeave += ellipse_MouseLeave;
                         }
 
                         // add ellipse to canvas
-                        this.Children.Add(ellipse);
+                        Children.Add(ellipse);
                     }
 
                     goto case UpdateMode.WhileTransition;
                 case UpdateMode.WhileTransition:
-                    foreach(Ellipse ellipse in this.Children)
+                    foreach(Ellipse ellipse in Children)
                     {
                         var location = (LatLon)ellipse.Tag;
 
                         // calculate ptv location in canvas units
                         Point canvasPoint = GeoToCanvas(new Point(location.Longitude, location.Latitude));
 
-                        Canvas.SetLeft(ellipse, canvasPoint.X - SymbolSize / 2);
-                        Canvas.SetTop(ellipse, canvasPoint.Y - SymbolSize / 2);
+                        SetLeft(ellipse, canvasPoint.X - SymbolSize / 2);
+                        SetTop(ellipse, canvasPoint.Y - SymbolSize / 2);
                     }
                     break;
             }

@@ -9,10 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Tools;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
-using Ptv.XServer.Controls.Map.Layers.Tiled;
 
 
 namespace Ptv.XServer.Net.ExtensibilityTest
@@ -48,8 +46,8 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         {
             var result = new List<LatLon>();
 
-            double centerLat = 49;
-            double centerLon = 8.4;
+            const double centerLat = 49;
+            const double centerLon = 8.4;
             var r = new Random();
 
             for (int i = 0; i < count; i++)
@@ -74,11 +72,10 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public System.IO.Stream GetImageStream(double left, double top, double right, double bottom, int width, int height)
+        public Stream GetImageStream(double left, double top, double right, double bottom, int width, int height)
         {
-            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(width, height);
-
-            Graphics graphics = System.Drawing.Graphics.FromImage(bmp);
+            var bitmap = new Bitmap(width, height);
+            var graphics = Graphics.FromImage(bitmap);
             int symbolRadius = SymbolSize / 2;
 
             foreach (var location in Locations)
@@ -86,7 +83,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                 System.Windows.Point mercatorPoint = GeoTransform.WGSToPtvMercator(
                     new System.Windows.Point(location.Longitude, location.Latitude));
 
-                var pixelPoint = new System.Drawing.Point(
+                var pixelPoint = new Point(
                     (int)((mercatorPoint.X - left) / (right - left) * width),
                     (int)((mercatorPoint.Y - bottom) / (top - bottom) * height));
 
@@ -98,8 +95,8 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                     pixelPoint.X - symbolRadius, pixelPoint.Y - symbolRadius, SymbolSize, SymbolSize);
             }
 
-            var memoryStream = new System.IO.MemoryStream();
-            bmp.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+            var memoryStream = new MemoryStream();
+            bitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
             memoryStream.Seek(0, SeekOrigin.Begin); // goto stream begin
 
             return memoryStream;

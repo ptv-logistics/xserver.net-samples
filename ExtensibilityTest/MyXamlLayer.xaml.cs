@@ -6,14 +6,13 @@
 //--------------------------------------------------------------
 
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 
 namespace Ptv.XServer.Net.ExtensibilityTest
 {
     /// <summary> Interaction logic for MyXamlLayer.xaml </summary>
-    public partial class MapXaml : UserControl
+    public partial class MapXaml
     {
         #region constructor
         /// <summary>  </summary>

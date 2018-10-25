@@ -5,9 +5,8 @@
 // should have been provided with this distribution.
 -->
 <UserControl x:Class="Ptv.XServer.Net.ExtensibilityTest.MapXaml"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-      xmlns:sys="clr-namespace:System;assembly=mscorlib" 
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:vl="clr-namespace:Ptv.XServer.Net.ExtensibilityTest"
       Width="360"
       Height="360">
@@ -38,10 +37,6 @@
                     </EventTrigger.Actions>
                 </EventTrigger>
             </Style.Triggers>
-        </Style>
-        <Style TargetType="{x:Type vl:MapShape}" x:Key="Layer1">
-            <Setter Property="Stroke" Value="Blue" />
-            <Setter Property="InvariantStrokeThickness" Value="0.5" />
         </Style>
     </UserControl.Resources>
     <Canvas>

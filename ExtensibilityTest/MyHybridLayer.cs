@@ -6,13 +6,8 @@
 //--------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using Ptv.XServer.Controls.Map;
-using Ptv.XServer.Controls.Map.Layers;
-using Ptv.XServer.Controls.Map.Tools;
 using Ptv.XServer.Controls.Map.Canvases;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
 
@@ -24,10 +19,10 @@ namespace Ptv.XServer.Net.ExtensibilityTest
     {
         #region private variables
         /// <summary> Canvas used for shallow zoom levels. </summary>
-        private WorldCanvas bitmapCanvas = null;
+        private WorldCanvas bitmapCanvas;
 
         /// <summary> Canvas used for deep zoom levels. </summary>
-        private MyDeepZoomCanvas vectorCanvas = null;
+        private MyDeepZoomCanvas vectorCanvas;
         #endregion
 
         #region public variables
@@ -36,7 +31,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         /// <summary>  </summary>
         public int SymbolSize = 10;
         /// <summary>  </summary>
-        public System.Windows.Media.Color SymbolColor = System.Windows.Media.Colors.Blue;
+        public Color SymbolColor = Colors.Blue;
         #endregion
 
         #region constructor
@@ -59,17 +54,18 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             {
                 if (vectorCanvas != null)
                 {
-                    this.Children.Remove(vectorCanvas);
+                    Children.Remove(vectorCanvas);
                     vectorCanvas = null;
                 }
 
                 if (bitmapCanvas == null)
                 {
-                    bitmapCanvas = new UntiledCanvas(MapView, new MyOverlayRenderer() { 
-                        SymbolColor = this.SymbolColor,
-                        SymbolSize = this.SymbolSize,
-                        Locations = this.Locations }, false);
-                    this.Children.Add(bitmapCanvas);
+                    bitmapCanvas = new UntiledCanvas(MapView, new MyOverlayRenderer
+                    { 
+                        SymbolColor = SymbolColor,
+                        SymbolSize = SymbolSize,
+                        Locations = Locations }, false);
+                    Children.Add(bitmapCanvas);
                 }
 
                 bitmapCanvas.Update(updateMode);
@@ -78,7 +74,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             {
                 if (bitmapCanvas != null)
                 {
-                    this.Children.Remove(bitmapCanvas);
+                    Children.Remove(bitmapCanvas);
                     bitmapCanvas = null;
                 }
 
@@ -86,11 +82,11 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                 {
                     vectorCanvas = new MyDeepZoomCanvas(MapView)
                     {
-                        SymbolColor = this.SymbolColor,
-                        SymbolSize = this.SymbolSize,
-                        Locations = this.Locations
+                        SymbolColor = SymbolColor,
+                        SymbolSize = SymbolSize,
+                        Locations = Locations
                     };
-                    this.Children.Add(vectorCanvas);
+                    Children.Add(vectorCanvas);
                 }
 
                 vectorCanvas.Update(updateMode);
@@ -113,7 +109,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
 
         #region constructor
         /// <summary>  </summary>
-        /// <param name="mapControl"></param>
+        /// <param name="mapView"></param>
         public MyDeepZoomCanvas(MapView mapView)
             : base(mapView, false)
         { }
