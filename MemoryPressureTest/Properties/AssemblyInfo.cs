@@ -1,13 +1,4 @@
-﻿//--------------------------------------------------------------
-// Copyright (c) PTV Group
-// 
-// For license details, please refer to the file COPYING, which 
-// should have been provided with this distribution.
-//--------------------------------------------------------------
-
-using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
