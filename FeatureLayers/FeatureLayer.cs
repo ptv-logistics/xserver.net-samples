@@ -5,9 +5,7 @@ using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace Ptv.XServer.Demo.UseCases.FeatureLayer
 {
@@ -29,9 +27,9 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         TruckAttributes,
         /// <summary> This layer of this theme provides restricted transit areas for truck transit zones. </summary>
         RestrictionZones,
-        /// <summary> This Feature Layer represents subnetworks of the road network to be prioritized. </summary>
+        /// <summary> This Feature Layer represents sub networks of the road network to be prioritized. </summary>
         PreferredRoutes,
-        /// <summary> With speed pattern data the average traffic situation during the week is modelled. </summary>
+        /// <summary> With speed pattern data the average traffic situation during the week is modeled. </summary>
         SpeedPatterns
     }
 
@@ -142,11 +140,11 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
             foreach (var refreshInfo in RefreshInfos())
             {
                 refreshInfo.provider.CustomCallerContextProperties = new[] {new xserver.CallerContextProperty {key = "ProfileXMLSnippet", value = snippet}};
-                refreshInfo.provider.ReferenceTime = this.ReferenceTime;
+                refreshInfo.provider.ReferenceTime = ReferenceTime;
 
                 if (refreshInfo.layer.Name == "Labels")
                 {
-                    // The insertion of xserver.FeatureLayer objects into the CustomXMapLayers results in a providing of ObjectInfo objects in the return value
+                    // The insertion of xServer.FeatureLayer objects into the CustomXMapLayers results in a providing of ObjectInfo objects in the return value
                     // of XMap.RenderMapBoundingBox(). Only by means of these objects, it is possible to retrieve information for tool tips.
                     var xServerLayers = new List<xserver.Layer>();
                     if (UseTrafficIncidents)
