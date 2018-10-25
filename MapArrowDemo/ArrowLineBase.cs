@@ -1,28 +1,22 @@
 //----------------------------------------------
 // ArrowLineBase.cs (c) 2007 by Charles Petzold
 //----------------------------------------------
-using System;
+
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using Ptv.XServer.Controls.Map.Layers.Shapes;
 
 namespace Petzold.Media2D
 {
-    /// <summary>
-    ///     Provides a base class for ArrowLine and ArrowPolyline.
-    ///     This class is abstract.
-    /// </summary>
+    /// <summary>Provides a base class for ArrowLine and ArrowPolyline. </summary>
     public abstract class ArrowLineBase : MapShape
     {
-        protected PathGeometry pathgeo;
-        protected PathFigure pathfigLine;
-        protected PolyLineSegment polysegLine;
+        protected PathGeometry pathGeometry;
+        protected PathFigure pathFigureLine;
+        protected PolyLineSegment polyLineSegmentLine;
 
-        PathFigure pathfigHead1;
-        PolyLineSegment polysegHead1;
-        PathFigure pathfigHead2;
-        PolyLineSegment polysegHead2;
+        private readonly PathFigure pathFigureHead1;
+        private readonly PathFigure pathFigureHead2;
 
         /// <summary>
         ///     Identifies the ArrowAngle dependency property.
@@ -30,8 +24,7 @@ namespace Petzold.Media2D
         public static readonly DependencyProperty ArrowAngleProperty =
             DependencyProperty.Register("ArrowAngle",
                 typeof(double), typeof(ArrowLineBase),
-                new FrameworkPropertyMetadata(45.0,
-                        FrameworkPropertyMetadataOptions.AffectsMeasure));
+                new FrameworkPropertyMetadata(45.0, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         ///     Gets or sets the angle between the two sides of the arrowhead.
@@ -99,23 +92,23 @@ namespace Petzold.Media2D
         }
 
         /// <summary>
-        ///     Initializes a new instance of ArrowLineBase.
+        /// Initializes a new instance of ArrowLineBase.
         /// </summary>
-        public ArrowLineBase()
+        protected ArrowLineBase()
         {
-            pathgeo = new PathGeometry();
+            pathGeometry = new PathGeometry();
 
-            pathfigLine = new PathFigure();
-            polysegLine = new PolyLineSegment();
-            pathfigLine.Segments.Add(polysegLine);
+            pathFigureLine = new PathFigure();
+            polyLineSegmentLine = new PolyLineSegment();
+            pathFigureLine.Segments.Add(polyLineSegmentLine);
 
-            pathfigHead1 = new PathFigure();
-            polysegHead1 = new PolyLineSegment();
-            pathfigHead1.Segments.Add(polysegHead1);
+            pathFigureHead1 = new PathFigure();
+            var polylineSegmentHead1 = new PolyLineSegment();
+            pathFigureHead1.Segments.Add(polylineSegmentHead1);
 
-            pathfigHead2 = new PathFigure();
-            polysegHead2 = new PolyLineSegment();
-            pathfigHead2.Segments.Add(polysegHead2);
+            pathFigureHead2 = new PathFigure();
+            var polylineSegmentHead2 = new PolyLineSegment();
+            pathFigureHead2.Segments.Add(polylineSegmentHead2);
         }
 
         /// <summary>
@@ -125,46 +118,46 @@ namespace Petzold.Media2D
         {
             get
             {
-                int count = polysegLine.Points.Count;
+                int count = polyLineSegmentLine.Points.Count;
 
                 if (count > 0)
                 {
                     // Draw the arrow at the start of the line.
                     if ((ArrowEnds & ArrowEnds.Start) == ArrowEnds.Start)
                     {
-                        Point pt1 = pathfigLine.StartPoint;
-                        Point pt2 = polysegLine.Points[0];
-                        pathgeo.Figures.Add(CalculateArrow(pathfigHead1, pt2, pt1));
+                        Point pt1 = pathFigureLine.StartPoint;
+                        Point pt2 = polyLineSegmentLine.Points[0];
+                        pathGeometry.Figures.Add(CalculateArrow(pathFigureHead1, pt2, pt1));
                     }
 
                     // Draw the arrow at the end of the line.
                     if ((ArrowEnds & ArrowEnds.End) == ArrowEnds.End)
                     {
-                        Point pt1 = count == 1 ? pathfigLine.StartPoint :
-                                                 polysegLine.Points[count - 2];
-                        Point pt2 = polysegLine.Points[count - 1];
-                        pathgeo.Figures.Add(CalculateArrow(pathfigHead2, pt1, pt2));
+                        Point pt1 = count == 1 ? pathFigureLine.StartPoint :
+                                                 polyLineSegmentLine.Points[count - 2];
+                        Point pt2 = polyLineSegmentLine.Points[count - 1];
+                        pathGeometry.Figures.Add(CalculateArrow(pathFigureHead2, pt1, pt2));
                     }
                 }
-                return pathgeo;
+                return pathGeometry;
             }
         }
 
-        PathFigure CalculateArrow(PathFigure pathfig, Point pt1, Point pt2)
+        private PathFigure CalculateArrow(PathFigure pathfig, Point pt1, Point pt2)
         {
-            Matrix matx = new Matrix();
-            Vector vect = pt1 - pt2;
-            vect.Normalize();
-            vect *= ArrowLength * StrokeThickness;
+            var matrix = new Matrix();
+            Vector vector = pt1 - pt2;
+            vector.Normalize();
+            vector *= ArrowLength * StrokeThickness;
 
-            PolyLineSegment polyseg = pathfig.Segments[0] as PolyLineSegment;
-            polyseg.Points.Clear();
-            matx.Rotate(ArrowAngle / 2);
-            pathfig.StartPoint = pt2 + vect * matx;
-            polyseg.Points.Add(pt2);
+            var polyLineSegment = pathfig.Segments[0] as PolyLineSegment;
+            polyLineSegment.Points.Clear();
+            matrix.Rotate(ArrowAngle / 2);
+            pathfig.StartPoint = pt2 + vector * matrix;
+            polyLineSegment.Points.Add(pt2);
 
-            matx.Rotate(-ArrowAngle);
-            polyseg.Points.Add(pt2 + vect * matx);
+            matrix.Rotate(-ArrowAngle);
+            polyLineSegment.Points.Add(pt2 + vector * matrix);
             pathfig.IsClosed = IsArrowClosed;
 
             return pathfig;

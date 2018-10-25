@@ -1,7 +1,7 @@
 //------------------------------------------
 // ArrowLine.cs (c) 2007 by Charles Petzold
 //------------------------------------------
-using System;
+
 using System.Windows;
 using System.Windows.Media;
 
@@ -93,13 +93,13 @@ namespace Petzold.Media2D
             get
             {
                 // Clear out the PathGeometry.
-                pathgeo.Figures.Clear();
+                pathGeometry.Figures.Clear();
 
                 // Define a single PathFigure with the points.
-                pathfigLine.StartPoint = this.GeoTransform(new Point(X1, Y1));
-                polysegLine.Points.Clear();
-                polysegLine.Points.Add(this.GeoTransform(new Point(X2, Y2)));
-                pathgeo.Figures.Add(pathfigLine);
+                pathFigureLine.StartPoint = GeoTransform(new Point(X1, Y1));
+                polyLineSegmentLine.Points.Clear();
+                polyLineSegmentLine.Points.Add(GeoTransform(new Point(X2, Y2)));
+                pathGeometry.Figures.Add(pathFigureLine);
 
                 // Call the base property to add arrows on the ends.
                 return base.DefiningGeometry;
