@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ToursAndStops
@@ -7,7 +6,7 @@ namespace ToursAndStops
     /// <summary>
     /// Interaction logic for Balloon.xaml
     /// </summary>
-    public partial class Balloon : UserControl
+    public partial class Balloon
     {
         public Balloon()
         {
@@ -24,7 +23,7 @@ namespace ToursAndStops
         // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.Register("Color", typeof(Color), typeof(Balloon), 
-            new PropertyMetadata(Colors.Black, new PropertyChangedCallback(OnColorPropertyChanged)));
+            new PropertyMetadata(Colors.Black, OnColorPropertyChanged));
 
         // synchronize the (external) Color property to the internal path object
         private static void OnColorPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
@@ -43,7 +42,7 @@ namespace ToursAndStops
         // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(Balloon), 
-            new PropertyMetadata("", new PropertyChangedCallback(OnTextPropertyChanged)));
+            new PropertyMetadata("", OnTextPropertyChanged));
 
         // synchronize the (external) Text property to the internal text object
         private static void OnTextPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)

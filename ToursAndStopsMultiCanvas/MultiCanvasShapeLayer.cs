@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using Ptv.XServer.Controls.Map.Canvases;
 using Ptv.XServer.Controls.Map.Layers;
@@ -16,10 +12,10 @@ namespace ToursAndStops
     {
         #region private variables
         /// <summary> Collections of shape elements contained in this layer which are rendered with category content. </summary>
-        private ObservableCollection<FrameworkElement> shapes = new ObservableCollection<FrameworkElement>();
+        private readonly ObservableCollection<FrameworkElement> shapes = new ObservableCollection<FrameworkElement>();
 
         /// <summary> Collections of shape elements contained in this layer which are rendered on top of category content. </summary>
-        private ObservableCollection<FrameworkElement> topShapes = new ObservableCollection<FrameworkElement>();
+        private readonly ObservableCollection<FrameworkElement> topShapes = new ObservableCollection<FrameworkElement>();
         #endregion
 
         #region public variables
@@ -31,13 +27,13 @@ namespace ToursAndStops
         /// <summary> Gets the collection of shapes to be displayed by this layer which are rendered with category content. </summary>
         public ObservableCollection<FrameworkElement> Shapes
         {
-            get { return this.shapes; }
+            get { return shapes; }
         }
 
         /// <summary> Gets the collection of shapes to be displayed by this layer which are rendered on top of category content. </summary>
         public ObservableCollection<FrameworkElement> TopShapes
         {
-            get { return this.topShapes; }
+            get { return topShapes; }
         }
         #endregion
 
@@ -51,12 +47,12 @@ namespace ToursAndStops
         public MultiCanvasShapeLayer(string name)
             : base(name)
         {
-            this.SpatialReferenceId = "EPSG:4326";
+            SpatialReferenceId = "EPSG:4326";
 
-            this.CanvasCategories = new CanvasCategory[] { CanvasCategory.Content, CanvasCategory.Content + 1 };
-            this.CanvasFactories = new CanvasFactoryDelegate[] {  
-             (map) => (map.Name == "Map") ? new ShapeCanvas(map, shapes, SpatialReferenceId, LazyUpdate) : null,
-             (map) => (map.Name == "Map") ? new ShapeCanvas(map, topShapes, SpatialReferenceId, LazyUpdate) : null};
+            CanvasCategories = new[] { CanvasCategory.Content, CanvasCategory.Content + 1 };
+            CanvasFactories = new CanvasFactoryDelegate[] {  
+             map => map.Name == "Map" ? new ShapeCanvas(map, shapes, SpatialReferenceId, LazyUpdate) : null,
+             map => map.Name == "Map" ? new ShapeCanvas(map, topShapes, SpatialReferenceId, LazyUpdate) : null};
 
         }
         #endregion
