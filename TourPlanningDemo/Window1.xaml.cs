@@ -1,5 +1,4 @@
-﻿using Ptv.XServer.Controls.Map;
-using Ptv.XServer.Controls.Map.Layers.Shapes;
+﻿using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Symbols;
 using System;
 using System.Linq;
@@ -14,13 +13,10 @@ namespace TourPlanningDemo
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
-            // infinite zoom makes the map more smooth at deep zoom levels
-            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
-
             InitializeComponent();
 
             tourLayer = new ShapeLayer("Tours");
@@ -35,18 +31,18 @@ namespace TourPlanningDemo
 
         public const string XMapCredentials = "xtok:" + App.Token;
 
-        ShapeLayer tourLayer;
-        ShapeLayer orderLayer;
-        ShapeLayer depotLayer;
+        private readonly ShapeLayer tourLayer;
+        private readonly ShapeLayer orderLayer;
+        private readonly ShapeLayer depotLayer;
 
-        Scenario scenario;
-        Color unplannedColor = Colors.LightGray;
-        TourCalcWrapper tourCalcWrapper;
+        private Scenario scenario;
+        private readonly Color unplannedColor = Colors.LightGray;
+        private TourCalcWrapper tourCalcWrapper;
 
-        bool firstTime = true;
-        public void SetScenario(Scenario scenario)
+        private bool firstTime = true;
+        public void SetScenario(Scenario usedScenario)
         {
-            this.scenario = scenario;
+            scenario = usedScenario;
 
             statusLabel.Content = "Scenario initialized";
             StartButton.IsEnabled = true;
@@ -57,108 +53,102 @@ namespace TourPlanningDemo
             depotLayer.Shapes.Clear();
             
             // add orders, oder by latitude so they overlap nicely on the map
-            foreach (var order in from o in scenario.Orders orderby o.Latitude descending select o)
+            foreach (var order in from o in usedScenario.Orders orderby o.Latitude descending select o)
             {
-                var pin = new Ptv.XServer.Controls.Map.Symbols.Cube();
-                pin.Color = unplannedColor;
-                pin.Width = pin.Height = Math.Sqrt(order.Quantity) * 10;
-                ShapeCanvas.SetLocation(pin, new Point(order.Longitude, order.Latitude));
-                orderLayer.Shapes.Add(pin);
-                pin.Tag = order;
+                var cube = new Cube { Color = unplannedColor };
+                cube.Width = cube.Height = Math.Sqrt(order.Quantity) * 10;
+
+                ShapeCanvas.SetLocation(cube, new Point(order.Longitude, order.Latitude));
+                orderLayer.Shapes.Add(cube);
+                cube.Tag = order;
             }
 
             // add depots, oder by latitude so they overlap nicely on the map
-            foreach (var depot in from d in scenario.Depots orderby d.Latitude descending select d)
+            foreach (var depot in from d in usedScenario.Depots orderby d.Latitude descending select d)
             {
-                var pin = new Ptv.XServer.Controls.Map.Symbols.Pyramid();
+                var pin = new Pyramid();
                 pin.Width = pin.Height = 30;
                 pin.Color = depot.Color;
                 ShapeCanvas.SetLocation(pin, new Point(depot.Longitude, depot.Latitude));
                 depotLayer.Shapes.Add(pin);
             }
 
-            if (firstTime)
-            {
-                firstTime = false;
-                MessageBox.Show(this,
-                    "This sample shows some best practices for PTV xTour in a " +
-                    ".NET Windows client application. The main techniques demonstrated in this sample:\n" +
-                    "* Using xTour at xServer internet\n" +
-                    "* Visualizing the tour plan with the xServer .NET control\n" +
-                    "* Mapping your application objects from and to xServer objects\n" +
-                    "* Invoking PTV xServers from a windows application in a non-blocking way\n" +
-                    "* Using the job API to control and display the tour calculation progress",
-                    "What's this?");
-            }
+            if (!firstTime) return;
+            firstTime = false;
+            MessageBox.Show(this,
+                "This sample shows some best practices for PTV xTour in a " +
+                ".NET Windows client application. The main techniques demonstrated in this sample:\n" +
+                "* Using xTour at xServer internet\n" +
+                "* Visualizing the tour plan with the xServer .NET control\n" +
+                "* Mapping your application objects from and to xServer objects\n" +
+                "* Invoking PTV xServers from a windows application in a non-blocking way\n" +
+                "* Using the job API to control and display the tour calculation progress",
+                "What's this?");
         }
 
-        public void SetPlannedTours(Scenario scenario)
+        public void SetPlannedTours(Scenario usedScenario)
         {
             CancelButton.IsEnabled = false;
             StartButton.IsEnabled = true;
             ScenarioComboBox.IsEnabled = true;
 
             tourLayer.Shapes.Clear();
-            foreach (var tour in scenario.Tours)
+            foreach (var tour in usedScenario.Tours)
             {
-                var pc = new PointCollection(from tp in tour.TourPoints select new System.Windows.Point(tp.Longitude, tp.Latitude));
+                var pc = new PointCollection(from tp in tour.TourPoints select new Point(tp.Longitude, tp.Latitude));
                 SetPlainLine(pc, tourLayer, tour.Vehicle.Depot.Color, tour.Vehicle.Id);
                 SetAnimDash(pc, tourLayer);
             }
 
-            foreach(Cube cube in this.orderLayer.Shapes)
+            foreach(var frameworkElement in orderLayer.Shapes)
             {
+                var cube = (Cube) frameworkElement;
                 var order = (Order)cube.Tag;
-                if (order.Tour != null)
-                {
-                    cube.Color = order.Tour.Vehicle.Depot.Color;
-                }
-                else
-                {
-                    cube.Color = unplannedColor;
-                }
+                cube.Color = order.Tour != null ? order.Tour.Vehicle.Depot.Color : unplannedColor;
             }
         }
 
         public void SetPlainLine(PointCollection pc, ShapeLayer layer, Color color, string toolTip)
         {
-            MapPolyline poly = new MapPolyline();
-            poly.Points = pc;
-            poly.MapStrokeThickness = 20;
-            poly.StrokeLineJoin = PenLineJoin.Round;
-            poly.StrokeStartLineCap = PenLineCap.Flat;
-            poly.StrokeEndLineCap = PenLineCap.Triangle;
-            poly.Stroke = new SolidColorBrush(color);
-            poly.ScaleFactor = .2;
-            poly.ToolTip = toolTip;
-            poly.MouseEnter += (s, e) => poly.Stroke = new SolidColorBrush(Colors.Cyan);
-            poly.MouseLeave += (s, e) => poly.Stroke = new SolidColorBrush(color);
-            layer.Shapes.Add(poly);
+            var mapPolyline = new MapPolyline
+            {
+                Points = pc,
+                MapStrokeThickness = 20,
+                StrokeLineJoin = PenLineJoin.Round,
+                StrokeStartLineCap = PenLineCap.Flat,
+                StrokeEndLineCap = PenLineCap.Triangle,
+                Stroke = new SolidColorBrush(color),
+                ScaleFactor = .2,
+                ToolTip = toolTip
+            };
+            mapPolyline.MouseEnter += (s, e) => mapPolyline.Stroke = new SolidColorBrush(Colors.Cyan);
+            mapPolyline.MouseLeave += (s, e) => mapPolyline.Stroke = new SolidColorBrush(color);
+            layer.Shapes.Add(mapPolyline);
         }
 
         public void SetAnimDash(PointCollection pc, ShapeLayer layer)
         {
-            MapPolyline animDashLine = new MapPolyline()
+            var animDashLine = new MapPolyline
             {
                 MapStrokeThickness = 16,
                 Points = pc,
-                ScaleFactor = 0.2
+                ScaleFactor = 0.2,
+                Stroke = new SolidColorBrush(Color.FromArgb(128, 255, 255, 255)),
+                StrokeLineJoin = PenLineJoin.Round,
+                StrokeStartLineCap = PenLineCap.Flat,
+                StrokeEndLineCap = PenLineCap.Triangle,
+                StrokeDashCap = PenLineCap.Triangle
             };
 
-            animDashLine.Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(128, 255, 255, 255));
-            animDashLine.StrokeLineJoin = PenLineJoin.Round;
-            animDashLine.StrokeStartLineCap = PenLineCap.Flat;
-            animDashLine.StrokeEndLineCap = PenLineCap.Triangle;
-            animDashLine.StrokeDashCap = PenLineCap.Triangle;
             var dc = new DoubleCollection { 2, 2 };
             animDashLine.IsHitTestVisible = false;
             animDashLine.StrokeDashArray = dc;
 
-            DoubleAnimation animation = new DoubleAnimation
+            var animation = new DoubleAnimation
             {
                 From = 4,
                 To = 0,
-                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd,
+                FillBehavior = FillBehavior.HoldEnd,
                 RepeatBehavior = RepeatBehavior.Forever
             };
 
@@ -191,19 +181,19 @@ namespace TourPlanningDemo
             ScenarioComboBox.IsEnabled = true;
         }
 
-        private async void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (statusLabel != null)
                 statusLabel.Content = "Initializing...";
 
-            var center = new System.Windows.Point(6.130833, 49.611389); // LUX
+            var center = new Point(6.130833, 49.611389); // LUX
             //var center = new System.Windows.Point(8.4, 49); // KA
-            var radius = 7.5; // radius in km
-            var scenario = (ScenarioSize)System.Enum.Parse(typeof(ScenarioSize), ((string)((ComboBoxItem)e.AddedItems[0]).Content));
+            const double radius = 7.5; // radius in km
+            var scenarioSize = (ScenarioSize)Enum.Parse(typeof(ScenarioSize), (string)((ComboBoxItem)e.AddedItems[0]).Content);
 
             try
             {
-                var s = await Task.Run(() => RandomScenarioBuilder.CreateScenario(scenario, center, radius));
+                var s = await Task.Run(() => RandomScenarioBuilder.CreateScenario(scenarioSize, center, radius));
 
                 Map.SetMapLocation(center, 10);
                 SetScenario(s);

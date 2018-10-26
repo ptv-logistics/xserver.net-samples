@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Media;
 
 namespace TourPlanningDemo
 {
     /// <summary>
     /// This class represents our scenario which models our tour planning objects
-    /// Unlike the objects used in xTour, which are modelled to build-up our xtour requests, 
-    /// these objects are modelled to build-up our application domain. 
+    /// Unlike the objects used in xTour, which are modeled to build-up our xTour requests, 
+    /// these objects are modeled to build-up our application domain. 
     /// They are usually mapped to some kind of database
     /// </summary>
     public class Scenario
