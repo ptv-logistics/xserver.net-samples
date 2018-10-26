@@ -1,10 +1,9 @@
 ﻿<Window x:Class="VdiPerformance.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:SymbolsAndLabels"
-    xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
+        xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="VDI Performance Test" Height="600" Width="800">
-    <Grid x:Name="LayoutRoot">
+    <Grid>
         <mapcore:WpfMap Name="Map"/>
         <Border Background="White" VerticalAlignment="Bottom" HorizontalAlignment="left" Margin="10,0,0,10" BorderBrush="Black" BorderThickness="2" Padding="15">
             <StackPanel >
@@ -12,9 +11,9 @@
                 <TextBlock x:Name="hardwareLevel"></TextBlock>
                 <Label Margin="0,4,0,0" >Generic Options</Label>
                 <CheckBox x:Name="renderMode" Content="Software Rendering" Click="Button_Click"></CheckBox>
-                <CheckBox x:Name="bilinearScaling" Content="Nearest Neighbour Filter" Click="bilinearScaling_Click"></CheckBox>
+                <CheckBox x:Name="biLinearScaling" Content="Nearest Neighbor Filter" Click="biLinearScaling_Click"></CheckBox>
                 <Label Margin="0,4,0,0" >Base Map</Label>
-                <CheckBox x:Name="useReucedProfile" Content="Flat Profile" Click="useReucedProfile_Checked"></CheckBox>
+                <CheckBox x:Name="useFlatProfile" Content="Flat Profile" Click="useFlatProfile_Checked"></CheckBox>
                 <CheckBox x:Name="useSingleTileBG" Content="Single Tile Background" Click="useSingleTileBG_Checked"></CheckBox>
                 <CheckBox x:Name="useSingleLayerBaseMap" Content="Single Layer Base Map" Click="useSingleLayerBaseMap_Checked" ></CheckBox>
                 <Label Margin="0,4,0,0" >Navigation Options</Label>
