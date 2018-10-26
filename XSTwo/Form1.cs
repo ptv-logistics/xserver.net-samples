@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private static string myToken = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+        private const string myToken = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
 
         public Form1()
         {
@@ -22,9 +22,6 @@ namespace XSTwo
 
         private void formsMap1_Load(object sender, EventArgs e)
         {
-            // set the inifinite zoom option to allow hight zoom levels for xMap-2
-            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
-
             // initialize the first map
             InitializeMap1();
 
@@ -37,7 +34,7 @@ namespace XSTwo
             // center and radius for our map
             var center = new Point(8.4044, 49.01405);
 
-            // the maixum zoom level of the map
+            // the maximum zoom level of the map
             formsMap1.MaxZoom = 22;
 
             // set the map center to Karlsruhe
@@ -91,7 +88,7 @@ namespace XSTwo
                 Copyright = "PTV, TOMTOM"
             });
 
-            // now a custom shape layer in-betwee background and labels
+            // now a custom shape layer in-between background and labels
             var myLayer = new ShapeLayer("MyLayer");
             formsMap2.Layers.Add(myLayer);
             AddCircle(myLayer, center, 250);
@@ -121,7 +118,7 @@ namespace XSTwo
         public void AddCircle(ShapeLayer layer, Point center, double radius)
         {
             // calculate the size in mercator units
-            double cosB = Math.Cos((center.Y / 360.0) * (2 * Math.PI)); // factor depends on latitude
+            double cosB = Math.Cos(center.Y / 360.0 * (2 * Math.PI)); // factor depends on latitude
             double ellipseSize = Math.Abs(1.0 / cosB * radius) * 2; // size mercator units
 
             // add the ellipse shape
