@@ -19,7 +19,7 @@
             </summary>
             <remarks>
             With <see cref="T:System.Runtime.InteropServices.DllImportAttribute" /> requiring
-            'static extern methods', this copy of the attribute class is necessary to allow the parameterization of interface methods.
+            'static extern methods', this copy of the attribute class is necessary to allow the parametrization of interface methods.
             </remarks>
         </member>
         <member name="F:System.Reflection.ApiFactory.DllImportAttribute.EntryPoint">
@@ -92,7 +92,7 @@
             <param name="dllName">The file name of the external library.</param>
             <returns>Returns the implementation of the specified type or null on any error.</returns>
             <remarks>The <see cref="T:System.Reflection.ApiFactory.DllImportAttribute"/> attribute is used on the interfaces methods 
-            to parameterize the inter operation.</remarks>
+            to parametrize the inter operation.</remarks>
         </member>
         <member name="T:System.IO.TempSpace">
             <summary>
@@ -257,22 +257,22 @@
         </member>
         <member name="F:Ptv.Components.Projections.Direct.CoordinateTransformations.gpEuro_n">
             <summary>
-            use by conform transformations, taken from claw (Coordiantes.cs)
+            use by conform transformations, taken from claw (Coordinates.cs)
             </summary>
         </member>
         <member name="F:Ptv.Components.Projections.Direct.CoordinateTransformations.gpEuro_nInv">
             <summary>
-            use by conform transformations, taken from claw (Coordiantes.cs)
+            use by conform transformations, taken from claw (Coordinates.cs)
             </summary>
         </member>
         <member name="F:Ptv.Components.Projections.Direct.CoordinateTransformations.gpEuro_RF">
             <summary>
-            use by conform transformations, taken from claw (Coordiantes.cs)
+            use by conform transformations, taken from claw (Coordinates.cs)
             </summary>                                                                                                                                   
         </member>
         <member name="F:Ptv.Components.Projections.Direct.CoordinateTransformations.gpEuro_rho0">
             <summary>
-            use by conform transformations, taken from claw (Coordiantes.cs)
+            use by conform transformations, taken from claw (Coordinates.cs)
             </summary>                                                                                                                              
         </member>
         <member name="M:Ptv.Components.Projections.Direct.CoordinateTransformations.TransformPtvGeodecimalToWgs84(System.Double@,System.Double@,System.Double@)">
@@ -1129,7 +1129,7 @@
             coordinates through <see cref="T:Ptv.Components.Projections.CoordinateTransformation"/>.
             </summary>
             <remarks>
-            <see cref="T:Ptv.Components.Projections.CoordinateReferenceSystem"/> stores the parameterization (Proj4 well known text) and the identifier of 
+            <see cref="T:Ptv.Components.Projections.CoordinateReferenceSystem"/> stores the parametrization (Proj4 well known text) and the identifier of 
             a CRS. It is the base for any coordinate transformation as it also provides the necessary transformation handles
             and is bound to necessary custom pre- or post-transformation. 
             </remarks>
@@ -1189,9 +1189,6 @@
         </member>
         <member name="F:Ptv.Components.Projections.CoordinateReferenceSystem.pj">
             <summary> Internal PROJ.4 projection handle. </summary>
-        </member>
-        <member name="F:Ptv.Components.Projections.CoordinateReferenceSystem.initialized">
-            <summary> Initialization flag, used for lazy initialization in <see cref="M:Ptv.Components.Projections.CoordinateReferenceSystem.Init"/> method. </summary>
         </member>
         <member name="F:Ptv.Components.Projections.CoordinateReferenceSystem.disposed">
             <summary> Disposed flag. </summary>
@@ -1513,7 +1510,7 @@
             <remarks>
             <see cref="M:Ptv.Components.Projections.Registry.Get(System.String)">Registry.Get</see> automatically resolves redirections and aliases, so that it always 
             returns a <see cref="T:Ptv.Components.Projections.CoordinateReferenceSystem"/> with a valid and applicable 
-            parameterization in <see cref="P:Ptv.Components.Projections.CoordinateReferenceSystem.WKT">CoordinateReferenceSystem.WKT</see>. 
+            parametrization in <see cref="P:Ptv.Components.Projections.CoordinateReferenceSystem.WKT">CoordinateReferenceSystem.WKT</see>. 
             As a result, the identifier of the <see cref="T:Ptv.Components.Projections.CoordinateReferenceSystem"/> returned must not necessarily 
             be equal to identifier requested.
             </remarks>
@@ -1560,7 +1557,7 @@
             <summary>
             Transforms a single <see cref="T:System.Windows.Point">System.Windows.Point</see>.
             </summary>
-            <param name="pnt"><see cref="T:System.Windows.Point">System.Windows.Point</see> to transform.</param>
+            <param name="point"><see cref="T:System.Windows.Point">System.Windows.Point</see> to transform.</param>
             <returns>The transformed <see cref="T:System.Windows.Point">System.Windows.Point</see>.</returns>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
         </member>
@@ -1568,7 +1565,7 @@
             <summary>
             Transforms an array of <see cref="T:System.Windows.Point">System.Windows.Point</see>.
             </summary>
-            <param name="pntsIn">Array containing the points to transform.</param>
+            <param name="pointsIn">Array containing the points to transform.</param>
             <returns>The array containing the transformed points.</returns>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
         </member>
@@ -1576,11 +1573,11 @@
             <summary>
             Transforms an array of <see cref="T:System.Windows.Point">System.Windows.Point</see>.
             </summary>
-            <param name="pntsIn">Array containing the points to transform.</param>
-            <param name="pntsOut">Array in which to put the transformed points.</param>
-            <remarks>If <c>pntsOut</c> is set to null the transformed locations are written back to 
-            the input array. It is also valid to specify the input array in <c>pntsOut</c>, which is 
-            the same as setting <c>pntsOut</c> to null.</remarks>
+            <param name="pointsIn">Array containing the points to transform.</param>
+            <param name="pointsOut">Array in which to put the transformed points.</param>
+            <remarks>If <c>pointsOut</c> is set to null the transformed locations are written back to 
+            the input array. It is also valid to specify the input array in <c>pointsOut</c>, which is 
+            the same as setting <c>pointsOut</c> to null.</remarks>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
         </member>
         <member name="M:Ptv.Components.Projections.ICoordinateTransformation.Transform(Ptv.Components.Projections.Location)">
@@ -1594,7 +1591,7 @@
             <summary>
             Transforms an array of <see cref="T:Ptv.Components.Projections.Location"/>.
             </summary>
-            <param name="locsIn">Array containing the locations to transform.</param>
+            <param name="locationsIn">Array containing the locations to transform.</param>
             <returns>The array containing the transformed locations.</returns>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
         </member>
@@ -1602,13 +1599,13 @@
             <summary>
             Transforms an array of <see cref="T:Ptv.Components.Projections.Location"/>.
             </summary>
-            <param name="locsIn">Array containing the locations to transform.</param>
-            <param name="locsOut">Array in which to put the transformed locations.</param>
+            <param name="locationsIn">Array containing the locations to transform.</param>
+            <param name="locationsOut">Array in which to put the transformed locations.</param>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
             <remarks>
-            If <c>locsOut</c> is set to null the transformed locations are written back to the input array. 
-            It is also valid to specify the input array in <c>locsOut</c>, which is the same as setting 
-            <c>locsOut</c> to null.
+            If <c>locationsOut</c> is set to null the transformed locations are written back to the input array. 
+            It is also valid to specify the input array in <c>locationsOut</c>, which is the same as setting 
+            <c>locationsOut</c> to null.
             </remarks>
         </member>
         <member name="M:Ptv.Components.Projections.ICoordinateTransformation.Transform``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,Ptv.Components.Projections.Location},System.Action{``0,Ptv.Components.Projections.Location})">
@@ -1835,11 +1832,11 @@
             <summary>
             Transforms an array of <see cref="T:System.Windows.Point">System.Windows.Point</see>.
             </summary>
-            <param name="pntsIn">Array containing the points to transform.</param>
-            <param name="pntsOut">Array in which to put the transformed points.</param>
-            <remarks>If <c>pntsOut</c> is set to null the transformed locations are written back to 
-            the input array. It is also valid to specify the input array in <c>pntsOut</c>, which is 
-            the same as setting <c>pntsOut</c> to null.</remarks>
+            <param name="pointsIn">Array containing the points to transform.</param>
+            <param name="pointsOut">Array in which to put the transformed points.</param>
+            <remarks>If <c>pointsOut</c> is set to null the transformed locations are written back to 
+            the input array. It is also valid to specify the input array in <c>pointsOut</c>, which is 
+            the same as setting <c>pointsOut</c> to null.</remarks>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
         </member>
         <member name="M:Ptv.Components.Projections.CoordinateTransformation.TransformUnchecked(Ptv.Components.Projections.Location[],Ptv.Components.Projections.Location[])">
@@ -1850,9 +1847,9 @@
             <param name="locsOut">Array in which to put the transformed locations.</param>
             <exception cref="T:Ptv.Components.Projections.TransformationException">Thrown in the unlikely event that a coordinate transformation fails.</exception>
             <remarks>
-            If <c>locsOut</c> is set to null the transformed locations are written back to the input array. 
-            It is also valid to specify the input array in <c>locsOut</c>, which is the same as setting 
-            <c>locsOut</c> to null.
+            If <c>locationsOut</c> is set to null the transformed locations are written back to the input array. 
+            It is also valid to specify the input array in <c>locationsOut</c>, which is the same as setting 
+            <c>locationsOut</c> to null.
             </remarks>
         </member>
         <member name="M:Ptv.Components.Projections.CoordinateTransformation.Transform(System.Windows.Point)">
