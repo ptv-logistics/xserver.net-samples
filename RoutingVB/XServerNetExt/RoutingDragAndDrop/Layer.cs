@@ -1,11 +1,4 @@
-﻿//--------------------------------------------------------------
-// Copyright (c) PTV Group
-// 
-// For license details, please refer to the file COPYING, which 
-// should have been provided with this distribution.
-//--------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -15,6 +8,7 @@ using System.Windows.Controls;
 using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers.Shapes;
 using XServerNetExt.XRouteServiceReference;
+using Point = System.Windows.Point;
 
 namespace Ptv.XServer.Controls.Routing
 {
@@ -72,12 +66,14 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// the xRoute client class
         /// </summary>
-        private XRouteWSClient xRouteClient;
-                
-        /// <summary>
-        /// Create the route layer.
-        /// </summary>
+        private readonly XRouteWSClient xRouteClient;
+
+        /// <summary> Create the route layer. </summary>
+        /// 
         /// <param name="map">Map control to attach to.</param>
+        /// <param name="xRouteUrl"> URL of xRoute server. </param>
+        /// <param name="user"> User name. </param>
+        /// <param name="password"> Password. </param>
         public RouteLayer(WpfMap map, string xRouteUrl, string user, string password) : base("Route")
         {
             Map = map;
@@ -90,7 +86,7 @@ namespace Ptv.XServer.Controls.Routing
         /// The method inserts an additional event handler for showing the context menu,
         /// when this layer is added to a map view.
         /// </summary>
-        /// <param name="mapView">Mapview to which this layer is added.</param>
+        /// <param name="mapView">Map view to which this layer is added.</param>
         public override void AddToMapView(MapView mapView)
         {
             base.AddToMapView(mapView);
@@ -102,7 +98,7 @@ namespace Ptv.XServer.Controls.Routing
         /// The method removes the previously inserted event handler for showing the context menu,
         /// when this layer is removed from a map view.
         /// </summary>
-        /// <param name="mapView">Mapview to which this layer is added.</param>
+        /// <param name="mapView">Map view to which this layer is added.</param>
         public override void RemoveFromMapView(MapView mapView)
         {
             Map.PreviewMouseMove -= Map_PreviewMouseMove;
@@ -111,18 +107,18 @@ namespace Ptv.XServer.Controls.Routing
         }
 
         /// <summary>
-        /// Given a point p, determines the nearest point on the route.
+        /// Given a point point, determines the nearest point on the route.
         /// </summary>
         /// <param name="maxDistance">Maximum distance</param>
         /// <param name="nearestRoute">The nearest route</param>
         /// <param name="nearestPoint">Input point and nearest point on the nearest route</param>
         /// <returns>True, if a match could be made that is withing a distance of maxDistance. False otherwise.</returns>
-        private bool GetNearestRoutePoint(int maxDistance, ref Route nearestRoute, ref System.Windows.Point nearestPoint)
+        private bool GetNearestRoutePoint(int maxDistance, ref Route nearestRoute, ref Point nearestPoint)
         {
             int index;
             double len = 0;
-            System.Windows.Point p = nearestPoint;
-            System.Windows.Point q = ToWorld(p), r;
+            var tmpPoint = nearestPoint;
+            Point q = ToWorld(tmpPoint), r;
 
             foreach (var route in routes.Where(rte => rte.HasRoutePolyline))
                 if (route.Points.GetNearestPoint(q, out r, out index))
@@ -133,7 +129,7 @@ namespace Ptv.XServer.Controls.Routing
                         nearestPoint = r;
                     }
 
-            return nearestRoute != null && (ToMap(nearestPoint) - p).Length <= maxDistance;
+            return nearestRoute != null && (ToMap(nearestPoint) - tmpPoint).Length <= maxDistance;
         }
 
         /// <summary>
@@ -160,16 +156,16 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="e">Event arguments</param>
         private void ShowWayPointContextMenu(object sender, MouseButtonEventArgs e)
         {
-            if (!(sender is WayPoint) || (sender is TemporaryVia)) return;
+            if (!(sender is WayPoint) || sender is TemporaryVia) return;
 
             var menu = new ContextMenu();
 
             var p = e.GetPosition(Map);
 
             if (sender is Via)
-                menu.Add("Remove via way point", () => (sender as Via).Route.Remove(sender as Via));
+                menu.Add("Remove via way point", () => ((Via) sender).Route.Remove(sender as Via));
             else
-                menu.Add("Remove stop " + (sender as Stop).Label, () => Remove(sender as Stop));
+                menu.Add("Remove stop " + ((Stop) sender).Label, () => Remove(sender as Stop));
 
             menu.PlacementRectangle = new Rect(p, p);
             menu.IsOpen = true;
@@ -217,18 +213,18 @@ namespace Ptv.XServer.Controls.Routing
         }
 
         /// <summary>
-        /// Transforms a given point p (relative to the map) to WGS84.
+        /// Transforms a given point point (relative to the map) to WGS84.
         /// </summary>
-        /// <param name="p">Point to transform</param>
+        /// <param name="point">Point to transform</param>
         /// <returns>WGS84 coordinates</returns>
-        public System.Windows.Point ToWorld(System.Windows.Point p)
+        public Point ToWorld(Point point)
         {
-            var e = Map.GetEnvelope("EPSG:76131");
+            point.X /= Map.ActualWidth;
+            point.Y /= Map.ActualHeight;
 
-            p.X /= Map.ActualWidth;
-            p.Y /= Map.ActualHeight;
+            var envelope = Map.GetEnvelope("EPSG:76131");
 
-            return new System.Windows.Point(e.West + (e.East - e.West) * p.X, e.North + (e.South - e.North) * p.Y).PtvMercatorToWgs84();
+            return new Point(envelope.West + (envelope.East - envelope.West) * point.X, envelope.North + (envelope.South - envelope.North) * point.Y).PtvMercatorToWgs84();
         }
 
         /// <summary>
@@ -236,13 +232,13 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="p">Point to transform</param>
         /// <returns>WGS84 coordinates</returns>
-        public System.Windows.Point ToMap(System.Windows.Point p)
+        public Point ToMap(Point p)
         {
             var e = Map.GetEnvelope("EPSG:76131");
 
             p = p.Wgs84ToPtvMercator();
 
-            return new System.Windows.Point(Map.ActualWidth * (p.X - e.West) / (e.East - e.West), Map.ActualHeight * (p.Y - e.North) / (e.South - e.North));
+            return new Point(Map.ActualWidth * (p.X - e.West) / (e.East - e.West), Map.ActualHeight * (p.Y - e.North) / (e.South - e.North));
         }
 
         /// <summary>
@@ -263,7 +259,7 @@ namespace Ptv.XServer.Controls.Routing
         public void WayPointMoved(WayPoint wayPoint)
         {
             if (wayPoint is Via)
-                (wayPoint as Via).Route.UpdateRouteForMovingWayPoint(wayPoint, MOVE_UPDATE_DELAY);
+                ((Via) wayPoint).Route.UpdateRouteForMovingWayPoint(wayPoint, MOVE_UPDATE_DELAY);
             else
             {
                 var stop = wayPoint as Stop;
@@ -458,7 +454,7 @@ namespace Ptv.XServer.Controls.Routing
         /// Builds a tool tip text containing the overall information generated out of all routes. 
         /// </summary>
         /// <returns>Tool tip text. Returns an empty string if there is any route with an error.</returns>
-        public String GetToolTip()
+        public string GetToolTip()
         {
             if (routes.Count(r => r.HasRoutePolyline) != routes.Count)
                 return "";

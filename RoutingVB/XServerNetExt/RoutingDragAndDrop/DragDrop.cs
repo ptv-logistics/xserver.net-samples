@@ -165,50 +165,50 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Registers a Drag handler with an element.
         /// </summary>
-        /// <param name="d">Element to register the handler with.</param>
-        /// <param name="handler">Handler</param>
-        public static void AddDragHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).AddHandler(Drag, handler); }
+        /// <param name="dependencyObject">Element to register the handler with.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void AddDragHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).AddHandler(Drag, handler); }
 
         /// <summary>
         /// Unregisters a Drag handler.
         /// </summary>
-        /// <param name="d">Element from which to unregister the handler.</param>
-        /// <param name="handler">Handler</param>
-        public static void RemoveDragHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).RemoveHandler(Drag, handler); }
+        /// <param name="dependencyObject">Element from which to unregister the handler.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void RemoveDragHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).RemoveHandler(Drag, handler); }
 
         /// <summary>
         /// Registers a Drag move handler with an element.
         /// </summary>
-        /// <param name="d">Element to register the handler with.</param>
-        /// <param name="handler">Handler</param>
-        public static void AddDragMoveHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).AddHandler(DragMove, handler); }
+        /// <param name="dependencyObject">Element to register the handler with.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void AddDragMoveHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).AddHandler(DragMove, handler); }
 
         /// <summary>
         /// Unregisters a Drag move handler.
         /// </summary>
-        /// <param name="d">Element from which to unregister the handler.</param>
-        /// <param name="handler">Handler</param>
-        public static void RemoveDragMoveHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).RemoveHandler(DragMove, handler); }
+        /// <param name="dependencyObject">Element from which to unregister the handler.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void RemoveDragMoveHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).RemoveHandler(DragMove, handler); }
 
         /// <summary>
         /// Registers a drop handler with an element.
         /// </summary>
-        /// <param name="d">Element to register the handler with.</param>
-        /// <param name="handler">Handler</param>
-        public static void AddDropHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).AddHandler(Drop, handler); }
+        /// <param name="dependencyObject">Element to register the handler with.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void AddDropHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).AddHandler(Drop, handler); }
 
         /// <summary>
         /// Unregisters a drop handler.
         /// </summary>
-        /// <param name="d">Element from which to unregister the handler.</param>
-        /// <param name="handler">Handler</param>
-        public static void RemoveDropHandler(DependencyObject d, DragDropEventHandler handler)
-            { (d as FrameworkElement).RemoveHandler(Drop, handler); }
+        /// <param name="dependencyObject">Element from which to unregister the handler.</param>
+        /// <param name="handler"> Event handler for drag &amp; drop actions. </param>
+        public static void RemoveDropHandler(DependencyObject dependencyObject, DragDropEventHandler handler)
+            { ((FrameworkElement) dependencyObject).RemoveHandler(Drop, handler); }
 
         /// <summary>
         /// Attached property, checks if Drag&amp;Drop is enabled for the specified element.
@@ -235,13 +235,15 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Handles EnableDragDrop changes.
         /// </summary>
-        /// <param name="depObj">Object for which the value has changed.</param>
+        /// <param name="dependencyObject">Object for which the value has changed.</param>
         /// <param name="e">Event arguments</param>
-        private static void OnEnableDragDrop(DependencyObject depObj, DependencyPropertyChangedEventArgs e)
+        private static void OnEnableDragDrop(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            var elem = depObj as FrameworkElement;
+            var elem = dependencyObject as FrameworkElement;
 
-            if (elem != null && (e.NewValue is bool))
+            if (elem == null) return;
+
+            if (e.NewValue is bool)
             {
                 // enable drag and drop - attach necessary handlers
                 elem.PreviewMouseLeftButtonDown += PreviewMouseLeftButtonDown;
@@ -273,9 +275,9 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="e">Event arguments</param>
         private static void PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var state = new InProcessDragDropBehavior { Target = (sender as FrameworkElement) };
+            var state = new InProcessDragDropBehavior { Target = sender as FrameworkElement };
 
-            if (state.Target.Parent != null)
+            if (state.Target != null && state.Target.Parent != null)
             {
                 state.Target.SetValue(DragDropState, state);
                 state.PreviewMouseLeftButtonDown(e);
@@ -329,7 +331,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="e">Event arguments</param>
         private void PreviewMouseMove(MouseEventArgs e)
         {
-            if ((!Capturing) || (e.LeftButton != MouseButtonState.Pressed)) return;
+            if (!Capturing || e.LeftButton != MouseButtonState.Pressed) return;
 
             if (Target.Parent == null)
                 Reset();
@@ -356,7 +358,7 @@ namespace Ptv.XServer.Controls.Routing
                             Reset();
                         else
                         {
-                            Panel.SetZIndex(Target, Int32.MaxValue);
+                            Panel.SetZIndex(Target, int.MaxValue);
                             PreviewMouseMove(e);
                         }
                     }
@@ -376,7 +378,7 @@ namespace Ptv.XServer.Controls.Routing
             if (!(sender is DependencyObject))
                 return null;
 
-            return (sender as DependencyObject).GetValue(DragDropState) as InProcessDragDropBehavior;
+            return ((DependencyObject) sender).GetValue(DragDropState) as InProcessDragDropBehavior;
         }
 
         /// <summary>
@@ -462,7 +464,7 @@ namespace Ptv.XServer.Controls.Routing
             Dragging = Capturing = true;
 
             ZIndex = Panel.GetZIndex(Target);
-            Panel.SetZIndex(Target, Int32.MaxValue);
+            Panel.SetZIndex(Target, int.MaxValue);
 
             Target.SetValue(DragDropState, this);
 

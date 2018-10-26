@@ -1,20 +1,16 @@
-﻿Imports Ptv.XServer.Controls.Map.Layers.Shapes
-Imports Ptv.XServer.Controls.Map.Symbols
-Imports System.Windows.Media
-Imports System.Linq
-Imports FormsMapVB.XRouteServiceReference
+﻿
 Imports Ptv.XServer.Controls.Map
 Imports Point = System.Windows.Point
 Imports Ptv.XServer.Demo.UseCases.RoutingDragAndDrop
 
 Public Class Form1
-    Dim token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
+    ReadOnly token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()
     End Sub
 
-    Private Async Sub Initialize()
+    Private Sub Initialize()
         ' initialize base map (for xServer internet)
         FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"
         FormsMap1.XMapCredentials = "xtok:" + token

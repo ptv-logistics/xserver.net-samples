@@ -89,7 +89,7 @@ namespace Ptv.XServer.Controls.Routing
             get { return ShapeCanvas.GetLocation(this); }
             set
             {
-                System.Windows.Point previousPoint = ShapeCanvas.GetLocation(this);
+                var previousPoint = ShapeCanvas.GetLocation(this);
                 if (previousPoint == value)
                     return;
 
@@ -147,7 +147,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        protected void DragMove(Object sender, DragDropEventArgs args)
+        protected void DragMove(object sender, DragDropEventArgs args)
         {
             var o = args.AnchorPosition - args.HitPosition;
             var p = layer.Map.PointFromScreen(args.Position);
@@ -160,7 +160,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="sender">Event source</param>
         /// <param name="args">Event arguments</param>
-        protected virtual void Drag(Object sender, DragDropEventArgs args)
+        protected virtual void Drag(object sender, DragDropEventArgs args)
         {
             // nothing to do here
         }
@@ -223,16 +223,16 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Reads or writes the label of the stop.
         /// </summary>
-        public String Label
+        public string Label
         {
-            get { return (Children[1] as TextBlock).Text; }
+            get { return ((TextBlock) Children[1]).Text; }
 
             set 
             { 
                 if (value == null || value.Length != 1) 
                     throw new ArgumentException("Label is invalid or exceeds maximum length");  
 
-                (Children[1] as TextBlock).Text = value; 
+                ((TextBlock) Children[1]).Text = value; 
             }
         }
 
@@ -272,7 +272,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <inheritdoc/>
         public override WaypointDesc Waypoint
         {
-            get { return Point.ToWaypoint(); }
+            get { return Point.ToWayPoint(); }
         }
     }
 
@@ -317,7 +317,7 @@ namespace Ptv.XServer.Controls.Routing
         /// Handles the event that occurs when a tool tip is about to be displayed.
         /// </summary>
         /// <param name="sender">Event source</param>
-        /// <param name="e">Event arguements</param>
+        /// <param name="e">Event arguments</param>
         protected new void ToolTipOpening(object sender, ToolTipEventArgs e)
         {
             // overwrite tool tip with that one of the route
@@ -337,7 +337,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <inheritdoc/>
         public override WaypointDesc Waypoint
         {
-            get { return Point.ToWaypoint(ViaTypeEnum.VIA); }
+            get { return Point.ToWayPoint(ViaTypeEnum.VIA); }
         }
     }
 
@@ -375,7 +375,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="sender">Event source</param>
         /// <param name="args">Event arguments</param>
-        protected override void Drag(Object sender, DragDropEventArgs args)
+        protected override void Drag(object sender, DragDropEventArgs args)
         {
             // cancel drag and drop operation, replace a temporary way point with a 
             // real via way point and attach drag and drop operation to that way point
