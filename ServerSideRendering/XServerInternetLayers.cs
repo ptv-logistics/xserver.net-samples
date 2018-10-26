@@ -5,9 +5,7 @@
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
-using Ptv.XServer.Controls.Map.Layers.Untiled;
 using Ptv.XServer.Controls.Map.Tools;
-using System.Text.RegularExpressions;
 using ServerSideRendering;
 using xserver;
 using Map = Ptv.XServer.Controls.Map.Map;
@@ -56,17 +54,17 @@ namespace Ptv.XServer.Demo.Tools
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 14,
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/RoadEditor.png"),
-                CustomXMapLayers = new xserver.Layer[] {  
-                    new xserver.RoadEditorLayer { 
+                CustomXMapLayers = new Layer[] {  
+                    new RoadEditorLayer { 
                         // Road Editor element. Request REFERENCEPOINT based object 
                         // information to provide tool tips on the signs.
                         name = xmapName, 
                         // Request REFERENCEPOINT based object information to 
                         // provide tool tips on the signs.
-                        objectInfos=xserver.ObjectInfoType.REFERENCEPOINT, 
+                        objectInfos=ObjectInfoType.REFERENCEPOINT, 
                         visible = true                        
                     },
-                    new xserver.StaticPoiLayer {
+                    new StaticPoiLayer {
                         // see remarks above about street layer element
                         name = "street", 
                         visible = true, 
@@ -102,13 +100,13 @@ namespace Ptv.XServer.Demo.Tools
                 Caption = layerCaption,
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 10,
-                CustomXMapLayers = new xserver.Layer[] {  
-                    new xserver.SMOLayer
+                CustomXMapLayers = new Layer[] {  
+                    new SMOLayer
                     { 
                         name = xmapName, 
                         // request object information of type FULLGEOMETRY 
                         // to enable tool tips along the lines displayed.
-                        objectInfos=xserver.ObjectInfoType.FULLGEOMETRY, 
+                        objectInfos=ObjectInfoType.FULLGEOMETRY, 
                         visible = true 
                     }
                 }
@@ -138,12 +136,12 @@ namespace Ptv.XServer.Demo.Tools
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 14,
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/POI.png"),
-                CustomXMapLayers = new xserver.Layer[] {  
-                    new xserver.SMOLayer
+                CustomXMapLayers = new Layer[] {  
+                    new SMOLayer
                     { 
                         name = xmapName, 
                         // Request REFERENCEPOINT based object information to provide tool tips on the icons.
-                        objectInfos = xserver.ObjectInfoType.REFERENCEPOINT, 
+                        objectInfos = ObjectInfoType.REFERENCEPOINT, 
                         visible = true 
                     }
                 }

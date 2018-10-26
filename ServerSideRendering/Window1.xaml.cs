@@ -6,16 +6,14 @@ using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Tools;
 using Ptv.XServer.Demo.Tools;
 using System.Windows;
-using xserver;
 
 namespace ServerSideRendering
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
-        private bool initialized;
         public Window1()
         {
             InitializeComponent();
@@ -25,9 +23,9 @@ namespace ServerSideRendering
 
         private void InitMapLayers()
         {
-            string cluster = "eu-n-test";
+            const string cluster = "eu-n-test";
 
-            Map.SetMapLocation(new System.Windows.Point(9.182778, 48.775556), 12);
+            Map.SetMapLocation(new Point(9.182778, 48.775556), 12);
 
             var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvgroup.com/xmap/ws/XMap");
             xmapMetaInfo.SetCredentials("xtok", "EBB3ABF6-C1FD-4B01-9D69-349332944AD9");
@@ -44,12 +42,12 @@ namespace ServerSideRendering
                 TiledProvider = new ExtendedXMapTiledProvider(meta.Url, meta.User, meta.Password)
                 {
                     ContextKey = "in case of context key",
-                    CustomProfile = profile + "-bg",
+                    CustomProfile = profile + "-bg"
                 },
                 Copyright = meta.CopyrightText,
                 Caption = MapLocalizer.GetString(MapStringId.Background),
                 IsBaseMapLayer = true,
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")
             };
 
             var labelLayer = new UntiledLayer("Labels")
@@ -58,12 +56,12 @@ namespace ServerSideRendering
                     meta.Url, XMapMode.Town)
                 {
                     User = meta.User, Password = meta.Password, ContextKey = "in case of context key",
-                    CustomProfile = profile + "-fg",
+                    CustomProfile = profile + "-fg"
                 },               
                 Copyright = meta.CopyrightText,
                 MaxRequestSize = meta.MaxRequestSize,
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png"),
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png")
             };
 
             layers.Add(baseLayer);
