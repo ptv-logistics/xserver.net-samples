@@ -1,14 +1,6 @@
-﻿//--------------------------------------------------------------
-// Copyright (c) 2011 PTV Planung Transport Verkehr AG
-// 
-// For license details, please refer to the file COPYING, which 
-// should have been provided with this distribution.
-//--------------------------------------------------------------
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -27,113 +19,121 @@ namespace SilverMap.UseCases.SharpMap
             this.map = map;
             this.shapes = shapes;
 
-            map.MouseLeftButtonUp += new MouseButtonEventHandler(map_MouseLeftButtonUp);
-            map.MouseLeftButtonDown += new MouseButtonEventHandler(map_MouseLeftButtonDown);
-            map.MouseMove += new MouseEventHandler(map_MouseMove);
+            map.MouseLeftButtonUp += map_MouseLeftButtonUp;
+            map.MouseLeftButtonDown += map_MouseLeftButtonDown;
+            map.MouseMove += map_MouseMove;
 
-            Canvas.SetZIndex(this, 999999999);
-            SelectedElements.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(SelectedElements_CollectionChanged);
+            SetZIndex(this, 999999999);
+            SelectedElements.CollectionChanged += SelectedElements_CollectionChanged;
         }
 
-        void SelectedElements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void SelectedElements_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
                 foreach (FrameworkElement shape in e.NewItems)
                 {
-                    var p1 = (new Point(Canvas.GetLeft(shape), Canvas.GetTop(shape)));
+                    var p1 = new Point(GetLeft(shape), GetTop(shape));
 
-                    var r = new Ellipse();
-                    r.Tag = shape;
-                    Canvas.SetLeft(r, p1.X);
-                    Canvas.SetTop(r, p1.Y);
-                    r.Width = shape.ActualWidth;
-                    r.Height = shape.ActualHeight;
-                    r.RenderTransform = new ScaleTransform(map.CurrentScale, map.CurrentScale);
-                    r.RenderTransformOrigin = new Point(.5, .5);
-                    r.Fill = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0));
-                    this.Children.Add(r);
+                    var r = new Ellipse
+                    {
+                        Tag = shape,
+                        Width = shape.ActualWidth,
+                        Height = shape.ActualHeight,
+                        RenderTransform = new ScaleTransform(map.CurrentScale, map.CurrentScale),
+                        RenderTransformOrigin = new Point(.5, .5),
+                        Fill = new SolidColorBrush(Color.FromArgb(128, 255, 0, 0))
+                    };
+                    SetLeft(r, p1.X);
+                    SetTop(r, p1.Y);
+                    Children.Add(r);
                 }
             }
 
             if (e.OldItems != null)
             {
                 var l = new List<object>();
-                foreach (var c in this.Children)
+                foreach (var c in Children)
                     l.Add(c);
 
 
                 foreach (FrameworkElement selection in l)
                 {
                     if (e.OldItems.Contains(selection.Tag))
-                        this.Children.Remove(selection);
+                        Children.Remove(selection);
 
                 }
             }
+
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
             {
                 var l = new List<object>();
-                foreach (var c in this.Children)
+                foreach (var c in Children)
                     l.Add(c);
 
 
                 foreach (FrameworkElement selection in l)
                 {
-                    this.Children.Remove(selection);
+                    Children.Remove(selection);
                 }
             }
         }
 
-        private ObservableCollection<FrameworkElement> shapes;
-        private MapView map;
+        private readonly ObservableCollection<FrameworkElement> shapes;
+        private readonly MapView map;
 
         private Polygon dragPolygon;
 
         public ObservableCollection<FrameworkElement> SelectedElements = new ObservableCollection<FrameworkElement>();
 
-        void map_MouseMove(object sender, MouseEventArgs e)
+        private void map_MouseMove(object sender, MouseEventArgs e)
         {
-            if (selectMode == SelectMode.Polygon)
+            switch (selectMode)
             {
-                polyPoints.Add(this.CanvasToPtvMercator(e.GetPosition(this)));
-
-                dragPolygon.Points.Clear();
-                foreach (var point in polyPoints)
+                case SelectMode.Polygon:
                 {
-                    dragPolygon.Points.Add(this.PtvMercatorToCanvas(point));
-                }
-                e.Handled = true;
-            }
-            if (selectMode == SelectMode.Rectangle)
-            {
-                dragPolygon.Points.Clear();
-                foreach (var point in polyPoints)
-                {
-                    var g2 = CanvasToPtvMercator(e.GetPosition(this));
+                    polyPoints.Add(CanvasToPtvMercator(e.GetPosition(this)));
 
-                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g1.Y)));
-                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g1.Y)));
-                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g2.Y)));
-                    dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g2.Y)));
+                    dragPolygon.Points.Clear();
+                    foreach (var point in polyPoints)
+                    {
+                        dragPolygon.Points.Add(PtvMercatorToCanvas(point));
+                    }
+                    e.Handled = true;
+                    break;
                 }
-                e.Handled = true;
+                case SelectMode.Rectangle:
+                {
+                    dragPolygon.Points.Clear();
+                    foreach (var dummy in polyPoints)
+                    {
+                        var g2 = CanvasToPtvMercator(e.GetPosition(this));
+
+                        dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g1.Y)));
+                        dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g1.Y)));
+                        dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g2.X, g2.Y)));
+                        dragPolygon.Points.Add(PtvMercatorToCanvas(new Point(g1.X, g2.Y)));
+                    }
+                    e.Handled = true;
+                    break;
+                }
             }
         }
 
-        Point g1;
-        SelectMode selectMode = SelectMode.None;
-        List<Point> polyPoints;
+        private Point g1;
+        private SelectMode selectMode = SelectMode.None;
+        private List<Point> polyPoints;
 
-        void map_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void map_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (dragPolygon != null)
-                this.Children.Remove(dragPolygon);
+                Children.Remove(dragPolygon);
 
             g1 = CanvasToPtvMercator(e.GetPosition(this));
 
             if ((Keyboard.Modifiers & (ModifierKeys.Alt | ModifierKeys.Control)) != 0)
             {
-                selectMode = ((Keyboard.Modifiers & ModifierKeys.Alt) != 0)? SelectMode.Polygon : SelectMode.Rectangle;
+                selectMode = (Keyboard.Modifiers & ModifierKeys.Alt) != 0 ? SelectMode.Polygon : SelectMode.Rectangle;
 //                mapControl.PanAndZoom.IsActive = false;
                 polyPoints = new List<Point> { g1 };
                 dragPolygon = new Polygon
@@ -142,82 +142,70 @@ namespace SilverMap.UseCases.SharpMap
                     Stroke = new SolidColorBrush(Color.FromArgb(0x55, 0xff, 0x00, 0x00))
                 };
 
-                this.Children.Add(dragPolygon);
+                Children.Add(dragPolygon);
                 e.Handled = true;
             }
             else
                 selectMode = SelectMode.Click;
         }
 
-        void map_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void map_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (selectMode == SelectMode.Click)
+            switch (selectMode)
             {
-                foreach(var shape in shapes)
+                case SelectMode.Click:
                 {
-                    Point g2 = e.GetPosition(shape);
-
-                    var x = shape.InputHitTest(g2);
-                    if (x == shape)
+                    foreach(var shape in shapes)
                     {
-                        if (SelectedElements.Contains(shape))
-                            SelectedElements.Remove(shape);
-                        else
-                            SelectedElements.Add(shape);
+                        var x = shape.InputHitTest(e.GetPosition(shape));
+                        if (x == shape)
+                        {
+                            if (SelectedElements.Contains(shape))
+                                SelectedElements.Remove(shape);
+                            else
+                                SelectedElements.Add(shape);
+                        }
                     }
+
+                    break;
                 }
-            }
-            else if (selectMode == SelectMode.Polygon || selectMode == SelectMode.Rectangle)
-            {
+                case SelectMode.Polygon:
+                case SelectMode.Rectangle:
+                {
 //                mapControl.PanAndZoom.IsActive = true;
-                polyPoints.Add(polyPoints[0]);
+                    polyPoints.Add(polyPoints[0]);
 
-                foreach (var shape in shapes)
-                {
-                    var pp1 =(new Point(Canvas.GetLeft(shape), Canvas.GetTop(shape)));
-                    var x = dragPolygon.InputHitTest(pp1);
-
-                    if (x == dragPolygon)
+                    foreach (var shape in shapes)
                     {
-                        if(!SelectedElements.Contains(shape))
-                            SelectedElements.Add(shape);
+                        var pp1 = new Point(GetLeft(shape), GetTop(shape));
+                        var x = dragPolygon.InputHitTest(pp1);
+
+                        if (x == dragPolygon)
+                        {
+                            if(!SelectedElements.Contains(shape))
+                                SelectedElements.Add(shape);
+                        }
                     }
-                }
                 
-                this.Children.Remove(dragPolygon);
-                dragPolygon = null;
+                    Children.Remove(dragPolygon);
+                    dragPolygon = null;
+                    break;
+                }
             }
 
             selectMode = SelectMode.None;
         }
 
-        public void Remove()
-        {     
-            map.MouseLeftButtonUp -= new MouseButtonEventHandler(map_MouseLeftButtonUp);
-            map.MouseLeftButtonDown -= new MouseButtonEventHandler(map_MouseLeftButtonDown);
-            map.MouseMove -= new MouseEventHandler(map_MouseMove);
-
-            this.Remove();
-        }
-
         public override void Update(UpdateMode updateMode)
         {
-            foreach(var x in this.Children)
+            foreach(var x in Children)
             {
-                if(x is Ellipse)
-                {
-                    var e = x as Ellipse;
-                    e.RenderTransform = new ScaleTransform(map.CurrentScale, map.CurrentScale);
-                }
+                if (!(x is Ellipse)) continue;
+
+                var e = x as Ellipse;
+                e.RenderTransform = new ScaleTransform(map.CurrentScale, map.CurrentScale);
             }
         }
-    }
-
-    public enum SetMode
-    {
-        Set,
-        Add,
-        Xor
     }
 
     public enum SelectMode
