@@ -17,7 +17,7 @@ Demonstrates the API for native Xmap2/FeatureLayer support.
 
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
-#### [WMTSLayer](WMTSLayer) \#wms
+#### [WMTSLayer](WMTSLayer) \#wms \#xserver-2
 Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
 
 <img src="Screenshots/WMTSLayer.png" height="360" title="WMTSLayer">
@@ -27,7 +27,7 @@ Source code for xServer.NET demo center.
 
 <img src="Screenshots/DemoCenter.png" height="360" title="DemoCenter">
 
-#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) 
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#sharpmap \#shapefile \#javascript
 Build responsive map applications for web and desktop
 
 <img src="Screenshots/SharpMap.Win.png" height="240" title="SharpMap.Widgets">
