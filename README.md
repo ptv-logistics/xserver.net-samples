@@ -14,14 +14,17 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 
 #### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) \#xserver-2
 Demonstrates the API for native Xmap2/FeatureLayer support.
+
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
 #### [WMTSLayer](WMTSLayer)  \#3rd-party
 Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
+
 <img src="Screenshots/WMTSLayer.png" height="360" title="WMTSLayer">
 
 #### [DemoCenter](DemoCenter) \#xserver-1
 Source code for xServer.NET demo center.
+
 <img src="Screenshots/DemoCenter.png" height="360" title="DemoCenter">
 
 #### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
