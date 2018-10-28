@@ -78,11 +78,6 @@ namespace ServerSideRendering
             Password = password;
         }
 
-        /// <summary>
-        /// MapUpdate event. See remarks on <see cref="MapUpdateDelegate"/>.
-        /// </summary>
-        public event MapUpdateDelegate MapUdpate;
-
         public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties { get; set; }
 
         /// <inheritdoc/>

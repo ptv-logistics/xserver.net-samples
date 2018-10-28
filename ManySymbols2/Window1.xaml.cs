@@ -45,7 +45,7 @@ namespace ManySymbols
         /// <returns> Documentation in progress... </returns>
         public static IEnumerable<Location> ReadCSVFile()
         {
-            var filePath = AppDomain.CurrentDomain.BaseDirectory + @"wikilocations25000.csv";
+            var filePath = AppDomain.CurrentDomain.BaseDirectory + @"wikilocations.csv";
             using (var reader = new CsvFileReader(filePath, (char)0x09))
             {
                 var row = new CsvRow();
@@ -68,7 +68,7 @@ namespace ManySymbols
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
             // read data - list of locations
-            var dataSource = ReadCSVFile().ToList();
+            var dataSource = ReadCSVFile().Take(50000).ToList();
 
             // define some style (i.e. symbol type dependant on location
             Func<Location, Symbol> style = location =>

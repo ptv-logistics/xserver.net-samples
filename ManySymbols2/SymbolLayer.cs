@@ -89,7 +89,7 @@ namespace ManySymbols
             element.Measure(new Size(element.Width, element.Height));
             element.Arrange(new Rect(0, 0, element.Width, element.Height));
 
-            var bitmap = new RenderTargetBitmap((int)element.Width, (int)element.Height, 96, 96, PixelFormats.Pbgra32);
+            var bitmap = new RenderTargetBitmap((int)element.Width * 2, (int)element.Height * 2, 192, 192, PixelFormats.Pbgra32);
             bitmap.Render(element);
             bitmap.Freeze();
 
@@ -111,8 +111,8 @@ namespace ManySymbols
             {
                 foreach (var adjustTransform in this.adjustTransforms)
                 {
-                    adjustTransform.ScaleX = MapView.FinalScale;
-                    adjustTransform.ScaleY = MapView.FinalScale;
+                    adjustTransform.ScaleX = Math.Pow(MapView.FinalScale, logicalScaleFactor);
+                    adjustTransform.ScaleY = Math.Pow(MapView.FinalScale, logicalScaleFactor);
                 }
 
                 Visibility = Visibility.Visible;
@@ -122,6 +122,7 @@ namespace ManySymbols
             }
         }
 
+        double logicalScaleFactor = 0.85;
         private void CreateObjects()
         {
             currentZoom = MapView.FinalZoom;
@@ -137,8 +138,8 @@ namespace ManySymbols
                 {
                     adjustTransform = new ScaleTransform
                     {
-                        ScaleX = MapView.FinalScale,
-                        ScaleY = MapView.FinalScale
+                        ScaleX = Math.Pow(MapView.FinalScale, logicalScaleFactor),
+                        ScaleY = Math.Pow(MapView.FinalScale, logicalScaleFactor)
                     };
                     adjustTransforms.Add(adjustTransform);
                 }
