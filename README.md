@@ -27,152 +27,92 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 #### [BasemapTooltips](BasemapTooltips) Shows how to display city/street information as tool tip by reverse locating
 <img src="Screenshots/BasemapTooltips.png" height="240" title="BasemapTooltips">
 
-#### Circles
-Shows how to render circles with a geographic radius
+#### [Circles](Circles) Shows how to render circles with a geographic radius
+<img src="Screenshots/Circles.png" height="240" title="Circles">
 
-![Circles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Circles.png "Circles")
+#### [CustomBgProfiles](CustomBgProfiles) Shows how to switch the basemap profile 
+<img src="Screenshots/CustomBgProfiles.png" height="240" title="CustomBgProfiles">
 
-#### CustomBgProfiles
-Shows how to switch the basemap profile 
+#### [CustomInit](CustomInit) Shows how to explicitly initialize the xMapServer base map
 
-![CustomBgProfiles](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomBgProfiles.png "CustomBgProfiles")
+#### [CustomLayout](CustomLayout) Shows how to set-up a map-layout with custom gadgets
+<img src="Screenshots/CustomLayout.png" height="240" title="CustomLayout">
 
-#### CustomInit
-Shows how to explicitly initialize the xMapServer base map
+#### [CustomLocalizer](CustomLocalizer) Shows how to use your own string resources to localize the texts of the control.
 
-#### CustomLayout
-Shows how to set-up a map-layout with custom gadgets
+#### [CustomPanAndZoom](CustomPanAndZoom) Shows how to change the default behavior for pan/zoom interaction.
+<img src="Screenshots/CustomPanAndZoom.png" height="240" title="CustomPanAndZoom">
 
-![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
+#### [Donuts](Donuts) Shows how to build a datasource and renderer for in-memory computed shapes.
+<img src="Screenshots/Donuts.png" height="240" title="Donuts">
 
-#### CustomLocalizer
-Shows how to use your own string resources to localize the texts of the control.
+#### [DrawMode](DrawMode) The basic code to add an interactor for drawing custom polygons
+<img src="Screenshots/DrawMode.png" height="240" title="DrawMode">
 
-#### CustomPanAndZoom
-Shows how to change the default behavior for pan/zoom interaction.
+#### [DragAndDrop](DragAndDrop) Shows how to implement drag&drop for elements on the map.
+<img src="Screenshots/DragAndDrop.png" height="240" title="DragAndDrop">
 
-![CustomPanAndZoom](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomPanAndZoom.png "CustomPanAndZoom")
+#### [ExtensibilityTest](ExtensibilityTest) Tests for customization and extensions of the map control 
+<img src="Screenshots/ExtensibilityTest.png" height="240" title="ExtensibilityTest">
 
-#### Donuts
-Shows how to build a datasource and renderer for in-memory computed shapes.
+#### [FeatureLayers](FeatureLayers) Shows how to render Feature Layers on the control
+<img src="Screenshots/FeatureLayers.png" height="240" title="FeatureLayers">
 
-![Donuts](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Donuts.png "Donuts")
+#### [FormsMapCS](FeatureLayers) Shows how to add the map to a Windows Forms application in C#
 
-#### DrawMode
-The basic code to add an interactor for drawing custom polygons
+#### [FormsMapVB](FormsMapVB) Shows how to add the map to a Windows Forms application in VB.NET
+<img src="Screenshots/FormsMapVB.png" height="240" title="FormsMapVB">
 
-![DrawMode](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DrawMode.png "DrawMode")
+#### [HereImagery](HereImagery) Shows how to add here basemap tiles
+<img src="Screenshots/HereImagery.png" height="240" title="HereImagery">
 
-#### DragAndDrop
-Shows how to implement drag&drop for elements on the map.
+#### [Mandelbrot](Mandelbrot) Shows how to implement a client-side tile provider and demonstrates the "Infinite Zoom" feature
+<img src="Screenshots/Mandelbrot.png" height="240" title="Mandelbrot">
 
-![DragAndDrop](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/DragAndDrop.png "DragAndDrop")
+#### [ManySymbols](ManySymbols) Shows practices to display many symbols with the ShapeLayer
+<img src="Screenshots/ManySymbols.png" height="240" title="ManySymbols">
 
-#### ExtensibilityTest
-Tests for customization and extensions of the map control
+#### [ManySymbols2](ManySymbols2) Shows how to display even more symbols by implementing a custom layer
+<img src="Screenshots/ManySymbols2.png" height="240" title="ManySymbols2">
 
-![ExtensibilityTest](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ExtensibilityTest.png "ExtensibilityTest")
+#### [MapArrowDemo](MapArrowDemo) Shows how to build custom shapes for the shape layer
+<img src="Screenshots/MapArrowDemo.png" height="240" title="MapArrowDemo">
 
-#### FeatureLayers
-Shows how to render Feature Layers on the control
+#### [MFCMapDialog](MFCMapDialog) Shows how to add the map to an MFC applciation
+<img src="Screenshots/MFCMapDialog.png" height="240" title="MFCMapDialog">
 
-![FeatureLayers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/FeatureLayers.png "FeatureLayers")
+#### [MultipleContainers](MultipleContainers) Test for map controls in mutliple tab-, split, and dock-containers
+<img src="Screenshots/MultipleContainers.png" height="240" title="MultipleContainers">
 
-#### FormsMapCS
-Shows how to add the map to a Windows Forms application in C#
+#### [MemAssertDemo](MemAssertDemo) A utility class + demo that helps to track-down memory-leaks in your code.
 
-#### FormsMapVB
-Shows how to add the map to a Windows Forms application in VB.NET
+#### [MemoryPressureTest](MemoryPressureTest) Tips to optimize xServer.NET for limited-memory scenarios
 
-![FormsMapVB](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/FormsMapVB.png "FormsMapVB")
+#### [PieChartsAndExport](PieChartsAndExport) Shows how to render arbitrary wpf elements and print/export the map content
+<img src="Screenshots/MultipPieChartsAndExportleContainers.png" height="240" title="PieChartsAndExport">
 
-#### HereImagery
-Shows how to add here basemap tiles
+#### [RoutingVB](RoutingVB) Shows how to add drag&drop routing to a Visual Basic project.
 
-![HereImagery](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/HereImagery.png "HereImagery")
+#### [SelectionDemo](SelectionDemo) Shows how to render custom icons and select them by dragging a rubber band
+<img src="Screenshots/SelectionDemo.png" height="240" title="SelectionDemo">
 
-#### Mandelbrot
-Shows how to implement a client-side tile provider and demonstrates the "Infinite Zoom" feature
+#### [ServerSideRendering](ServerSideRendering) Shows how to render additional xMap layers with tooltip interaction
+<img src="Screenshots/ServerSideRendering.png" height="240" title="ServerSideRendering">
 
-![Mandelbrot](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/Mandelbrot.png "Mandelbrot")
+#### [SimpleWms](SimpleWms) Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
+<img src="Screenshots/SimpleWms.png" height="240" title="SimpleWms">
 
-#### ManySymbols
-Shows practices to display many symbols with the ShapeLayer
+#### [SymbolsAndLabels](SymbolsAndLabels) Shows how to draw symbols with an attached label tag
+<img src="Screenshots/SymbolsAndLabels.png" height="240" title="SymbolsAndLabels">
 
-![ManySymbols](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ManySymbols.png "ManySymbols")
+#### [TourPlanningDemo](TourPlanningDemo) Shows practices how to use the new xTour 1.18 job api @xServer internet
+<img src="Screenshots/TourPlanningDemo.png" height="240" title="TourPlanningDemo">
 
-#### ManySymbols2
-Shows how to display even more symbols by implementing a custom layer
+#### [ToursAndStopsMultiCanvas](ToursAndStopsMultiCanvas) Shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
+<img src="Screenshots/ToursAndStopsMultiCanvas.png" height="240" title="ToursAndStopsMultiCanvas">
 
-![ManySymbols2](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ManySymbols2.png "ManySymbols2")
+#### [VdiPerformance](VdiPerformance) Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)VdiPerformance
+<img src="Screenshots/VdiPerformance.png" height="240" title="VdiPerformance">
 
-#### MapArrowDemo
-Shows how to build custom shapes for the shape layer
-
-![MapArrowDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MapArrowDemo.png "MapArrowDemo")
-
-#### MFCMapDialog
-Shows how to add the map to an MFC applciation
-
-![MFCMapDialog](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MFCMapDialog.png "MFCMapDialog")
-
-#### MultipleContainers
-Test for map controls in mutliple tab-, split, and dock-containers
-
-![MultipleContainers](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/MultipleContainers.png "MultipleContainers")
-
-#### MemAssertDemo
-A utility class + demo that helps to track-down memory-leaks in your code.
-
-#### MemoryPressureTest
-Tips to optimize xServer.NET for limited-memory scenarios
-
-#### PieChartsAndExport
-Shows how to render arbitrary wpf elements and print/export the map content
-
-![PieChartsAndExport](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/PieChartsAndExport.png "PieChartsAndExport")
-
-#### RoutingVB
-Shows how to add drag&drop routing to a Visual Basic project.
-
-#### SelectionDemo
-Shows how to render custom icons and select them by dragging a rubber band
-
-![SelectionDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SelectionDemo.png "SelectionDemo")
-
-#### ServerSideRendering
-Shows how to render additional xMap layers with tooltip interaction
-
-![ServerSideRendering](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ServerSideRendering.png "ServerSideRendering")
-
-#### SimpleWms
-Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
-
-![SimpleWms](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/WmsTest.png "SimpleWms")
-
-#### SymbolsAndLabels
-Shows how to draw symbols with an attached label tag
-
-![SymbolsAndLabels](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/SymbolsAndLabels.png "SymbolsAndLabels")
-
-#### TourPlanningDemo
-Shows practices how to use the new xTour 1.18 job api @xServer internet
-
-![TourPlanningDemo](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/TourPlanningDemo.png "TourPlanningDemo")
-
-#### ToursAndStopsMultiCanvas
-Shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
-
-![ToursAndStopsMultiCanvas](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/ToursAndMultiCanvas.png "ToursAndStopsMultiCanvas")
-
-#### VdiPerformance
-Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)
-
-![VdiPerformance](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/VdiPerformance.png "VdiPerformance")
-
-#### XYNSegments
-Shows how to select and render xServer XYN-Segments
-
-![XYNSegments](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/XYNSegments.png "XYNSegments")
-
-
+#### [XYNSegments](XYNSegments) Shows how to select and render xServer XYN-Segments
+<img src="Screenshots/XYNSegments.png" height="240" title="XYNSegments">
