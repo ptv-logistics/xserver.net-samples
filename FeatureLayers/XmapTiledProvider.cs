@@ -19,7 +19,7 @@ namespace FeatureLayers
         private static readonly Logger logger = new Logger("XMapTiledProviderEx");
 
         /// <summary> URL of the xMap server. </summary>
-        private readonly string url = string.Empty;
+        private readonly string url;
         /// <summary> Mode of the xMap layer. </summary>
         private readonly XMapMode mode;
         /// <summary> The user name for basic Http authentication. </summary>
@@ -41,7 +41,7 @@ namespace FeatureLayers
             Password = password;
             this.mode = mode;
 
-            base.needsTransparency = mode != XMapMode.Background;
+            needsTransparency = mode != XMapMode.Background;
 
             // TODO: REVIEW ME - DEEP ZOOM
             //
@@ -55,7 +55,7 @@ namespace FeatureLayers
             // If this is ok, remove this comment. Otherwise find a better solution.
 
             if (mode == XMapMode.Town)
-                base.MaxZoom = 19;
+                MaxZoom = 19;
         }
 
         /// <summary> Initializes a new instance of the <see cref="XMapTiledProvider"/> class with the given connection
@@ -114,7 +114,7 @@ namespace FeatureLayers
                         layers.Add(new StaticPoiLayer { name = "background", visible = false, category = -1, detailLevel = 0 });
                         break;
 
-                    case XMapMode.Background: // only streets and polygones
+                    case XMapMode.Background: // only streets and polygons
                         profile = "ajax-bg";
                         layers.Add(new StaticPoiLayer { name = "town", visible = false, category = -1, detailLevel = 0 });
                         break;
@@ -127,7 +127,7 @@ namespace FeatureLayers
                     foreach (var customXMapLayers in CustomXMapLayers)
                     {
                         var xMapLayers = customXMapLayers; // Temporary variable needed for solving closure issues in the next code line
-                        foreach (var layer in layers.Where(layer => (layer.GetType() == xMapLayers.GetType()) && (layer.name == xMapLayers.name)))
+                        foreach (var layer in layers.Where(layer => layer.GetType() == xMapLayers.GetType() && layer.name == xMapLayers.name))
                         {
                             layers.Remove(layer);
                             break;
@@ -137,7 +137,7 @@ namespace FeatureLayers
                     layers.AddRange(CustomXMapLayers);
                 }
 
-                if (!String.IsNullOrEmpty(CustomProfile))
+                if (!string.IsNullOrEmpty(CustomProfile))
                 {
                     profile = CustomProfile;
                 }
@@ -218,7 +218,7 @@ namespace FeatureLayers
         /// <returns>True, if the bounding boxes are equal. False otherwise.</returns>
         public bool BoundingBoxesAreEqual(BoundingBox b1, BoundingBox b2, double epsilon = 1e-4)
         {
-            return GetDelta(b1, b2).All(delta => (delta <= epsilon));
+            return GetDelta(b1, b2).All(delta => delta <= epsilon);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace FeatureLayers
             var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
             System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
-            logger.Writeline(TraceEventType.Warning, String.Format("xMap did not return the requested map rectangle:\n" +
+            logger.Writeline(TraceEventType.Warning, string.Format("xMap did not return the requested map rectangle:\n" +
                 "\trequested: [{3:0.000000}, {4:0.000000}, {5:0.000000}, {6:0.000000}], {1}x{2}, {0},\n" +
                 "\t returned: [{7:0.000000}, {8:0.000000}, {9:0.000000}, {10:0.000000}]\n" +
                 "\t    delta: [{11:0.000000}, {12:0.000000}, {13:0.000000}, {14:0.000000}]",
@@ -268,7 +268,7 @@ namespace FeatureLayers
 
                 if (CustomCallerContextProperties != null)
                 {
-                    cacheId = CustomCallerContextProperties.Aggregate(cacheId, (current, ccp) => current + ("/" + ccp.key + "/" + ccp.value));
+                    cacheId = CustomCallerContextProperties.Aggregate(cacheId, (current, ccp) => current + "/" + ccp.key + "/" + ccp.value);
                 }
                 return cacheId;
             }

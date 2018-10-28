@@ -6,7 +6,7 @@ namespace Mandelbrot
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
@@ -16,12 +16,12 @@ namespace Mandelbrot
             Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
 
             // now set the max-zoom to level 30(!)
-            this.Map.MaxZoom = 30;
+            Map.MaxZoom = 30;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Map.Layers.Add(new TiledLayer("Mandelbrot") { TiledProvider = new MandelbrotTileProvider() });
+            Map.Layers.Add(new TiledLayer("Mandelbrot") { TiledProvider = new MandelbrotTileProvider() });
         }
     }
 }

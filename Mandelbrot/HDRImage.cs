@@ -2,16 +2,14 @@
 
 using System;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mandelbrot
 {
     public class HDRImage
     {
-        int m_width, m_height;							        // Width and height of image
-        double[] buffer;										// The image buffer
+        private readonly int m_width;							        // Width and height of image
+        private readonly int m_height;							        // Width and height of image
+        private readonly double[] buffer;					    		// The image buffer
 
         public HDRImage(int width, int height)
         {
@@ -34,24 +32,24 @@ namespace Mandelbrot
 
         public Bitmap ToBitmap()
         {
-            Bitmap image = new Bitmap(m_width, m_height);
+            var bitmap = new Bitmap(m_width, m_height);
 
             for (int x = 0; x < m_width; x++)
             {
                 for (int y = 0; y < m_height; y++)
                 {
                     double val = GetPixel(x, y);
-                    image.SetPixel(x, y, getColorFromWaveLength((int)val + 350));
+                    bitmap.SetPixel(x, y, getColorFromWaveLength((int)val + 350));
                 }
             }
 
-            return image;
+            return bitmap;
         }
 
-        private Color getColorFromWaveLength(int Wavelength)
+        private static Color getColorFromWaveLength(int Wavelength)
         {
-            double Gamma = 1.00;
-            int IntensityMax = 255;
+            const double Gamma = 1.00;
+            const int IntensityMax = 255;
 
             double Blue;
             double Green;
@@ -118,21 +116,14 @@ namespace Mandelbrot
                 Factor = 0.0;
             }
 
-            int R = this.factorAdjust(Red, Factor, IntensityMax, Gamma);
-            int G = this.factorAdjust(Green, Factor, IntensityMax, Gamma);
-            int B = this.factorAdjust(Blue, Factor, IntensityMax, Gamma); return Color.FromArgb(R, G, B);
+            int R = factorAdjust(Red, Factor, IntensityMax, Gamma);
+            int G = factorAdjust(Green, Factor, IntensityMax, Gamma);
+            int B = factorAdjust(Blue, Factor, IntensityMax, Gamma); return Color.FromArgb(R, G, B);
         }
 
-        private int factorAdjust(double Color, double Factor, int IntensityMax, double Gamma)
+        private static int factorAdjust(double Color, double Factor, int IntensityMax, double Gamma)
         {
-            if (Color == 0.0)
-            {
-                return 0;
-            }
-            else
-            {
-                return (int)Math.Round(IntensityMax * Math.Pow(Color * Factor, Gamma));
-            }
+            return Color == 0.0 ? 0 : (int) Math.Round(IntensityMax * Math.Pow(Color * Factor, Gamma));
         }
     }
 }

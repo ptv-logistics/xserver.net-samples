@@ -19,7 +19,7 @@ namespace FormsMapCS
         private void Form1_Load(object sender, EventArgs e)
         {
             // our test data
-            var vehicles = new Vehicle[]
+            var vehicles = new[]
             {
                 new Vehicle {Longitude = 8.3, Latitude = 49, Id = "1"},
                 new Vehicle {Longitude = 8.4, Latitude = 49.1, Id = "1"},
@@ -73,7 +73,7 @@ namespace FormsMapCS
             }
         }
 
-        void vehicleDataGridView_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+        private static void vehicleDataGridView_DragDrop(object sender, System.Windows.Forms.DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof(Vehicle)))
             {
@@ -84,7 +84,7 @@ namespace FormsMapCS
             // the drop action goes here    
         }
 
-        void marker_Drop(object sender, System.Windows.DragEventArgs e)
+        private static void marker_Drop(object sender, System.Windows.DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof(Vehicle)))
             {
@@ -95,12 +95,12 @@ namespace FormsMapCS
             // the drop action goes here        
         }
 
-        void vehicleDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void vehicleDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             vehicleDataGridView.DoDragDrop(vehicleDataGridView.Rows[e.RowIndex].DataBoundItem,  DragDropEffects.Link);
         }
 
-        void marker_DragOver(object sender, System.Windows.DragEventArgs e)
+        private static void marker_DragOver(object sender, System.Windows.DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof (Vehicle)))
             {
@@ -114,7 +114,7 @@ namespace FormsMapCS
             e.Effects = System.Windows.DragDropEffects.Link;    
         }
 
-        void vehicleDataGridView_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
+        private static void vehicleDataGridView_DragOver(object sender, System.Windows.Forms.DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof(Vehicle)))
             {
@@ -130,7 +130,7 @@ namespace FormsMapCS
 
         private void Marker_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            DoDragDrop((sender as FrameworkElement).Tag, System.Windows.Forms.DragDropEffects.Link);
+            DoDragDrop(((FrameworkElement) sender).Tag, DragDropEffects.Link);
         }
     }
 

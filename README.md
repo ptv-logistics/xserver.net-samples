@@ -3,17 +3,23 @@ xservernet-bin
 
 A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
-#### Also have a look on these projects for PTV xServer @.NET
+
+### Resources
 
 * [xserver.net](https://github.com/ptv-logistics/xserver.net) - Source code for PTV xServer.NET
-* [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
-* [SharpMap.Ptv](https://github.com/ptv-logistics/SharpMap.Ptv) - SharpMap Addons for PTV Services and Data
-* [SpatialTutorial](https://github.com/ptv-logistics/SpatialTutorial/wiki) - A tutorial that shows some practices to visualize, analyze and manipulate spatial data with PTV xServer, ASP.NET and JavaScript
+* [xserver.net-docs](https://ptv-logistics.github.io/xserver.net-docs) - API documentation for xServer.NET
+
 
 ### The samples
 
 #### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) Demonstrates the API for native Xmap2/FeatureLayer support.
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
+
+#### [WMTSLayer](WMTSLayer) Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
+<img src="Screenshots/WMTSLayer.png" height="240" title="WMTSLayer">
+
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) - Build responsive map applications for web and desktop
+<img src="Screenshots/SharpMap.Win.png" height="240" title="SharpMap.Widgets">
 
 #### [ActiveX](ActiveX) Shows how to use the map as ActiveX control
 <img src="Screenshots/ActiveX.png" height="240" title="ActiveX">
@@ -40,7 +46,7 @@ Shows how to set-up a map-layout with custom gadgets
 ![CustomLayout](https://github.com/ptv-logistics/xservernet-bin/blob/master/Screenshots/CustomLayout.png "CustomLayout")
 
 #### CustomLocalizer
-Shows how to user your own string resources to localize the texts of the control.
+Shows how to use your own string resources to localize the texts of the control.
 
 #### CustomPanAndZoom
 Shows how to change the default behavior for pan/zoom interaction.

@@ -33,7 +33,7 @@ namespace Ptv.XServer.Demo.MapMarket
         public double YMax { get; set; }
 
         /// <summary> A dictionary for additional attributes. </summary>
-        public Dictionary<string, object> Atributes;
+        public Dictionary<string, object> Attributes;
     }
 
     /// <summary> <para>The interface for providing geographic data.</para>

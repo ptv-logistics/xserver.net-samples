@@ -43,7 +43,7 @@ namespace Ptv.XServer.Demo.UseCases
                 StrokeStartLineCap = PenLineCap.Round,
                 StrokeEndLineCap = PenLineCap.Round,
                 MapStrokeThickness = 25,
-                ScaleFactor = .1,               
+                ScaleFactor = .1               
             };
 
             AnimatedPolyline = new MapPolyline
@@ -57,7 +57,7 @@ namespace Ptv.XServer.Demo.UseCases
 
                 IsHitTestVisible = false,
                 MapStrokeThickness = MapPolyline.MapStrokeThickness - 5,
-                ScaleFactor = MapPolyline.ScaleFactor,
+                ScaleFactor = MapPolyline.ScaleFactor
             };
 
             var animation = new DoubleAnimation
@@ -99,15 +99,15 @@ namespace Ptv.XServer.Demo.UseCases
                 MapPolyline.Points = new PointCollection();
                 AnimatedPolyline.Points = MapPolyline.Points;
 
-                if ((value == null) || !value.Any())
+                if (value == null || !value.Any())
                 {
                     shapeLayer.Shapes.Remove(MapPolyline);
                     shapeLayer.Shapes.Remove(AnimatedPolyline);
                 }
                 else
                 {
-                    foreach (Point p in value)
-                        MapPolyline.Points.Add(p);
+                    foreach (var point in value)
+                        MapPolyline.Points.Add(point);
 
                     shapeLayer.Shapes.Add(MapPolyline);
                     shapeLayer.Shapes.Add(AnimatedPolyline);

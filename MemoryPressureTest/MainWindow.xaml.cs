@@ -1,30 +1,16 @@
-﻿//--------------------------------------------------------------
-// Copyright (c) PTV Group
-// 
-// For license details, please refer to the file COPYING, which 
-// should have been provided with this distribution.
-//--------------------------------------------------------------
-
-using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers;
-using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Canvases;
-using Ptv.XServer.Controls.Map.Layers.Untiled;
-using Ptv.XServer.Controls.Map.Layers.Tiled;
-using System;
 using System.Runtime.InteropServices;
 
 
 namespace MemoryPressureTest
 {
     /// <summary> Interaction logic for MainWindow.xaml </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private static IntPtr largeUnmanagedHeap;
-
         #region constructor
         /// <summary> Constructor of the main window. </summary>
         public MainWindow()
@@ -32,16 +18,16 @@ namespace MemoryPressureTest
             // simulate a large pile (1.3 GB) of unmanaged memory
             // we're running in 32-Bit and only have 2GB per-process
             // so there isn't much left
-            largeUnmanagedHeap = Marshal.AllocHGlobal(1300000000);
+            Marshal.AllocHGlobal(1300000000);
 
             // Enable the incrementation of memory pressure for bitmap images
             // This is default for 32-Bit but disabled for 64-Bit applications
             // Must be called before the first initialization of the map control!
-            Ptv.XServer.Controls.Map.GlobalOptions.MemoryPressureMode = MemoryPressureMode.Enable;
+            GlobalOptions.MemoryPressureMode = MemoryPressureMode.Enable;
             
             // decrease the tile cache, the default is 512
             // Must be called before the first initialization of the map control!
-            Ptv.XServer.Controls.Map.GlobalOptions.TileCacheSize = 128;
+            GlobalOptions.TileCacheSize = 128;
 
             // now initialize the map
             InitializeComponent();
@@ -67,7 +53,7 @@ namespace MemoryPressureTest
                 new BaseLayer("CanvasLayer")
                 {
                     CanvasCategories = new [] { CanvasCategory.Content },
-                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { (mapControl) => new MyCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
+                    CanvasFactories = new BaseLayer.CanvasFactoryDelegate[] { mapControl => new MyCanvasLayer(mapControl) { Locations = MyOverlayRenderer.CreateTestLocations(100), SymbolColor = Colors.Yellow } }
                 });
 
         }

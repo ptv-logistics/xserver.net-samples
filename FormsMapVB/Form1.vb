@@ -7,7 +7,7 @@ Imports Ptv.XServer.Controls.Map
 Imports Point = System.Windows.Point
 
 Public Class Form1
-    Dim token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
+    ReadOnly token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()
@@ -72,7 +72,7 @@ Public Class Form1
 
         ' just need the distance
         Return xRouteClient.calculateRoute(New WaypointDesc() {New WaypointDesc() With {
-             .wrappedCoords = New FormsMapVB.XRouteServiceReference.Point() {New FormsMapVB.XRouteServiceReference.Point() With {
+             .wrappedCoords = New XRouteServiceReference.Point() {New XRouteServiceReference.Point() With {
                  .point = New PlainPoint() With {
                      .x = lon1,
                      .y = lat1
@@ -93,9 +93,9 @@ Public Class Form1
         })
     End Function
 
-    Private Sub SetRoute(route As FormsMapVB.XRouteServiceReference.Route, layer As ShapeLayer, color As Color, toolTip As String)
+    Private Shared Sub SetRoute(route As Route, layer As ShapeLayer, color As Color, toolTip As String)
         Dim r = route.polygon.lineString.wrappedPoints
-        Dim pc = New PointCollection(From p In r Select New System.Windows.Point(p.x, p.y))
+        Dim pc = New PointCollection(From p In r Select New Point(p.x, p.y))
 
         Dim poly = New MapPolyline With
         {

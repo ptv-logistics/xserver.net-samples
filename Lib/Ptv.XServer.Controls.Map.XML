@@ -1030,6 +1030,9 @@
             <summary><para> This class represents shape objects which are displayed on a map. </para>
             <para> See the <conceptualLink target="06a654f3-afbd-4f00-9c8e-36997e2a3951"/> topic for an example. </para></summary>
         </member>
+        <member name="F:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.Data">
+            <summary>Contains the geometry provided by property <see cref="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.DefiningGeometry"/>. </summary>
+        </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.DefiningGeometry">
             <inheritdoc/>
         </member>
@@ -1058,8 +1061,18 @@
             <para> See the <conceptualLink target="06a654f3-afbd-4f00-9c8e-36997e2a3951"/> topic for an example. </para></summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline.#ctor">
-            <summary> Initializes a new instance of the <see cref="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline"/> class. Initializes the
-            <see cref="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.ScaleFactor"/> to 0.5. </summary>
+            <summary> Initializes a new instance of the <see cref="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline"/> class. </summary>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline.TransformShape(Ptv.XServer.Controls.Map.MapView)">
+            <summary> Transforms the polyline object according the transformation provided by
+            <see cref="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.GeoTransform"/>. </summary>
+            <param name="mapView">Not used.</param>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline.ClipShape(Ptv.XServer.Controls.Map.MapView,Ptv.XServer.Controls.Map.Canvases.UpdateMode,System.Boolean)">
+            <summary>Clip the Polyline object. </summary>
+            <param name="mapView">Mapview object in which the clipping takes place.</param>
+            <param name="updateMode"> The update mode tells which kind of change is to be processed by the update call. </param>
+            <param name="lazyUpdate"> Flag indicating if lazy updating is activated. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline.UpdateShape(Ptv.XServer.Controls.Map.MapView,Ptv.XServer.Controls.Map.Canvases.UpdateMode,System.Boolean)">
             <inheritdoc/>
@@ -1077,14 +1090,29 @@
             <summary> Initializes a new instance of the <see cref="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolygon"/> class. Initializes the
             <see cref="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.ScaleFactor"/> to 0.0. </summary>
         </member>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolygon.ClipShape(Ptv.XServer.Controls.Map.MapView,Ptv.XServer.Controls.Map.Canvases.UpdateMode,System.Boolean)">
+            <summary>Clip the Polygon object. </summary>
+            <param name="mapView"> Mapview object in which the clipping takes place.</param>
+            <param name="updateMode"> The update mode tells which kind of change is to be processed by the update call. </param>
+            <param name="lazyUpdate"> Flag indicating if lazy updating is activated. </param>
+        </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolygon.UpdateShape(Ptv.XServer.Controls.Map.MapView,Ptv.XServer.Controls.Map.Canvases.UpdateMode,System.Boolean)">
             <inheritdoc/>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolygon.BuildGeometry(System.Collections.Generic.ICollection{System.Windows.Media.PointCollection})">
+            <summary> Creates a new <see cref="T:System.Windows.Media.Geometry"/> object by means of a set of <see cref="T:System.Windows.Media.PointCollection"/>s. </summary>
+            <param name="lines">Set of <see cref="T:System.Windows.Media.PointCollection"/>s. </param>
+            <returns>Geometry consisting of the input parameters.</returns>
+        </member>
+        <member name="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape">
+            <summary> Extends class <see cref="T:System.Windows.Shapes.Shape"/> to add functionality for geographical objects which change their presentation
+            according the currently used scale of the map. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.GeoTransform">
             <summary> Gets or sets a method which transforms a point from one coordinate system to another. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.ScaleFactor">
-            <summary> Gets or sets the  scale factor. See <see cref="F:Ptv.XServer.Controls.Map.Layers.Shapes.ShapeCanvas.ScaleFactorProperty"/>. </summary>
+            <summary> Gets or sets the scale factor. See <see cref="F:Ptv.XServer.Controls.Map.Layers.Shapes.ShapeCanvas.ScaleFactorProperty"/>. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.MapStrokeThicknessProperty">
             <summary> Stroke thickness of the map shape. </summary>
@@ -1102,18 +1130,21 @@
             <param name="obj"> Element for which the stroke thickness has been changed. </param>
             <param name="args"> Event parameters. </param>
         </member>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.NeedsUpdate(System.Boolean,Ptv.XServer.Controls.Map.Canvases.UpdateMode)">
+            <summary> Indicates if the update process should be started or not. </summary>
+            <param name="lazyUpdate"> Flag indicating if lazy updating is activated. </param>
+            <param name="updateMode"> The update mode tells which kind of change is to be processed by the corresponding update call. </param>
+            <returns></returns>
+        </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapShape.UpdateShape(Ptv.XServer.Controls.Map.MapView,Ptv.XServer.Controls.Map.Canvases.UpdateMode,System.Boolean)">
             <summary> Update the properties of the shape, according the current scale of the MapView object. </summary>
             <param name="mapView"> MapView object, to which this object belongs to. </param>
-            <param name="mode"> Update mode currently set. </param>
+            <param name="mode"> The update mode tells which kind of change is to be processed by the corresponding update call. </param>
             <param name="lazyUpdate"> Flag indicating if lazy updating is activated. </param>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.Shapes.ShapeLayer">
             <summary><para> This class represents a layer containing shape objects. </para>
             <para> See the <conceptualLink target="06a654f3-afbd-4f00-9c8e-36997e2a3951"/> topic for an example. </para></summary>
-        </member>
-        <member name="F:Ptv.XServer.Controls.Map.Layers.Shapes.ShapeLayer.shapes">
-            <summary> Collections of shape elements contained in this layer. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.ShapeLayer.SpatialReferenceId">
             <summary> Gets or sets the spatial reference number as a string. The spatial reference number defines the
@@ -1602,11 +1633,9 @@
             <param name="name"> The unique name of the layer. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledLayer.UpdateMapObjects(System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject},System.Windows.Size)">
-            <summary>
-            
-            </summary>
-            <param name="mapObjects"></param>
-            <param name="requestedSize"></param>
+            <summary>Takes all parameters into members, commonly provided by the corresponding provider. </summary>
+            <param name="mapObjects">Set of map objects which can be used for showing tool tips.</param>
+            <param name="requestedSize">The size of the map image.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledLayer.AddToMapView(Ptv.XServer.Controls.Map.MapView)">
             <inheritdoc/>
@@ -1712,6 +1741,9 @@
             <param name="mapObjects"> Set of map objects. </param>
             <param name="mapParam"> The corresponding map parameters object. </param>
         </member>
+        <member name="P:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledCanvas.UpdateMapObjects">
+            <summary>Callback for a provider object to set the map objects which belong to a requested map image. </summary>
+        </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledCanvas.UpdateOverlay(System.Boolean)">
             <summary> Updates the overlay image. </summary>
             <param name="forceUpdate"> True, if the update should be forced even if the viewport didn't change. </param>
@@ -1801,8 +1833,10 @@
             generalized to support multiple xServer versions.
             </remarks>
         </member>
-        <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.XMap1MapObject.ToString">
-            <inheritdoc/>
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.XMap1MapObject.#ctor(xserver.ObjectInfos,xserver.LayerObject)">
+            <summary> Creates an xMap-1 map object. </summary>
+            <param name="objectInfos">Set of object infos returned by xMap-1.</param>
+            <param name="layerObject">XServer layer object.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.XMap1MapObject.FormatToolTip(System.String,System.String,System.Int32)">
             <summary>
@@ -1898,7 +1932,7 @@
             is transformed to map these reference systems to the internally used format.</remarks>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.WmsLayer.#ctor(System.String,System.Boolean,System.Boolean,System.String,System.String,System.Int32)">
-            <summary> Create and initialize a new layer which integrates the images provided by Web Map Services into the map control.  </summary>
+            <summary> Creates and initializes a new layer which integrates the images provided by Web Map Services into the map control.  </summary>
             <param name="urlTemplate">URL needed for retrieving images from the corresponding Web Map Service. The layout of this URL must
             achieve the requirements according the OpenGIS Specification, details can be found in http://www.opengeospatial.org/standards/wms .
             <br />
@@ -2577,15 +2611,6 @@
         <member name="M:Ptv.XServer.Controls.Map.Layers.WmtsLayer.WmtsMapService.GetImageStream(Ptv.XServer.Controls.Map.Tools.Reprojection.IBoundingBox,System.Drawing.Size,System.Drawing.Size@)">
             <inheritdoc/>
         </member>
-        <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription">
-            <summary>Relevant information concerning a content snapshot. </summary>
-        </member>
-        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription.id">
-            <summary>Unique ID for addressing the corresponding snapshot. </summary>
-        </member>
-        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription.label">
-            <summary>Human readable description of a snapshot.</summary>
-        </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.FeatureLayers">
             <summary>Concentrates functionality around Feature Layers in XMap2 environment, especially the installed
             <a href="https://xserver2-dashboard.cloud.ptvgroup.com/dashboard/Default.htm#TechnicalConcepts/FeatureLayer/DSC_About_FeatureLayer.htm%3FTocPath%3DTechnical%2520Concepts%7CFeature%2520Layer%7C_____2">Feature Layer themes</a>
@@ -2686,11 +2711,20 @@
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.AvailableMapStyles">
             <summary>All available map styles configured on the corresponding xMap2 server.</summary>
         </member>
-        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.StoredProfile">
+        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.MapStyle">
             <summary>Style of a map.</summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.FeatureLayers">
             <summary> Provides functionality all around Feature Layers. </summary>
+        </member>
+        <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription">
+            <summary>Relevant information concerning a content snapshot. </summary>
+        </member>
+        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription.id">
+            <summary>Unique ID for addressing the corresponding snapshot. </summary>
+        </member>
+        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.ContentSnapshotDescription.label">
+            <summary>Human readable description of a snapshot.</summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.UntiledProvider">
             <summary> Loads untiled bitmaps from a given xServer 2 URL, like
@@ -3223,6 +3257,9 @@
         </member>
         <member name="F:Ptv.XServer.Controls.Map.LayerCollection.exclusiveSelectableLayer">
             <summary> The single layer which is exclusive selectable (if existent). </summary>
+        </member>
+        <member name="F:Ptv.XServer.Controls.Map.LayerCollection.selfNotify">
+            <summary> Indicates the collection is changed from within the CollectionChanged. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.LayerCollection.LayerSettings">
             <summary> Gets or sets the interface, which is used when the settings of a layer have to be shown.
@@ -4640,6 +4677,9 @@
         <member name="F:Ptv.XServer.Controls.Map.TileProviders.XMapMode.Custom">
             <summary> The xMap layer is a custom layer. </summary>
         </member>
+        <member name="T:Ptv.XServer.Controls.Map.TileProviders.IObjectInfoProvider">
+            <summary>Setting a delegate handling map updates. </summary>
+        </member>
         <member name="E:Ptv.XServer.Controls.Map.TileProviders.IObjectInfoProvider.MapUdpate">
             <summary> MapUpdate event. See remarks on <see cref="T:Ptv.XServer.Controls.Map.TileProviders.MapUpdateDelegate"/>. </summary>
         </member>
@@ -4675,14 +4715,48 @@
             <param name="url"> The url to connect to the xMap server. </param>
             <param name="mode"> The mode of this tiled provider instance. </param>
         </member>
-        <member name="E:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.MapUdpate">
-            <summary> MapUpdate event. See remarks on <see cref="T:Ptv.XServer.Controls.Map.TileProviders.MapUpdateDelegate"/>. </summary>
+        <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.CustomCallerContextProperties">
+            <summary> Customized caller constext properties. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.CustomXMapLayers">
             <summary> Gets or sets the custom layers of the xMapServer. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.TryGetStreamInternal(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject}@)">
             <inheritdoc/>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.GetMinMax(xserver.BoundingBox)">
+            <summary>
+            Convert a bounding box to a [minx, miny, maxx, maxy] representation.
+            </summary>
+            <param name="b">Bounding box to convert.</param>
+            <returns>The [minx, miny, maxx, maxy] representation.</returns>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.GetDelta(xserver.BoundingBox,xserver.BoundingBox)">
+            <summary>
+            Calculates the delta for the minx, miny, maxx and maxy values of the given bounding boxes.
+            </summary>
+            <param name="b1">First bounding box.</param>
+            <param name="b2">Second bounding box.</param>
+            <returns>Delta values, in this order: minx, miny, maxx, maxy.</returns>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.BoundingBoxesAreEqual(xserver.BoundingBox,xserver.BoundingBox,System.Double)">
+            <summary>
+            Checks if two bounding boxes are equal.
+            </summary>
+            <param name="b1">First bounding box.</param>
+            <param name="b2">Second bounding box.</param>
+            <param name="epsilon">Allowable tolerance.</param>
+            <returns>True, if the bounding boxes are equal. False otherwise.</returns>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.IssueBoundingBoxWarning(xserver.BoundingBox,xserver.BoundingBox,System.Int32,System.Int32,System.String)">
+            <summary>
+            Generates a diagnostic output.
+            </summary>
+            <param name="requested">Requested bounding box.</param>
+            <param name="returned">Returned bounding box.</param>
+            <param name="width">Requested width.</param>
+            <param name="height">Requested height.</param>
+            <param name="profile">Requested profile.</param>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.CacheId">
             <inheritdoc/>
@@ -4791,10 +4865,24 @@
             <param name="height"> Height of the image. </param>
             <returns> The image as a stream. </returns>
         </member>
+        <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProviderBase.GetImageStreamAndMapObjects(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject}@)">
+            <summary> Retrieves the image stream and the corresponding map objects belonging to the returned map image. </summary>
+            <param name="left"> Left coordinate. </param>
+            <param name="top"> Top coordinate. </param>
+            <param name="right"> Right coordinate. </param>
+            <param name="bottom"> Bottom coordinate. </param>
+            <param name="width"> Width of the image. </param>
+            <param name="height"> Height of the image. </param>
+            <param name="mapObjects">Set of map objects belonging to the map image. These objects can be used to provide tool tips in an interactive map.</param>
+            <returns> The image as a stream. </returns>
+        </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProviderBase.Factor">
             <inheritdoc/>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProviderBase.OverlapFactor">
+            <inheritdoc/>
+        </member>
+        <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProviderBase.Border">
             <inheritdoc/>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.TileProviders.XMapWSServiceImpl">
@@ -5413,6 +5501,23 @@
             TODO: could we use .NET's crc implementation instead of this?
             </summary>
         </member>
+        <member name="M:Ptv.XServer.Controls.Map.Tools.Reprojection.Crc.update_crc(System.UInt32,System.Byte[],System.Int64,System.Int64)">
+            <summary> Update a running CRC with the bytes buf[0..len-1].
+            The CRC should be initialized to all 1's, and the transmitted value is the 1's complement of the final running CRC (see
+            method <see cref="M:Ptv.XServer.Controls.Map.Tools.Reprojection.Crc.crc(System.Byte[],System.Int64,System.Int64)"/>)). </summary>
+            <param name="crc">Cyclic redundancy check value.</param>
+            <param name="buf">Buffer of image bytes.</param>
+            <param name="offset">Where to start in buf. </param>
+            <param name="length">Number of bytes in buf. </param>
+            <returns>Final cyclic redundancy check value. </returns>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.Tools.Reprojection.Crc.crc(System.Byte[],System.Int64,System.Int64)">
+            <summary> Return the CRC of the bytes buf[0..len-1]. </summary>
+            <param name="buf">Buffer of image bytes.</param>
+            <param name="offset">Where to start in buf. </param>
+            <param name="length">Number of bytes in buf. </param>
+            <returns>Final cyclic redundancy check value. </returns>
+        </member>
         <member name="T:Ptv.XServer.Controls.Map.Tools.Reprojection.Adler32">
             <summary>
             Adler-32 checksum calculation, initially taken from here:
@@ -5651,8 +5756,8 @@
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Tools.Reprojection.MapRectangle.#ctor(Ptv.Components.Projections.Location,Ptv.Components.Projections.Location)">
             <summary> Creates and initializes a MapRectangle instance. </summary>
-            <param name="lt">Upper left-hand corner.</param>
-            <param name="rb">Bottom right-hand corner.</param>
+            <param name="leftTop">Upper left-hand corner.</param>
+            <param name="rightBottom">Bottom right-hand corner.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Tools.Reprojection.MapRectangle.#ctor(System.Collections.Generic.IEnumerable{Ptv.Components.Projections.Location})">
             <summary>
@@ -7727,11 +7832,6 @@
             <param name="color"> Color to be darkened. </param>
             <returns> The darkened color. </returns>
         </member>
-        <member name="F:Ptv.XServer.Controls.Map.Tools.DesignTest._designMode">
-            <summary> 
-            Contains true, if we are in design mode of Visual Studio 
-            </summary> 
-        </member>
         <member name="M:Ptv.XServer.Controls.Map.Tools.DesignTest.#cctor">
             <summary> 
             Initializes an instance of Util class 
@@ -8309,8 +8409,11 @@
         <member name="M:Ptv.XServer.Controls.Map.Canvases.MapCanvas.Update(Ptv.XServer.Controls.Map.Canvases.UpdateMode)">
             <summary> Updates the map content. The map content consists of all elements of the canvas. This method is
             for example triggered when the viewport changes. </summary>
-            <param name="updateMode"> The update mode. This mode tells which kind of change is to be processed by the
-            update call. </param>
+            <param name="updateMode"> The update mode tells which kind of change is to be processed by the update call. </param>
+        </member>
+        <member name="M:Ptv.XServer.Controls.Map.Canvases.MapCanvas.BeforeUpdate(Ptv.XServer.Controls.Map.Canvases.UpdateMode)">
+            <summary> Callback to precede the updating of the map content. </summary>
+            <param name="updateMode"> The update mode tells which kind of change is to be processed by the update call. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Canvases.MapCanvas.ReceiveWeakEvent(System.Type,System.Object,System.EventArgs)">
             <inheritdoc/>
@@ -8422,6 +8525,9 @@
         <member name="M:Ptv.XServer.Controls.Map.Canvases.WorldCanvas.PtvMercatorToCanvas(System.Windows.Point)">
             <inheritdoc/>  
         </member>
+        <member name="M:Ptv.XServer.Controls.Map.Canvases.WorldCanvas.BeforeUpdate(Ptv.XServer.Controls.Map.Canvases.UpdateMode)">
+            <inheritdoc/>  
+        </member>
         <member name="T:Ptv.XServer.Controls.Map.MapView">
             <summary> The main WPF map. </summary>
             <summary>
@@ -8433,9 +8539,6 @@
         </member>
         <member name="F:Ptv.XServer.Controls.Map.MapView.y">
             <summary> Y coordinate of the map center. </summary>
-        </member>
-        <member name="F:Ptv.XServer.Controls.Map.MapView.z">
-            <summary> Zoom level of the map. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.MapView.translateTransform">
             <summary> Transformation object for the pan offset. </summary>
@@ -9034,178 +9137,173 @@
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Resources.Strings">
             <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ResourceManager">
             <summary>
-              Returns the cached ResourceManager instance used by this class.
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Culture">
             <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Aerials">
             <summary>
-              Looks up a localized string similar to Aerials.
+              Sucht eine lokalisierte Zeichenfolge, die Aerials ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Background">
             <summary>
-              Looks up a localized string similar to Background.
+              Sucht eine lokalisierte Zeichenfolge, die Background ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Caption">
             <summary>
-              Looks up a localized string similar to Layers.
+              Sucht eine lokalisierte Zeichenfolge, die Layers ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.East">
             <summary>
-              Looks up a localized string similar to E.
+              Sucht eine lokalisierte Zeichenfolge, die E ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Labels">
             <summary>
-              Looks up a localized string similar to Labels.
+              Sucht eine lokalisierte Zeichenfolge, die Labels ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.North">
             <summary>
-              Looks up a localized string similar to N.
+              Sucht eine lokalisierte Zeichenfolge, die N ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Options">
             <summary>
-              Looks up a localized string similar to Options.
+              Sucht eine lokalisierte Zeichenfolge, die Options ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Selectability">
             <summary>
-              Looks up a localized string similar to Selectability.
+              Sucht eine lokalisierte Zeichenfolge, die Selectability ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.South">
             <summary>
-              Looks up a localized string similar to S.
+              Sucht eine lokalisierte Zeichenfolge, die S ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTrafficIncidentsAbsoluteSpeed">
             <summary>
-              Looks up a localized string similar to Absolute speed: {0} km/h.
+              Sucht eine lokalisierte Zeichenfolge, die Absolute speed: {0} km/h ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTrafficIncidentsDelay">
             <summary>
-              Looks up a localized string similar to Delay: {0} min.
+              Sucht eine lokalisierte Zeichenfolge, die Delay: {0} min ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTrafficIncidentsLength">
             <summary>
-              Looks up a localized string similar to Length: {0:0.000} km.
+              Sucht eine lokalisierte Zeichenfolge, die Length: {0:0.000} km ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTrafficIncidentsMessage">
             <summary>
-              Looks up a localized string similar to Message:.
+              Sucht eine lokalisierte Zeichenfolge, die Message: ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesCombustibles">
             <summary>
-              Looks up a localized string similar to Not allowed for vehicles carrying combustibles..
+              Sucht eine lokalisierte Zeichenfolge, die Not allowed for vehicles carrying combustibles. ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesFreeForDelivery">
             <summary>
-              Looks up a localized string similar to This restriction does not concern delivery vehicles..
+              Sucht eine lokalisierte Zeichenfolge, die This restriction does not concern delivery vehicles. ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesHazardousGoods">
             <summary>
-              Looks up a localized string similar to Not allowed for vehicles carrying hazardous goods..
+              Sucht eine lokalisierte Zeichenfolge, die Not allowed for vehicles carrying hazardous goods. ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesHazardousToWaters">
             <summary>
-              Looks up a localized string similar to Not allowed for vehicles carrying goods hazardous to waters..
+              Sucht eine lokalisierte Zeichenfolge, die Not allowed for vehicles carrying goods hazardous to waters. ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesLoadType">
             <summary>
-              Looks up a localized string similar to Not allowed for vehicles of load type: {0}..
+              Sucht eine lokalisierte Zeichenfolge, die Not allowed for vehicles of load type: {0}. ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesLoadTypeGoods">
             <summary>
-              Looks up a localized string similar to Goods.
+              Sucht eine lokalisierte Zeichenfolge, die Goods ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesLoadTypeMixed">
             <summary>
-              Looks up a localized string similar to Mixed.
+              Sucht eine lokalisierte Zeichenfolge, die Mixed ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesLoadTypePassenger">
             <summary>
-              Looks up a localized string similar to Passenger.
+              Sucht eine lokalisierte Zeichenfolge, die Passenger ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesMaxAxleLoad">
             <summary>
-              Looks up a localized string similar to Maximal axle load: {0:###,###} kg.
+              Sucht eine lokalisierte Zeichenfolge, die Maximal axle load: {0:###,###} kg ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesMaxHeight">
             <summary>
-              Looks up a localized string similar to Maximal height: {0:0.00} m.
+              Sucht eine lokalisierte Zeichenfolge, die Maximal height: {0:0.00} m ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesMaxLength">
             <summary>
-              Looks up a localized string similar to Maximal length: {0:0.00} m.
+              Sucht eine lokalisierte Zeichenfolge, die Maximal length: {0:0.00} m ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesMaxWeight">
             <summary>
-              Looks up a localized string similar to Maximal weight: {0:###,###} kg.
+              Sucht eine lokalisierte Zeichenfolge, die Maximal weight: {0:###,###} kg ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesMaxWidth">
             <summary>
-              Looks up a localized string similar to Maximal width: {0:0.00} m.
+              Sucht eine lokalisierte Zeichenfolge, die Maximal width: {0:0.00} m ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesTotalPermittedWeight">
             <summary>
-              Looks up a localized string similar to Total permitted weight: {0:###,###} kg.
+              Sucht eine lokalisierte Zeichenfolge, die Total permitted weight: {0:###,###} kg ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.ToolTipTruckAttributesTunnelRestriction">
             <summary>
-              Looks up a localized string similar to Tunnel restriction code: {0}.
-            </summary>
-        </member>
-        <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Transport">
-            <summary>
-              Looks up a localized string similar to Streets.
+              Sucht eine lokalisierte Zeichenfolge, die Tunnel restriction code: {0} ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.TruckAttributes">
             <summary>
-              Looks up a localized string similar to Truck attributes.
+              Sucht eine lokalisierte Zeichenfolge, die Truck attributes ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.Visibility">
             <summary>
-              Looks up a localized string similar to Visibility.
+              Sucht eine lokalisierte Zeichenfolge, die Visibility ähnelt.
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Resources.Strings.West">
             <summary>
-              Looks up a localized string similar to W.
+              Sucht eine lokalisierte Zeichenfolge, die W ähnelt.
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Localization.NamespaceDoc">
@@ -10787,6 +10885,28 @@
             <param name="sourceSrid">The source reference system.</param>
             <param name="destSrid">The destination reference system.</param>
             <returns>The transformed point.</returns>
+        </member>
+        <member name="T:TinyJson.JSONParser">
+            <summary>
+            Really simple JSON parser which attempts to parse JSON files with minimal GC allocation
+            Attempts are made to NOT throw an exception if the JSON is corrupted or invalid: returns null instead.
+            Only public fields and property setters on classes/structs will be written to.
+            Parsing of abstract classes or interfaces is NOT supported and will throw an exception.
+            </summary>
+        </member>
+        <member name="M:TinyJson.JSONParser.FromJson``1(System.String)">
+            <summary>Transforms a JSON string into the object of type T. </summary>
+            <typeparam name="T"> Type to which the JSON string is converted.</typeparam>
+            <param name="json">String to convert. </param>
+            <returns></returns>
+        </member>
+        <member name="T:TinyJson.JSONWriter">
+            <summary> Really simple JSON writer which outputs JSON structures from an object. </summary>
+        </member>
+        <member name="M:TinyJson.JSONWriter.ToJson(System.Object)">
+            <summary> Converts an object to a JSON string representation. </summary>
+            <param name="item"> Object which should be converted to a JSON string representation. </param>
+            <returns> JSON string representation of the input object. </returns>
         </member>
         <member name="T:DevelopMentor.WorkRequestDelegate">
             <summary> Documentation in progress... </summary>

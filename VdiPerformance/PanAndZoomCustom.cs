@@ -83,8 +83,8 @@ namespace VdiPerformance
         // *VdiPerformance* use a simple, non-filed shape for pan/select
         public bool UseSimpleSelectShape { get; set; }
 
-        // *MoveWhileDragging* move the map wihle dragging the mouse
-        public bool MoveWhileDragigng { get; set; }
+        // *MoveWhileDragging* move the map while dragging the mouse
+        public bool MoveWhileDragging { get; set; }
 
         #region event handling
         /// <summary> Event handler for pressing a key. Scrolls or zooms the map depending on the pressed key. </summary>
@@ -97,9 +97,9 @@ namespace VdiPerformance
 
             const double panOffset = .25;
 
-            MapRectangle rect = mapView.FinalEnvelope;
-            double dX = rect.Width * panOffset;
-            double dY = rect.Height * panOffset;
+            var mapRectangle = mapView.FinalEnvelope;
+            double dX = mapRectangle.Width * panOffset;
+            double dY = mapRectangle.Height * panOffset;
 
             switch (e.Key)
             {
@@ -201,26 +201,26 @@ namespace VdiPerformance
                 Point p2 = mapView.TranslatePoint(new Point(maxx, maxy), mapView.GeoCanvas);
 
                 mapView.SetEnvelope(new MapRectangle(
-                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
-                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
                     -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y,
                     -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y),
                     Map.UseAnimation);
 
                 e.Handled = true;
             }
-            else if (!MoveWhileDragigng)
+            else if (!MoveWhileDragging)
             {
                 mapView.ForePaneCanvas.Children.Remove(dragRectangle);
                 dragRectangle = null;
 
                 var physicalPoint = MapView.CanvasToPtvMercator(MapView, e.GetPosition(MapView));
 
-                if ((this.WorldStartPoint.X == physicalPoint.X) && (this.WorldStartPoint.Y == physicalPoint.Y))
+                if (WorldStartPoint.X == physicalPoint.X && WorldStartPoint.Y == physicalPoint.Y)
                     return;
 
-                double x = MapView.CurrentX + this.WorldStartPoint.X - physicalPoint.X;
-                double y = MapView.CurrentY + this.WorldStartPoint.Y - physicalPoint.Y;
+                double x = MapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
+                double y = MapView.CurrentY + WorldStartPoint.Y - physicalPoint.Y;
 
                 MapView.SetXYZ(x, y, MapView.CurrentZoom, Map.UseAnimation);
             }
@@ -253,11 +253,11 @@ namespace VdiPerformance
 
             if (Map.MouseDoubleClickZoom && e.ClickCount == 2)
             {
-                Point p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
+                var point = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
 
                 if (e.RightButton == MouseButtonState.Pressed)
                 {
-                    MapView.ZoomAround(p, MapView.FinalZoom + -1, Map.UseAnimation);
+                    MapView.ZoomAround(point, MapView.FinalZoom + -1, Map.UseAnimation);
 
                     e.Handled = true;
                     return;
@@ -265,7 +265,7 @@ namespace VdiPerformance
 
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
-                    MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
+                    MapView.ZoomAround(point, MapView.FinalZoom + 1, Map.UseAnimation);
 
                     e.Handled = true;
                     return;
@@ -279,7 +279,7 @@ namespace VdiPerformance
             bool select = e.LeftButton == MouseButtonState.Pressed && (Map.MouseDragMode == DragMode.Select ||
                  Map.MouseDragMode == DragMode.SelectOnShift && (Keyboard.Modifiers & ModifierKeys.Shift) > 0);
             // NEW: check for MouseDragMode
-            if (!MoveWhileDragigng || select) 
+            if (!MoveWhileDragging || select) 
             {
                 mapView.Cursor = Cursors.Arrow;
 
@@ -299,7 +299,7 @@ namespace VdiPerformance
                     RadiusY = 8
                 };
 
-                Canvas.SetZIndex(dragRectangle, 266);
+                Panel.SetZIndex(dragRectangle, 266);
                 Canvas.SetLeft(dragRectangle, ScreenStartPoint.X);
                 Canvas.SetTop(dragRectangle, ScreenStartPoint.Y);
                 mapView.ForePaneCanvas.Children.Add(dragRectangle);
@@ -327,12 +327,12 @@ namespace VdiPerformance
 
             if (dragMode == DragMode.Pan)
             {
-                if(!MoveWhileDragigng)
+                if(!MoveWhileDragging)
                 {
                     var physicalPoint = e.GetPosition(MapView);
 
-                    Canvas.SetLeft(dragRectangle, physicalPoint.X - this.ScreenStartPoint.X);
-                    Canvas.SetTop(dragRectangle, physicalPoint.Y - this.ScreenStartPoint.Y);
+                    Canvas.SetLeft(dragRectangle, physicalPoint.X - ScreenStartPoint.X);
+                    Canvas.SetTop(dragRectangle, physicalPoint.Y - ScreenStartPoint.Y);
                     dragRectangle.Width = MapView.ActualWidth;
                     dragRectangle.Height = MapView.ActualHeight;
                 }

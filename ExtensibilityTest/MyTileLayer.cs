@@ -7,14 +7,13 @@
 
 using System.Drawing.Imaging;
 using System.IO;
-using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 
 
 namespace Ptv.XServer.Net.ExtensibilityTest
 {
     /// <summary> a tile provider which renders tile borders </summary>
-    class MyTileRenderer : ITiledProvider
+    internal class MyTileRenderer : ITiledProvider
     {
         #region public methods
         /// <summary>  </summary>
@@ -22,28 +21,28 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         /// <param name="y"></param>
         /// <param name="zoom"></param>
         /// <returns></returns>
-        public System.IO.Stream GetImageStream(int x, int y, int zoom)
+        public Stream GetImageStream(int x, int y, int zoom)
         {
             // Create a bitmap of size 256x256
-            using (System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(256, 256))
+            using (var bmp = new System.Drawing.Bitmap(256, 256))
             {
                 // get graphics from bitmap
-                using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(bmp))
+                using (var graphics = System.Drawing.Graphics.FromImage(bmp))
                 {
                     // draw a rectangle
                     graphics.DrawRectangle(System.Drawing.Pens.Black, 0, 0, 255, 255);
                 }
 
                 // crate a memory stream
-                MemoryStream stream = new MemoryStream();
+                var memoryStream = new MemoryStream();
 
                 // save image to stream
-                bmp.Save(stream, ImageFormat.Png);
+                bmp.Save(memoryStream, ImageFormat.Png);
 
                 // rewind stream
-                stream.Seek(0, SeekOrigin.Begin);
+                memoryStream.Seek(0, SeekOrigin.Begin);
 
-                return stream;
+                return memoryStream;
             }
         }
 

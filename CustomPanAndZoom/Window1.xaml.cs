@@ -1,6 +1,4 @@
-﻿using System;
-using Ptv.XServer.Controls.Map;
-using Ptv.XServer.Controls.Map.Tools;
+﻿using Ptv.XServer.Controls.Map.Tools;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,9 +7,9 @@ namespace CustomPanAndZoom
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
-        PanAndZoom customPanAndZoom = new CustomPanAndZoom.PanAndZoom();
+        readonly PanAndZoom customPanAndZoom = new PanAndZoom();
 
         public Window1()
         {
@@ -32,24 +30,16 @@ namespace CustomPanAndZoom
         {
             switch (dragMode.SelectedIndex)
             {
-                case 0:
-                    customPanAndZoom.MouseDragMode = DragMode.SelectOnShift;
-                    break;
-                case 1:
-                    customPanAndZoom.MouseDragMode = DragMode.Pan;
-                    break;
-                case 2:
-                    customPanAndZoom.MouseDragMode = DragMode.Select;
-                    break;
-                case 3:
-                    customPanAndZoom.MouseDragMode = DragMode.None;
-                    break;
+                case 0: customPanAndZoom.MouseDragMode = DragMode.SelectOnShift; break;
+                case 1: customPanAndZoom.MouseDragMode = DragMode.Pan; break;
+                case 2: customPanAndZoom.MouseDragMode = DragMode.Select; break;
+                case 3: customPanAndZoom.MouseDragMode = DragMode.None; break;
             }
         }
 
         private void DoubleClickSelect_OnChecked(object sender, RoutedEventArgs e)
         {
-            this.customPanAndZoom.ZoomOnDoubleClick = doubleClickSelect.IsChecked?? false;
+            customPanAndZoom.ZoomOnDoubleClick = doubleClickSelect.IsChecked ?? false;
         }
 
         private void FitToWindow_OnChecked(object sender, RoutedEventArgs e)

@@ -20,17 +20,16 @@ namespace TourPlanningDemo
     {
         public static Scenario CreateScenario(ScenarioSize size, Point center, double radius)
         {
-            int TRUCK_MIN_CAPACITY = 20;
-            int TRUCK_MAX_CAPACITY = 30;
-            int ORDER_MIN_AMOUNT = 1;
-            int ORDER_MAX_AMOUNT = 4;
+            const int TRUCK_MIN_CAPACITY = 20;
+            const int TRUCK_MAX_CAPACITY = 30;
+            const int ORDER_MIN_AMOUNT = 1;
+            const int ORDER_MAX_AMOUNT = 4;
 
             int numDepots, numVehiclesPerDepot, numOrdersPerVehicle;
             TimeSpan operatingPeriod;
 
             switch (size)
             {
-                case ScenarioSize.Tiny:
                 default:
                     numDepots = 1; numVehiclesPerDepot = 3; numOrdersPerVehicle = 3; operatingPeriod = TimeSpan.FromHours(2);
                     break;
@@ -54,7 +53,8 @@ namespace TourPlanningDemo
             var rand = new Random();
 
             // build orders
-            var orders = (from p in result.Take(numOrdersPerVehicle * numVehiclesPerDepot * numDepots)
+            var enumerable = result.ToList();
+            var orders = (from p in enumerable.Take(numOrdersPerVehicle * numVehiclesPerDepot * numDepots)
                           select new Order
                           {
                               Id = Guid.NewGuid().ToString(),
@@ -64,11 +64,11 @@ namespace TourPlanningDemo
                           }).ToList();
 
             // build depots
-            var palette = new Color[] { Colors.Blue, Colors.Green, Colors.Salmon };
+            var palette = new[] { Colors.Blue, Colors.Green, Colors.Salmon };
             int ci = 0;
-            Func<Color> GetColor = () => palette[(ci++) % palette.Length];
+            Func<Color> GetColor = () => palette[ci++ % palette.Length];
 
-            var depots = (from p in result.Skip(numOrdersPerVehicle * numVehiclesPerDepot * numDepots)
+            var depots = (from p in enumerable.Skip(numOrdersPerVehicle * numVehiclesPerDepot * numDepots)
                           select new Depot
                           {
                               Id = Guid.NewGuid().ToString(),
@@ -79,8 +79,8 @@ namespace TourPlanningDemo
                                        select new Vehicle
                                        {
                                            Id = Guid.NewGuid().ToString(),
-                                           Capacity = System.Convert.ToInt32(TRUCK_MIN_CAPACITY + Math.Floor(rand.NextDouble() * (1 + TRUCK_MAX_CAPACITY - TRUCK_MIN_CAPACITY)))
-                                       }).ToList(),
+                                           Capacity = Convert.ToInt32(TRUCK_MIN_CAPACITY + Math.Floor(rand.NextDouble() * (1 + TRUCK_MAX_CAPACITY - TRUCK_MIN_CAPACITY)))
+                                       }).ToList()
                           }).ToList();
 
             // wire-up back-reference vehicle->depot
@@ -92,7 +92,7 @@ namespace TourPlanningDemo
             {
                 OperatingPeriod = operatingPeriod,
                 Orders = orders,
-                Depots = depots,
+                Depots = depots
             };
         }
 
@@ -112,11 +112,14 @@ namespace TourPlanningDemo
                                 }
                             };
 
-            var xlocate = new XLocateWSClient();
-            xlocate.ClientCredentials.UserName.UserName = "xtok";
-            xlocate.ClientCredentials.UserName.Password = App.Token;
+            var xLocate = new XLocateWSClient();
+            if (xLocate.ClientCredentials != null)
+            {
+                xLocate.ClientCredentials.UserName.UserName = "xtok";
+                xLocate.ClientCredentials.UserName.Password = App.Token;
+            }
 
-            var result = xlocate.findLocations(locations.ToArray(), new[] {
+            var result = xLocate.findLocations(locations.ToArray(), new SearchOptionBase[] {
                 new ReverseSearchOption { param = ReverseSearchParameter.ENGINE_TARGETSIZE, value = "1" },
                 new ReverseSearchOption { param = ReverseSearchParameter.ENGINE_FILTERMODE, value = "1" }},
                 null, null,
@@ -168,8 +171,8 @@ namespace TourPlanningDemo
         {
             const double earthRadius = 6371000;
 
-            double x = (180.0 / Math.PI) * (point.X / earthRadius);
-            double y = (360 / Math.PI) * (Math.Atan(Math.Exp(point.Y / earthRadius)) - (Math.PI / 4));
+            double x = 180.0 / Math.PI * (point.X / earthRadius);
+            double y = 360 / Math.PI * (Math.Atan(Math.Exp(point.Y / earthRadius)) - Math.PI / 4);
 
             return new Point(x, y);
         }

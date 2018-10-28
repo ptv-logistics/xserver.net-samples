@@ -8,7 +8,6 @@ using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Symbols;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Forms.Integration;
 
 namespace Ptv.XServer.Controls
 {
@@ -55,7 +54,7 @@ namespace Ptv.XServer.Controls
             formsMap.WrappedMap.Background = new SolidColorBrush(Color.FromRgb(bkColor.R, bkColor.G, bkColor.B));
 
             // construct and store the shape implementation
-            this.Shapes = new Shapes(this, formsMap);
+            Shapes = new Shapes(this, formsMap);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -63,13 +62,13 @@ namespace Ptv.XServer.Controls
             base.OnLoad(e);
 
             // test initialization
-            this.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            this.XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
-            this.Shapes.AddMarker(42, 8.3, 49, 100, "#f00", "Pin", "Hello");
+            XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            Shapes.AddMarker(42, 8.3, 49, 30, "#f00", "Pin", "Hello");
         }
 
         /// <inheritdoc/>
-        public String XMapUrl
+        public string XMapUrl
         {
             get
             {
@@ -82,7 +81,7 @@ namespace Ptv.XServer.Controls
         }
 
         /// <inheritdoc/>
-        public String XMapCredentials
+        public string XMapCredentials
         {
             get
             {
@@ -95,7 +94,7 @@ namespace Ptv.XServer.Controls
         }
 
         /// <inheritdoc/>
-        public String XMapCopyright
+        public string XMapCopyright
         {
             get
             {
@@ -110,7 +109,7 @@ namespace Ptv.XServer.Controls
         /// <inheritdoc/>
         public void SetMapLocation(double x, double y, double zoom)
         {
-            formsMap.SetMapLocation(new System.Windows.Point(x, y), zoom);
+            formsMap.SetMapLocation(new Point(x, y), zoom);
         }
 
         /// <inheritdoc/>
@@ -140,9 +139,9 @@ namespace Ptv.XServer.Controls
         /// to be used as an ActiveX control.
         /// </summary>
         /// <param name="key">The key of the control to be registered.</param>
-        /// <remarks>Please refer to the sample domentation for further information. 
+        /// <remarks>Please refer to the sample documentation for further information. 
         /// See also <see cref="Registrar"/>.</remarks>
-        [ComRegisterFunction()]
+        [ComRegisterFunction]
         public static void RegisterClass(string key)
         {
             typeof(ActiveXSample).RegisterClass(key);
@@ -155,7 +154,7 @@ namespace Ptv.XServer.Controls
         /// <param name="key">The key of the control to be registered.</param>
         /// <remarks>Please refer to the sample documentation for further information. 
         /// See also <see cref="Registrar"/>.</remarks>
-        [ComUnregisterFunction()]
+        [ComUnregisterFunction]
         public static void UnregisterClass(string key)
         {
             typeof(ActiveXSample).UnregisterClass(key);
@@ -173,22 +172,22 @@ namespace Ptv.XServer.Controls
         /// <summary>
         /// A list to map IDs to shapes.
         /// </summary>
-        private SortedList<int, FrameworkElement> idMap = new SortedList<int, FrameworkElement>();
+        private readonly SortedList<int, FrameworkElement> idMap = new SortedList<int, FrameworkElement>();
 
         /// <summary>
         /// The shape layer itself.
         /// </summary>
-        private ShapeLayer shapeLayer = new ShapeLayer("Shapes");
+        private readonly ShapeLayer shapeLayer = new ShapeLayer("Shapes");
 
         /// <summary>
         /// The owning control.
         /// </summary>
-        private ActiveXSample parent;
+        private readonly ActiveXSample parent;
 
         /// <summary>
         /// The map in which to display shapes.
         /// </summary>
-        private FormsMap formsMap;
+        private readonly FormsMap formsMap;
         
         /// <summary>
         /// Initializes a Shapes instance.
@@ -214,15 +213,14 @@ namespace Ptv.XServer.Controls
         /// <inheritdoc/>
         public void Clear()
         {
-            if (formsMap.Layers.Contains(shapeLayer))
-            {
-                shapeLayer.Shapes.Clear();
-                formsMap.Layers.Remove(shapeLayer);
-            }
+            if (!formsMap.Layers.Contains(shapeLayer)) return;
+
+            shapeLayer.Shapes.Clear();
+            formsMap.Layers.Remove(shapeLayer);
         }
 
         /// <summary>
-        /// Used to create asymbol, given a symbol name.
+        /// Used to create a symbol, given a symbol name.
         /// </summary>
         /// <param name="Symbol">Name of the symbol to create.</param>
         /// <returns>The symbol instance, returned as a FrameworkElement. 
@@ -236,19 +234,17 @@ namespace Ptv.XServer.Controls
                 Symbol = Symbol.ToLower();
 
                 // try to locate the type matching the given symbol name
-                var q = from t in typeof(FormsMap).Assembly.GetTypes()
+                var pins = (from t in typeof(FormsMap).Assembly.GetTypes()
                         where t.Namespace != null && t.Namespace.Equals(typeof(Pin).Namespace) && t.Name.ToLower().Equals(Symbol)
-                        select t;
+                        select t).ToList();
 
                 // if there's exactly one hit, create symbol instance
-                if (q.Count() == 1)
-                    return (FrameworkElement)Activator.CreateInstance(q.First());
+                if (pins.Count == 1)
+                    return (FrameworkElement) Activator.CreateInstance(pins.First());
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.GetType().Name + ":\n" + ex.Message + "\n\n" + ex.StackTrace.ToString());
-
-                // ignore
+                System.Windows.Forms.MessageBox.Show(ex.GetType().Name + ":\n" + ex.Message + "\n\n" + ex.StackTrace);
             }
 
             // Pin is the default
@@ -258,26 +254,24 @@ namespace Ptv.XServer.Controls
         /// <summary>
         /// Used to create and initialize a symbol, given a symbol name.
         /// </summary>
-        /// <param name="Symbol">Name of the symbol to create.</param>
         /// <param name="size">The size of the symbol, in pixels.</param>
         /// <param name="argbColor">The color of the symbol, specified as string.</param>
         /// <returns>The symbol instance, returned as a FrameworkElement. 
         /// The default symbol, used on any error, is a Pin.</returns>
         /// <remarks>See remarks on <see cref="AddMarker"/> for further information.</remarks>
-        private FrameworkElement CreateSymbol(string Symbol, int size, string color)
+        private static FrameworkElement CreateSymbol(int size, string argbColor)
         {
             // create the symbol
-            var elem = new Pin() ;
+            var elem = new Pin();
 
             // set the color
-            SetSymbolColor(elem, color);
+            SetSymbolColor(elem, argbColor);
 
-            //set the size
-            elem.Width = elem.Height = 30;
+            // set the size
+            elem.Width = elem.Height = size;
 
-            // if symbol is a pin, we need modify the anchor
-            if (elem is Pin)
-                ShapeCanvas.SetAnchor(elem, LocationAnchor.RightBottom);
+            // we need modify the anchor
+            ShapeCanvas.SetAnchor(elem, LocationAnchor.RightBottom);
 
             // done
             return elem;
@@ -288,13 +282,13 @@ namespace Ptv.XServer.Controls
         /// </summary>
         /// <param name="symbol">Symbol to set the color for.</param>
         /// <param name="argbColor">Color, specified as AARRGGBB.</param>
-        private void SetSymbolColor(FrameworkElement symbol, string color)
+        private static void SetSymbolColor(FrameworkElement symbol, string argbColor)
         {
             if (symbol.GetType().GetProperty("Color") == null)
                 return;
 
             // dynamically try to get the "Color" property, then set the converted color.
-            symbol.GetType().GetProperty("Color").SetValue(symbol, ColorConverter.ConvertFromString(color), null);
+            symbol.GetType().GetProperty("Color").SetValue(symbol, ColorConverter.ConvertFromString(argbColor), null);
         }
 
         /// <inheritdoc/>
@@ -304,13 +298,13 @@ namespace Ptv.XServer.Controls
                 return false;
 
             // create shape
-            FrameworkElement shape = CreateSymbol(Symbol, size, color);
+            var frameworkElement = CreateSymbol(size, color);
 
             // set location
-            ShapeCanvas.SetLocation(shape, new System.Windows.Point(x, y));
+            ShapeCanvas.SetLocation(frameworkElement, new Point(x, y));
 
             // add shape
-            InsertShape(shape, id, toolTip);
+            InsertShape(frameworkElement, id, toolTip);
 
             return true;
         }
@@ -324,12 +318,11 @@ namespace Ptv.XServer.Controls
         private void InsertShape(FrameworkElement shape, int id, string toolTip)
         {
             // if tool tip is valid, set it.
-            if (toolTip != null && toolTip.Length > 0)
+            if (!string.IsNullOrEmpty(toolTip))
                 shape.ToolTip = toolTip;
 
             // register MouseDown handler, redirect event
-            shape.MouseDown += (clickedShape, args) => 
-                parent.FireShapeClicked((int)((clickedShape as FrameworkElement).Tag));
+            shape.MouseDown += (clickedShape, args) => parent.FireShapeClicked((int)((FrameworkElement) clickedShape).Tag);
 
             // store id
             shape.Tag = id;
@@ -347,15 +340,15 @@ namespace Ptv.XServer.Controls
         /// Checks if a given object possibly contains a co-ordinate array.
         /// </summary>
         /// <param name="coordinates">Object to check.</param>
-        /// <returns>True, if co-ordinate evaluation can continue. 
+        /// <returns>True, if coordinate evaluation can continue. 
         /// False, if the given object is definitely invalid.</returns>
         /// <remarks>It is necessary to support coordinates being specified through an object (or 
         /// object array) as the type support may be very limited in COM. Plain variant arrays are 
         /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped 
         /// objects on the .NET side.</remarks>
-        private bool CoordinatesAreValid(object coordinates)
+        private static bool CoordinatesAreValid(object coordinates)
         {
-            return coordinates != null && coordinates.GetType().IsArray && (coordinates as Array).Length >= 4;
+            return coordinates != null && coordinates.GetType().IsArray && ((Array) coordinates).Length >= 4;
         }
 
         /// <summary>
@@ -367,13 +360,13 @@ namespace Ptv.XServer.Controls
         /// object array) as the type support may be very limited in COM. Plain variant arrays are 
         /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped 
         /// objects on the .NET side.</remarks>
-        private PointCollection ConvertCoordinates(Array coordinates)
+        private static PointCollection ConvertCoordinates(Array coordinates)
         {
-            PointCollection points = new PointCollection();
+            var points = new PointCollection();
 
-            for (int i = 0; i < coordinates.Length / 2; ++i)
+            for (var i = 0; i < coordinates.Length / 2; ++i)
             {
-                points.Add(new System.Windows.Point(
+                points.Add(new Point(
                     Convert.ToDouble(coordinates.GetValue(2 * i + 0)),
                     Convert.ToDouble(coordinates.GetValue(2 * i + 1))
                 ));
@@ -389,7 +382,7 @@ namespace Ptv.XServer.Controls
                 return false;
 
             // create and initialize the polyline
-            MapPolyline elem = new MapPolyline 
+            var mapPolyline = new MapPolyline 
             {
                 MapStrokeThickness = size,
                 StrokeLineJoin = PenLineJoin.Round,
@@ -397,11 +390,11 @@ namespace Ptv.XServer.Controls
                 StrokeEndLineCap = PenLineCap.Round,
                 Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color)),
                 Points = ConvertCoordinates(coordinates as Array),
-                Tag = id,
+                Tag = id
             };
 
             // insert the shape
-            InsertShape(elem, id, toolTip);
+            InsertShape(mapPolyline, id, toolTip);
             
             return true;
         }
@@ -414,10 +407,10 @@ namespace Ptv.XServer.Controls
                 return false;
 
             // get element
-            FrameworkElement elem = idMap[id];
+            var frameworkElement = idMap[id];
 
             // remove element
-            shapeLayer.Shapes.Remove(elem);
+            shapeLayer.Shapes.Remove(frameworkElement);
             idMap.Remove(id);
 
             // also remove layer if there are not elements left

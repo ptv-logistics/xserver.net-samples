@@ -5,8 +5,6 @@
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using System.Security.AccessControl;
 using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Routing;
 using System.Windows;
@@ -15,8 +13,8 @@ namespace Ptv.XServer.Demo.UseCases.RoutingDragAndDrop
 {
     public class RoutingDragAndDropUseCase
     {
-        private RouteLayer layer;
-        private WpfMap wpfMap;
+        private readonly RouteLayer layer;
+        private readonly WpfMap wpfMap;
 
         public RoutingDragAndDropUseCase(WpfMap wpfMap, string xRouteUrl, string user = "", string password = "")
         {

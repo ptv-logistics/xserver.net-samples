@@ -12,12 +12,12 @@ namespace MemoryDemo
         /// <summary>
         /// The owner form
         /// </summary>
-        private ApplicationForm owner;
+        private readonly ApplicationForm owner;
 
         /// <summary>
         /// The layer to add our objects
         /// </summary>
-        private ShapeLayer layer;
+        private readonly ShapeLayer layer;
 
         public MapForm(ApplicationForm owner)
         {
@@ -41,11 +41,11 @@ namespace MemoryDemo
             layer = new ShapeLayer("MyShapes");
             formsMap1.Layers.Add(layer);
            
-            // this will create a memory leak if not properly deatch on finalization!
+            // this will create a memory leak if not properly detach on finalization!
             owner.AddTruckButton.Click += button2_Click;
         }
 
-        void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             // create a random geo-coordinate
             var rand = new Random();
@@ -74,7 +74,7 @@ namespace MemoryDemo
             owner.AddTruckButton.Click -= button2_Click;
         }
 
-        void formsMap1_ViewportEndChanged(object sender, EventArgs e)
+        private static void formsMap1_ViewportEndChanged(object sender, EventArgs e)
         {
         }
     }

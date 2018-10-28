@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Ptv.XServer.Controls.Map.Layers.Shapes;
 using System.Windows.Media;
 using Ptv.XServer.Controls.Map;
@@ -9,7 +7,7 @@ using Ptv.XServer.Controls.Map.Canvases;
 using Ptv.XServer.Controls.Map.Tools;
 using System.Windows;
 
-// Note: This class would be much easier to implement if BuildGeometry was internal! So it is just a replicaion and modification of the default
+// Note: This class would be much easier to implement if BuildGeometry was internal! So it is just a replication and modification of the default
 // MapPolyline implementation
 namespace ToursAndStops
 {
@@ -27,17 +25,13 @@ namespace ToursAndStops
 
         #region public methods
 
-        /// <inheritdoc/>
         protected void TransformShape()
         {
+            if (GeoTransform == null) return;
+
             TransformedPoints.Clear();
-
-            for (int i = 0; i < Points.Count; i++)
-            {
-                var mercatorPoint = GeoTransform(Points[i]);
-
-                TransformedPoints.Add(mercatorPoint);
-            }
+            foreach (var point in Points)
+                TransformedPoints.Add(GeoTransform(point));
         }
 
         protected virtual void ClipShape(MapView mapView, UpdateMode mode, bool lazyUpdate)
@@ -48,38 +42,37 @@ namespace ToursAndStops
             if (!NeedsUpdate(lazyUpdate, mode))
                 return;
 
-            MapRectangle rect = mapView.CurrentEnvelope;
-            Size sz = new Size(mapView.ActualWidth, mapView.ActualHeight);
-            var minX = rect.West;
-            var minY = rect.South;
-            var maxX = rect.East;
-            var maxY = rect.North;
-            Rect clippingRect = new Rect(minX, -maxY, maxX - minX, maxY - minY);
+            var mapRectangle = mapView.CurrentEnvelope;
+            var size = new Size(mapView.ActualWidth, mapView.ActualHeight);
+            var minX = mapRectangle.West;
+            var minY = mapRectangle.South;
+            var maxX = mapRectangle.East;
+            var maxY = mapRectangle.North;
+            var clippingRect = new Rect(minX, -maxY, maxX - minX, maxY - minY);
 
-            double thickness = this.CurrentThickness(mapView.CurrentScale);
+            double thickness = CurrentThickness(mapView.CurrentScale);
 
             clippingRect.X -= .5 * thickness;
             clippingRect.Y -= .5 * thickness;
             clippingRect.Width += thickness;
             clippingRect.Height += thickness;
 
-            ICollection<PointCollection> tmpPoints = LineReductionClipping.ClipPolylineReducePoints<PointCollection, System.Windows.Point>(
-                           sz,
+            ICollection<PointCollection> tmpPoints = LineReductionClipping.ClipPolylineReducePoints<PointCollection, Point>(
+                           size,
                            clippingRect,
                            TransformedPoints,
                            p => p,
                            (poly, pnt) => poly.Add(pnt));
 
-            this.Data = BuildGeometry(mapView, tmpPoints);
+            Data = BuildGeometry(mapView, tmpPoints);
 
-            this.InvalidateVisual();
+            InvalidateVisual();
         }
 
-        protected bool NeedsUpdate(bool lazyUpdate, UpdateMode updateMode)
+        protected new bool NeedsUpdate(bool lazyUpdate, UpdateMode updateMode)
         {
-            return
-                (lazyUpdate && updateMode == UpdateMode.EndTransition)
-                || (!lazyUpdate && updateMode == UpdateMode.WhileTransition)
+            return lazyUpdate && updateMode == UpdateMode.EndTransition
+                || !lazyUpdate && updateMode == UpdateMode.WhileTransition
                 || updateMode == UpdateMode.Refresh;
         }
 
@@ -91,62 +84,57 @@ namespace ToursAndStops
             if (NeedsUpdate(lazyUpdate, mode))
                 base.UpdateShape(mapView, mode, lazyUpdate);
 
-            this.StrokeThickness = mapView.CurrentScale;
+            StrokeThickness = mapView.CurrentScale;
         }
 
         /// <summary> Builds the geometry of the polyline. </summary>
-        /// <param name="lines"> A collection of point collections to build the geometry for (multiple polylines). </param>
+        /// <param name="mapView">Map view which will show the lines.</param>
+        /// <param name="lines"> A collection of point collections to build the geometry for (multiple) polylines. </param>
         /// <returns> The geometry corresponding to the given point collections. </returns>
         protected Geometry BuildGeometry(MapView mapView, ICollection<PointCollection> lines)
         {
-            StreamGeometry geom = new StreamGeometry();
+            var streamGeometry = new StreamGeometry();
 
-            using (StreamGeometryContext gc = geom.Open())
+            using (var streamGeometryContext = streamGeometry.Open())
             {
-                foreach (PointCollection points in lines)
+                foreach (var points in lines)
                 {
                     double len = CurrentThickness(mapView.CurrentScale) * 2;
                     int pos = 0;
                     double rel = 0;
-                    Point pp1 = points[0];
-                    bool first = true;
+                    var pp1 = points[0];
+                    var first = true;
                     while (GetNextArrPos(points, first? len /2 : len, ref pos, ref rel))
                     {
                         first = false;
 
-                        Point p1 = points[pos];
-                        Point p2 = points[pos + 1];
+                        var p1 = points[pos];
+                        var p2 = points[pos + 1];
 
                         double vx = p2.X - p1.X;
                         double vy = p2.Y - p1.Y;
 
                         double lv = Math.Sqrt(vx * vx + vy * vy);
 
-                        Point p = new Point();
-                        p.X = p1.X + (vx * rel) / lv;
-                        p.Y = p1.Y + (vy * rel) / lv;
+                        var p = new Point {X = p1.X + vx * rel / lv, Y = p1.Y + vy * rel / lv};
 
-                        Point vpp = new Point(); ;
-                        vpp.X = 2 * p.X - pp1.X;
-                        vpp.Y = 2 * p.Y - pp1.Y;
+                        var vpp = new Point {X = 2 * p.X - pp1.X, Y = 2 * p.Y - pp1.Y};
 
-                        DrawArrow(gc, p, vpp, len * .5, 0);
+                        DrawArrow(streamGeometryContext, p, vpp, len * .5, 0);
                         pp1 = p;
                     }
                 }
             }
 
-            return geom;
+            return streamGeometry;
         }
 
-
-
-        bool GetNextArrPos(IList<Point> points, double len, ref int pos, ref double rel)
+        private static bool GetNextArrPos(IList<Point> points, double len, ref int pos, ref double rel)
         {
             while (pos < points.Count - 1)
             {
-                Point p1 = points[pos];
-                Point p2 = points[pos + 1];
+                var p1 = points[pos];
+                var p2 = points[pos + 1];
 
                 double vx = p2.X - p1.X;
                 double vy = p2.Y - p1.Y;
@@ -160,20 +148,18 @@ namespace ToursAndStops
                     rel = rel2;
                     return true;
                 }
-                else
-                {
-                    pos++;
-                    rel = 0;
-                    len = rel2 - lv;
-                }
+
+                pos++;
+                rel = 0;
+                len = rel2 - lv;
             }
 
             return false;
         }
 
-        void DrawArrow(StreamGeometryContext gc, Point from, Point to2, double Wings, double offset)
+        private static void DrawArrow(StreamGeometryContext gc, Point from, Point to2, double Wings, double offset)
         {
-            Point to = new Point(from.X * (1.0 - offset) + to2.X * offset, from.Y * (1.0 - offset) + to2.Y * offset);
+            var to = new Point(from.X * (1.0 - offset) + to2.X * offset, from.Y * (1.0 - offset) + to2.Y * offset);
 
             double dx = to2.X - from.X;
             double dy = to2.Y - from.Y;
@@ -182,10 +168,10 @@ namespace ToursAndStops
             if (len == 0)
                 return;
 
-            dx = (dx / len) * (Wings);
-            dy = (dy / len) * (Wings);
+            dx = dx / len * Wings;
+            dy = dy / len * Wings;
 
-            Point A = new Point(to.X - dx, to.Y - dy);
+            var A = new Point(to.X - dx, to.Y - dy);
 
             var pts0 = new Point(to.X, to.Y);
             dx /= 2;
@@ -195,7 +181,7 @@ namespace ToursAndStops
             var pts3 = new Point(A.X + dy, A.Y - dx);
 
             gc.BeginFigure(pts0, true, true);
-            gc.PolyLineTo(new Point[] { pts1, pts2, pts3 }, true, true);
+            gc.PolyLineTo(new[] { pts1, pts2, pts3 }, true, true);
 
         }
         #endregion

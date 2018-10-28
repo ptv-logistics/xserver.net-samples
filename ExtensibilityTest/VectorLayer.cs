@@ -31,7 +31,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             : base(name)
         {
             InitializeFactory(CanvasCategory.Content, 
-            (map) => new VectorCanvas(map, (UIElement)Activator.CreateInstance(VectorLayerType)));
+            map => new VectorCanvas(map, (UIElement)Activator.CreateInstance(VectorLayerType)));
         }
         #endregion
     }
@@ -41,18 +41,18 @@ namespace Ptv.XServer.Net.ExtensibilityTest
     {
         #region constructor
         /// <summary>  </summary>
-        /// <param name="mapControl"></param>
+        /// <param name="mapView"></param>
         public VectorCanvas(MapView mapView)
             : base(mapView)
         { }
 
         /// <summary>  </summary>
-        /// <param name="mapControl"></param>
+        /// <param name="mapView"></param>
         /// <param name="xaml"></param>
         public VectorCanvas(MapView mapView, UIElement xaml)
             : base(mapView)
         {
-            this.Children.Add(xaml);
+            Children.Add(xaml);
         }
         #endregion
 
@@ -60,10 +60,10 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         /// <summary>  </summary>
         public override void InitializeTransform()
         {
-            double mercatorSize = 360;
-            TranslateTransform translateTransform = new TranslateTransform(MapView.ReferenceSize / 2 - 180, MapView.ReferenceSize / 2 - 180);
-            ScaleTransform zoomTransform = new ScaleTransform(MapView.ZoomAdjust * MapView.ReferenceSize / mercatorSize, MapView.ZoomAdjust * MapView.ReferenceSize / mercatorSize, MapView.ReferenceSize / 2, MapView.ReferenceSize / 2);
-            TransformGroup transformGroup = new TransformGroup();
+            const double mercatorSize = 360;
+            var translateTransform = new TranslateTransform(MapView.ReferenceSize / 2 - 180, MapView.ReferenceSize / 2 - 180);
+            var zoomTransform = new ScaleTransform(MapView.ZoomAdjust * MapView.ReferenceSize / mercatorSize, MapView.ZoomAdjust * MapView.ReferenceSize / mercatorSize, MapView.ReferenceSize / 2, MapView.ReferenceSize / 2);
+            var transformGroup = new TransformGroup();
             transformGroup.Children.Add(translateTransform);
             transformGroup.Children.Add(zoomTransform);
 
@@ -71,7 +71,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
             translateTransform.Freeze();
             transformGroup.Freeze();
 
-            this.RenderTransform = transformGroup;
+            RenderTransform = transformGroup;
         }
 
         /// <summary>  </summary>
@@ -82,21 +82,21 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         }
 
         /// <summary>  </summary>
-        /// <param name="el"></param>
-        public void UpdateScales(object el)
+        /// <param name="element"></param>
+        public void UpdateScales(object element)
         {
-            if (el is Panel)
+            if (element is Panel)
             {
-                foreach (var child in (el as Panel).Children)
+                foreach (var child in ((Panel) element).Children)
                     UpdateScales(child);
             }
-            else if (el is ContentControl)
+            else if (element is ContentControl)
             {
-                UpdateScales((el as ContentControl).Content);
+                UpdateScales(((ContentControl) element).Content);
             }
-            else if (el is MapShape)
+            else if (element is MapShape)
             {
-                var mapShape = el as MapShape;
+                var mapShape = (MapShape) element;
                 mapShape.StrokeThickness = mapShape.InvariantStrokeThickness * MapView.CurrentScale / 20015087.0 * 180;
             }
         }

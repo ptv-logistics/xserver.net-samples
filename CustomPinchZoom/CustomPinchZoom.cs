@@ -54,7 +54,7 @@ namespace CustomPinchZoom
             mapView.StylusDown += mapView_StylusDown;
             mapView.StylusButtonUp += mapView_StylusButtonUp;
             mapView.ManipulationStarting += mapView_ManipulationStarting;
-            mapView.ManipulationDelta += new EventHandler<ManipulationDeltaEventArgs>(map_ManipulationDelta);
+            mapView.ManipulationDelta += map_ManipulationDelta;
         }
 
         /// <summary>Gets the current position of the map in screen coordinates.</summary>
@@ -64,7 +64,7 @@ namespace CustomPinchZoom
         /// Helper; moves the map to a new position while keeping the map zoom.
         /// </summary>
         /// <param name="moveTo">Position to move the map top.</param>
-        /// <param name="screen">Set to false if moveTo is given in world coordinates.</param>
+        /// <param name="screenCoordinates">Set to false if moveTo is given in world coordinates.</param>
         private void MoveMap(Point moveTo, bool screenCoordinates = true)
         {
             if (screenCoordinates)
@@ -190,8 +190,8 @@ namespace CustomPinchZoom
                 Point p2 = mapView.TranslatePoint(new Point(maxx, maxy), mapView.GeoCanvas);
 
                 mapView.SetEnvelope(new MapRectangle(
-                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
-                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
                     -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y,
                     -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y),
                     Map.UseAnimation);
@@ -295,28 +295,33 @@ namespace CustomPinchZoom
             if (!IsActive || !mapView.IsMouseCaptured)
                 return;
 
-            if (dragMode == DragMode.Pan)
+            switch (dragMode)
             {
-                var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
+                case DragMode.Pan:
+                {
+                    var physicalPoint = mapView.CanvasToPtvMercator(mapView, e.GetPosition(mapView));
 
-                if ((Math.Abs(WorldStartPoint.X - physicalPoint.X) < 1e-4) && (Math.Abs(WorldStartPoint.Y - physicalPoint.Y) < 1e-4))
-                    return;
+                    if ((Math.Abs(WorldStartPoint.X - physicalPoint.X) < 1e-4) && (Math.Abs(WorldStartPoint.Y - physicalPoint.Y) < 1e-4))
+                        return;
 
-                double x = mapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
-                double y = mapView.CurrentY + WorldStartPoint.Y - physicalPoint.Y;
+                    double x = mapView.CurrentX + WorldStartPoint.X - physicalPoint.X;
+                    double y = mapView.CurrentY + WorldStartPoint.Y - physicalPoint.Y;
 
-                wasPanned = true;
+                    wasPanned = true;
 
-                mapView.SetXYZ(x, y, mapView.CurrentZoom, Map.UseAnimation);
-            }
-            else if (dragMode == DragMode.Select)
-            {
-                var physicalPoint = e.GetPosition(mapView);
+                    mapView.SetXYZ(x, y, mapView.CurrentZoom, Map.UseAnimation);
+                    break;
+                }
+                case DragMode.Select:
+                {
+                    var physicalPoint = e.GetPosition(mapView);
 
-                Canvas.SetLeft(dragRectangle, physicalPoint.X < ScreenStartPoint.X ? physicalPoint.X : ScreenStartPoint.X);
-                Canvas.SetTop(dragRectangle, physicalPoint.Y < ScreenStartPoint.Y ? physicalPoint.Y : ScreenStartPoint.Y);
-                dragRectangle.Width = Math.Abs(physicalPoint.X - ScreenStartPoint.X);
-                dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
+                    Canvas.SetLeft(dragRectangle, physicalPoint.X < ScreenStartPoint.X ? physicalPoint.X : ScreenStartPoint.X);
+                    Canvas.SetTop(dragRectangle, physicalPoint.Y < ScreenStartPoint.Y ? physicalPoint.Y : ScreenStartPoint.Y);
+                    dragRectangle.Width = Math.Abs(physicalPoint.X - ScreenStartPoint.X);
+                    dragRectangle.Height = Math.Abs(physicalPoint.Y - ScreenStartPoint.Y);
+                    break;
+                }
             }
 
             e.Handled = true;
@@ -327,7 +332,7 @@ namespace CustomPinchZoom
         /// </summary>
         /// <param name="sender">Sender of the StylusButtonUp event.</param>
         /// <param name="e">Event parameters.</param>
-        void mapView_StylusButtonUp(object sender, StylusButtonEventArgs e)
+        private void mapView_StylusButtonUp(object sender, StylusButtonEventArgs e)
         {
             if (wasPanned)
                 e.Handled = true;
@@ -338,7 +343,7 @@ namespace CustomPinchZoom
         /// </summary>
         /// <param name="sender">Sender of the ManipulationStarting event.</param>
         /// <param name="e">Event parameters.</param>
-        void mapView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
+        private void mapView_ManipulationStarting(object sender, ManipulationStartingEventArgs e)
         {
             // reset panned flag
             wasPanned = false;
@@ -352,14 +357,13 @@ namespace CustomPinchZoom
         /// </summary>
         /// <param name="sender">Sender of the StylusDown event.</param>
         /// <param name="e">Event parameters.</param>
-        void mapView_StylusDown(object sender, StylusDownEventArgs e)
+        private void mapView_StylusDown(object sender, StylusDownEventArgs e)
         {
-            if (e.TapCount == 2)
-            {
-                var p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
-                MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
-                e.Handled = true;
-            }
+            if (e.TapCount != 2) return;
+
+            var p = MapView.CanvasToPtvMercator(MapView.GeoCanvas, e.GetPosition(MapView.GeoCanvas));
+            MapView.ZoomAround(p, MapView.FinalZoom + 1, Map.UseAnimation);
+            e.Handled = true;
         }
 
         /// <summary>
@@ -367,7 +371,7 @@ namespace CustomPinchZoom
         /// </summary>
         /// <param name="sender">Sender of the ManipulationDelta event.</param>
         /// <param name="e">Event parameters.</param>
-        void map_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        private void map_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
             // Use the delta information for adjusting the map position (while keeping the map zoom)
 

@@ -9,44 +9,46 @@ namespace NokiaDemo
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
             InitializeComponent();
 
             // setting the "infinite zoom" option fixes artifacts at deep zoom levels
-            Ptv.XServer.Controls.Map.GlobalOptions.InfiniteZoom = true;
+            GlobalOptions.InfiniteZoom = true;
             
             // "over-zoom" - go beyond the normal zoom level
-            this.Map.MaxZoom = 23;
+            Map.MaxZoom = 23;
 
-            this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
+            Map.Loaded += Map_Loaded;
         }
 
-        void Map_Loaded(object sender, RoutedEventArgs e)
+        private void Map_Loaded(object sender, RoutedEventArgs e)
         {
-            // To demonstrate the decomposed tiles, a rectangluar shape is addded.
+            // To demonstrate the decomposed tiles, a rectangular shape is added.
             shapeLayer = new ShapeLayer("CustomShapes") { Caption = "Custom Shapes", Opacity=.8 };
             Map.Layers.Add(shapeLayer);
 
             var poly = new MapPolygon
             {
-                Points = new PointCollection(new Point[]{new Point(7.9,48.9), new Point(7.9,49.1), new Point(8.1,49.1), new Point(8.1,48.9)}),
+                Points = new PointCollection(new[] { new Point(7.9,48.9), new Point(7.9,49.1), new Point(8.1,49.1), new Point(8.1,48.9) }),
                 Fill = new SolidColorBrush(Colors.Blue),
                 MapStrokeThickness = 3,
-                Stroke = new SolidColorBrush(Colors.Black),
+                Stroke = new SolidColorBrush(Colors.Black)
             };
 
             shapeLayer.Shapes.Add(poly);
         }
-        ShapeLayer shapeLayer;
+
+        private ShapeLayer shapeLayer;
 
         private void ModeChecked(object sender, RoutedEventArgs e)
         {
+            const string appId = "<Your App Id>";
+            const string appKey = "<Your App Key>";
+
             string mode = (sender as RadioButton).Name;
-            string appId = "<Your App Id>";
-            string appKey = "<Your App Key>";
 
             Map.Layers.RemoveNokiaLayers();
             switch (mode)

@@ -57,7 +57,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// The client to send requests to xRoute.
         /// </summary>
-        private XServerNetExt.XRouteServiceReference.XRouteWSClient xroute;
+        private readonly XRouteWSClient xRoute;
 
         /// <summary>
         /// A timer used for delaying update requests.
@@ -98,19 +98,20 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// lock object for the route client
         /// </summary>
-        private readonly Object routeClientLock = new Object();
+        private readonly object routeClientLock = new object();
 
         /// <summary>
         /// Creates the route.
         /// </summary>
         /// <param name="layer">The route layer the route belongs to.</param>
-        public Route(RouteLayer layer, XRouteWSClient client )
+        /// <param name="client">Web service API of xRoute. </param>
+        public Route(RouteLayer layer, XRouteWSClient client)
         {
             this.layer = layer;
             timer.Tick += Timer_Elapsed;
             finalPolyline = new RoutePolylineWithDragAndDrop(layer, this);
             previewPolyline = new RoutePolylineWithDragAndDrop(layer);
-            xroute = client;
+            xRoute = client;
         }
 
         /// <summary>
@@ -248,9 +249,9 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="to">Label of end way point</param>
         /// <param name="info">Route information</param>
         /// <returns></returns>
-        public static String FormatRouteToolTip(String from, String to, RouteInfo info)
+        public static string FormatRouteToolTip(string from, string to, RouteInfo info)
         {
-            return String.Format("{0} > {1}: {2:0.00}km, {3}", from, to, (double)info.distance / 1000.0, new TimeSpan(0, 0, info.time));
+            return string.Format("{0} > {1}: {2:0.00}km, {3}", from, to, (double)info.distance / 1000.0, new TimeSpan(0, 0, info.time));
         }
 
         /// <summary>
@@ -264,11 +265,11 @@ namespace Ptv.XServer.Controls.Routing
             // begin with tool tip of this route
             finalPolyline.ToolTip = FormatRouteToolTip(Start.Label, End.Label, snapshot.Info);
 
-            // if there a more than two stop, querry the layer for an 'overall tool tip'
-            string overall_ToolTip = layer.StopCount > 2 ? layer.GetToolTip() : "";
+            // if there a more than two stop, query the layer for an 'overall tool tip'
+            string overall_ToolTip = layer.StopCount > 2 ? layer.GetToolTip() : string.Empty;
 
             // if there is an 'overall tool tip' append it
-            if (!String.IsNullOrEmpty(overall_ToolTip))
+            if (!string.IsNullOrEmpty(overall_ToolTip))
                 finalPolyline.ToolTip += "\n" + overall_ToolTip;
         }
 
@@ -276,7 +277,7 @@ namespace Ptv.XServer.Controls.Routing
         /// Displays a preview for a route. This is triggered by updates 
         /// on the route to provide some sort of early user feedback.
         /// </summary>
-        void PreviewRoute()
+        private void PreviewRoute()
         {
             if (!CanCalculate)
                 // no stops > no preview
@@ -331,7 +332,7 @@ namespace Ptv.XServer.Controls.Routing
             calculationSucceeded = false;
 
             // increment update counter. Store hash on initial update.
-            if ((Interlocked.Increment(ref updateRef) == 1) && (data != null))
+            if (Interlocked.Increment(ref updateRef) == 1 && data != null)
                 updateHash = data.Hash;
         }
 
@@ -361,7 +362,7 @@ namespace Ptv.XServer.Controls.Routing
         /// Stops the update timer. 
         /// </summary>
         /// <returns>The request data object associated with the timer, if any.</returns>
-        RequestData StopTimer()
+        private RequestData StopTimer()
         {
             // must read timer as it is set to null below
             var data = timer.Tag as RequestData;
@@ -384,7 +385,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="interval"></param>
         /// <param name="data"></param>
-        void StartTimer(int interval, RequestData data)
+        private void StartTimer(int interval, RequestData data)
         {
             // initialize & start timer
             timer.Interval = TimeSpan.FromMilliseconds(interval);
@@ -397,7 +398,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Timer_Elapsed(object sender, EventArgs e)
+        private void Timer_Elapsed(object sender, EventArgs e)
         {
             // forced stop - returns the request data object associated with the timer
             var data = StopTimer();
@@ -495,10 +496,12 @@ namespace Ptv.XServer.Controls.Routing
         /// requests are made.
         /// </summary>
         /// <param name="xUrl">The xServer base url. </param>
-        /// <returns></returns>
+        /// <param name="user"> User name. </param>
+        /// <param name="password"> Password. </param>
+        /// <returns> xRoute API based on Web Services. </returns>
         public static XRouteWSClient CreateXRouteClient(string xUrl, string user, string password)
         {
-            string completeXServerUrl = XServerUrl.Complete(xUrl, "XRoute");
+            var completeXServerUrl = XServerUrl.Complete(xUrl, "XRoute");
 
             var binding = new BasicHttpBinding
             {
@@ -542,11 +545,11 @@ namespace Ptv.XServer.Controls.Routing
             lock (routeClientLock)
             {
                 // abort any previous request that might be active
-                //if (xroute != null)
-                //    xroute.Abort();
+                //if (xRoute != null)
+                //    xRoute.Abort();
 
                 // finally trigger an asynchronous route calculation with the specified request data
-                xroute.BegincalculateRoute(data.RequestWaypoints, null, null,
+                xRoute.BegincalculateRoute(data.RequestWaypoints, null, null,
                     new ResultListOptions { polygon = true }, new CallerContext
                     {
                         wrappedProperties = new[] {
@@ -562,7 +565,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="points">Points of the route polyline</param>
         /// <param name="toolTip">Tool tip</param>
         /// <param name="style">Display style of the route</param>
-        public void UpdateRoutePolylines(IEnumerable<Point> points, String toolTip, ShapeStyle style)
+        public void UpdateRoutePolylines(IEnumerable<Point> points, string toolTip, ShapeStyle style)
         {
             finalPolyline.Update(points, toolTip, style);
             previewPolyline.Reset();
@@ -591,7 +594,7 @@ namespace Ptv.XServer.Controls.Routing
                     latestIdCalculated = req.Id;
 
                     // get route result
-                    var route = xroute.EndcalculateRoute(result);
+                    var route = xRoute.EndcalculateRoute(result);
 
                     // create snapshot out of route result
                     routeSnapshot = RouteSnapshot.FromXRoute(
@@ -615,10 +618,10 @@ namespace Ptv.XServer.Controls.Routing
                         if (calculationSucceeded)
                         {
                             for (int i = 0; i < routeSnapshot.Indices.Length; ++i)
-                                if ((i == 0) || (i == routeSnapshot.Indices.Length - 1))
+                                if (i == 0 || i == routeSnapshot.Indices.Length - 1)
                                 {
                                     if (req.OriginalWayPoints[i] is Stop)
-                                        (req.OriginalWayPoints[i] as Stop).LinkPoint = routeSnapshot.Points[Math.Min(routeSnapshot.Points.Count() - 1, routeSnapshot.Indices[i])];
+                                        ((Stop) req.OriginalWayPoints[i]).LinkPoint = routeSnapshot.Points[Math.Min(routeSnapshot.Points.Length - 1, routeSnapshot.Indices[i])];
                                 }
                                 else
                                     Via[i - 1].PolyIndex = routeSnapshot.Indices[i];
@@ -632,8 +635,7 @@ namespace Ptv.XServer.Controls.Routing
 
                     if (updateRef == 1)
                     {
-                        Func<WaypointDesc, Point> WaypointToPoint = 
-                            wp => wp.wrappedCoords[0].point.PtvSmartUnitsToWgs84();
+                        Func<WaypointDesc, Point> WaypointToPoint = wp => wp.wrappedCoords[0].point.PtvSmartUnitsToWgs84();
 
                         UpdateRoutePolylines(req.Waypoints.Select(WaypointToPoint), e.Message, RouteLayer.ROUTE_ERROR);
 
@@ -659,12 +661,12 @@ namespace Ptv.XServer.Controls.Routing
             if (Via.Count == 0)
                 return 0;
 
-            Point p;
+            Point point;
             int polyIdx, idx = 0;
 
             // get the nearest point on the route. Also set its 
             // index as the polygon index of the via.
-            Points.GetNearestPoint(via.Point, out p, out polyIdx);
+            Points.GetNearestPoint(via.Point, out point, out polyIdx);
             via.PolyIndex = polyIdx;
 
             // Use the polygon index to find the correct insert position.
@@ -739,7 +741,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Reads the polyline's tool tip.
         /// </summary>
-        public String ToolTip { get { return finalPolyline.ToolTip; } }
+        public string ToolTip { get { return finalPolyline.ToolTip; } }
 
         /// <summary>
         /// Reads the route information of the latest route available.
@@ -777,7 +779,7 @@ namespace Ptv.XServer.Controls.Routing
         /// </summary>
         /// <param name="sender">Event source</param>
         /// <param name="args">Event arguments</param>
-        private void Drag(Object sender, DragDropEventArgs args)
+        private void Drag(object sender, DragDropEventArgs args)
         {
             // cancel the polyline drag and drop, inject a via way point 
             // and continue to dragging&dropping this way point instead
@@ -787,7 +789,7 @@ namespace Ptv.XServer.Controls.Routing
 
         private bool PointsExists()
         {
-            return (MapPolyline.Points == null) || !MapPolyline.Points.Any();
+            return MapPolyline.Points == null || !MapPolyline.Points.Any();
         }
 
         /// <summary>
@@ -797,9 +799,9 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="points">Points defining the new geometry for the polyline.</param>
         /// <param name="toolTip">Tool tip of the hole polyline.</param>
         /// <param name="style">Display style of the polyline.</param>
-        public void Update(IEnumerable<Point> points, String toolTip, ShapeStyle style)
+        public void Update(IEnumerable<Point> points, string toolTip, ShapeStyle style)
         {
-            if ((route != null) && !PointsExists())
+            if (route != null && !PointsExists())
             {
                 // remove drag and drop behavior
                 InProcessDragDropBehavior.RemoveDragHandler(MapPolyline, Drag);
@@ -811,9 +813,9 @@ namespace Ptv.XServer.Controls.Routing
 
             Points = points;
             ToolTip = toolTip;
-            Color = (style == null) ? Colors.Black : style.Color;
+            Color = style == null ? Colors.Black : style.Color;
 
-            if ((route == null) || PointsExists()) return;
+            if (route == null || PointsExists()) return;
 
             // add drag and drop behavior
             InProcessDragDropBehavior.SetEnableDragDrop(MapPolyline, true);
@@ -940,7 +942,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="points"></param>
         /// <param name="info"></param>
         /// <returns></returns>
-        public static RouteSnapshot FromXRoute(int[] indices, System.Windows.Point[] points, RouteInfo info)
+        public static RouteSnapshot FromXRoute(int[] indices, Point[] points, RouteInfo info)
         {
             // indices must be adopted to let the last index point right behind the route
             if (indices[indices.Length - 1] == points.Length - 1)
@@ -1028,7 +1030,7 @@ namespace Ptv.XServer.Controls.Routing
 
             // get and store the full list of way points and its labels
             RequestWaypoints = Waypoints = wayPoints.Select(s => s.Waypoint).ToArray();
-            Labels = wayPoints.Select(s => (s is Stop) ? (s as Stop).Label : "").ToArray();
+            Labels = wayPoints.Select(s => s is Stop ? ((Stop) s).Label : "").ToArray();
 
             // if the specified snapshot is valid and the hash matches the hash of previous
             // updates then we only need to update a portion of the route. 
@@ -1036,19 +1038,18 @@ namespace Ptv.XServer.Controls.Routing
             // If the hashes don't match we have multiple pending updates that each update a 
             // different section of the route. In this case we use this data object to force 
             // a full update.
-            if (snapshot.Valid(wayPoints.Length + 2) && (!updateHash.HasValue || updateHash.Value == Hash))
-            {
-                // get the way points of the route portion to be updated
-                RequestWaypoints = Waypoints.Take(to + 1).Skip(@from).ToArray();
+            if (!snapshot.Valid(wayPoints.Length + 2) || (updateHash.HasValue && updateHash.Value != Hash)) return;
 
-                // beginning and end must be a stop - remove any via type set
-                RequestWaypoints.First().viaType = null;
-                RequestWaypoints.Last().viaType = null;
+            // get the way points of the route portion to be updated
+            RequestWaypoints = Waypoints.Take(to + 1).Skip(@from).ToArray();
 
-                // get the parts of the route that remain stable
-                Right = snapshot.Right(to);
-                Left = snapshot.Left(@from);
-            }
+            // beginning and end must be a stop - remove any via type set
+            RequestWaypoints.First().viaType = null;
+            RequestWaypoints.Last().viaType = null;
+
+            // get the parts of the route that remain stable
+            Right = snapshot.Right(to);
+            Left = snapshot.Left(@from);
         }
 
         /// <summary>
@@ -1064,7 +1065,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Gets the labels of all way points (snapshot)
         /// </summary>
-        public String[] Labels { get; set; }
+        public string[] Labels { get; set; }
 
         /// <summary>
         /// Gets the input way points.

@@ -10,7 +10,7 @@ namespace CustomBgProfiles
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
@@ -25,22 +25,14 @@ namespace CustomBgProfiles
         {
             switch ((sender as RadioButton).Content.ToString())
             {
-                case "Standard":
-                    SetProfile(Map0, null);
-                    break;
-                case "Sandbox":
-                    SetProfile(Map0, "sandbox");
-                    break;
-                case "Silkysand":
-                    SetProfile(Map0, "silkysand");
-                    break;
-                default:
-                    SetProfile(Map0, "gravelpit");
-                    break;
+                case "Standard": SetProfile(Map0, null); break;
+                case "Sandbox": SetProfile(Map0, "sandbox"); break;
+                case "Silkysand": SetProfile(Map0, "silkysand"); break;
+                default: SetProfile(Map0, "gravelpit"); break;
             }
         }
 
-        private void SetProfile(Map map, string mapProfile)
+        private static void SetProfile(IMap map, string mapProfile)
         {
             if (map.Layers["Background"] != null)
             {

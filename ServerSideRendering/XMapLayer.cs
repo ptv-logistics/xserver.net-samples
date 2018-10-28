@@ -28,28 +28,19 @@ namespace ServerSideRendering
         /// <summary>
         /// Property delegate. Reads or writes the xMap profile.
         /// </summary>
-        public String Profile
+        public string Profile
         {
-            get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomProfile; }
-            set { (UntiledProvider as ExtendedXMapTiledProvider).CustomProfile = value; }
+            get { return ((ExtendedXMapTiledProvider) UntiledProvider).CustomProfile; }
+            set { ((ExtendedXMapTiledProvider) UntiledProvider).CustomProfile = value; }
         }
 
         /// <summary>
         /// Property delegate. Reads or writes the set of custom xMap Server layers.
         /// </summary>
-        public IEnumerable<xserver.Layer> CustomXMapLayers
+        public IEnumerable<Layer> CustomXMapLayers
         {
-            get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomXMapLayers; }
-            set { (UntiledProvider as ExtendedXMapTiledProvider).CustomXMapLayers = value; }
-        }
-
-        /// <summary>
-        /// Property delegate. Reads or writes the set of custom Caller Contexts.
-        /// </summary>
-        public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties
-        {
-            get { return (UntiledProvider as ExtendedXMapTiledProvider).CustomCallerContextProperties; }
-            set { (UntiledProvider as ExtendedXMapTiledProvider).CustomCallerContextProperties = value; }
+            get { return ((ExtendedXMapTiledProvider) UntiledProvider).CustomXMapLayers; }
+            set { ((ExtendedXMapTiledProvider) UntiledProvider).CustomXMapLayers = value; }
         }
     }
 
@@ -78,7 +69,7 @@ namespace ServerSideRendering
             Password = password;
         }
 
-        public IEnumerable<xserver.CallerContextProperty> CustomCallerContextProperties { get; set; }
+        public new IEnumerable<CallerContextProperty> CustomCallerContextProperties { get; set; }
 
         /// <inheritdoc/>
         public override byte[] TryGetStreamInternal(double left, double top, double right, double bottom, int width,
@@ -95,7 +86,7 @@ namespace ServerSideRendering
                     rightBottom = new Point {point = new PlainPoint {x = right, y = bottom}}
                 };
 
-                string profile = CustomProfile ?? "ajax-av";
+                var profile = CustomProfile == null ? "ajax-av" : CustomProfile;
 
                 var ccProps = new List<CallerContextProperty>
                 {
@@ -104,7 +95,7 @@ namespace ServerSideRendering
                 };
 
                 if (!string.IsNullOrEmpty(ContextKey))
-                    ccProps.Add(new CallerContextProperty {key = "ContextKey", value = this.ContextKey});
+                    ccProps.Add(new CallerContextProperty {key = "ContextKey", value = ContextKey});
 
                 if (CustomCallerContextProperties != null)
                     ccProps.AddRange(CustomCallerContextProperties);
@@ -128,7 +119,7 @@ namespace ServerSideRendering
                 }
 
                 var map = service.renderMapBoundingBox(bbox, mapParams, imageInfo,
-                    (CustomXMapLayers != null) ? CustomXMapLayers.ToArray() : null,
+                    CustomXMapLayers != null ? CustomXMapLayers.ToArray() : null,
                     true, cc);
 
                 mapObjects = map.wrappedObjects?

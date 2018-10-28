@@ -1,6 +1,5 @@
 ﻿using Ptv.XServer.Controls.Map.Canvases;
 using Ptv.XServer.Controls.Map.Layers;
-using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Demo.MapMarket;
 using System;
@@ -13,16 +12,16 @@ namespace Donuts
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
             InitializeComponent();
 
-            this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
+            Map.Loaded += Map_Loaded;
         }
 
-        void Map_Loaded(object sender, RoutedEventArgs e)
+        private void Map_Loaded(object sender, RoutedEventArgs e)
         {
             InitializeCustomLayer();
         }
@@ -32,12 +31,12 @@ namespace Donuts
         {
             var colors = new[] { System.Drawing.Color.Blue, System.Drawing.Color.Green, System.Drawing.Color.Red };
 
-            return new HatchBrush(HatchStyle.DiagonalCross, colors[((int)item.Id) % colors.Length], System.Drawing.Color.White);
+            return new HatchBrush(HatchStyle.DiagonalCross, colors[(int)item.Id % colors.Length], System.Drawing.Color.White);
         }
 
-        TileRenderer tileRenderer;
-        BaseLayer layer;
-        DonutProvider provider;
+        private TileRenderer tileRenderer;
+        private BaseLayer layer;
+        private DonutProvider provider;
 
         public void InitializeCustomLayer()
         {
@@ -49,7 +48,7 @@ namespace Donuts
                 Mapping = geoItem => new GdiStyle
                 { 
                     Fill = GetBrush(geoItem),
-                    Outline = System.Drawing.Pens.Black,
+                    Outline = System.Drawing.Pens.Black
                 }
             };
 
@@ -73,7 +72,7 @@ namespace Donuts
                     m => new TiledCanvas(m, tileRenderer) { IsTransparentLayer = true },
                     m => new SelectionCanvas(m, provider, selectedRegions)
                 },
-                Opacity = .8,
+                Opacity = .8
             };
 
             Map.Layers.InsertBefore(layer, "Labels");

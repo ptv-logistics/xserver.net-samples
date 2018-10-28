@@ -5,13 +5,10 @@
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
-using Ptv.XServer.Controls.Map;
-
-
 namespace Ptv.XServer.Net.ExtensibilityTest
 {
     /// <summary> Interaction logic for CustomMap.xaml </summary>
-    public partial class CustomMap : Map
+    public partial class CustomMap
     {
         #region constructor
         /// <summary>  </summary>

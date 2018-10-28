@@ -14,16 +14,16 @@ namespace Circles
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window1
     {
         public Window1()
         {
             InitializeComponent();
 
-            this.Map.Loaded += new RoutedEventHandler(Map_Loaded);
+            Map.Loaded += Map_Loaded;
         }
 
-        void Map_Loaded(object sender, RoutedEventArgs e)
+        private void Map_Loaded(object sender, RoutedEventArgs e)
         {
             var myLayer = new ShapeLayer("MyLayer");
             Map.Layers.Add(myLayer);
@@ -43,7 +43,7 @@ namespace Circles
                 for (int lat = -80; lat <= +80; lat = lat + 10)
                 {
                     double radius = 250000; // radius in meters
-                    double cosB = Math.Cos((lat / 360.0) * (2 * Math.PI)); // factor depends on latitude
+                    double cosB = Math.Cos(lat / 360.0 * (2 * Math.PI)); // factor depends on latitude
                     double ellipseSize = Math.Abs(1.0 / cosB * radius) * 2; // size mercator units
 
                     var ellipse = new Ellipse
@@ -67,7 +67,7 @@ namespace Circles
             }
         }
 
-        private Popup popup = new Popup();
+        private readonly Popup popup = new Popup();
         private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
         {
             var ellipse = (Ellipse)sender;
@@ -77,18 +77,18 @@ namespace Circles
 
             // create a new wpf text blox
             var border = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(2,2,1,1) };
-            var textblock = new TextBlock
+            var textBlock = new TextBlock
             {
                 Padding = new Thickness(2),
                 Background = Brushes.Yellow,
                 Foreground = Brushes.Black,
                 Text =  GeoTransform.LatLonToString(location.Y, location.X, true)
             };
-            border.Child = textblock;
+            border.Child = textBlock;
             popup.Child = border;
 
             // get the MapView object from the control
-            var mapView = MapElementExtensions.FindChild<MapView>(this.Map);
+            var mapView = MapElementExtensions.FindChild<MapView>(Map);
             // transform
             var popupLocation = mapView.WgsToCanvas(Map, location);
 

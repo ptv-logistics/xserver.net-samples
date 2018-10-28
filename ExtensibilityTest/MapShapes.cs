@@ -31,30 +31,28 @@ namespace Ptv.XServer.Net.ExtensibilityTest
 
         #region protected methods
         /// <inheritdoc/>
-        protected override System.Windows.Media.Geometry DefiningGeometry
+        protected override Geometry DefiningGeometry
         {
             get
             {
-                StreamGeometry geom = new StreamGeometry();
-                using (StreamGeometryContext gc = geom.Open())
+                var streamGeometry = new StreamGeometry();
+                using (var streamGeometryContext = streamGeometry.Open())
                 {
-                    var lineGeometry = new PathGeometry();
-
                     for (int i = 0; i < Points.Count; i++)
                     {
-                        var wgsPoint = new System.Windows.Point(Points[i].X, -Points[i].Y);
+                        var wgsPoint = new Point(Points[i].X, -Points[i].Y);
                         var mercatorPoint = GeoTransform.WGSToPtvMercator(wgsPoint);
                         mercatorPoint.X = mercatorPoint.X / 20015087.0 * 180 + 180;
                         mercatorPoint.Y = mercatorPoint.Y / 20015087.0 * 180 + 180;
 
                         if (i == 0)
-                            gc.BeginFigure(new Point(mercatorPoint.X, mercatorPoint.Y), true, true);
+                            streamGeometryContext.BeginFigure(new Point(mercatorPoint.X, mercatorPoint.Y), true, true);
                         else
-                            gc.LineTo(new Point(mercatorPoint.X, mercatorPoint.Y), true, true);
+                            streamGeometryContext.LineTo(new Point(mercatorPoint.X, mercatorPoint.Y), true, true);
                     }
                 }
 
-                return geom;
+                return streamGeometry;
             }
         }
         #endregion
@@ -82,7 +80,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
 
         #region constructor
         /// <summary>  </summary>
-        public MapShape()
+        protected MapShape()
         {
             InvariantStrokeThickness = 1;
         }

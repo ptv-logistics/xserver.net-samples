@@ -7,11 +7,9 @@
 
 using System;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Ptv.XServer.Controls.Map;
-using Ptv.XServer.Controls.Map.Canvases;
 
 
 namespace Ptv.XServer.Net.ExtensibilityTest
@@ -21,34 +19,36 @@ namespace Ptv.XServer.Net.ExtensibilityTest
     {
         #region constructor
         /// <summary>  </summary>
-        /// <param name="mapControl"></param>
+        /// <param name="mapView"></param>
         public MyVectorCanvas(MapView mapView)
             : base(mapView)
         {
-            var myPolygon = new MapPolygon()
+            var myPolygon = new MapPolygon
             {
-                Points = new PointCollection{ new Point(20,40), new Point(20, 50), new Point(30,50), new Point(30,40) }
+                Points = new PointCollection { new Point(20, 40), new Point(20, 50), new Point(30, 50), new Point(30, 40) },
+                Fill = new SolidColorBrush(Colors.Blue),
+                Stroke = new SolidColorBrush(Colors.Black),
+                InvariantStrokeThickness = 3
             };
-            myPolygon.Fill = new SolidColorBrush(Colors.Blue);
-            myPolygon.Stroke = new SolidColorBrush(Colors.Black);
-            myPolygon.InvariantStrokeThickness = 3;
             Children.Add(myPolygon);
 
             //// http://msdn.microsoft.com/en-us/library/system.windows.media.animation.coloranimation.aspx
-            SolidColorBrush myAnimatedBrush = new SolidColorBrush();
-            myAnimatedBrush.Color = Colors.Blue;
+            var myAnimatedBrush = new SolidColorBrush { Color = Colors.Blue };
             myPolygon.Fill = myAnimatedBrush;
             MapView.RegisterName("MyAnimatedBrush", myAnimatedBrush);
-            ColorAnimation mouseEnterColorAnimation = new ColorAnimation();
-            mouseEnterColorAnimation.From = Colors.Blue;
-            mouseEnterColorAnimation.To = Colors.Red;
-            mouseEnterColorAnimation.Duration = TimeSpan.FromMilliseconds(250);
-            mouseEnterColorAnimation.AutoReverse = true;
+            var mouseEnterColorAnimation = new ColorAnimation
+            {
+                From = Colors.Blue,
+                To = Colors.Red,
+                Duration = TimeSpan.FromMilliseconds(250),
+                AutoReverse = true
+            };
             Storyboard.SetTargetName(mouseEnterColorAnimation, "MyAnimatedBrush");
             Storyboard.SetTargetProperty(mouseEnterColorAnimation, new PropertyPath(SolidColorBrush.ColorProperty));
-            Storyboard mouseEnterStoryboard = new Storyboard();
+
+            var mouseEnterStoryboard = new Storyboard();
             mouseEnterStoryboard.Children.Add(mouseEnterColorAnimation);
-            myPolygon.MouseEnter += delegate(object msender, MouseEventArgs args)
+            myPolygon.MouseEnter += delegate
             {
                 mouseEnterStoryboard.Begin(MapView);
             };
@@ -56,12 +56,6 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         #endregion
 
         #region public methods
-        /// <summary> Could also add Shapes dynamically </summary>
-        /// <param name="updateMode"></param>
-        public override void Update(UpdateMode updateMode)
-        {
-            base.Update(updateMode);
-        }
 
         /// <summary>  </summary>
         public override void Dispose()

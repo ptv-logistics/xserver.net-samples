@@ -29,19 +29,19 @@ namespace Ptv.XServer.Controls.Routing
         /// <summary>
         /// Coordinate transformation: WGS84 > PTV SmartUnits
         /// </summary>
-        static readonly ICoordinateTransformation Wgs84ToPtvSmartUnitsTransform =
+        private static readonly ICoordinateTransformation Wgs84ToPtvSmartUnitsTransform =
             Components.Projections.Direct.CoordinateTransformation.Get("EPSG:4326", "PTV_SMARTUNITS");
 
         /// <summary>
         /// Coordinate transformation: PTV Mercator > WGS84
         /// </summary>
-        static readonly ICoordinateTransformation PtvMercatorToWgs84Transform =
+        private static readonly ICoordinateTransformation PtvMercatorToWgs84Transform =
             Components.Projections.Direct.CoordinateTransformation.Get("EPSG:76131", "EPSG:4326");
 
         /// <summary>
         /// Coordinate transformation: PTV SmartUnits > WGS84
         /// </summary>
-        static readonly ICoordinateTransformation PtvSmartUnitsToWgs84Transform =
+        private static readonly ICoordinateTransformation PtvSmartUnitsToWgs84Transform =
             Components.Projections.Direct.CoordinateTransformation.Get("PTV_SMARTUNITS", "EPSG:4326");
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="points">Polyline</param>
         /// <param name="p">Coordinates to find the closest point for.</param>
         /// <param name="q">Resulting point</param>
-        /// <param name="index">Index of the resuling point</param>
+        /// <param name="index">Index of the resulting point</param>
         /// <returns></returns>
         public static bool GetNearestPoint(this IEnumerable<System.Windows.Point> points, System.Windows.Point p, out System.Windows.Point q, out int index)
         {
@@ -78,20 +78,20 @@ namespace Ptv.XServer.Controls.Routing
         /// <param name="p">Point to create the way point from</param>
         /// <param name="viaType">Via type to be set, if any</param>
         /// <returns>Newly created way point</returns>
-        public static WaypointDesc ToWaypoint(this System.Windows.Point p, ViaTypeEnum? viaType = null)
+        public static WaypointDesc ToWayPoint(this System.Windows.Point p, ViaTypeEnum? viaType = null)
         {
             p = Wgs84ToPtvSmartUnitsTransform.Transform(p);
 
-            var waypointDesc = new WaypointDesc
+            var wayPointDesc = new WaypointDesc
             {
                 linkType = LinkType.AUTO_LINKING,
                 wrappedCoords = new[] { new Point { point = new PlainPoint { x = p.X, y = p.Y } } }
             };
 
             if (viaType.HasValue)
-                waypointDesc.viaType = new ViaType { viaType = viaType.Value };
+                wayPointDesc.viaType = new ViaType { viaType = viaType.Value };
 
-            return waypointDesc;
+            return wayPointDesc;
         }
 
 
