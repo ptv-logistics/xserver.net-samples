@@ -89,7 +89,7 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 #### [MemoryPressureTest](MemoryPressureTest) Tips to optimize xServer.NET for limited-memory scenarios
 
 #### [PieChartsAndExport](PieChartsAndExport) Shows how to render arbitrary wpf elements and print/export the map content
-<img src="Screenshots/MultipPieChartsAndExportleContainers.png" height="240" title="PieChartsAndExport">
+<img src="Screenshots/PieChartsAndExport.png" height="240" title="PieChartsAndExport">
 
 #### [RoutingVB](RoutingVB) Shows how to add drag&drop routing to a Visual Basic project.
 
@@ -100,7 +100,7 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 <img src="Screenshots/ServerSideRendering.png" height="240" title="ServerSideRendering">
 
 #### [SimpleWms](SimpleWms) Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
-<img src="Screenshots/SimpleWms.png" height="240" title="SimpleWms">
+<img src="Screenshots/WmsTest.png" height="240" title="WmsTest">
 
 #### [SymbolsAndLabels](SymbolsAndLabels) Shows how to draw symbols with an attached label tag
 <img src="Screenshots/SymbolsAndLabels.png" height="240" title="SymbolsAndLabels">
@@ -109,7 +109,7 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 <img src="Screenshots/TourPlanningDemo.png" height="240" title="TourPlanningDemo">
 
 #### [ToursAndStopsMultiCanvas](ToursAndStopsMultiCanvas) Shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
-<img src="Screenshots/ToursAndStopsMultiCanvas.png" height="240" title="ToursAndStopsMultiCanvas">
+<img src="Screenshots/ToursAndMultiCanvas.png" height="240" title="ToursAndMultiCanvas">
 
 #### [VdiPerformance](VdiPerformance) Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)VdiPerformance
 <img src="Screenshots/VdiPerformance.png" height="240" title="VdiPerformance">
