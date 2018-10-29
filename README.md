@@ -30,7 +30,7 @@ Source code for xServer.NET demo center.
 #### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#sharpmap \#shapefile \#javascript
 Build responsive map applications for web and desktop
 
-<img src="Screenshots/SharpMap.Win.png" height="240" title="SharpMap.Widgets">
+<img src="Screenshots/SharpMap.Win.png" height="360" title="SharpMap.Widgets">
 
 #### [ActiveX](ActiveX) \#interop
 Shows how to use the map as ActiveX control
@@ -172,6 +172,7 @@ Shows how to draw symbols with an attached label tag
 
 #### [TourPlanningDemo](TourPlanningDemo) \#xserver-1
 Shows practices how to use the new xTour 1.18 job api @xServer internet
+
 <img src="Screenshots/TourPlanningDemo.png" height="240" title="TourPlanningDemo">
 
 #### [ToursAndStopsMultiCanvas](ToursAndStopsMultiCanvas) \#customize
