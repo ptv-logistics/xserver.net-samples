@@ -47,7 +47,7 @@ Shows how to render circles with a geographic radius
 
 <img src="Screenshots/Circles.png" height="240" title="Circles">
 
-#### [CustomBgProfiles](CustomBgProfiles) \#xmap-1
+#### [CustomBgProfiles](CustomBgProfiles) \#xserver-1
 Shows how to switch the basemap profile 
 
 <img src="Screenshots/CustomBgProfiles.png" height="240" title="CustomBgProfiles">
@@ -185,7 +185,7 @@ Benchmark for different settings that influcence performance on Virtual Desktop 
 
 <img src="Screenshots/VdiPerformance.png" height="240" title="VdiPerformance">
 
-#### [XYNSegments](XYNSegments) 
+#### [XYNSegments](XYNSegments) \#xserver-1
 Shows how to select and render xServer XYN-Segments
 
 <img src="Screenshots/XYNSegments.png" height="240" title="XYNSegments">
