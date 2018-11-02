@@ -48,7 +48,7 @@ namespace XMap2FactoryTest
 
             form.referenceTimeDatePicker.ValueChanged += SetReferenceTime;
             form.referenceTimeTimePicker.ValueChanged += SetReferenceTime;
-            form.timeZoneTextBox.Leave += SetReferenceTimeWithTimeZoneCheck;
+            var x = form.referenceTimeTimePicker.Value;
             SetReferenceTime(null, null);
 
             form.timeSpanTextBox.Leave += SetTimeSpan;
@@ -84,18 +84,8 @@ namespace XMap2FactoryTest
 
         // Valid example: "2016-10-21T04:00:00+02:00"
         private void SetReferenceTime(object sender, EventArgs e) => 
-            layerFactory.FeatureLayers.ReferenceTime = $"{form.referenceTimeDatePicker.Value:yyyy-MM-dd}T{form.referenceTimeTimePicker.Value:HH:mm:ss}{form.timeZoneTextBox.Text}";
-
-        private void SetReferenceTimeWithTimeZoneCheck(object sender, EventArgs e)
-        {
-            if (!Regex.IsMatch(form.timeZoneTextBox.Text, @"^[-+]\d{2}:\d{2}$"))
-            {
-                System.Windows.MessageBox.Show(@"Wrong time zone format. Expected regular expression: [-+]\d{2}:\d{2}");
-                return;
-            }
-
-            SetReferenceTime(sender, e);
-        }
+            layerFactory.FeatureLayers.ReferenceTime = 
+            $"{(form.referenceTimeDatePicker.Value.Date + form.referenceTimeTimePicker.Value.TimeOfDay).ToString("o")}";
 
         private void SetTimeSpan(object sender, EventArgs e)
         {
