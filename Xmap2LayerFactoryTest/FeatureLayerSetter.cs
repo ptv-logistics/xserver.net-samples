@@ -44,7 +44,7 @@ namespace XMap2FactoryTest
             form.optimisticRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.snapshotRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.timeSpanRadioButton.CheckedChanged += SetTimeConsiderationScenario;
-            form.noneTimeConsiderationRadioButton.Checked = true;
+            form.snapshotRadioButton.Checked = true;
 
             form.referenceTimeDatePicker.ValueChanged += SetReferenceTime;
             form.referenceTimeTimePicker.ValueChanged += SetReferenceTime;
