@@ -53,7 +53,7 @@ namespace XMap2FactoryTest
                 mapStylesComboBox.Items.Add(mapStyle);
             mapStylesComboBox.SelectedIndex = Math.Min(0, mapStylesComboBox.Items.Count - 1);
 
-            mapStylesComboBox.SelectedIndexChanged += (_, __) => layerFactory.StoredProfile = mapStylesComboBox.Text;
+            mapStylesComboBox.SelectedIndexChanged += (_, __) => layerFactory.MapStyle = mapStylesComboBox.Text;
             mapLanguageTextBox.Leave += (_, __) => layerFactory.MapLanguage = mapLanguageTextBox.Text;
             trafficIncidentsLanguageTextBox.Leave += (_, __) => layerFactory.UserLanguage = trafficIncidentsLanguageTextBox.Text;
 
