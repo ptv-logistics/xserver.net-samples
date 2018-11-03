@@ -188,10 +188,10 @@ namespace CustomPanAndZoom
 
 
                 mapView.SetEnvelope(new MapRectangle(
-                    p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2,
-                    -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2),
+                    (p1.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    (p2.X / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) - 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 - mapView.OriginOffset.X,
+                    -(p2.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y,
+                    -(p1.Y / MapView.ZoomAdjust * MapView.LogicalSize / MapView.ReferenceSize) + 1.0 / MapView.ZoomAdjust * MapView.LogicalSize / 2 + mapView.OriginOffset.Y),
                     Map.UseAnimation);
 
                 e.Handled = true;
