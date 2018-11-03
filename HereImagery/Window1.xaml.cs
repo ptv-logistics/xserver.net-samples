@@ -14,9 +14,6 @@ namespace NokiaDemo
         public Window1()
         {
             InitializeComponent();
-
-            // setting the "infinite zoom" option fixes artifacts at deep zoom levels
-            GlobalOptions.InfiniteZoom = true;
             
             // "over-zoom" - go beyond the normal zoom level
             Map.MaxZoom = 23;
