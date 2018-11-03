@@ -26,7 +26,7 @@ namespace XMap2FactoryTest
             formsMap.MaxZoom = 22;
 
             formsMap.XMapUrl = "xserver2-europe-eu-test";
-            formsMap.XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            formsMap.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
 
             if(formsMap.Xmap2LayerFactory != null)
                 InitializeXMap2();

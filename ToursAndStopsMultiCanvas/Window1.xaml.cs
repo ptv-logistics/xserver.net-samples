@@ -83,7 +83,7 @@ namespace ToursAndStops
             if (xRoute.ClientCredentials != null)
             {
                 xRoute.ClientCredentials.UserName.UserName = "xtok";
-                xRoute.ClientCredentials.UserName.Password = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+                xRoute.ClientCredentials.UserName.Password = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
             }
 
             return xRoute.calculateRoute(new[]

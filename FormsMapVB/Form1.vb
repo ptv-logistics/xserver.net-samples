@@ -7,7 +7,7 @@ Imports Ptv.XServer.Controls.Map
 Imports Point = System.Windows.Point
 
 Public Class Form1
-    ReadOnly token = "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"
+    ReadOnly token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()

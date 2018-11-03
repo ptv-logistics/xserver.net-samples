@@ -7,7 +7,7 @@
     xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map">
     <Grid>
         <map:WpfMap XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                    XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9" Zoom="10" Center="8.4, 49" 
+                    XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4" Zoom="10" Center="8.4, 49" 
                     x:Name="mapControl1" />
     </Grid>
 </Window>

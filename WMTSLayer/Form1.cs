@@ -15,7 +15,7 @@ namespace XMap2FactoryTest
             formsMap.MaxZoom = 22;
 
             formsMap.XMapUrl = "xserver2-europe-eu-test";
-            formsMap.XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            formsMap.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
 
             // formsMap.XMapUrl = "eu-n-test";
             formsMap.XMapUrl = "http://172.23.112.32:40000"; // SmarTour-Server, Linux-based

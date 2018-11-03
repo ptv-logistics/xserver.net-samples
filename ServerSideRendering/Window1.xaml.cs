@@ -28,7 +28,7 @@ namespace ServerSideRendering
             Map.SetMapLocation(new Point(9.182778, 48.775556), 12);
 
             var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvgroup.com/xmap/ws/XMap");
-            xmapMetaInfo.SetCredentials("xtok", "EBB3ABF6-C1FD-4B01-9D69-349332944AD9");
+            xmapMetaInfo.SetCredentials("xtok", "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4");
             InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, "gravelpit");
 
             Map.InsertTrafficInfoLayer(xmapMetaInfo, "Traffic", "traffic.ptv-traffic", "Traffic information");

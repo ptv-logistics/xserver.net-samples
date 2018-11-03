@@ -50,7 +50,7 @@ namespace FeatureLayers
             // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
 
             var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            meta.SetCredentials("xtok", "EBB3ABF6-C1FD-4B01-9D69-349332944AD9"); // set the basic authentication properties, e.g. xtok/token for xServer internet
+            meta.SetCredentials("xtok", "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"); // set the basic authentication properties, e.g. xtok/token for xServer internet
 
             return meta;
         }

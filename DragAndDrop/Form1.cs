@@ -37,7 +37,7 @@ namespace FormsMapCS
 
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "xserver2-europe-test";
-            formsMap1.XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            formsMap1.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
             formsMap1.WrappedMap.Xmap2LayerFactory.MapStyle = "blackmarble"; // TODO: implement XMapStyle for map root object
 
             // go to Karlsruhe
