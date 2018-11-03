@@ -22,8 +22,8 @@ namespace FormsMapCS
             var vehicles = new[]
             {
                 new Vehicle {Longitude = 8.3, Latitude = 49, Id = "1"},
-                new Vehicle {Longitude = 8.4, Latitude = 49.1, Id = "1"},
-                new Vehicle {Longitude = 8.5, Latitude = 49, Id = "1"}
+                new Vehicle {Longitude = 8.4, Latitude = 49.1, Id = "2"},
+                new Vehicle {Longitude = 8.5, Latitude = 49, Id = "3"}
             };
 
             // the drag&drop events for the grid
@@ -36,8 +36,9 @@ namespace FormsMapCS
             vehicleBindingSource.DataSource = vehicles;
 
             // initialize base map (for xServer internet)
-            formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            formsMap1.XMapUrl = "xserver2-europe-test";
             formsMap1.XMapCredentials = "xtok:EBB3ABF6-C1FD-4B01-9D69-349332944AD9";
+            formsMap1.WrappedMap.Xmap2LayerFactory.MapStyle = "blackmarble"; // TODO: implement XMapStyle for map root object
 
             // go to Karlsruhe
             formsMap1.SetMapLocation(new Point(8.4, 49.05), 10);
@@ -51,8 +52,8 @@ namespace FormsMapCS
             {
                 // create  a truck marker
                 var marker = new Truck
-                {
-                    Color = Colors.Brown,
+                { 
+                    Color = Colors.LightBlue,
                     Width = 50,
                     ToolTip = "Hello Map",
                     AllowDrop = true
@@ -82,6 +83,7 @@ namespace FormsMapCS
             }
 
             // the drop action goes here    
+            System.Windows.Forms.MessageBox.Show($"Vehicle #{((Vehicle)e.Data.GetData(typeof(Vehicle))).Id} was dropped here");
         }
 
         private static void marker_Drop(object sender, System.Windows.DragEventArgs e)
@@ -93,6 +95,7 @@ namespace FormsMapCS
             }
 
             // the drop action goes here        
+            System.Windows.Forms.MessageBox.Show($"Vehicle #{((Vehicle)e.Data.GetData(typeof(Vehicle))).Id} was dropped here");
         }
 
         private void vehicleDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
