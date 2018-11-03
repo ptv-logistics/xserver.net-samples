@@ -52,18 +52,18 @@ Shows how to switch the basemap profile
 
 <img src="Screenshots/CustomBgProfiles.png" height="240" title="CustomBgProfiles">
 
-#### [CustomInit](CustomInit) #\customize
+#### [CustomInit](CustomInit) \#customize
 Shows how to explicitly initialize the xMapServer base map
 
-#### [CustomLayout](CustomLayout) #\customize
+#### [CustomLayout](CustomLayout) \#customize
 Shows how to set-up a map-layout with custom gadgets
 
 <img src="Screenshots/CustomLayout.png" height="240" title="CustomLayout">
 
-#### [CustomLocalizer](CustomLocalizer) #\customize
+#### [CustomLocalizer](CustomLocalizer) \#customize
 Shows how to use your own string resources to localize the texts of the control.
 
-#### [CustomPanAndZoom](CustomPanAndZoom) #\customize
+#### [CustomPanAndZoom](CustomPanAndZoom) \#customize
 Shows how to change the default behavior for pan/zoom interaction.
 
 <img src="Screenshots/CustomPanAndZoom.png" height="240" title="CustomPanAndZoom">
@@ -73,12 +73,12 @@ Shows how to build a datasource and renderer for in-memory computed shapes.
 
 <img src="Screenshots/Donuts.png" height="240" title="Donuts">
 
-#### [DrawMode](DrawMode) #\customize
+#### [DrawMode](DrawMode) \#customize
 The basic code to add an interactor for drawing custom polygons
 
 <img src="Screenshots/DrawMode.png" height="240" title="DrawMode">
 
-#### [DragAndDrop](DragAndDrop) #\customize
+#### [DragAndDrop](DragAndDrop) \#customize
 Shows how to implement drag&drop for elements on the map.
 
 <img src="Screenshots/DragAndDrop.png" height="240" title="DragAndDrop">
