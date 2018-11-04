@@ -6,34 +6,42 @@
 //--------------------------------------------------------------
 
 using Ptv.XServer.Controls.Map.Layers.Untiled;
+using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Tools;
 using xserver;
 
 namespace Ptv.XServer.Demo.Tools
 {
     /// <summary>
-    /// Helper class providing shortcuts for inserting different types of layers into the map.
+    /// Impementation of a custom xMapLayer class.
     /// </summary>
-    public class XynLayer : XMapLayer
+    public class XynLayer : UntiledLayer
     {
-        public XynLayer(XMapMetaInfo xMapMetaInfo, string layerName, string layerCaption)
-            : base(layerName, xMapMetaInfo.Url, xMapMetaInfo.User, xMapMetaInfo.Password)
+        public XynLayer(XMapMetaInfo meta, string layerName, string layerCaption)
+            : base(layerName)
         {
+            // note: the class XMapTiledProvider implements both the interface for tiled and non-tiled layers!
+            UntiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Custom)
+            {
+                User = meta.User,
+                Password = meta.Password,
+            };
+
             Caption = layerCaption;
-            MinLevel = 14;
+            MinLevel = 4;
             Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/RoadEditor.png");
         }
 
         public void SetXYN(string xyn)
         {
-            if(string.IsNullOrEmpty(xyn))
+            if (string.IsNullOrEmpty(xyn))
             {
-                CustomXMapLayers = null;
+                ((XMapTiledProvider)UntiledProvider).CustomXMapLayers = null;
                 Refresh();
                 return;
             }
 
-            CustomXMapLayers = new xserver.Layer[] {
+            ((XMapTiledProvider)UntiledProvider).CustomXMapLayers = new xserver.Layer[] {
                      new xserver.GeometryLayer
                     {
                         name="XYN_LAYER",
@@ -43,8 +51,7 @@ namespace Ptv.XServer.Demo.Tools
                             new GeometryExt {
                                 geometryString=xyn
                             }
-                        }
-                        ,
+                        },
                         wrappedOptions  = new [] {
                             new GeometryOption {option = GeometryOptions.BORDERLINECOLOR, value = "#FF0000" },
                             new GeometryOption {option = GeometryOptions.LINEWIDTH, value = "5" },

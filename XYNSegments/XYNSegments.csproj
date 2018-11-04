@@ -97,7 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="XMapLayer.cs" />
     <Compile Include="XynLayer.cs" />
     <Page Include="Window1.xaml">
       <Generator>MSBuild:Compile</Generator>

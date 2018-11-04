@@ -1,4 +1,5 @@
 ﻿using Ptv.XServer.Controls.Map;
+using Ptv.XServer.Controls.Map.Layers;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
 using Ptv.XServer.Controls.Map.Localization;
@@ -33,11 +34,20 @@ namespace XynSegments
 
             Map.Layers.Clear();
 
-            var xmapMetaInfo = new XMapMetaInfo("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
-            xmapMetaInfo.SetCredentials("xtok", token);
-            InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, "silkysand");
+            var meta = new XMapMetaInfo("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
+            meta.SetCredentials("xtok", token);
+            XMapLayerFactory.InsertXMapBaseLayers(Map.Layers, meta);
+            Map.XMapStyle = "gravelpit";
 
-            xynLayer = new XynLayer(xmapMetaInfo, "Segments", "Selected Segments");
+            xynLayer = new XynLayer(meta, "xyn", "XYN Segments")
+            {
+                UntiledProvider = new XMapTiledProvider(meta.Url, XMapMode.Custom)
+                {
+                    User = meta.User,
+                    Password = meta.Password,
+                }
+            };
+
             Map.Layers.Add(xynLayer);
 
             Map.MouseDown += Map_MouseDown;
@@ -82,41 +92,6 @@ namespace XynSegments
                 xynLayer.SetXYN(result.wrappedResultList[0].wrappedAdditionalFields[0].value);
             else
                 xynLayer.SetXYN(null);
-        }
-
-        public void InsertXMapBaseLayers(LayerCollection layers, XMapMetaInfo meta, string profile)
-        {
-            var baseLayer = new TiledLayer("Background")
-            {
-                TiledProvider = new ExtendedXMapTiledProvider(meta.Url, meta.User, meta.Password)
-                {
-                    ContextKey = "in case of context key",
-                    CustomProfile = profile + "-bg",
-                },
-                Copyright = meta.CopyrightText,
-                Caption = MapLocalizer.GetString(MapStringId.Background),
-                IsBaseMapLayer = true,
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
-            };
-
-            var labelLayer = new UntiledLayer("Labels")
-            {
-                UntiledProvider = new XMapTiledProvider(
-                    meta.Url, XMapMode.Town)
-                {
-                    User = meta.User,
-                    Password = meta.Password,
-                    ContextKey = "in case of context key",
-                    CustomProfile = profile + "-fg",
-                },
-                Copyright = meta.CopyrightText,
-                MaxRequestSize = meta.MaxRequestSize,
-                Caption = MapLocalizer.GetString(MapStringId.Labels),
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png"),
-            };
-
-            layers.Add(baseLayer);
-            layers.Add(labelLayer);
         }
     }
 }
