@@ -47,7 +47,7 @@ namespace XSTwo
                 {
                     MinZoom = 0,
                     MaxZoom = 22,
-                    RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/tile/{1}/{2}/{3}?storedProfile={4}&xtok={5}",
+                    RequestBuilderDelegate = (x, y, z) => string.Format("https://s0{0}-xserver2-europe-test.cloud.ptvgroup.com/services/rest/XMap/2.9/tile/{1}/{2}/{3}?storedProfile={4}&xtok={5}",
                         "1234"[(x ^ y) % 4], z, x, y, "gravelpit", myToken)
                 },
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays

@@ -15,8 +15,6 @@ namespace XMap2FactoryTest
 {
     public partial class Form1 : Form
     {
-        private System.Windows.Controls.ToolTip customizedToolTip;
-
         public Form1()
         {
             InitializeComponent();
@@ -25,13 +23,13 @@ namespace XMap2FactoryTest
             formsMap.SetMapLocation(center, 15);
             formsMap.MaxZoom = 22;
 
-            formsMap.XMapUrl = "xserver2-europe-eu-test";
+            formsMap.XMapUrl = "xserver2-europe-eu-test; version = 2.9";
             formsMap.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
 
-            if(formsMap.Xmap2LayerFactory != null)
-                InitializeXMap2();
+            InitializeXMap2();
 
-            formsMap.Layers.InsertBefore(CreateShapeLayer(center), "Labels"); // Custom shape layer in-between background and foreground
+            formsMap.Layers.InsertBefore(CreateShapeLayer(center), "Labels"); // Custom shape layer in-between background and labels
+
             formsMap.ToolTipManagement.CreateCustomizedToolTipsFunc = CreateOwnToolTip;
             formsMap.ToolTipManagement.DestroyCustomizedToolTipsFunc = DestroyOwnToolTip;
         }
@@ -48,14 +46,24 @@ namespace XMap2FactoryTest
             };
 
             var layerFactory = formsMap.Xmap2LayerFactory;
+            if (layerFactory == null)
+                return; // An invalid xServer2-URL was specified, the following XServer2 preparations cannot be executed.
 
-            foreach(var mapStyle in layerFactory.AvailableMapStyles)
-                mapStylesComboBox.Items.Add(mapStyle);
+            foreach (var mapStyle in layerFactory.AvailableMapStyles)
+                if (mapStyle.Equals("default")) // if "default" is available insert it at first position.
+                    mapStylesComboBox.Items.Insert(0, mapStyle);
+                else
+                    mapStylesComboBox.Items.Add(mapStyle);
             mapStylesComboBox.SelectedIndex = Math.Min(0, mapStylesComboBox.Items.Count - 1);
 
             mapStylesComboBox.SelectedIndexChanged += (_, __) => layerFactory.MapStyle = mapStylesComboBox.Text;
+            layerFactory.MapStyle = mapStylesComboBox.Text;
+
             mapLanguageTextBox.Leave += (_, __) => layerFactory.MapLanguage = mapLanguageTextBox.Text;
+            layerFactory.MapLanguage = mapLanguageTextBox.Text;
+
             trafficIncidentsLanguageTextBox.Leave += (_, __) => layerFactory.UserLanguage = trafficIncidentsLanguageTextBox.Text;
+            layerFactory.UserLanguage = trafficIncidentsLanguageTextBox.Text;
 
             new FeatureLayerSetter(this);
         }
@@ -74,7 +82,7 @@ namespace XMap2FactoryTest
         {
             var stackPanel = new StackPanel();
 
-            foreach(var item in toolTipMapObjects.Select((toolTipMapObject, index) => new { index, toolTipMapObject }))
+            foreach (var item in toolTipMapObjects.Select((toolTipMapObject, index) => new { index, toolTipMapObject }))
             {
                 var label = new System.Windows.Controls.Label
                 {
@@ -109,6 +117,8 @@ namespace XMap2FactoryTest
             customizedToolTip.IsOpen = false;
             customizedToolTip = null;
         }
+
+        private System.Windows.Controls.ToolTip customizedToolTip;
 
         private static ILayer CreateShapeLayer(Point center)
         {

@@ -14,17 +14,10 @@ namespace XMap2FactoryTest
             formsMap.SetMapLocation(new Point(8.4044, 49.01405), 10);
             formsMap.MaxZoom = 22;
 
-            formsMap.XMapUrl = "xserver2-europe-eu-test";
+            formsMap.XMapUrl = "xserver2-europe-eu-test; version = 2.9";
             formsMap.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
 
-            // formsMap.XMapUrl = "eu-n-test";
-            formsMap.XMapUrl = "http://172.23.112.32:40000"; // SmarTour-Server, Linux-based
-            // formsMap.XMapUrl = "http://172.23.112.154:40000"; // SmarTour-Server, Windows-based
-            // formsMap.XMapUrl = "http://xserver-2:40000";
-            // formsMap.XMapUrl = "https://xserver2-europe-eu-test.cloud.ptvgroup.com";
-            formsMap.XMapCredentials = "xtok:9358789A-A8CF-4CA8-AC99-1C0C4AC07F1E";
-
-            formsMap.Layers.InsertBefore(CreateWmtsLayer(), "Labels"); // WMTS-Layer after shape layer but also in-between background and foreground
+            formsMap.Layers.InsertBefore(CreateWmtsLayer(), "Labels"); // WMTS-Layer in-between background and labels
         }
 
         private static ILayer CreateWmtsLayer()

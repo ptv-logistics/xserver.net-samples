@@ -37,7 +37,7 @@ namespace XMap2FactoryTest
             // Fill the checked list box with all relevant Feature Layer themes by means of the white list.
             layerFactory.FeatureLayers.AvailableThemes
                 .Where(theme => whiteList.Contains(theme))
-                .ToList().ForEach(theme => form.featureLayerCheckedListBox.Items.Add(theme, theme != "PTV_SpeedPatterns"));
+                .ToList().ForEach(theme => form.featureLayerCheckedListBox.Items.Add(theme, true));
 
             // For text boxes the Leave event is used instead of TextChanged because during editing inconsistent results may arise.
             form.noneTimeConsiderationRadioButton.CheckedChanged += SetTimeConsiderationScenario;
@@ -46,9 +46,13 @@ namespace XMap2FactoryTest
             form.timeSpanRadioButton.CheckedChanged += SetTimeConsiderationScenario;
             form.snapshotRadioButton.Checked = true;
 
+            DateTime now = DateTime.Now;
+            form.referenceTimeDatePicker.Value = now;
+            form.referenceTimeTimePicker.Value = now;
+            form.timeZoneTextBox.Text = GetTimeZoneString(TimeZone.CurrentTimeZone.GetUtcOffset(now));
             form.referenceTimeDatePicker.ValueChanged += SetReferenceTime;
             form.referenceTimeTimePicker.ValueChanged += SetReferenceTime;
-            var x = form.referenceTimeTimePicker.Value;
+            form.timeZoneTextBox.Leave += SetReferenceTimeWithTimeZoneCheck;
             SetReferenceTime(null, null);
 
             form.timeSpanTextBox.Leave += SetTimeSpan;
@@ -82,10 +86,28 @@ namespace XMap2FactoryTest
             layerFactory.FeatureLayers.TimeConsiderationScenario = timeConsiderationScenario;
         }
 
+        private string GetTimeZoneString(TimeSpan timeSpan)
+        {
+            string result = timeSpan.Hours >= 0 ? "+" : string.Empty;
+            result += timeSpan.Hours.ToString("D2");
+            result += ":" + timeSpan.Minutes.ToString("D2");
+            return result;
+        }
+
         // Valid example: "2016-10-21T04:00:00+02:00"
         private void SetReferenceTime(object sender, EventArgs e) => 
-            layerFactory.FeatureLayers.ReferenceTime = 
-            $"{(form.referenceTimeDatePicker.Value.Date + form.referenceTimeTimePicker.Value.TimeOfDay).ToString("o")}";
+            layerFactory.FeatureLayers.ReferenceTime = $"{form.referenceTimeDatePicker.Value:yyyy-MM-dd}T{form.referenceTimeTimePicker.Value:HH:mm:ss}{form.timeZoneTextBox.Text}";
+
+        private void SetReferenceTimeWithTimeZoneCheck(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(form.timeZoneTextBox.Text, @"^[-+]\d{2}:\d{2}$"))
+            {
+                System.Windows.MessageBox.Show(@"Wrong time zone format. Expected regular expression: [-+]\d{2}:\d{2}");
+                return;
+            }
+
+            SetReferenceTime(sender, e);
+        }
 
         private void SetTimeSpan(object sender, EventArgs e)
         {
