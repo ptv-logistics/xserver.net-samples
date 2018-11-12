@@ -363,7 +363,7 @@
             this.groupBox7.Size = new System.Drawing.Size(1035, 131);
             this.groupBox7.TabIndex = 11;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Request logging";
+            this.groupBox7.Text = "Request and error logging";
             // 
             // requestLoggingTextBox
             // 

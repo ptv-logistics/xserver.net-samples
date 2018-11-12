@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -36,7 +38,22 @@ namespace XMap2FactoryTest
 
         private void InitializeXMap2()
         {
-            // Demonstration how to modify an xMap2 request before it is sent.
+            DemonstrationHowToModifyXServerRequestBeforeItIsSent();
+
+            DemonstrationHowToGetDetailedInformationOfXServerException();
+
+            var layerFactory = formsMap.Xmap2LayerFactory;
+            if (layerFactory == null)
+                return; // An invalid xServer2-URL was specified, the following XServer2 preparations cannot be executed.
+
+            PrepareMapStyles(layerFactory);
+            PrepareLanguages(layerFactory);
+
+            new FeatureLayerSetter(this);
+        }
+
+        private void DemonstrationHowToModifyXServerRequestBeforeItIsSent()
+        {
             LayerFactory.ModifyRequest = request =>
             {
                 request.Headers["Dummy"] = "Test";
@@ -44,38 +61,48 @@ namespace XMap2FactoryTest
                 AppendTextBox(request.Headers.ToString());
                 return request;
             };
+        }
 
-            var layerFactory = formsMap.Xmap2LayerFactory;
-            if (layerFactory == null)
-                return; // An invalid xServer2-URL was specified, the following XServer2 preparations cannot be executed.
+        private void DemonstrationHowToGetDetailedInformationOfXServerException()
+        {
+            LayerFactory.ReportXServerError = exception =>
+            {
+                using (var stream = exception.Response.GetResponseStream())
+                    if (stream != null)
+                        using (var reader = new StreamReader(stream, Encoding.UTF8))
+                            AppendTextBox(reader.ReadToEnd());
+            };
+        }
 
+        private void PrepareMapStyles(LayerFactory layerFactory)
+        {
             foreach (var mapStyle in layerFactory.AvailableMapStyles)
-                if (mapStyle.Equals("default")) // if "default" is available insert it at first position.
+                if (mapStyle.Equals("default")) // if "default" is available then insert it at first position.
                     mapStylesComboBox.Items.Insert(0, mapStyle);
                 else
                     mapStylesComboBox.Items.Add(mapStyle);
+
             mapStylesComboBox.SelectedIndex = Math.Min(0, mapStylesComboBox.Items.Count - 1);
 
             mapStylesComboBox.SelectedIndexChanged += (_, __) => layerFactory.MapStyle = mapStylesComboBox.Text;
             layerFactory.MapStyle = mapStylesComboBox.Text;
+        }
 
+        private void PrepareLanguages(LayerFactory layerFactory)
+        {
             mapLanguageTextBox.Leave += (_, __) => layerFactory.MapLanguage = mapLanguageTextBox.Text;
             layerFactory.MapLanguage = mapLanguageTextBox.Text;
 
             trafficIncidentsLanguageTextBox.Leave += (_, __) => layerFactory.UserLanguage = trafficIncidentsLanguageTextBox.Text;
             layerFactory.UserLanguage = trafficIncidentsLanguageTextBox.Text;
-
-            new FeatureLayerSetter(this);
         }
 
         public void AppendTextBox(string value)
         {
             if (InvokeRequired)
-            {
                 BeginInvoke(new Action<string>(AppendTextBox), value);
-                return;
-            }
-            requestLoggingTextBox.AppendText(Environment.NewLine + value);
+            else
+                requestLoggingTextBox.AppendText(value);
         }
 
         private void CreateOwnToolTip(List<IMapObject> toolTipMapObjects)
