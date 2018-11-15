@@ -10,6 +10,16 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 * [xserver.net-docs](https://ptv-logistics.github.io/xserver.net-docs) - API documentation for xServer.NET
 
 
+### Remarks
+For xServer internet an additional authentication is needed compared to an on-premise solution. This authentication consists of a common user/password pair which has to be set at the corresponding property of the Map control. A special user <em>xtok</em> exists which can be used for unregistered clients. The corresponding password, called xToken, can be [obtained](https://www.ptvgroup.com/en/solutions/products/ptv-xserver/test-now) to grant full access of xServer functionality.
+
+Due to this full acces the xToken cannot be provided in the source code. Instead, place holders are used. They are replaced when the build process is started by a tool called <em>Insert-XS.Net-Token.exe</em>. When this tool finds an appropriate place holder, it shows a dialog to insert the xToken.
+
+To access multiple sample projects without any tedious repetition of xToken insertion, <em>Insert-XS.Net-Token.exe</em> can be used to substitute the place holders in <strong>all</strong> projects. This tool is located in <em>libs</em> subfolder of the base directory. Via commandline add the following parameters:
+
+Insert-XS.Net-Token.exe -path "base directory of xserver.net-samples project"
+
+
 ### The samples
 
 #### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) \#new \#xserver-2
