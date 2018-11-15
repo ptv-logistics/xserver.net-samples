@@ -19,67 +19,20 @@ namespace FeatureLayers
         public Window1()
         {
             InitializeComponent();
-
-            referenceTime.Value = DateTime.Now;        
-
-            InitializeMap();
-
-            Map.SetMapLocation(new Point(8.4, 49), 14);
         }
 
-        /// <summary>
-        /// Asynchronous initialization of the map
-        /// </summary>
-        private async void InitializeMap()
+        private void Map_Loaded(object sender, RoutedEventArgs e)
         {
-            // Get meta info in separate task and await
-            var meta = await Task.Run(() => GetMetaInfo());
+            referenceTime.Value = DateTime.Now;
 
-            // Initialize the map
-            InsertXMapBaseLayers(Map.Layers, meta);
-        }
-
-        /// <summary>
-        /// Get the meta info from xServer
-        /// </summary>
-        /// <returns></returns>
-        private static XMapMetaInfo GetMetaInfo()
-        {
-            // the tools class XMapMetaInfo contains the information required to initialize the xServer layers
-            // When instantiated with the url, it tries to read the attribution text and the maximum request size from the xMap configuration
-            // var meta = new XMapMetaInfo("http://127.0.0.1:50010/xmap/ws/XMap"); // custom xmap with reverse proxy
-
-            var meta = new XMapMetaInfo("https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"); // xServer internet
-            meta.SetCredentials("xtok", "Insert your xToken here"); // set the basic authentication properties, e.g. xtok/token for xServer internet
-
-            return meta;
-        }
-
-        // Initialize the xServer base map layers
-        public void InsertXMapBaseLayers(LayerCollection layers, XMapMetaInfo meta)
-        {
-            var baseLayer = new TiledLayer("Background")
-            {
-                TiledProvider = new XMapTiledProviderEx(meta.Url, XMapMode.Background) { User = meta.User, Password = meta.Password, CustomProfile = "silkysand-bg" },
-                Copyright = meta.CopyrightText,
-                Caption = MapLocalizer.GetString(MapStringId.Background),
-                IsBaseMapLayer = true,
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")                
-            };
-
-            var labelLayer = new UntiledLayer("Labels")
-            {
-                UntiledProvider = new XMapTiledProviderEx(meta.Url, XMapMode.Town) { User = meta.User, Password = meta.Password, CustomProfile = "silkysand-fg" },
-                Copyright = meta.CopyrightText,
-                MaxRequestSize = meta.MaxRequestSize,
-                Caption = MapLocalizer.GetString(MapStringId.Labels),
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png")
-            };
-
-            layers.Add(baseLayer);
-            layers.Add(labelLayer);
+            // for on-premis: Map.XMapUrl = "http://127.0.0.1:50010/xmap/ws/XMap");
+            Map.XMapUrl = "api-test";
+            Map.XMapCredentials = "Insert your xToken here";
+            Map.XMapStyle = "gravelpit";
 
             InitFeatureLayers();
+
+            Map.SetMapLocation(new Point(-74.005833, 40.712778), 14);
         }
 
         private FeatureLayerPresenter flPresenter;

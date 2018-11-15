@@ -3,6 +3,7 @@ using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
+using Ptv.XServer.Controls.Map.TileProviders;
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -108,7 +109,7 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         /// </summary>
         private struct RefreshInfo
         {
-            public XMapTiledProviderEx provider;
+            public XMapTiledProvider provider;
             public BaseLayer layer;
         }
 
@@ -118,11 +119,11 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         {
             var backgroundLayer = map.Layers["Background"] as TiledLayer;
             if (backgroundLayer != null)
-                yield return new RefreshInfo { provider = (XMapTiledProviderEx) backgroundLayer.TiledProvider, layer = backgroundLayer };
+                yield return new RefreshInfo { provider = (XMapTiledProvider) backgroundLayer.TiledProvider, layer = backgroundLayer };
 
             var foregroundLayer = map.Layers["Labels"] as UntiledLayer;
             if (foregroundLayer != null)
-                yield return new RefreshInfo { provider = (XMapTiledProviderEx) foregroundLayer.UntiledProvider, layer = foregroundLayer };
+                yield return new RefreshInfo { provider = (XMapTiledProvider) foregroundLayer.UntiledProvider, layer = foregroundLayer };
         }
 
         public bool UseTrafficIncidents { get; set; }

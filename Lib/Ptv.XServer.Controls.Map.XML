@@ -5,9 +5,7 @@
     </assembly>
     <members>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.NavigationGadget">
-            <summary><para> Interaction logic for NavigationGadget. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> and
-            <conceptualLink target="fdaa5363-b092-43cc-950e-6f120dee0d92"/> topics for examples. </para></summary>
+            <summary> Interaction logic for NavigationGadget. </summary>
             <summary>
             NavigationGadget
             </summary>
@@ -59,8 +57,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.WatermarkControl">
-            <summary><para> Control showing a watermark text over the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Control showing a watermark text over the map. </summary>
             <summary>
             WatermarkControl
             </summary>
@@ -74,8 +71,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.DimmerGadget">
-            <summary><para> Gadget with a dimmer slider to change the dim state of the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget with a dimmer slider to change the dim state of the map. </summary>
             <summary>
             DimmerGadget
             </summary>
@@ -107,8 +103,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.MagnifierMapView">
-            <summary><para> Map displayed in the magnifier. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Map displayed in the magnifier. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Gadgets.MagnifierMapView.parentMapView">
             <summary> Parent map of the magnifier. </summary>
@@ -144,8 +139,7 @@
             <param name="e"> The event parameters. </param>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.OverviewMapView">
-            <summary><para> Map showing a small overview of the parent map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Map showing a small overview of the parent map. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Gadgets.OverviewMapView.parentMapView">
             <summary> The parent map of the overview map. </summary>
@@ -195,8 +189,7 @@
                       it does not recognize or handle. </returns>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.ZoomSliderGadget">
-            <summary><para> Gadget showing a zoom slider on the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget showing a zoom slider on the map. </summary>
             <summary>
             ZoomSliderGadget
             </summary>
@@ -254,8 +247,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.NearestSearchResult">
-            <summary><para> Struct containing all relevant data needed for each result of a nearest search. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Struct containing all relevant data needed for each result of a nearest search. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Gadgets.NearestSearchResult.Id">
             <summary> Gets or sets the identifier of a resulting object. </summary>
@@ -269,8 +261,7 @@
             <value> Distance of the object to the search point. </value>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.ILayerGeoSearch">
-            <summary><para> Collection of geographical search methods for layer objects. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Collection of geographical search methods for layer objects. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Gadgets.ILayerGeoSearch.NearestSearch(System.Windows.Point,System.Int32,System.Boolean,System.Double)">
             <summary> Search for layer objects which reside nearest to a point specified in <paramref name="point"/>. </summary>
@@ -324,8 +315,7 @@
             <returns> Collection of layer objects, which are cut by the specified line. </returns>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.CoordinatesGadget">
-            <summary><para> Gadget showing the map coordinates of the current mouse position in logical format (GeoMinSec). </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget showing the map coordinates of the current mouse position in logical format (GeoMinSec). </summary>
             <summary>
             CoordinatesGadget
             </summary>
@@ -383,8 +373,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.CopyrightGadget">
-            <summary><para> Gadget showing the copyright text of the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget showing the copyright text of the map. </summary>
             <summary>
             CopyrightGadget
             </summary>
@@ -421,8 +410,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.LayersGadget">
-            <summary><para> Gadget listing the different layers of the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget listing the different layers of the map. </summary>
             <summary>
             LayersGadget
             </summary>
@@ -564,9 +552,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.MagnifierMap">
-            <summary><para> Gadget showing a magnifier on the map. The magnifier offers you to get a deeper look into the map
-            without zooming in. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget showing a magnifier on the map. The magnifier offers you to get a deeper look into the map without zooming in. </summary>
             <summary>
             MagnifierMap
             </summary>
@@ -686,9 +672,8 @@
             <see cref="N:Ptv.XServer.Controls.Map.Gadgets"/>. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.FocusBehaviorMode">
-            <summary><para> Defines the mode of the focus behavior. By default the MapGadget hands over the focus if an event is
-            received (same as HandoverToMap mode). In the 'Retain' mode the focus is not handed over. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Defines the mode of the focus behavior. By default the MapGadget hands over the focus if an event is
+            received (same as HandoverToMap mode). In the 'Retain' mode the focus is not handed over. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Gadgets.FocusBehaviorMode.HandoverToMap">
             <summary> Default. Hands over the focus to the map if an event is received. </summary>
@@ -724,16 +709,14 @@
             <summary> Copyright gadget showing the map copyrights in the map. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.IGadget">
-            <summary><para> Interface containing all properties of the gadget which are client configurable. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Interface containing all properties of the gadget which are client configurable. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Gadgets.IGadget.Visible">
             <summary> Gets or sets a value indicating whether the gadget is to be displayed or hidden. </summary>
             <value> Flag showing whether the gadget is visible. </value>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.MapGadget">
-            <summary><para> Parent class of all map gadgets. A map gadget is an add-on to the map like a coordinates gadget, a scale gadget etc.. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Parent class of all map gadgets. A map gadget is an add-on to the map like a coordinates gadget, a scale gadget etc... </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Gadgets.MapGadget.#ctor">
             <summary> Initializes a new instance of the <see cref="T:Ptv.XServer.Controls.Map.Gadgets.MapGadget"/> class. </summary>
@@ -803,9 +786,8 @@
             <summary> Updates the inner content of the map gadget according to the currently set colors. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.OverviewMap">
-            <summary><para> Gadget for showing the overview map. An overview map shows the whole map in small. A rectangle on
-            the overview map shows the borders of the currently displayed map section. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget for showing the overview map. An overview map shows the whole map in small. A rectangle on
+            the overview map shows the borders of the currently displayed map section. </summary>
             <summary>
             OverviewMap
             </summary>
@@ -831,8 +813,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.ScaleGadget">
-            <summary><para> Gadget showing the current scale of the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Gadget showing the current scale of the map. </summary>
             <summary>
             ScaleGadget
             </summary>
@@ -882,8 +863,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.ScaleInfo">
-            <summary><para> Scale information object. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Scale information object. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Gadgets.ScaleInfo.Text">
             <summary> Gets or sets the text describing the scale. </summary>
@@ -894,8 +874,7 @@
             <value> Dimension of the scale. </value>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.DragMode">
-            <summary><para> Mode describing what is to be done when clicking in the map. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> Mode describing what is to be done when clicking in the map. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Gadgets.DragMode.None">
             <summary> No special action. </summary>
@@ -914,9 +893,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Gadgets.PanAndZoom">
-            <summary><para> User control for the <see cref="T:Ptv.XServer.Controls.Map.MapView"/>-object, translating user interactions into modification
-            of the visible map section. </para>
-            <para> See the <conceptualLink target="eb8e522c-5ed2-4481-820f-bfd74ee2aeb8"/> topic for an example. </para></summary>
+            <summary> User control for the <see cref="T:Ptv.XServer.Controls.Map.MapView"/>-object, translating user interactions into modification of the visible map section. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Gadgets.PanAndZoom.WorldStartPoint">
             <summary> Start point of the interaction in world coordinates. </summary>
@@ -1034,7 +1011,7 @@
             <summary>Contains the geometry provided by property <see cref="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.DefiningGeometry"/>. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.DefiningGeometry">
-            <inheritdoc/>
+            <summary> Gets a value that represents the geometry of the shape. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.Points">
             <summary> Gets or sets the points of the polyline. </summary>
@@ -1051,9 +1028,6 @@
             <summary> Event handler for a change of the point collection. The polyline is updated in this case. </summary>
             <param name="obj"> Element for which the point collection has been changed. </param>
             <param name="args"> Event parameters. </param>
-        </member>
-        <member name="M:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase.#ctor">
-            <summary> Initializes a new instance of the <see cref="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolylineBase"/> class. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.Shapes.MapPolyline">
             <summary><para> This class represents a polyline on the map. The MapPolyline is responsible for adapting the visual
@@ -1634,7 +1608,7 @@
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledLayer.UpdateMapObjects(System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject},System.Windows.Size)">
             <summary>Takes all parameters into members, commonly provided by the corresponding provider. </summary>
-            <param name="mapObjects">Set of map objects which can be used for showing tool tips.</param>
+            <param name="newMapObjects">Set of map objects which can be used for showing tool tips.</param>
             <param name="requestedSize">The size of the map image.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Untiled.UntiledLayer.AddToMapView(Ptv.XServer.Controls.Map.MapView)">
@@ -1859,10 +1833,16 @@
             of one event source. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportBeginChangedWeakEventManager.StartListening(System.Object)">
-            <inheritdoc/>  
+            <summary>
+            Starts listening for the event being managed. After this method is first called,
+            the manager should be in the state of calling DeliverEvent(Object, EventArgs)
+            or DeliverEventToList(Object, EventArgs, WeakEventManager+ListenerList) whenever the relevant event from the provided source is handled.
+            </summary>
+            <param name="source">The source to begin listening on.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportBeginChangedWeakEventManager.StopListening(System.Object)">
-            <inheritdoc/>  
+            <summary>Stops listening for the event on the specified object. </summary>
+            <param name="source">The object to that raises the event.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportBeginChangedWeakEventManager.AddListener(Ptv.XServer.Controls.Map.MapView,System.Windows.IWeakEventListener)">
             <summary> Connects the listener to the event queue. </summary>
@@ -1885,10 +1865,16 @@
             of one event source. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportEndChangedWeakEventManager.StartListening(System.Object)">
-            <inheritdoc/>
+            <summary>
+            Starts listening for the event being managed. After this method is first called,
+            the manager should be in the state of calling DeliverEvent(Object, EventArgs)
+            or DeliverEventToList(Object, EventArgs, WeakEventManager+ListenerList) whenever the relevant event from the provided source is handled.
+            </summary>
+            <param name="source">The source to begin listening on.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportEndChangedWeakEventManager.StopListening(System.Object)">
-            <inheritdoc/>
+            <summary>Stops listening for the event on the specified object. </summary>
+            <param name="source">The object to that raises the event.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportEndChangedWeakEventManager.AddListener(Ptv.XServer.Controls.Map.MapView,System.Windows.IWeakEventListener)">
             <summary> Connects the listener to the event queue. </summary>
@@ -1911,10 +1897,16 @@
             of one event source. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportWhileChangedWeakEventManager.StartListening(System.Object)">
-            <inheritdoc/>
+            <summary>
+            Starts listening for the event being managed. After this method is first called,
+            the manager should be in the state of calling DeliverEvent(Object, EventArgs)
+            or DeliverEventToList(Object, EventArgs, WeakEventManager+ListenerList) whenever the relevant event from the provided source is handled.
+            </summary>
+            <param name="source">The source to begin listening on.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportWhileChangedWeakEventManager.StopListening(System.Object)">
-            <inheritdoc/>
+            <summary>Stops listening for the event on the specified object. </summary>
+            <param name="source">The object to that raises the event.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ViewportWhileChangedWeakEventManager.AddListener(Ptv.XServer.Controls.Map.MapView,System.Windows.IWeakEventListener)">
             <summary> Connects the listener to the event queue. </summary>
@@ -1948,7 +1940,7 @@
             <param name="timeout">Longest time waiting for WMS request.</param>
         </member>
         <member name="E:Ptv.XServer.Controls.Map.Layers.WmsLayer.PropertyChanged">
-            <inheritdoc/>
+            <summary> Occurs when a property value changes. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.WmsLayer.Name">
             <inheritdoc/>
@@ -2665,25 +2657,21 @@
         <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory">
             <summary>Generates layer objects based on xServer 2. </summary>
             <remarks>The provided layers have to be inserted into the <see cref="T:Ptv.XServer.Controls.Map.Map"/>'s layer management client-side.
-            There exist two different layers to make it is possible to 'inject' additional layers between background and foreground layer.</remarks>
+            There exist two different layers to make it is possible to 'inject' additional layers between background and label layer.</remarks>
         </member>
-        <member name="M:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.#ctor(System.String,System.String)">
+        <member name="M:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.#ctor(Ptv.XServer.Controls.Map.IXServerVersion)">
             <summary>Initializes the background and foreground layer which can be configured client-side with different themes.</summary>
-            <param name="baseUrl">URL specifying the root part of the URL from which a service like rendering a map can be composed.</param>
-            <param name="token">String needed for authentication in context of xServer Internet environments.</param>
+            <param name="xServerVersion">Version helper for URL specifying the root part of the URL from which a service like rendering a map can be composed.</param>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.BaseUrl">
             <summary>URL specifying the root part of the URL from which a service like rendering a map can be composed. For example, 
             https://xserver2-europe-eu-test.cloud.ptvgroup.com
             can be used as a base URL providing access to a Cloud based XServer2 system. The renderMap service is composed to:
-            https://xserver2-europe-eu-test.cloud.ptvgroup.com/services/rs/XMap/renderMap
+            https://xserver2-europe-eu-test.cloud.ptvgroup.com/services/rs/XMap/{version}/renderMap
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.Token">
             <summary>For xServer internet, a token must be specified for authentication. </summary>
-        </member>
-        <member name="F:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.ModifyRequest">
-            <summary>Callback for a final adaptation of a WebRequest before it is sent to XMap2 server.</summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.BackgroundLayer">
             <summary>An <see cref="T:Ptv.XServer.Controls.Map.Layers.ILayer"/> object providing a tile-based (i.e. more responsive) rendering. The geographical content is defined 
@@ -2725,6 +2713,12 @@
         </member>
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.FeatureLayers">
             <summary> Provides functionality all around Feature Layers. </summary>
+        </member>
+        <member name="F:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.ModifyRequest">
+            <summary>Callback for a final adaptation of a WebRequest before it is sent to XMap2 server.</summary>
+        </member>
+        <member name="F:Ptv.XServer.Controls.Map.Layers.Xmap2.LayerFactory.ReportXServerError">
+            <summary>Callback for a reporting of errors which may occur during xServer requests.</summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.Xmap2.UntiledProvider">
             <summary> Loads untiled bitmaps from a given xServer 2 URL, like
@@ -2783,9 +2777,6 @@
         <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.UntiledProvider.ContentSnapshotId">
             <summary>ID of the content snapshot.</summary>
         </member>
-        <member name="P:Ptv.XServer.Controls.Map.Layers.Xmap2.UntiledProvider.Update">
-            <inheritdoc/>
-        </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.Xmap2.UntiledProvider.GetImageStream(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
             <inheritdoc/>
         </member>
@@ -2812,7 +2803,7 @@
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ILayer.AddToMapView(Ptv.XServer.Controls.Map.MapView)">
             <summary> Adds the different layer canvases to the map. </summary>
-            <param name="mapView"> The map to which the canvases are to be added. </param>
+            <param name="mapViewToAdd"> The map to which the canvases are to be added. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.ILayer.RemoveFromMapView(Ptv.XServer.Controls.Map.MapView)">
             <summary> Removes the different layer canvases from the map. </summary>
@@ -2896,7 +2887,7 @@
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.BaseLayer.AddToMapView(Ptv.XServer.Controls.Map.MapView)">
             <summary> Adds the layer to a map. </summary>
-            <param name="mapView"> The map to which the layer is to be added. </param>
+            <param name="mapViewToAdd"> The map to which the layer is to be added. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Layers.BaseLayer.RemoveFromMapView(Ptv.XServer.Controls.Map.MapView)">
             <summary> Removes the layer from a map. </summary>
@@ -2921,7 +2912,7 @@
             <summary> Updates the zIndex of the layer. </summary>
         </member>
         <member name="E:Ptv.XServer.Controls.Map.Layers.BaseLayer.PropertyChanged">
-            <inheritdoc/>  
+            <summary> Occurs when a property value changes. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Layers.XMapLayerFactory">
             <summary>
@@ -3062,7 +3053,9 @@
         </member>
         <member name="P:Ptv.XServer.Controls.Map.IMap.XMapCredentials">
             <summary> Gets or sets the credentials for xMapServer basic HTTP authentication.
-            The format of the credential string is "&lt;user&gt;:&lt;password&gt;". </summary>
+            The format of the credential string is "&lt;user&gt;:&lt;password&gt;".</summary>
+            <remarks>It is possible to specify only the password. In this case the password is regarded as an XToken,
+            and the 'user' <em>xtok</em> is applied automatically. </remarks>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.IMap.XMapStyle">
             <summary> Gets or sets the style profile of the xMapServer base map. </summary>
@@ -3363,10 +3356,11 @@
             <returns> Flag which shows if the layer name already exists. </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.LayerCollection.Clone">
-            <inheritdoc/>
+            <summary> Creates a new object that is a copy of the current instance. </summary>
+            <returns> A new object that is a copy of this instance. </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.LayerCollection.Dispose">
-            <inheritdoc/>
+            <summary> Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.LayerChangedEventArgs">
             <summary>Additional argument class for events concerning some changes in the context of an individual layer. </summary>
@@ -3595,9 +3589,9 @@
         </member>
         <member name="M:Ptv.XServer.Controls.Map.MapRectangle.Union(System.Windows.Point)">
             <summary> 
-            Updates this rectangle to be the union of this and parameter <see cref="T:point"/>. I.e. the rectangle boundaries and the point
+            Updates this rectangle to be the union of this and parameter <paramref name="point"/>. I.e. the rectangle boundaries and the point
             itself are included in the new boundaries.
-            If <see cref="T:point"/> has Double.IsNaN coordinates, the boundaries remain unchanged. 
+            If <paramref name="point"/> has Double.IsNaN coordinates, the boundaries remain unchanged. 
             If this is empty, the boundaries are adapted to the point's coordinates (width and height will be 0).
             </summary>
             <param name="point">The point to 'incorporate' into this object. </param>
@@ -3880,9 +3874,7 @@
             <returns> Documentation in progress... </returns>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Crosshair">
-            <summary> <para>Interaction logic for Crosshair.xaml.</para>
-            <para>See the <conceptualLink target="fe3fa795-6deb-4f17-9d97-b94637ebdd49"/> and
-            <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topics for examples.</para> </summary>
+            <summary> Interaction logic for Crosshair.xaml. </summary>
             <summary>
             Crosshair
             </summary>
@@ -3929,8 +3921,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Ball">
-            <summary> <para> A ball symbol.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para> </summary>
+            <summary> A ball symbol. </summary>
             <summary>
             Ball
             </summary>
@@ -3973,8 +3964,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Cube">
-            <summary> <para>Interaction logic for Cube.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para> </summary>
+            <summary> Interaction logic for Cube.xaml. </summary>
             <summary>
             Cube
             </summary>
@@ -4017,8 +4007,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Diamond">
-            <summary> <para>Interaction logic for Diamond.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para> </summary>
+            <summary> Interaction logic for Diamond.xaml. </summary>
             <summary>
             Diamond
             </summary>
@@ -4050,8 +4039,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Hexagon">
-            <summary> <para>Interaction logic for Hexagon.xaml.</para> 
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para> </summary>
+            <summary> Interaction logic for Hexagon.xaml. </summary>
             <summary>
             Hexagon
             </summary>
@@ -4083,8 +4071,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Pentagon">
-            <summary> <para>Interaction logic for Pentagon.xaml.</para> 
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para> </summary>
+            <summary> Interaction logic for Pentagon.xaml. </summary>
             <summary>
             Pentagon
             </summary>
@@ -4116,10 +4103,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Pin">
-            <summary>
-            <para>Interaction logic for Pin.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para>
-            </summary>
+            <summary> Interaction logic for Pin.xaml. </summary>
             <summary>
             Pin
             </summary>
@@ -4154,10 +4138,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Pyramid">
-            <summary>
-            <para>Interaction logic for Pyramid.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para>
-            </summary>
+            <summary> Interaction logic for Pyramid.xaml. </summary>
             <summary>
             Pyramid
             </summary>
@@ -4200,10 +4181,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.Star">
-            <summary>
-            <para>Interaction logic for Star.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para>
-            </summary>
+            <summary> Interaction logic for Star.xaml. </summary>
             <summary>
             Star
             </summary>
@@ -4235,10 +4213,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.TriangleDown">
-            <summary>
-            <para>Interaction logic for TriangleDown.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para>
-            </summary>
+            <summary> Interaction logic for TriangleDown.xaml. </summary>
             <summary>
             TriangleDown
             </summary>
@@ -4270,10 +4245,7 @@
             </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Symbols.TriangleUp">
-            <summary>
-            <para>Interaction logic for TriangleUp.xaml.</para>
-            <para>See the <conceptualLink target="101dba72-fb36-468b-aa99-4b9c5bbfb62f"/> topic for an example.</para>
-            </summary>
+            <summary> Interaction logic for TriangleUp.xaml. </summary>
             <summary>
             TriangleUp
             </summary>
@@ -4475,51 +4447,58 @@
             </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Item(System.String)">
-            <inheritdoc/>
+            <summary>Returns value which belongs to the key attribute. </summary>
+            <param name="key">Key of the corresponding key/value pair.</param>
+            <returns>Value of the corresponding key/value pair.</returns>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Id">
-            <inheritdoc/>
+            <summary> Identifier of the object. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.LogicalPosition">
-            <inheritdoc/>
+            <summary> Logical position of the map object. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Point">
-            <inheritdoc/>
+            <summary> Geographical coordinate. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Layer">
-            <inheritdoc/>
+            <summary> Layer to which this map object belongs to. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.MapObject.GetEnumerator">
-            <inheritdoc/>
+            <summary> Set of key/value pairs. </summary>
+            <returns> Enumeration of key value pairs. </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.MapObject.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc/>
+            <summary> Set of key/value pairs. </summary>
+            <returns> Enumeration of key value pairs. </returns>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Count">
-            <inheritdoc/>
+            <summary> Number of key/value pairs. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Keys">
-            <inheritdoc/>
+            <summary> Enumeration of all available keys. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Values">
-            <inheritdoc/>
+            <summary> Enumeration of all available values. </summary>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.MapObject.Source">
-            <inheritdoc/>
+            <summary> Source of the map object. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.MapObject.ToString">
-            <inheritdoc/>
+            <summary> Textual representation of the whole object. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.MapObject.ContainsKey(System.String)">
-            <inheritdoc/>
+            <summary> Checks if value exists for specified key. </summary>
+            <param name="key"> Key to look for. </param>
+            <returns> Indicates if a value exists for the specified key. </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.MapObject.TryGetValue(System.String,System.String@)">
-            <inheritdoc/>
+            <summary> Tries to get a value for the specified key. </summary>
+            <param name="key"> Key to look for. </param>
+            <param name="value">If available, value belonging to the key. </param>
+            <returns> Indicates if a value exists for the specified key. </returns>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.TileProviders.TileMapRectangle">
-            <summary>
-            Represents a MapRectangle corresponding to a tile.
-            </summary>
+            <summary> Represents a MapRectangle corresponding to a tile. </summary>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.TileMapRectangle.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -4721,6 +4700,9 @@
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.CustomXMapLayers">
             <summary> Gets or sets the custom layers of the xMapServer. </summary>
         </member>
+        <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.ReferenceTime">
+            <summary> Gets or sets the reference time for feature layers. </summary>
+        </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.TryGetStreamInternal(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject}@)">
             <inheritdoc/>
         </member>
@@ -4849,7 +4831,7 @@
             <inheritdoc/>
         </member>
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProviderBase.Border">
-            <inheritdoc/>
+            <summary> Gets or sets the additional border size for a tile. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.TileProviders.XMapWSServiceImpl">
             <summary>
@@ -8231,7 +8213,8 @@
             <returns> Documentation in progress... </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Tools.Tile.GetHashCode">
-            <inheritdoc/>  
+            <summary> Serves as the hash function </summary>
+            <returns> A hash code for the current object. </returns>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Tools.PointInfo`1">
             <summary> This class holds the information for a single point. </summary>
@@ -8250,8 +8233,7 @@
             <summary> Gets or sets the item of the point. </summary>
         </member>
         <member name="T:Ptv.XServer.Controls.Map.Tools.TileBasedPointClusterer`1">
-            <summary><para> This class creates cluster objects for points. </para>
-            <para> See the <conceptualLink target="4926f311-8333-4b18-b509-70c1d876d5eb"/> topic for an example. </para></summary>
+            <summary> This class creates cluster objects for points. </summary>
             <typeparam name="T"> The type of the items which should be clustered. </typeparam>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Tools.TileBasedPointClusterer`1.maxLevel">
@@ -8382,7 +8364,13 @@
             <param name="updateMode"> The update mode tells which kind of change is to be processed by the update call. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Canvases.MapCanvas.ReceiveWeakEvent(System.Type,System.Object,System.EventArgs)">
-            <inheritdoc/>
+            <summary> Receives events from the centralized event manager. </summary>
+            <param name="managerType">The type of the WeakEventManager calling this method.</param>
+            <param name="sender">Object that originated the event.</param>
+            <param name="e">Event data.</param>
+            <returns> True if the listener handled the event. It is considered an error by the WeakEventManager
+            handling in WPF to register a listener for an event that the listener does not handle. Regardless,
+            the method should return false if it receives an event that it does not recognize or handle. </returns>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.Canvases.MapCanvas.CanvasToPtvMercator(System.Windows.Point)">
             <summary> This method implements a transformation from canvas coordinates to logical coordinates. </summary>
@@ -9453,7 +9441,8 @@
             <param name="e"> Event parameters. </param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.FormsMap.Dispose(System.Boolean)">
-            <inheritdoc/>
+            <summary> Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. </summary>
+            <param name="disposing"> Flag indicating to dispose also the unmanaged resources of WPF map.</param>
         </member>
         <member name="M:Ptv.XServer.Controls.Map.FormsMap.SetThemeFromXaml(System.IO.Stream)">
             <summary> Sets the current theme from a XAML file provided by the stream. The XAML file must contain a

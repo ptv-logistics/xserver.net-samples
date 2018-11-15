@@ -98,7 +98,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FeatureLayer.cs" />
-    <Compile Include="XmapTiledProvider.cs" />
     <Page Include="Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -5,8 +5,12 @@
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Server-Side Rendering" Height="600" Width="800">
     <Grid>
-        <mapcore:WpfMap Name="Map"/>
-        <StackPanel Margin="10,0,0,60"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="549*"/>
+            <ColumnDefinition Width="245*"/>
+        </Grid.ColumnDefinitions>
+        <mapcore:WpfMap Name="Map" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4" Loaded="Map_Loaded"/>
+        <StackPanel Margin="10,0,0,60.4"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
             <wpfTool:DateTimePicker x:Name="referenceTime" ValueChanged="referenceTime_ValueChanged"></wpfTool:DateTimePicker>
             <CheckBox IsChecked="True" x:Name="trafficIncidents" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Traffic Incidents</CheckBox>
             <CheckBox IsChecked="False" x:Name="truckAttributes" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Truck Attributes</CheckBox>
