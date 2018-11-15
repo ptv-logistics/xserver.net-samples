@@ -1,4 +1,4 @@
-﻿using Ptv.XServer.Controls.Map.Layers.Shapes;
+using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Localization;
 using Ptv.XServer.Controls.Map.TileProviders;
@@ -13,7 +13,7 @@ namespace XSTwo
 {
     public partial class Form1 : Form
     {
-        private const string myToken = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+        private const string myToken = "Insert your xToken here";
 
         public Form1()
         {

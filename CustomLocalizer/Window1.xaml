@@ -1,4 +1,4 @@
-﻿<Window x:Class="CustomLocalizer.Window1"
+<Window x:Class="CustomLocalizer.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="MainWindow"
@@ -7,7 +7,7 @@
     xmlns:map="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map">
     <Grid>
         <map:WpfMap XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
-                    XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4" Zoom="10" Center="8.4, 49" 
+                    XMapCredentials = "Insert your xToken here" Zoom="10" Center="8.4, 49" 
                     x:Name="mapControl1" />
     </Grid>
 </Window>

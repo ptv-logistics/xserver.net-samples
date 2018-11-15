@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Threading.Tasks;
 using FormsMapCS.XRouteServiceReference;
 using Ptv.XServer.Controls.Map;
@@ -14,7 +14,7 @@ namespace FormsMapCS
 {
     public partial class Form1 : Form
     {
-        private const string token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+        private const string token = "Insert your xToken here";
 
         public Form1()
         {
@@ -30,7 +30,7 @@ namespace FormsMapCS
         {
             // initialize base map (for xServer internet)
             formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:" + token;
+            formsMap1.XMapCredentials = token;
 
             // add a new Shape Layer
             var layer = new ShapeLayer("MyShapes");

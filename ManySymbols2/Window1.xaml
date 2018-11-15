@@ -1,10 +1,10 @@
-﻿<Window x:Class="ManySymbols.Window1"
+<Window x:Class="ManySymbols.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:SymbolsAndLabels"
     xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid x:Name="LayoutRoot">
-        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4" XMapStyle="silkysand" />
+        <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials = "Insert your xToken here" XMapStyle="silkysand" />
     </Grid>
 </Window>

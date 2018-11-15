@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
@@ -83,7 +83,7 @@ namespace ToursAndStops
             if (xRoute.ClientCredentials != null)
             {
                 xRoute.ClientCredentials.UserName.UserName = "xtok";
-                xRoute.ClientCredentials.UserName.Password = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+                xRoute.ClientCredentials.UserName.Password = "Insert your xToken here";
             }
 
             return xRoute.calculateRoute(new[]

@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Media;
 using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers;
@@ -43,7 +43,7 @@ namespace MemoryPressureTest
 
             // add xmap base layers
             mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            mapControl1.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+            mapControl1.XMapCredentials = "Insert your xToken here";
 
             // goto KA
             mapControl1.SetMapLocation(new Point(10, 50), 6);

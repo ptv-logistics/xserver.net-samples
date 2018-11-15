@@ -1,4 +1,4 @@
-﻿using Ptv.XServer.Controls.Map;
+using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
@@ -17,7 +17,7 @@ namespace XynSegments
     /// </summary>
     public partial class Window1 : Window
     {
-        private static string token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+        private static string token = "Insert your xToken here";
 
         public Window1()
         {

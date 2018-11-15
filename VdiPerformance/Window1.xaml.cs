@@ -1,4 +1,4 @@
-﻿using Ptv.XServer.Controls.Map.Layers;
+using Ptv.XServer.Controls.Map.Layers;
 using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
@@ -142,7 +142,7 @@ namespace VdiPerformance
             const string copyrightText = "PTV, TomTom";
             var maxRequestSize = new Size(3840, 2400);
             const string user = "xtok";
-            const string password = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"; // this token is only for test purpose
+            const string password = "Insert your xToken here"; // this token is only for test purpose
             const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
 
             ILayer baseLayer;

@@ -14,6 +14,6 @@ namespace Ptv.XServer.Demo
       /// The token below is for internal use only - consider getting your own token!
       /// This token is valid until 2018-12-14T17:04:55Z.
       /// </summary>
-      public static string Value => "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+      public static string Value => "Insert your xToken here";
    }
 }

@@ -7,7 +7,7 @@ Imports Ptv.XServer.Controls.Map
 Imports Point = System.Windows.Point
 
 Public Class Form1
-    ReadOnly token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"
+    ReadOnly token = "Insert your xToken here"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Initialize()
@@ -16,7 +16,7 @@ Public Class Form1
     Private Async Sub Initialize()
         ' initialize base map (for xServer internet)
         FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"
-        FormsMap1.XMapCredentials = "xtok:" + token
+        FormsMap1.XMapCredentials = token
 
         ' add a new Shape Layer
         Dim layer = New ShapeLayer("MyShapes")

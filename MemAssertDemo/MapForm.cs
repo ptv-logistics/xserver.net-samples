@@ -1,4 +1,4 @@
-﻿using Ptv.XServer.Controls.Map.Layers.Shapes;
+using Ptv.XServer.Controls.Map.Layers.Shapes;
 using Ptv.XServer.Controls.Map.Symbols;
 using System;
 using System.Windows;
@@ -28,7 +28,7 @@ namespace MemoryDemo
 
             // initialize the map
             formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+            formsMap1.XMapCredentials = "Insert your xToken here";
 
             // This event-listener will create a reference from the map-control to the form.
             // So if the objects of the map aren't freed properly, the form will also leak memory.

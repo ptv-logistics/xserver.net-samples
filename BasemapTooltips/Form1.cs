@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System;
 using System.Windows.Forms;
 
@@ -6,9 +6,7 @@ namespace BasemapTooltips
 {
     public partial class Form1 : Form
     {
-        // Temporary demo token for xServer-internet
-        // Use your own test-token or your on-premise xServer when migrating the code
-        private const string token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+        private const string token = "Insert your xToken here";
 
         public Form1()
         {
@@ -23,8 +21,9 @@ namespace BasemapTooltips
         public void Initialize()
         {
             // initialize base map (for xServer internet)
+            // Use your on-premise xServer when migrating the code
             formsMap1.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            formsMap1.XMapCredentials = "xtok:" + token;
+            formsMap1.XMapCredentials = token;
 
             // initialize our tool tip handler
             var tt = new BaseMapToolTips(formsMap1.WrappedMap) { ReverseLocatingFunc = ReverseLocate };

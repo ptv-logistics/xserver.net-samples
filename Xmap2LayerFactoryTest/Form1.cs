@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace XMap2FactoryTest
             formsMap.MaxZoom = 22;
 
             formsMap.XMapUrl = "xserver2-europe-eu-test; version = 2.9";
-            formsMap.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4";
+            formsMap.XMapCredentials = "Insert your xToken here";
 
             InitializeXMap2();
 

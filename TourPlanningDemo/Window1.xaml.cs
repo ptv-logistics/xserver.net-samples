@@ -29,7 +29,7 @@ namespace TourPlanningDemo
             Map.Layers.Add(depotLayer);
         }
 
-        public const string XMapCredentials = "xtok:" + App.Token;
+        public const string XMapCredentials = App.Token;
 
         private readonly ShapeLayer tourLayer;
         private readonly ShapeLayer orderLayer;

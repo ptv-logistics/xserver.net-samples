@@ -1,4 +1,4 @@
-﻿using Ptv.XServer.Controls.Map;
+using Ptv.XServer.Controls.Map;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using Ptv.XServer.Controls.Map.Layers.Untiled;
 using Ptv.XServer.Controls.Map.Localization;
@@ -20,7 +20,7 @@ namespace CustomInit
             InitializeComponent();
 
             const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            const string token = "BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"; // just a test-token here. Use your own token
+            const string token = "Insert your xToken here"; // just a test-token here. Use your own token
 
             // v1: Use Meta info
             InitializeMap(Map1, url, token);

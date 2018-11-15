@@ -100,7 +100,7 @@ BOOL CMFCMapDialogDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 	m_mapCtrl->XMapUrl = gcnew System::String("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
-	m_mapCtrl->XMapCredentials = gcnew System::String("xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4");
+	m_mapCtrl->XMapCredentials = gcnew System::String("Insert your xToken here");
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

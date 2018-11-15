@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Ptv.XServer.Controls.Map.Tools;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,7 +19,7 @@ namespace CustomPinchZoom
             // set map parameters
             Map.XMapStyle = "silkysand";
             Map.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            Map.XMapCredentials = "xtok:BB2A4CCB-65D9-4783-BCA6-529AD7A6F4C4"; // just a test-token here. Use your own token
+            Map.XMapCredentials = "Insert your xToken here"; 
 
             // get the map container grid
             var grid = MapElementExtensions.FindChild<Grid>(Map);
