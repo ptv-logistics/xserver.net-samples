@@ -13,9 +13,9 @@ A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurew
 ### Remarks
 For xServer internet an additional authentication is needed compared to an on-premise solution. This authentication consists of a common user/password pair which has to be set at the corresponding property of the Map control. A special user <em>xtok</em> exists which can be used for unregistered clients. The corresponding password, called xToken, can be [obtained](https://www.ptvgroup.com/en/solutions/products/ptv-xserver/test-now) to grant full access of xServer functionality.
 
-Due to this full acces the xToken cannot be provided in the source code. Instead, place holders are used. They are replaced when the build process is started by a tool called <em>Insert-XS.Net-Token.exe</em>. When this tool finds an appropriate place holder, it shows a dialog to insert the xToken.
+Due to this full access the xToken cannot be provided in the source code. Instead, place holders are used. They are replaced when the build process is started by a tool called <em>Insert-XS.Net-Token.exe</em>. When this tool finds an appropriate place holder, it shows a dialog to insert the xToken.
 
-To access multiple sample projects without any tedious repetition of xToken insertion, <em>Insert-XS.Net-Token.exe</em> can be used to substitute the place holders in <strong>all</strong> projects. This tool is located in <em>libs</em> subfolder of the base directory. Via commandline add the following parameters:
+To access multiple sample projects without any tedious repetition of xToken insertion, <em>Insert-XS.Net-Token.exe</em> can be used to substitute the place holders in <strong>all</strong> projects. This tool is located in <em>libs</em> subfolder of the base directory. Via command line add the following parameters:
 
 Insert-XS.Net-Token.exe -path "base directory of xserver.net-samples project"
 
@@ -79,7 +79,7 @@ Shows how to change the default behavior for pan/zoom interaction.
 <img src="Screenshots/CustomPanAndZoom.png" height="240" title="CustomPanAndZoom">
 
 #### [Donuts](Donuts) \#customize
-Shows how to build a datasource and renderer for in-memory computed shapes.
+Shows how to build a data source and renderer for in-memory computed shapes.
 
 <img src="Screenshots/Donuts.png" height="240" title="Donuts">
 
@@ -137,12 +137,12 @@ Shows how to build custom shapes for the shape layer
 <img src="Screenshots/MapArrowDemo.png" height="240" title="MapArrowDemo">
 
 #### [MFCMapDialog](MFCMapDialog) #\interop
-Shows how to add the map to an MFC applciation
+Shows how to add the map to an MFC application
 
 <img src="Screenshots/MFCMapDialog.png" height="240" title="MFCMapDialog">
 
 #### [MultipleContainers](MultipleContainers) \#customize
-Test for map controls in mutliple tab-, split, and dock-containers
+Test for map controls in multiple tab-, split, and dock-containers
 
 <img src="Screenshots/MultipleContainers.png" height="240" title="MultipleContainers">
 
@@ -153,7 +153,7 @@ A utility class + demo that helps to track-down memory-leaks in your code.
 Tips to optimize xServer.NET for limited-memory scenarios
 
 #### [PieChartsAndExport](PieChartsAndExport) \#user-data
-Shows how to render arbitrary wpf elements and print/export the map content
+Shows how to render arbitrary WPF elements and print/export the map content
 
 <img src="Screenshots/PieChartsAndExport.png" height="240" title="PieChartsAndExport">
 
@@ -186,12 +186,12 @@ Shows practices how to use the new xTour 1.18 job api @xServer internet
 <img src="Screenshots/TourPlanningDemo.png" height="240" title="TourPlanningDemo">
 
 #### [ToursAndStopsMultiCanvas](ToursAndStopsMultiCanvas) \#customize
-Shows how to build one logical layer containing differrent canvases rendered before and after the xMap labels
+Shows how to build one logical layer containing different canvases rendered before and after the xMap labels
 
 <img src="Screenshots/ToursAndMultiCanvas.png" height="240" title="ToursAndMultiCanvas">
 
 #### [VdiPerformance](VdiPerformance) \#testing
-Benchmark for different settings that influcence performance on Virtual Desktop Environmnets (VDI)VdiPerformance
+Benchmark for different settings that influence performance on Virtual Desktop Environments (VDI)VdiPerformance
 
 <img src="Screenshots/VdiPerformance.png" height="240" title="VdiPerformance">
 
