@@ -4700,9 +4700,6 @@
         <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.CustomXMapLayers">
             <summary> Gets or sets the custom layers of the xMapServer. </summary>
         </member>
-        <member name="P:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.ReferenceTime">
-            <summary> Gets or sets the reference time for feature layers. </summary>
-        </member>
         <member name="M:Ptv.XServer.Controls.Map.TileProviders.XMapTiledProvider.TryGetStreamInternal(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{Ptv.XServer.Controls.Map.TileProviders.IMapObject}@)">
             <inheritdoc/>
         </member>
