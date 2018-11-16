@@ -25,25 +25,7 @@ namespace Ptv.XServer.Controls
     [ComSourceInterfaces(typeof(IMapEvents))]
     public partial class ActiveXSample : UserControl, IMapControl
     {
-        /// <summary>
-        /// The delegate type used for the <see cref="OnShapeClicked"/> event.
-        /// </summary>
-        /// <param name="id">ID of the shape that was clicked.</param>
-        /// <remarks>Can be marked [ComVisible(false)] by convention. As a COM event delegate this delegate has 
-        /// (to have) the same signature as the corresponding event method defined through <see cref="IMapEvents"/>.</remarks>
-        [ComVisible(false)]
-        public delegate void OnMarkerClickDelegate(int id);
-
-        /// <summary>
-        /// Fired, when the user clicks on a shape. See remarks.
-        /// </summary>
-        /// <remarks>This is (sort of) the event implementation of the corresponding 
-        /// event method defined through the COM source interface <see cref="IMapEvents"/>.</remarks>
-        public event OnMarkerClickDelegate OnShapeClicked;
-
-        /// <summary>
-        /// Initializes the control.
-        /// </summary>
+        /// <summary> Initializes the control. </summary>
         public ActiveXSample()
         {
             InitializeComponent();
@@ -65,6 +47,8 @@ namespace Ptv.XServer.Controls
             XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
             XMapCredentials = "Insert your xToken here"; 
             Shapes.AddMarker(42, 8.3, 49, 30, "#f00", "Pin", "Hello");
+
+            SetMapLocation(8.3, 49, 10);
         }
 
         /// <inheritdoc/>
@@ -80,7 +64,7 @@ namespace Ptv.XServer.Controls
             }
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IMapControl" />
         public string XMapCredentials
         {
             get
@@ -113,11 +97,7 @@ namespace Ptv.XServer.Controls
         }
 
         /// <inheritdoc/>
-        public IShapes Shapes 
-        { 
-            get; 
-            private set; 
-        }
+        public IShapes Shapes { get; }
         
 
         /// <summary>
@@ -127,20 +107,32 @@ namespace Ptv.XServer.Controls
         [ComVisible(false)]
         public void FireShapeClicked(int id)
         {
-            if (OnShapeClicked != null)
-            {
-                try { this.OnShapeClicked(id); }
-                catch { }
-            }
+            if (OnShapeClicked == null) return;
+
+            try { OnShapeClicked(id); }
+            catch { /* ignored */ }
         }
+
+        /// <summary> The delegate type used for the <see cref="OnShapeClicked"/> event. </summary>
+        /// <param name="id">ID of the shape that was clicked.</param>
+        /// <remarks>Can be marked [ComVisible(false)] by convention. As a COM event delegate this delegate has 
+        /// (to have) the same signature as the corresponding event method defined through <see cref="IMapEvents"/>.</remarks>
+        [ComVisible(false)]
+        public delegate void OnShapeClickDelegate(int id);
+
+        /// <summary>
+        /// Fired, when the user clicks on a shape. This is (sort of) the event implementation of the corresponding 
+        /// event method defined through the COM source interface <see cref="IMapEvents"/>.
+        /// </summary>
+        public event OnShapeClickDelegate OnShapeClicked;
+
 
         /// <summary>
         /// Hook that writes additional information to the Windows' registry allowing this control 
         /// to be used as an ActiveX control.
         /// </summary>
         /// <param name="key">The key of the control to be registered.</param>
-        /// <remarks>Please refer to the sample documentation for further information. 
-        /// See also <see cref="Registrar"/>.</remarks>
+        /// <remarks>Please refer to the sample documentation for further information, see also <see cref="Registrar"/>.</remarks>
         [ComRegisterFunction]
         public static void RegisterClass(string key)
         {
@@ -234,9 +226,9 @@ namespace Ptv.XServer.Controls
                 Symbol = Symbol.ToLower();
 
                 // try to locate the type matching the given symbol name
-                var pins = (from t in typeof(FormsMap).Assembly.GetTypes()
-                        where t.Namespace != null && t.Namespace.Equals(typeof(Pin).Namespace) && t.Name.ToLower().Equals(Symbol)
-                        select t).ToList();
+                var pins = (from type in typeof(FormsMap).Assembly.GetTypes()
+                        where type.Namespace != null && type.Namespace.Equals(typeof(Pin).Namespace) && type.Name.ToLower().Equals(Symbol)
+                        select type).ToList();
 
                 // if there's exactly one hit, create symbol instance
                 if (pins.Count == 1)
@@ -309,9 +301,7 @@ namespace Ptv.XServer.Controls
             return true;
         }
 
-        /// <summary>
-        /// Adds a shape to the shape layer, making it visible.
-        /// </summary>
+        /// <summary> Adds a shape to the shape layer, making it visible. </summary>
         /// <param name="shape">Shape to add.</param>
         /// <param name="id">ID of the shape to add.</param>
         /// <param name="toolTip">Optional tool tip to be assigned with the shape.</param>
@@ -395,7 +385,7 @@ namespace Ptv.XServer.Controls
 
             // insert the shape
             InsertShape(mapPolyline, id, toolTip);
-            
+
             return true;
         }
 

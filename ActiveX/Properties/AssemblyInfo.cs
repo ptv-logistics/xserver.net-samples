@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PTV AG")]
 [assembly: AssemblyProduct("ActiveXMap")]
-[assembly: AssemblyCopyright("Copyright © PTV AG 2013")]
+[assembly: AssemblyCopyright("Copyright © PTV Group")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

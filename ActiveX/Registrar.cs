@@ -5,10 +5,7 @@ using Microsoft.Win32;
 
 namespace Ptv.XServer.Controls
 {
-    /// <summary>
-    /// The Registrar provides the necessary extension methods to 
-    /// register .NET based ActiveX controls.
-    /// </summary>
+    /// <summary> The Registrar provides the necessary extension methods to register .NET based ActiveX controls. </summary>
     internal static class Registrar
     {
         /// <summary>
@@ -16,34 +13,31 @@ namespace Ptv.XServer.Controls
         /// the specified type (expected to be a control) with the specified 
         /// key as an ActiveX control.
         /// </summary>
-        /// <param name="t">The type of the control to register</param>
+        /// <param name="type">The type of the control to register</param>
         /// <param name="key">The key of the control to register</param>
-        public static void RegisterClass(this Type t, string key)
+        public static void RegisterClass(this Type type, string key)
         {
-            // Strip off HKEY_CLASSES_ROOT\ from the passed key as I don't need it
-            var sb = new StringBuilder(key);
-            sb.Replace(@"HKEY_CLASSES_ROOT\", "");
-
             // Open the CLSID\{guid} key for write access
-            using (var registryKey = Registry.ClassesRoot.OpenSubKey(sb.ToString(), true))
+            using (var registryKey = Registry.ClassesRoot.OpenSubKey(KeyWithoutRoot(key), true))
             {
+                if (registryKey == null) return;
+
                 // change title to ProgID
-                object progIdAttribute = t.GetCustomAttributes(typeof(ProgIdAttribute), false)[0];
-                registryKey.SetValue(null, ((ProgIdAttribute)progIdAttribute).Value);
+                var progIdAttribute = (ProgIdAttribute) type.GetCustomAttributes(typeof(ProgIdAttribute), false)[0];
+                registryKey.SetValue(null, progIdAttribute.Value);
 
                 // add version information
                 using (var versionKey = registryKey.CreateSubKey("Version"))
-                    versionKey.SetValue(null, t.Assembly.GetName().Version);
+                    versionKey.SetValue(null, type.Assembly.GetName().Version);
 
-                // And create the 'Control' key - this allows it to show up in 
-                // the ActiveX control container 
+                // And create the 'Control' key - this allows it to show up in the ActiveX control container 
                 using (registryKey.CreateSubKey("Control"))
                 {}
 
                 // Add TypeLib key - this is not done by regasm
-                object guidAttribute = t.Assembly.GetCustomAttributes(typeof(GuidAttribute), false)[0];
+                var guidAttribute = (GuidAttribute) type.Assembly.GetCustomAttributes(typeof(GuidAttribute), false)[0];
                 using (var typeLibKey = registryKey.CreateSubKey("TypeLib"))
-                    typeLibKey.SetValue(null, "{" + ((GuidAttribute) guidAttribute).Value + "}");
+                    typeLibKey.SetValue(null, "{" + guidAttribute.Value + "}");
             }
         }
 
@@ -51,15 +45,12 @@ namespace Ptv.XServer.Controls
         /// Removes the additional information written by <see cref="RegisterClass"/> 
         /// from the registry, fully unregister the specified type as an ActiveX control.
         /// </summary>
-        /// <param name="t">The type of the control to unregister</param>
+        /// <param name="type">The type of the control to unregister</param>
         /// <param name="key">The key of the control to unregister</param>
-        public static void UnregisterClass(this Type t, string key)
+        public static void UnregisterClass(this Type type, string key)
         {
-            var stringBuilder = new StringBuilder(key);
-            stringBuilder.Replace(@"HKEY_CLASSES_ROOT\", "");
-
-            // Open HKCR\CLSID\{guid} for write access
-            using (var registryKey = Registry.ClassesRoot.OpenSubKey(stringBuilder.ToString(), true))
+            // Open CLSID\{guid} for write access
+            using (var registryKey = Registry.ClassesRoot.OpenSubKey(KeyWithoutRoot(key), true))
             {
                 // do not fail if key does not exist
                 if (registryKey == null) return;
@@ -76,6 +67,16 @@ namespace Ptv.XServer.Controls
                 // Delete Version key
                 registryKey.DeleteSubKey("Version", false);
             }
+        }
+
+        private static string KeyWithoutRoot(string key)
+        {
+            var stringBuilder = new StringBuilder(key);
+
+            // Strip off HKEY_CLASSES_ROOT\ from the passed key because it is not needed
+            stringBuilder.Replace(@"HKEY_CLASSES_ROOT\", string.Empty);
+
+            return stringBuilder.ToString();
         }
     }
 }
