@@ -1,7 +1,7 @@
 xserver.net-samples
 ===================
 
-A bin of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
+A collection of samples and demos for [PTV xServer .NET](https://xserverinternet.azurewebsites.net/xserver.net/).
 
 
 ### Resources
