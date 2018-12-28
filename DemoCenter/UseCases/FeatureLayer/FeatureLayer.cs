@@ -189,7 +189,7 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
                 {
                     if (map.Layers["Feature Layer routes"] == null)
                     {
-                        shapeLayer = new ShapeLayer("Feature Layer routes") {SpatialReferenceId = "OG_GEODECIMAL"};
+                        shapeLayer = new ShapeLayer("Feature Layer routes");
                         map.Layers.InsertBefore(shapeLayer, "Labels");
                     }
                 }
