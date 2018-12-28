@@ -528,8 +528,6 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
             shapeLayer.Shapes.Clear();
             SetWayPointPins(currentScenario);
 
-            mergedRoutesRectangle = new MapRectangle();
-
             // Starts the normal and Feature Layer route calculation in parallel.
             var calcNorm = Task.Factory.StartNew(() => CalculateRoute(currentScenario, false));
             var calcFeat = Task.Factory.StartNew(() => CalculateRoute(currentScenario, true));
@@ -636,11 +634,8 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
                 Width = (route.dynamicInfo != null) ? 25 : 15
             };
 
-            shapeLayer.Refresh();
             ZoomToRoute(route);
         }
-
-        private MapRectangle mergedRoutesRectangle = new MapRectangle();
 
         /// <summary> Sets the map view to the extend of route. A frame of additional 20 percent of the minimal bounding rectangle
         /// is used to offset the route from the map window borders. </summary>
@@ -650,9 +645,7 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
             var winPoints = from plainPoint in route.polygon.lineString.wrappedPoints
                             select new System.Windows.Point(plainPoint.x, plainPoint.y);
 
-            mergedRoutesRectangle |= new MapRectangle(winPoints);
-
-            map.SetEnvelope(mergedRoutesRectangle.Inflate(1.2), "OG_GEODECIMAL");
+            map.SetEnvelope(new MapRectangle(winPoints).Inflate(1.2));
         }
     }
 }
