@@ -25,7 +25,7 @@ namespace XMap2FactoryTest
             formsMap.SetMapLocation(center, 15);
             formsMap.MaxZoom = 22;
 
-            formsMap.XMapUrl = "xserver2-europe-eu-test; version = 2.9";
+            formsMap.XMapUrl = "xserver2-europe-eu-test;version=2.8";
             formsMap.XMapCredentials = "Insert your xToken here";
 
             InitializeXMap2();

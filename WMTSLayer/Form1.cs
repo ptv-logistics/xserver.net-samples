@@ -14,7 +14,7 @@ namespace XMap2FactoryTest
             formsMap.SetMapLocation(new Point(8.4044, 49.01405), 10);
             formsMap.MaxZoom = 22;
 
-            formsMap.XMapUrl = "xserver2-europe-eu-test; version = 2.9";
+            formsMap.XMapUrl = "xserver2-europe-eu-test;version=2.8";
             formsMap.XMapCredentials = "Insert your xToken here";
 
             formsMap.Layers.InsertBefore(CreateWmtsLayer(), "Labels"); // WMTS-Layer in-between background and labels
