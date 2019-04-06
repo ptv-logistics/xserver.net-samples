@@ -28,20 +28,20 @@ Demonstrates the API for native Xmap2/FeatureLayer support.
 
 <img src="Screenshots/Xmap2LayerFactoryTest.png" height="360" title="Xmap2LayerFactoryTest">
 
-#### [WMTSLayer](WMTSLayer) \#new \#wms \#xserver-2 \#3rd-party
-Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
-
-<img src="Screenshots/WMTSLayer.png" height="360" title="WMTSLayer">
-
 #### [DemoCenter](DemoCenter) \#new \#xserver-1
 Source code for xServer.NET demo center.
 
 <img src="Screenshots/DemoCenter.png" height="360" title="DemoCenter">
 
-#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#new #interop \#sharpmap \#shapefile \#javascript
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#new #interop \#sharpmap \#shapefile \#javascript \leaflet
 Build responsive map applications for web and desktop
 
 <img src="Screenshots/SharpMap.Win.png" height="360" title="SharpMap.Widgets">
+
+#### [leaflet-vb6](https://github.com/ptv-logistics/leaflet-vb6) \#new #interop \#javascript \#leaflet
+Embed leaflet-based maps within classic desktop applications
+
+<img src="https://github.com/ptv-logistics/leaflet-vb6/blob/master/screenshot.png" height="360" title="leaflet-vb6">
 
 #### [ActiveX](ActiveX) \#interop
 Shows how to use the map as ActiveX control
@@ -195,6 +195,11 @@ Shows how to build one logical layer containing different canvases rendered befo
 Benchmark for different settings that influence performance on Virtual Desktop Environments (VDI)VdiPerformance
 
 <img src="Screenshots/VdiPerformance.png" height="240" title="VdiPerformance">
+
+#### [WMTSLayer](WMTSLayer) \#new \#wms \#xserver-2 \#3rd-party
+Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
+
+<img src="Screenshots/WMTSLayer.png" height="240" title="WMTSLayer">
 
 #### [XYNSegments](XYNSegments) \#xserver-1
 Shows how to select and render xServer XYN-Segments
