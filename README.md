@@ -38,7 +38,7 @@ Build responsive map applications for web and desktop
 
 <img src="Screenshots/SharpMap.Win.png" height="360" title="SharpMap.Widgets">
 
-#### [leaflet-vb6](https://github.com/ptv-logistics/leaflet-vb6) \#new #interop \#javascript \#leaflet
+#### [leaflet-vb6](https://github.com/ptv-logistics/leaflet-vb6) \#new #interop \#vb6 \#javascript \#leaflet
 Embed leaflet-based maps within classic desktop applications
 
 <img src="https://github.com/ptv-logistics/leaflet-vb6/blob/master/screenshot.png" height="360" title="leaflet-vb6">
