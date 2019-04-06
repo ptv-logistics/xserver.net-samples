@@ -33,7 +33,7 @@ Source code for xServer.NET demo center.
 
 <img src="Screenshots/DemoCenter.png" height="360" title="DemoCenter">
 
-#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#new #interop \#sharpmap \#shapefile \#javascript \leaflet
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#new #interop \#sharpmap \#shapefile \#javascript \#leaflet
 Build responsive map applications for web and desktop
 
 <img src="Screenshots/SharpMap.Win.png" height="360" title="SharpMap.Widgets">
