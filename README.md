@@ -9,7 +9,7 @@ A collection of samples and demos for [PTV xServer .NET](https://xserverinternet
 * [xserver.net](https://github.com/ptv-logistics/xserver.net) - Source code for PTV xServer.NET
 * [xserver.net-docs](https://ptv-logistics.github.io/xserver.net-docs) - API documentation for xServer.NET
 * [DemoCenter](https://xserverinternet.azurewebsites.net/xserver.net/) - PTV xServer.NET Demo Center
-* [NuGet Package](https://www.nuget.org/packages/Ptv.XServer.Net] - Install-Package Ptv.XServer.Net
+* [NuGet Package](https://www.nuget.org/packages/Ptv.XServer.Net) - Install-Package Ptv.XServer.Net
 
 
 ### Remarks
