@@ -80,11 +80,6 @@ Shows how to change the default behavior for pan/zoom interaction.
 
 <img src="Screenshots/CustomPanAndZoom.png" height="240" title="CustomPanAndZoom">
 
-#### [Donuts](Donuts) \#customize
-Shows how to build a data source and renderer for in-memory computed shapes.
-
-<img src="Screenshots/Donuts.png" height="240" title="Donuts">
-
 #### [DrawMode](DrawMode) \#customize
 The basic code to add an interactor for drawing custom polygons
 
@@ -112,11 +107,6 @@ Shows how to add the map to a Windows Forms application in C#
 Shows how to add the map to a Windows Forms application in VB.NET
 
 <img src="Screenshots/FormsMapVB.png" height="240" title="FormsMapVB">
-
-#### [HereImagery](HereImagery) \#interop \#3rd-party
-Shows how to add here basemap tiles
-
-<img src="Screenshots/HereImagery.png" height="240" title="HereImagery">
 
 #### [Mandelbrot](Mandelbrot) \#customize
 Shows how to implement a client-side tile provider and demonstrates the "Infinite Zoom" feature
@@ -158,6 +148,11 @@ Tips to optimize xServer.NET for limited-memory scenarios
 Shows how to render arbitrary WPF elements and print/export the map content
 
 <img src="Screenshots/PieChartsAndExport.png" height="240" title="PieChartsAndExport">
+
+#### [Providers](HereImagery) \#interop \#3rd-party
+Shows how to add 3rd-party basemap tiles
+
+<img src="Screenshots/Providers.png" height="240" title="Provieders">
 
 #### [RoutingVB](RoutingVB) \#interop
 Shows how to add drag&drop routing to a Visual Basic project.
