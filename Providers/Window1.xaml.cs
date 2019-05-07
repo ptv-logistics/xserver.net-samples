@@ -16,7 +16,7 @@ namespace NokiaDemo
             InitializeComponent();
             
             // "over-zoom" - go beyond the normal zoom level
-            Map.MaxZoom = 23;
+            Map.MaxZoom = 20;
 
             Map.Loaded += Map_Loaded;
         }
@@ -42,48 +42,53 @@ namespace NokiaDemo
 
         private void ModeChecked(object sender, RoutedEventArgs e)
         {
-            const string appId = "<Your App Id>";
-            const string appKey = "<Your App Key>";
+            // go to https://developer.here.com
+            const string appId = "register_for_a_free_acount";
+            const string appKey = "register_for_a_free_acount";
 
-            string mode = (sender as RadioButton).Name;
+            string mode = (sender as RadioButton)?.Name;
 
-            Map.Layers.RemoveNokiaLayers();
+            Map.Layers.RemoveBaseMapLayers();
+
             switch (mode)
             {
                 case "M0": // basic road map
-                    Map.Layers.AddNokiaLayer(Nokia.Type.MapTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.MapTile, Here.HereScheme.NormalDay, appId, appKey);
                     break;
                 case "M1": // map decomposed into basemap and street 
-                    Map.Layers.AddNokiaLayer(Nokia.Type.BaseTile, Nokia.Scheme.NormalDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.StreetTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.BaseTile, Here.HereScheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.StreetTile, Here.HereScheme.NormalDay, appId, appKey);
                     break;
                 case "M2": // map decomposed into basemap and labels
-                    Map.Layers.AddNokiaLayer(Nokia.Type.MapTile, Nokia.Scheme.NormalDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.LabelTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.MapTile, Here.HereScheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.LabelTile, Here.HereScheme.NormalDay, appId, appKey);
                     break;
                 case "M3": // map decomposed into basemap, street and labels
-                    Map.Layers.AddNokiaLayer(Nokia.Type.BaseTile, Nokia.Scheme.NormalDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.StreetTile, Nokia.Scheme.NormalDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.LabelTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.BaseTile, Here.HereScheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.StreetTile, Here.HereScheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.LabelTile, Here.HereScheme.NormalDay, appId, appKey);
                     break;
                 case "M4":
-                    Map.Layers.AddNokiaLayer(Nokia.Type.BaseTile, Nokia.Scheme.SatelliteDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.BaseTile, Here.HereScheme.SatelliteDay, appId, appKey);
                     break;
                 case "M5":
-                    Map.Layers.AddNokiaLayer(Nokia.Type.BaseTile, Nokia.Scheme.SatelliteDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.StreetTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.BaseTile, Here.HereScheme.SatelliteDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.StreetTile, Here.HereScheme.NormalDay, appId, appKey);
                     break;
                 case "M6":
-                    Map.Layers.AddNokiaLayer(Nokia.Type.MapTile, Nokia.Scheme.TerrainDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.MapTile, Here.HereScheme.TerrainDay, appId, appKey);
                     break;
                 case "M7":
-                    Map.Layers.AddNokiaLayer(Nokia.Type.BaseTile, Nokia.Scheme.TerrainDay, appId, appKey);
-                    Map.Layers.AddNokiaLayer(Nokia.Type.StreetTile, Nokia.Scheme.NormalDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.BaseTile, Here.HereScheme.TerrainDay, appId, appKey);
+                    Map.Layers.AddHereLayer(Here.HereType.StreetTile, Here.HereScheme.NormalDay, appId, appKey);
+                    break;
+                default:
+                    Map.Layers.AddOSMLayer();
                     break;
             }
 
             // move shape layer under the topmost content layer
-            if(shapeLayer != null)
+            if (shapeLayer != null)
                 Map.Layers.Move(0, Map.Layers.Count <= 2 ? 1 : Map.Layers.Count - 2);
         }
     }

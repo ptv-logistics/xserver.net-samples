@@ -1,0 +1,20 @@
+﻿<Window x:Class="NokiaDemo.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
+    Title="Providers Demo" Height="600" Width="800">
+    <Grid>
+        <mapcore:WpfMap Name="Map" Center="8, 49" MinZoom="0" MaxZoom="20" Zoom="9" />
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Background="White">
+            <RadioButton Name="OM" Content="OpenStreetMap DE" IsChecked="True" Checked="ModeChecked"/>
+            <RadioButton Name="M0" Content="HERE BaseMap" Checked="ModeChecked"/>
+            <RadioButton Name="M1" Content="HERE BasMap+Street" Checked="ModeChecked"/>
+            <RadioButton Name="M2" Content="HERE BaseMap+Labels" Checked="ModeChecked"/>
+            <RadioButton Name="M3" Content="HERE BaseMap+Street+Labels" Checked="ModeChecked"/>
+            <RadioButton Name="M4" Content="HERE Satellite" Checked="ModeChecked"/>
+            <RadioButton Name="M5" Content="HERE Satellite+Street" Checked="ModeChecked"/>
+            <RadioButton Name="M6" Content="HERE Terrain" Checked="ModeChecked"/>
+            <RadioButton Name="M7" Content="HERE Terrain+Street" Checked="ModeChecked"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomPinchZoom", "CustomPi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoCenter", "DemoCenter\DemoCenter.csproj", "{CF02A908-B887-4F8A-B5D9-A7AF77B9863A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Donuts", "Donuts\Donuts.csproj", "{422D2328-63AF-4CA4-A0B9-F3E196657A12}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragAndDrop", "DragAndDrop\DragAndDrop.csproj", "{303D8369-8C5D-4C8A-860D-6597041AE75D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMode", "DrawMode\DrawMode.csproj", "{A8931678-28FA-4FF5-938E-FFED176CB38E}"
@@ -37,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsMapCS", "FormsMapCS\Fo
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FormsMapVB", "FormsMapVB\FormsMapVB.vbproj", "{F7409FEB-236D-40D9-B7C2-B6491A107A6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HereImagery", "HereImagery\HereImagery.csproj", "{AEC3641C-8266-4F26-88F6-A6E94809925A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Providers", "Providers\Providers.csproj", "{AEC3641C-8266-4F26-88F6-A6E94809925A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mandelbrot", "Mandelbrot\Mandelbrot.csproj", "{96B2B088-A506-4159-A905-CEF60CE5CE8A}"
 EndProject

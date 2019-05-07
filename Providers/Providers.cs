@@ -2,15 +2,16 @@
 using Ptv.XServer.Controls.Map.TileProviders;
 using Ptv.XServer.Controls.Map.Layers.Tiled;
 using System.Text.RegularExpressions;
+using System;
 
 namespace Ptv.XServer.Controls.Map
 {
-    public static class Nokia
+    public static class Here
     {
         /// <summary>
         /// The basic map types
         /// </summary>
-        public enum Type
+        public enum HereType
         {
             /// <summary>
             /// Complete map
@@ -33,7 +34,7 @@ namespace Ptv.XServer.Controls.Map
         /// <summary>
         /// The scheme for the tiles
         /// </summary>
-        public enum Scheme
+        public enum HereScheme
         {
             NormalDay,
             NormalDayCustom,
@@ -53,47 +54,65 @@ namespace Ptv.XServer.Controls.Map
         /// Removes all nokia base map layers.
         /// </summary>
         /// <param name="layers">The layers collection.</param>
-        public static void RemoveNokiaLayers(this LayerCollection layers)
+        public static void RemoveBaseMapLayers(this LayerCollection layers)
         {
-            var nokiaLayers = from layer in layers where layer.Name.StartsWith("Nokia_") select layer;
+            var nokiaLayers = from layer in layers
+                where layer.Name.StartsWith("HERE_") || layer.Name.StartsWith("OSM_")
+                select layer;
             foreach (var layer in nokiaLayers.ToList())
                 layers.Remove(layer);
         }
 
         /// <summary>
-        /// Add a nokia layer to the layers collection of the map.
+        /// Add a HERE layer to the layers collection of the map.
         /// </summary>
         /// <param name="layers">The layers collection.</param>
         /// <param name="type">The basic map type.</param>
         /// <param name="scheme">The scheme of the map.</param>
         /// <param name="appId">The application id.</param>
         /// <param name="token">The token.</param>
-        public static void AddNokiaLayer(this LayerCollection layers, Type type, Scheme scheme, string appId, string token)
+        public static void AddHereLayer(this LayerCollection layers, HereType type, HereScheme scheme, string appId, string token)
         {
-            // request schema is
-            // http://SERVER-URL/maptile/2.1/TYPE/MAPID/SCHEME/ZOOM/COL/ROW/RESOLUTION/FORMAT?param=value&...
-
-            string copyrightText = scheme == Scheme.SatelliteDay ? "© 2012 DigitalGlobe" : "© 2012 NAVTEQ";
             string schemeString = Regex.Replace(scheme.ToString(), "[a-z][A-Z]", m => m.Value[0] + "." + m.Value[1]).ToLower();
+            string baseString = scheme == Here.HereScheme.SatelliteDay || scheme == Here.HereScheme.TerrainDay ? "aerial" : "base";
             string typeString = type.ToString().ToLower();
-            string caption = type == Type.StreetTile 
+            string caption = type == HereType.StreetTile 
                 ? "Streets" 
-                : type == Type.LabelTile ? "Labels" : "BaseMap";
+                : type == HereType.LabelTile ? "Labels" : "BaseMap";
 
-            layers.Add(new TiledLayer("Nokia_" + type)
+            layers.Add(new TiledLayer("HERE_" + type)
             {
                 Caption = caption,
-                IsLabelLayer = type == Type.LabelTile || type == Type.StreetTile,
-                IsBaseMapLayer = type == Type.MapTile || type == Type.BaseTile,
+                IsBaseMapLayer = type == HereType.MapTile || type == HereType.BaseTile,
                 TiledProvider = new RemoteTiledProvider
                 {
                     MinZoom = 0,
                     MaxZoom = 20,
                     RequestBuilderDelegate = (x, y, level) =>
-                    string.Format("http://{0}.maps.nlp.nokia.com/maptile/2.1/{1}/newest/{2}/{3}/{4}/{5}/256/png8?app_id={6}&token={7}",
-                    "1234"[(x ^ y) % 4], typeString, schemeString, level, x, y, appId, token)
+                    $"https://{"1234"[(x ^ y) % 4]}.{baseString}.maps.api.here.com/maptile/2.1/{typeString}/newest/{schemeString}/{level}/{x}/{y}/256/png8?app_id={appId}&token={token}",
                 },
-                Copyright = copyrightText
+                Copyright = $"Map © 1987-{DateTime.Now.Year} HERE"
+            });
+        }
+
+        /// <summary>
+        /// Add an OSM layer to the layers collection of the map.
+        /// </summary>
+        /// <param name="layers">The layers collection.</param>
+        public static void AddOSMLayer(this LayerCollection layers)
+        {
+            layers.Add(new TiledLayer("OSM_DE")
+            {
+                Caption = "OpenStreetMap.DE",
+                IsBaseMapLayer = true,
+                TiledProvider = new RemoteTiledProvider
+                {
+                    MinZoom = 0,
+                    MaxZoom = 19,
+                    RequestBuilderDelegate = (x, y, level) =>
+                        $"https://{"abc"[(x ^ y) % 3]}.tile.openstreetmap.de/tiles/osmde//{level}/{x}/{y}.png",
+                },
+                Copyright = $"Map © OpenStreetMap contributors"
             });
         }
     }
