@@ -83,7 +83,8 @@ namespace Ptv.XServer.Controls.Map
             layers.Add(new TiledLayer("HERE_" + type)
             {
                 Caption = caption,
-                IsBaseMapLayer = type == HereType.MapTile || type == HereType.BaseTile,
+                IsBaseMapLayer = type == HereType.MapTile || type == HereType.BaseTile,   // cannot be moved over content-layers
+                IsLabelLayer = type == HereType.LabelTile || type == HereType.StreetTile, // uses tile-pruning for overlays
                 TiledProvider = new RemoteTiledProvider
                 {
                     MinZoom = 0,
@@ -108,9 +109,9 @@ namespace Ptv.XServer.Controls.Map
                 TiledProvider = new RemoteTiledProvider
                 {
                     MinZoom = 0,
-                    MaxZoom = 19,
+                    MaxZoom = 18,
                     RequestBuilderDelegate = (x, y, level) =>
-                        $"https://{"abc"[(x ^ y) % 3]}.tile.openstreetmap.de/tiles/osmde//{level}/{x}/{y}.png",
+                        $"https://{"abc"[(x ^ y) % 3]}.tile.openstreetmap.de/tiles/osmde/{level}/{x}/{y}.png",
                 },
                 Copyright = $"Map © OpenStreetMap contributors"
             });
