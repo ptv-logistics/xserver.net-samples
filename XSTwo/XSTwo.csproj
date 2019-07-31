@@ -35,8 +35,8 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Ptv.XServer.Controls.Map">
-      <HintPath>..\Lib\Ptv.XServer.Controls.Map.dll</HintPath>
+    <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.1.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+      <HintPath>packages\Ptv.XServer.Net.1.7.1\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -75,6 +75,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
