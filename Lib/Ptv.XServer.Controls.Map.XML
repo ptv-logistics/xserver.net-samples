@@ -9366,7 +9366,7 @@
         <member name="F:Ptv.XServer.Controls.Map.Localization.MapStringId.ToolTipTrafficIncidentsMessage">
             <summary> Tool tip text for more detailed description of a traffic incident. </summary>
         </member>
-        <member name="F:Ptv.XServer.Controls.Map.Localization.MapStringId.ToolTipTruckAttributesPermittedTotalWeight">
+        <member name="F:Ptv.XServer.Controls.Map.Localization.MapStringId.ToolTipTruckAttributesTotalPermittedWeight">
             <summary> Tool tip text for value of truck attribute permitted total weight. </summary>
         </member>
         <member name="F:Ptv.XServer.Controls.Map.Localization.MapStringId.ToolTipTruckAttributesLoadType">
