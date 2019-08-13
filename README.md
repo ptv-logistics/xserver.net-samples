@@ -149,7 +149,7 @@ Shows how to render arbitrary WPF elements and print/export the map content
 
 <img src="Screenshots/PieChartsAndExport.png" height="240" title="PieChartsAndExport">
 
-#### [Providers](HereImagery) \#interop \#3rd-party
+#### [Providers](Providers) \#interop \#3rd-party
 Shows how to add 3rd-party basemap tiles
 
 <img src="Screenshots/Providers.png" height="240" title="Provieders">
