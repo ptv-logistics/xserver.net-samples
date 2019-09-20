@@ -6,7 +6,8 @@
     <Grid>
         <mapcore:WpfMap Name="Map" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" 
                         XMapCredentials = "Insert your xToken here" Center="8.4, 49" Zoom="13" />
-        <StackPanel  Width="100" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <StackPanel Width="100" Height="150" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <TextBlock TextWrapping="Wrap"  Background="White">Click or hold Hold Alt for polygon selection</TextBlock>
             <Button Content="Clear" Click="Button_Click" ></Button>
             <ListView x:Name="listView"></ListView>
         </StackPanel>
