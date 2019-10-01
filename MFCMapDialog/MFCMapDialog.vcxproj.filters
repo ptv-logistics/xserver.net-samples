@@ -22,6 +22,7 @@
     <None Include="res\MFCMapDialog.ico">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MFCMapDialog.h">

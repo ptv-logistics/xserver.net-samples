@@ -38,10 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ptv.XServer.Controls.Map, Version=1.2.0.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Ptv.XServer.Controls.Map.dll</HintPath>
+    <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.4.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+      <HintPath>packages\Ptv.XServer.Net.1.7.4\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -122,6 +122,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -35,9 +35,10 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Ptv.XServer.Controls.Map">
-      <HintPath>..\Lib\Ptv.XServer.Controls.Map.dll</HintPath>
+    <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.4.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+      <HintPath>packages\Ptv.XServer.Net.1.7.4\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -86,6 +87,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

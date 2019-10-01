@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26228.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryPressureTest", "MemoryPressureTest.csproj", "{D58A4E04-AB2C-4769-A975-59EB83F59E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiplecontainers", "..\MultipleContainers\Multiplecontainers.csproj", "{F6A0556A-36CB-4E11-9A6F-264551445412}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,14 +19,6 @@ Global
 		{D58A4E04-AB2C-4769-A975-59EB83F59E03}.Release|Any CPU.ActiveCfg = Release|x86
 		{D58A4E04-AB2C-4769-A975-59EB83F59E03}.Release|x86.ActiveCfg = Release|x86
 		{D58A4E04-AB2C-4769-A975-59EB83F59E03}.Release|x86.Build.0 = Release|x86
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Debug|x86.Build.0 = Debug|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Release|x86.ActiveCfg = Release|Any CPU
-		{F6A0556A-36CB-4E11-9A6F-264551445412}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
