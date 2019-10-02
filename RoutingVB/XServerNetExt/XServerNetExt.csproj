@@ -39,12 +39,14 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Ptv.Components.Projections">
-      <HintPath>..\..\Lib\Ptv.Components.Projections.dll</HintPath>
+    <Reference Include="Ptv.Components.Projections, Version=1.7.3.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ptv.XServer.Net.1.7.4\lib\Ptv.Components.Projections.dll</HintPath>
     </Reference>
-    <Reference Include="Ptv.XServer.Controls.Map">
-      <HintPath>..\..\Lib\Ptv.XServer.Controls.Map.dll</HintPath>
+    <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.4.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ptv.XServer.Net.1.7.4\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -78,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Service References\XRouteServiceReference\XRouteWSService.wsdl" />
     <None Include="Service References\XRouteServiceReference\XServerNetExt.XRouteServiceReference.AdvancedTour.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
