@@ -36,8 +36,8 @@ namespace FormsMapCS
             var layer = new ShapeLayer("MyShapes");
             formsMap1.Layers.Add(layer);
 
-            var startPoint = new Point(8.4, 49);
-            var destPoint = new Point(8.4, 50);
+            var startPoint = new Point(7.10052, 50.73117);
+            var destPoint = new Point(9.99337, 53.54897);
 
             // set map view
             formsMap1.SetEnvelope(new MapRectangle(new[] { startPoint, destPoint }).Inflate(1.25));
@@ -108,6 +108,21 @@ namespace FormsMapCS
                 );
         }
 
+        public void SetArrowDash(PointCollection pc, ShapeLayer layer)
+        {
+            var arrowDashLine = new ArrowDashLine
+            {
+                Points = pc,
+                MapStrokeThickness = 20,
+                Stroke = new SolidColorBrush(Colors.Black),
+                ScaleFactor = .1,
+                Fill = new SolidColorBrush(Colors.White),
+                IsHitTestVisible = false
+            };
+
+            layer.Shapes.Add(arrowDashLine);
+        }
+
         public void SetRoute(Route route, ShapeLayer layer, Color color, string toolTip)
         {
             var pc = new PointCollection(from p in route.polygon.lineString.wrappedPoints select new System.Windows.Point(p.x, p.y));
@@ -125,6 +140,7 @@ namespace FormsMapCS
             };
 
             layer.Shapes.Add(poly);
+            SetArrowDash(pc, layer);
         }
     }
 }
