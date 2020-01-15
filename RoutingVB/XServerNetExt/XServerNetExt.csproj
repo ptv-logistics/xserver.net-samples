@@ -39,7 +39,7 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Ptv.Components.Projections, Version=1.7.3.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
+    <Reference Include="Ptv.Components.Projections, Version=1.7.4.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ptv.XServer.Net.1.7.4\lib\Ptv.Components.Projections.dll</HintPath>
     </Reference>
