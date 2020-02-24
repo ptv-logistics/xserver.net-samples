@@ -250,13 +250,6 @@
                 </StackPanel>
               </Expander>
 
-              <Expander x:Name="DataManagerExpander" Header="Data manager">
-                <StackPanel>
-                  <TextBlock><Run Text="Shows a layer which is provided by the Data Manager infrastructure."/></TextBlock>
-                  <CheckBox x:Name="DataManagerCheckBox" Content="Activate Data Manager layer"/>
-                </StackPanel>
-              </Expander>
-
               <Expander x:Name="ShapeFileExpander" Header="ShapeFile">
                 <StackPanel>
                   <TextBlock><Run Text="Shows how data of a shape file can be rendered with SharpMap."/></TextBlock>

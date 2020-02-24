@@ -46,35 +46,5 @@ namespace Ptv.XServer.Demo.Tools
 
             map.Layers.Add(layer);
         }
-
-        public static void InsertDataManagerLayer(this Map map, XMapMetaInfo xMapMetaInfo, string layerName, string layerId, string layerCaption, int minZoom = 0, bool markerIsBalloon = false)
-        {
-            // always use xmap-eu
-            var url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap/";
-            var layer = new XMapLayer(layerName, url, xMapMetaInfo.User, xMapMetaInfo.Password)
-            {
-                Caption = layerCaption,
-                MaxRequestSize = new System.Windows.Size(2048, 2048),
-                MinLevel = minZoom,
-                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/POI.png"),
-                CustomXMapLayers = new xserver.Layer[] {  
-                    new xserver.SMOLayer
-                    { 
-                        name = layerId + "." + layerId,
-                        // Request REFERENCEPOINT based object information to provide tool tips on the icons.
-                        objectInfos = xserver.ObjectInfoType.REFERENCEPOINT, 
-                        visible = true 
-                    }
-                },
-                Profile = "ajax-av",
-                CustomCallerContextProperties = new[] { new xserver.CallerContextProperty
-                {
-                    key = "ProfileXMLSnippet", value = "/profiles/datamanager/xmap/" + layerId
-                } },
-                MarkerIsBalloon = markerIsBalloon
-            };
-
-            map.Layers.Add(layer);
-        }
     }
 }

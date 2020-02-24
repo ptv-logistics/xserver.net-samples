@@ -693,13 +693,13 @@ namespace Ptv.XServer.Demo
         {
             var shrinkExpanders = new List<Expander>();
             shrinkExpanders.AddRange(new[] { HereExpander, ClusteringExpander, DifferentShapesExpander, AdditionalWPFMapExpander,
-                GeoRSSExpander, MapMarketExpander, DataManagerExpander, ShapeFileExpander, WmsExpander, ManySymbolsExpander, UIThemeExpander, ProfileExpander,
+                GeoRSSExpander, MapMarketExpander, ShapeFileExpander, WmsExpander, ManySymbolsExpander, UIThemeExpander, ProfileExpander,
                 GeocodingExpander, RoutingExpander, XRouteDragAndDropExpander, FeatureLayerExpander, TourPlanningExpander });
             shrinkExpanders.ForEach(expander => expander.IsExpanded = false);
 
             var deactivateCheckBoxes = new List<CheckBox>();
             deactivateCheckBoxes.AddRange(new[] { HereCheckBox, ClusteringCheckBox, DifferentShapesCheckBox, ShapesUseLabelsCheckBox, 
-                AddWpfMapCheckBox, GeoRSSCheckBox, MapMarketCheckBox, DataManagerCheckBox, ShapeFileCheckBox, WmsEnableCheckBox, WmsUseTiledLayerCheckBox,
+                AddWpfMapCheckBox, GeoRSSCheckBox, MapMarketCheckBox, ShapeFileCheckBox, WmsEnableCheckBox, WmsUseTiledLayerCheckBox,
                 ManySymbolsCheckBox, ElementaryRoutingCheckBox, XRouteDragAndDropCheckBox, TrafficIncidentsCheckBox, TruckAttributesCheckBox, 
                 PreferredRoutesCheckBox, RestrictionZonesCheckBox, SpeedPatternsCheckBox });
             deactivateCheckBoxes.ForEach(checkBox => checkBox.IsChecked = false);
