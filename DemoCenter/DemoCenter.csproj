@@ -143,7 +143,6 @@
     <Compile Include="Tools\XServerInternetLayers.cs" />
     <Compile Include="Tools\XServerWithToken.cs" />
     <Compile Include="Resources\Intro\IntroManager.cs" />
-    <Compile Include="UseCases\DataManager\DataManager.cs" />
     <Compile Include="UseCases\FeatureLayer\FeatureLayer.cs" />
     <Compile Include="UseCases\Selection\SelectInteractor.cs" />
     <Compile Include="UseCases\Selection\Selection.cs" />

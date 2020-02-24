@@ -573,7 +573,6 @@ namespace Ptv.XServer.Demo
         private readonly GeoRssUseCase geoRssUseCase = new GeoRssUseCase();
         private readonly ClusteringUseCase clusteringUseCase = new ClusteringUseCase();
         private readonly MapMarketController mapMarketController = new MapMarketController();
-        private readonly DataManagerUseCase dataManagerUseCase = new DataManagerUseCase();
         private readonly ShapeFileUseCase shapeFileUseCase = new ShapeFileUseCase();
         private readonly WMSUseCase wmsUseCase = new WMSUseCase();
         private RoutingUseCase routingUseCase;
@@ -619,8 +618,6 @@ namespace Ptv.XServer.Demo
                 geoRssUseCase.Activate(state, wpfMap);
             else if (sender.Equals(MapMarketCheckBox))
                 mapMarketController.Activate(state, wpfMap);
-            else if (sender.Equals(DataManagerCheckBox))
-                dataManagerUseCase.Activate(state, wpfMap);
             else if (sender.Equals(ShapeFileCheckBox))
                 shapeFileUseCase.Activate(state, wpfMap);
             else if (sender.Equals(ManySymbolsCheckBox))
