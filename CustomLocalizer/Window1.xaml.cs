@@ -10,9 +10,6 @@ namespace CustomLocalizer
     {
         public Window1()
         {
-            // Test: Set explicit culture
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de"); 
-
             // Set Custom Localizer
             Ptv.XServer.Controls.Map.Localization.MapLocalizer.Active = new CustomMapLocalizer();
 

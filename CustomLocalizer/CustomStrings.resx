@@ -124,7 +124,7 @@
     <value>Background</value>
   </data>
   <data name="Caption" xml:space="preserve">
-    <value>My Layers</value>
+    <value>My-Layers-Caption</value>
   </data>
   <data name="East" xml:space="preserve">
     <value>E</value>
@@ -143,6 +143,66 @@
   </data>
   <data name="South" xml:space="preserve">
     <value>S</value>
+  </data>
+  <data name="ToolTipTrafficIncidentsAbsoluteSpeed" xml:space="preserve">
+    <value>Absolute speed: {0} km/h</value>
+  </data>
+  <data name="ToolTipTrafficIncidentsDelay" xml:space="preserve">
+    <value>Delay: {0} min</value>
+  </data>
+  <data name="ToolTipTrafficIncidentsLength" xml:space="preserve">
+    <value>Length: {0:0.000} km</value>
+  </data>
+  <data name="ToolTipTrafficIncidentsMessage" xml:space="preserve">
+    <value>Message:</value>
+  </data>
+  <data name="ToolTipTruckAttributesCombustibles" xml:space="preserve">
+    <value>Not allowed for vehicles carrying combustibles.</value>
+  </data>
+  <data name="ToolTipTruckAttributesFreeForDelivery" xml:space="preserve">
+    <value>This restriction does not concern delivery vehicles.</value>
+  </data>
+  <data name="ToolTipTruckAttributesHazardousGoods" xml:space="preserve">
+    <value>Not allowed for vehicles carrying hazardous goods.</value>
+  </data>
+  <data name="ToolTipTruckAttributesHazardousToWaters" xml:space="preserve">
+    <value>Not allowed for vehicles carrying goods hazardous to waters.</value>
+  </data>
+  <data name="ToolTipTruckAttributesLoadType" xml:space="preserve">
+    <value>Not allowed for vehicles of load type: {0}.</value>
+  </data>
+  <data name="ToolTipTruckAttributesLoadTypeGoods" xml:space="preserve">
+    <value>Goods</value>
+  </data>
+  <data name="ToolTipTruckAttributesLoadTypeMixed" xml:space="preserve">
+    <value>Mixed</value>
+  </data>
+  <data name="ToolTipTruckAttributesLoadTypePassenger" xml:space="preserve">
+    <value>Passenger</value>
+  </data>
+  <data name="ToolTipTruckAttributesMaxAxleLoad" xml:space="preserve">
+    <value>Maximal axle load: {0:###,###} kg</value>
+  </data>
+  <data name="ToolTipTruckAttributesMaxHeight" xml:space="preserve">
+    <value>Maximal height: {0:0.00} m</value>
+  </data>
+  <data name="ToolTipTruckAttributesMaxLength" xml:space="preserve">
+    <value>Maximal length: {0:0.00} m</value>
+  </data>
+  <data name="ToolTipTruckAttributesMaxWeight" xml:space="preserve">
+    <value>Maximal weight: {0:###,###} kg</value>
+  </data>
+  <data name="ToolTipTruckAttributesMaxWidth" xml:space="preserve">
+    <value>Maximal width: {0:0.00} m</value>
+  </data>
+  <data name="ToolTipTruckAttributesTotalPermittedWeight" xml:space="preserve">
+    <value>Total permitted weight: {0:###,###} kg</value>
+  </data>
+  <data name="ToolTipTruckAttributesTunnelRestriction" xml:space="preserve">
+    <value>Tunnel restriction code: {0}</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Streets</value>
   </data>
   <data name="TruckAttributes" xml:space="preserve">
     <value>Truck attributes</value>

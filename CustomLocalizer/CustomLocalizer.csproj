@@ -106,7 +106,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="CustomStrings.de.resx" />
     <EmbeddedResource Include="CustomStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CustomStrings.Designer.cs</LastGenOutput>
