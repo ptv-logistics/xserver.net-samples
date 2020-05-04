@@ -498,8 +498,12 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         /// <returns>String collection containing the description of each scenario belonging to the specified theme. </returns>
         public IEnumerable<string> GetScenarioDescriptionsBy(Theme theme)
         {
-            try { return ScenariosByCluster.Find(scenarios => scenarios.theme == theme).scenarios.Select(scenario => scenario.description); }
-            catch { return new List<string>(); } // ScenariosByCluster maybe null or theme not found
+            try {  
+                    var s = ScenariosByCluster.Find(scenarios => scenarios.theme == theme);
+                    if(s!= null)
+                        return s.scenarios.Select(scenario => scenario.description); }
+            catch {  } // ScenariosByCluster maybe null or theme not found
+            return new List<string>();
         }
 
         /// <summary>

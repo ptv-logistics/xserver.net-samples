@@ -55,14 +55,23 @@ namespace Ptv.XServer.Demo.UseCases.Shapes
         /// <summary> Adds elements to the map. </summary>
         private void AddElements()
         {
+            #region doc:the location around which the shapes are created
+            // the location in Gauss-Kruger coordinates
+            var location = new Point(3565913, 5935734);
+            #endregion 
+
             #region doc:create ShapeLayer
             // create a shape layer
             shapeLayer = new ShapeLayer("DifferentShapes")
             {
-                SpatialReferenceId = "EPSG:31467" // set SR to Gauss-Kruger zone 3 (default is WGS84)
+                SpatialReferenceId = "EPSG:31467",// set SR to Gaus s-Kruger zone 3 (default is WGS84)
+                LocalOffset = location // the localOffset can be used to reduce jitter at deep zoom levels
             };
 
-            shapeLayer2 = new ShapeLayer("PieCharts");
+            shapeLayer2 = new ShapeLayer("PieCharts")
+            {
+                LocalOffset = new Point(10, 53) // to reduce jitter
+            };
             #endregion //doc:create ShapeLayer
 
             #region doc:add layer to map
@@ -70,11 +79,6 @@ namespace Ptv.XServer.Demo.UseCases.Shapes
             wpfMap.Layers.Add(shapeLayer);
             wpfMap.Layers.InsertBefore(shapeLayer2, "DifferentShapes");
             #endregion //doc:add layer to map
-
-            #region doc:location variable
-            // the location in Gauss-Kruger coordinates
-            var location = new Point(3565913, 5935734);
-            #endregion //doc:location variable
             
             #region doc:animate shape
             // create a WPF element
