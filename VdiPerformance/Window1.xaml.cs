@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Linq;
 using System.Diagnostics;
+using Ptv.XServer.Controls.Map.Canvases;
 
 namespace VdiPerformance
 {
@@ -154,7 +155,8 @@ namespace VdiPerformance
                         CustomProfile = profile + (useSingleLayerBM? "" : "-bg")},
                     Copyright = copyrightText,
                     Caption = MapLocalizer.GetString(MapStringId.Background),
-                    Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")
+                    Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
+                    CanvasCategories = new[] { CanvasCategory.BaseMap }
                 };
             }
             else
