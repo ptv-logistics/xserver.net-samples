@@ -10,8 +10,16 @@
             <ColumnDefinition Width="245*"/>
         </Grid.ColumnDefinitions>
         <mapcore:WpfMap Name="Map" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4" Loaded="Map_Loaded"/>
-        <StackPanel Margin="10,0,0,60.4"  VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
+        <StackPanel Margin="10,0,0,60.4" VerticalAlignment="Bottom" HorizontalAlignment="left" Background="White">
             <wpfTool:DateTimePicker x:Name="referenceTime" ValueChanged="referenceTime_ValueChanged"></wpfTool:DateTimePicker>
+            <StackPanel Orientation="Horizontal"><Label Content="TI Message"></Label><ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem Content="DE"></ComboBoxItem>
+                <ComboBoxItem Content="EN" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="FR"></ComboBoxItem>
+                <ComboBoxItem Content="IT"></ComboBoxItem>
+                <ComboBoxItem Content="NL"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
             <CheckBox IsChecked="True" x:Name="trafficIncidents" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Traffic Incidents</CheckBox>
             <CheckBox IsChecked="False" x:Name="truckAttributes" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Truck Attributes</CheckBox>
             <CheckBox IsChecked="False" x:Name="restrictionZones" Unchecked="ToggleButton_OnChecked" Checked="ToggleButton_OnChecked">Restriction Zones</CheckBox>

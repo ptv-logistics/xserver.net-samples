@@ -95,10 +95,11 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
                 // Maybe additional information is needed for configuration of a Feature Layer (Preferred Route theme may be such a candidate).
                 XNamespace nameSpace = "http://www.w3.org/2001/XMLSchema-instance";
                 return new XElement(nameSpace + "Profile",
-                                        new XElement("FeatureLayer", new XAttribute("majorVersion", 1), new XAttribute("minorVersion", 0),
+                                        new XElement("Common", new XAttribute("majorVersion", 1), new XAttribute("minorVersion", 0), new XAttribute("language", TiLanguage),
+                                        new XElement("FeatureLayer",
                                             new XElement("GlobalSettings", new XAttribute("enableTimeDependency", true)),
                                             new XElement("Themes", layers
-                                                )));
+                                                ))));
             }
         }
 
@@ -131,6 +132,7 @@ namespace Ptv.XServer.Demo.UseCases.FeatureLayer
         public bool UsePreferredRoutes { get; set; }
         public bool UseRestrictionZones { get; set; }
         public bool UseSpeedPatterns { get; set; }
+        public string TiLanguage { get; set; }
 
         /// <summary>
         /// Sending a request for all involved base layers, which provide some extension of their requests by a snippet mechanism.

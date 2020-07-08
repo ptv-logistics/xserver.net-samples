@@ -8,6 +8,7 @@ using Ptv.XServer.Demo.UseCases.FeatureLayer;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace FeatureLayers
 {
@@ -44,7 +45,8 @@ namespace FeatureLayers
                 UseTrafficIncidents = true,
                 UseRestrictionZones = false,
                 UseTruckAttributes = false,
-                UseSpeedPatterns = false
+                UseSpeedPatterns = false,
+                TiLanguage = "EN"
             };
 
             flPresenter.RefreshMap();
@@ -69,6 +71,16 @@ namespace FeatureLayers
             flPresenter.UseRestrictionZones = restrictionZones.IsChecked.Value;
             flPresenter.UseTruckAttributes = truckAttributes.IsChecked.Value;
             flPresenter.UseSpeedPatterns = speedPatterns.IsChecked.Value;
+
+            flPresenter.RefreshMap();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (flPresenter == null)
+                return;
+
+            flPresenter.TiLanguage = (string)((ComboBoxItem)e.AddedItems[0]).Content;
 
             flPresenter.RefreshMap();
         }
