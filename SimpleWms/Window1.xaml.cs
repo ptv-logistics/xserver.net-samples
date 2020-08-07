@@ -26,17 +26,17 @@ namespace Circles
                 Caption = "Base Map",
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
                 TiledProvider = new WmsProvider(
-                    "http://ows.terrestris.de/osm/service?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2fpng&LAYERS=OSM-WMS&STYLES=,&SRS=EPSG%3a3857", 19),
+                    "http://ows.terrestris.de/osm-gray/service?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2fpng&LAYERS=OSM-WMS&STYLES=,&TILED=true&SRS=EPSG%3a3857", 19),
                 Copyright = "© terrestris",
                 IsBaseMapLayer = true // overlay layers cannot be moved under a basemap layer
             });
 
-            Map.Layers.Add(new UntiledLayer("BUSSTOPS") { 
-                Caption = "Bus Stops",
+            Map.Layers.Add(new UntiledLayer("EUMET") { 
+                Caption = "Air Mass",
                 UntiledProvider = new WmsUntiledProvider(
-                    "http://ows.terrestris.de/osm-haltestellen?service=WMS&request=GetMap&version=1.1.1&layers=OSM-Bushaltestellen&styles=&format=image%2Fpng&transparent=true&srs=EPSG%3A3857", 19),
-                Copyright = "© terrestris"
-
+                    "https://eumetview.eumetsat.int/geoserv/wms?service=WMS&request=GetMap&version=1.3.0&layers=meteosat%3Amsg_eview&styles=&format=image%2Fpng&transparent=true&crs=EPSG%3A3857", 19),
+                Copyright = "© eumetsat 2015",
+                Opacity = .6                
             });
         }
     }
