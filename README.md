@@ -170,7 +170,7 @@ Shows how to render additional xMap layers with tooltip interaction
 #### [SimpleWms](SimpleWms) \#3rd-party
 Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
 
-<img src="Screenshots/WmsTest.png" height="240" title="WmsTest">
+<img src="Screenshots/SimpleWms.png" height="240" title="WmsTest">
 
 #### [SymbolsAndLabels](SymbolsAndLabels) \#customize
 Shows how to draw symbols with an attached label tag
