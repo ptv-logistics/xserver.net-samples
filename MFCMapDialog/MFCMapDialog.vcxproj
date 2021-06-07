@@ -131,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Ptv.XServer.Controls.Map">
-      <HintPath>packages\Ptv.XServer.Net.1.7.6\lib\Ptv.XServer.Controls.Map.dll</HintPath>
+      <HintPath>packages\Ptv.XServer.Net.1.7.8\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
