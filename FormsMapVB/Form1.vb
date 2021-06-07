@@ -22,8 +22,8 @@ Public Class Form1
         Dim layer = New ShapeLayer("MyShapes")
         FormsMap1.Layers.Add(layer)
 
-        Dim startPoint = New Point(8.4, 49)
-        Dim destPoint = New Point(8.4, 50)
+        Dim startPoint = New Point(7.10052, 50.73117)
+        Dim destPoint = New Point(9.99337, 53.54897)
 
         ' set map view
         FormsMap1.SetEnvelope(New MapRectangle({startPoint, destPoint}).Inflate(1.25))
