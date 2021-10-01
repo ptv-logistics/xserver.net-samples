@@ -140,7 +140,7 @@ namespace VdiPerformance
             if (fgLayer != null)
                 Map.Layers.Remove(fgLayer);
 
-            const string copyrightText = "PTV, TomTom";
+            const string copyrightText = "PTV AG, TomTom";
             var maxRequestSize = new Size(3840, 2400);
             const string user = "xtok";
             const string password = "Insert your xToken here"; // this token is only for test purpose

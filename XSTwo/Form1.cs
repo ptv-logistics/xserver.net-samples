@@ -53,7 +53,7 @@ namespace XSTwo
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
                 Caption = MapLocalizer.GetString(MapStringId.Background),
-                Copyright = "PTV, TOMTOM"
+                Copyright = "PTV AG, TomTom"
             });
 
             // add custom layer
@@ -85,7 +85,7 @@ namespace XSTwo
                 IsBaseMapLayer = true, // set to the basemap category -> cannot be moved on top of overlays
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
                 Caption = MapLocalizer.GetString(MapStringId.Background),
-                Copyright = "PTV, TOMTOM"
+                Copyright = "PTV AG, TomTom"
             });
 
             // now a custom shape layer in-between background and labels
@@ -105,7 +105,7 @@ namespace XSTwo
                 },
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png"),
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
-                Copyright = "PTV, TOMTOM"
+                Copyright = "PTV AG, TomTom"
             });
         }
 

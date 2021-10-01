@@ -4,6 +4,6 @@
         xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
     Title="Window1" Height="600" Width="800">
     <Grid>
-        <mapcore:WpfMap Name="Map" XMapUrl="xserver2-europe-test; version = 2.9" XMapCopyright="PTV, TOMTOM" XMapCredentials="Insert your xToken here"/>
+        <mapcore:WpfMap Name="Map" XMapUrl="xserver2-europe-test; version = 2.9" XMapCopyright="PTV AG, TomTom" XMapCredentials="Insert your xToken here"/>
     </Grid>
 </Window>
