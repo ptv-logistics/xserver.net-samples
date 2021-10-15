@@ -16,6 +16,7 @@ namespace TourPlanningDemo
         public List<Depot> Depots;
         public List<Tour> Tours;
         public TimeSpan OperatingPeriod { get; set; }
+        public string Profile { get; set; }
     }
 
     public class Vehicle
@@ -37,12 +38,16 @@ namespace TourPlanningDemo
 
         public List<Vehicle> Fleet { get; set; }
 
+        public string Description { get; set; }
+
         public Color Color { get; set; }
     }
 
     public class Order
     {
         public string Id { get; set; }
+
+        public string Description { get; set; }
 
         public double Latitude { get; set; }
 

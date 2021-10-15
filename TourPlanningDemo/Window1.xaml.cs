@@ -43,6 +43,7 @@ namespace TourPlanningDemo
         public void SetScenario(Scenario usedScenario)
         {
             scenario = usedScenario;
+            scenario.Profile = ProfileComboBox.Text;
 
             statusLabel.Content = "Scenario initialized";
             StartButton.IsEnabled = true;
@@ -55,8 +56,13 @@ namespace TourPlanningDemo
             // add orders, oder by latitude so they overlap nicely on the map
             foreach (var order in from o in usedScenario.Orders orderby o.Latitude descending select o)
             {
-                var cube = new Cube { Color = unplannedColor };
-                cube.Width = cube.Height = Math.Sqrt(order.Quantity) * 10;
+                var cube = new Cube
+                {
+                    Color = unplannedColor,
+                    Width = Math.Sqrt(order.Quantity) * 10,
+                    Height = Math.Sqrt(order.Quantity) * 10,
+                    ToolTip = order.Description
+                };
 
                 ShapeCanvas.SetLocation(cube, new Point(order.Longitude, order.Latitude));
                 orderLayer.Shapes.Add(cube);
@@ -66,9 +72,12 @@ namespace TourPlanningDemo
             // add depots, oder by latitude so they overlap nicely on the map
             foreach (var depot in from d in usedScenario.Depots orderby d.Latitude descending select d)
             {
-                var pin = new Pyramid();
-                pin.Width = pin.Height = 30;
-                pin.Color = depot.Color;
+                var pin = new Pyramid {
+                    Width = 30,
+                    Height = 30,
+                    Color = depot.Color,
+                    ToolTip = depot.Description 
+                };
                 ShapeCanvas.SetLocation(pin, new Point(depot.Longitude, depot.Latitude));
                 depotLayer.Shapes.Add(pin);
             }
@@ -188,12 +197,11 @@ namespace TourPlanningDemo
 
             var center = new Point(6.130833, 49.611389); // LUX
             //var center = new System.Windows.Point(8.4, 49); // KA
-            const double radius = 7.5; // radius in km
             var scenarioSize = (ScenarioSize)Enum.Parse(typeof(ScenarioSize), (string)((ComboBoxItem)e.AddedItems[0]).Content);
 
             try
             {
-                var s = await Task.Run(() => RandomScenarioBuilder.CreateScenario(scenarioSize, center, radius));
+                var s = await Task.Run(() => RandomScenarioBuilder.CreateScenario(scenarioSize, center));
 
                 Map.SetMapLocation(center, 10);
                 SetScenario(s);

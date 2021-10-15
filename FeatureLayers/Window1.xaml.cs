@@ -28,7 +28,7 @@ namespace FeatureLayers
 
             // for on-premis: Map.XMapUrl = "http://127.0.0.1:50010/xmap/ws/XMap");
             Map.XMapUrl = "api-test";
-            Map.XMapCredentials = "Insert your xToken here";
+            Map.XMapCredentials = "6BD4C80D-07ED-449E-83EE-0FCA7046423C";
             Map.XMapStyle = "gravelpit";
 
             InitFeatureLayers();

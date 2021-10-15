@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using TourPlanningDemo.XTourServiceReference;
 
@@ -24,6 +25,8 @@ namespace TourPlanningDemo
 
         private BackgroundWorker backgroundWorker;
 
+        private Stopwatch sw = new Stopwatch();
+
         public void Cancel()
         {
             backgroundWorker.CancelAsync();
@@ -46,6 +49,7 @@ namespace TourPlanningDemo
             backgroundWorker.RunWorkerCompleted += bw_RunWorkerCompleted;
             backgroundWorker.ProgressChanged += bw_ProgressChanged;
             backgroundWorker.RunWorkerAsync();
+            sw.Start();
         }
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -92,11 +96,17 @@ namespace TourPlanningDemo
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            sw.Stop();
             if (Progress != null)
             {
-                if (!e.Cancelled)
+                if (e.Error != null)
                 {
-                    ProgressMessage = "Finished";
+                    ProgressMessage = e.Error.Message;
+                    ProgressPercent = 0;
+                }
+                else if (!e.Cancelled)
+                {
+                    ProgressMessage = $"Finished {sw.ElapsedMilliseconds}ms";
                     ProgressPercent = 100;
                 }
                 else
@@ -189,17 +199,19 @@ namespace TourPlanningDemo
 
             var planningParams = new StandardParams
             {
-                wrappedDistanceMatrixCalculation = new DistanceMatrixCalculation[] 
+                wrappedDistanceMatrixCalculation = new DistanceMatrixCalculation[]
                 {
                     new DistanceMatrixByRoad
                     {
-                        dimaId = 1,
+                        dimaId = 1,                        
                         deleteBeforeUsage = true,
                         deleteAfterUsage = true,
-                        profileName = "dimaTruck"
+                        profileName = scenario.Profile,
+                        enforceHighPerformanceRouting = true, // requires xTour >= 1.32
+                        enforceHighPerformanceRoutingSpecified = true
                     }
                 },
-                availableMachineTime = 15,
+                availableMachineTime = 5,
                 availableMachineTimeSpecified = true
             };
 
@@ -208,12 +220,12 @@ namespace TourPlanningDemo
                 {
                     wrappedProperties = new[] {
                     new CallerContextProperty { key = "CoordFormat", value = "OG_GEODECIMAL" },
-                    new CallerContextProperty { key = "TenantId", value = Guid.NewGuid().ToString() }}
-                });
+                    //new CallerContextProperty { key = "TenantId", value = Guid.NewGuid().ToString() }
+                }});
 
             backgroundWorker.ReportProgress(-1, xTourJob);
             var status = xTourJob.status;
-            while (status == JobStatus.QUEUING || status == JobStatus.RUNNING)
+            while (status == JobStatus.QUEUING || status == JobStatus.RUNNING || status == JobStatus.STOPPING)
             {
                 if (backgroundWorker.CancellationPending)
                 {
@@ -224,9 +236,9 @@ namespace TourPlanningDemo
 
                 xTourJob = xTour.watchJob(xTourJob.id, new WatchOptions
                 {
-                    maximumPollingPeriod = 250,
+                    maximumPollingPeriod = 500,
                     maximumPollingPeriodSpecified = true,
-                    progressUpdatePeriod = 250,
+                    progressUpdatePeriod = 500,
                     progressUpdatePeriodSpecified = true
                 }, null);
                 status = xTourJob.status;
@@ -234,7 +246,7 @@ namespace TourPlanningDemo
                 backgroundWorker.ReportProgress(-1, xTourJob);
 
                 // wait a bit on the client-side to reduce network+server load
-                System.Threading.Thread.Sleep(250);
+                System.Threading.Thread.Sleep(500);
             }
 
             var result = xTour.fetchPlan(xTourJob.id, null);

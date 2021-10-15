@@ -13,13 +13,16 @@ namespace TourPlanningDemo
         Tiny,
         Small,
         Medium,
-        Large
+        Large,
+        Huge
     }
 
     public class RandomScenarioBuilder
     {
-        public static Scenario CreateScenario(ScenarioSize size, Point center, double radius)
+        public static Scenario CreateScenario(ScenarioSize size, Point center)
         {
+            double radius = 5 * (Convert.ToInt32(size) + 1); // radius in km
+
             const int TRUCK_MIN_CAPACITY = 20;
             const int TRUCK_MAX_CAPACITY = 30;
             const int ORDER_MIN_AMOUNT = 1;
@@ -42,6 +45,9 @@ namespace TourPlanningDemo
                 case ScenarioSize.Large:
                     numDepots = 3; numVehiclesPerDepot = 5; numOrdersPerVehicle = 17; operatingPeriod = TimeSpan.FromHours(6);
                     break;
+                case ScenarioSize.Huge:
+                    numDepots = 5; numVehiclesPerDepot = 6; numOrdersPerVehicle = 21; operatingPeriod = TimeSpan.FromHours(8);
+                    break;
             }
 
             // calculate random coordinates around the center
@@ -59,29 +65,37 @@ namespace TourPlanningDemo
                           {
                               Id = Guid.NewGuid().ToString(),
                               Quantity = Convert.ToInt32(ORDER_MIN_AMOUNT + Math.Floor(rand.NextDouble() * (1 + ORDER_MAX_AMOUNT - ORDER_MIN_AMOUNT))),
-                              Longitude = p.X,
-                              Latitude = p.Y
+                              Longitude = p.Item1.X,
+                              Latitude = p.Item1.Y,
+                              Description = p.Item2
                           }).ToList();
 
             // build depots
-            var palette = new[] { Colors.Blue, Colors.Green, Colors.Salmon };
+            var palette = new[] { 
+                (Color)ColorConverter.ConvertFromString("#66c2a5"),
+                (Color)ColorConverter.ConvertFromString("#fc8d62"),
+                (Color)ColorConverter.ConvertFromString("#8da0cb"),
+                (Color)ColorConverter.ConvertFromString("#e78ac3"),
+                (Color)ColorConverter.ConvertFromString("#a6d854") }; 
+
             int ci = 0;
             Func<Color> GetColor = () => palette[ci++ % palette.Length];
 
             var depots = (from p in enumerable.Skip(numOrdersPerVehicle * numVehiclesPerDepot * numDepots)
-                          select new Depot
-                          {
-                              Id = Guid.NewGuid().ToString(),
-                              Longitude = p.X,
-                              Latitude = p.Y,
-                              Color = GetColor(),
-                              Fleet = (from a in Enumerable.Range(0, numVehiclesPerDepot)
-                                       select new Vehicle
-                                       {
-                                           Id = Guid.NewGuid().ToString(),
-                                           Capacity = Convert.ToInt32(TRUCK_MIN_CAPACITY + Math.Floor(rand.NextDouble() * (1 + TRUCK_MAX_CAPACITY - TRUCK_MIN_CAPACITY)))
-                                       }).ToList()
-                          }).ToList();
+                select new Depot
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Longitude = p.Item1.X,
+                    Latitude = p.Item1.Y,
+                    Description = p.Item2,
+                    Color = GetColor(),
+                    Fleet = (from a in Enumerable.Range(0, numVehiclesPerDepot)
+                            select new Vehicle
+                            {
+                                Id = Guid.NewGuid().ToString(),
+                                Capacity = Convert.ToInt32(TRUCK_MIN_CAPACITY + Math.Floor(rand.NextDouble() * (1 + TRUCK_MAX_CAPACITY - TRUCK_MIN_CAPACITY)))
+                            }).ToList()
+                }).ToList();
 
             // wire-up back-reference vehicle->depot
             foreach (var d in depots)
@@ -97,7 +111,7 @@ namespace TourPlanningDemo
         }
 
         // get coordinates matched on the road by some totally random coordinates
-        private static IEnumerable<Point> GetMatchedCoordinates(IEnumerable<Point> inputCoords)
+        private static IEnumerable<Tuple<Point, string>> GetMatchedCoordinates(IEnumerable<Point> inputCoords)
         {
             var locations = from c in inputCoords
                             select new Location
@@ -123,12 +137,16 @@ namespace TourPlanningDemo
                 new ReverseSearchOption { param = ReverseSearchParameter.ENGINE_TARGETSIZE, value = "1" },
                 new ReverseSearchOption { param = ReverseSearchParameter.ENGINE_FILTERMODE, value = "1" }},
                 null, null,
-               new CallerContext { wrappedProperties = new[] { new CallerContextProperty { key = "CoordFormat", value = "OG_GEODECIMAL" } } }
-                );
+                new CallerContext { wrappedProperties = new[] { new CallerContextProperty { key = "CoordFormat", value = "OG_GEODECIMAL" } } }
+            );
 
-            foreach (var ar in result)
+            foreach (var address in result)
             {
-                yield return new Point(ar.wrappedResultList[0].coordinates.point.x, ar.wrappedResultList[0].coordinates.point.y);
+                var location = address.wrappedResultList[0];
+                yield return new Tuple<Point, string>(
+                    new Point(location.coordinates.point.x, location.coordinates.point.y),
+                    $"{location.city}\n{location.street}"
+                );
             }
         }
 

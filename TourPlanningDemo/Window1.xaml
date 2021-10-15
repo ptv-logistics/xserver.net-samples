@@ -13,7 +13,15 @@
                 <ComboBoxItem Content="Small"></ComboBoxItem>
                 <ComboBoxItem Content="Medium"></ComboBoxItem>
                 <ComboBoxItem Content="Large"></ComboBoxItem>
+                <ComboBoxItem Content="Huge"></ComboBoxItem>
             </ComboBox>
+            <ComboBox Name="ProfileComboBox">
+                <ComboBoxItem Content="hpr-truck-40t" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="hpr-truck-7.5t-ta"></ComboBoxItem>
+                <ComboBoxItem Content="hpr-car"></ComboBoxItem>
+                <ComboBoxItem Content="hpr-truck-40t-ta"></ComboBoxItem>
+                <ComboBoxItem Content="hpr-transporter"></ComboBoxItem>                
+            </ComboBox>            
             <ProgressBar Height="24" HorizontalAlignment="Left" Name="progressBar1" VerticalAlignment="Top" Width="300" />
             <Label Content="Initializing..." Name="statusLabel" />
             <Button Name="StartButton" IsEnabled="false" Content="Plan" Click="StartClick"></Button>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://common.xserver.ptvag.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jwsdp.xlocate.xserver.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns:ns3="http://exception.core.jabba.ptvag.com" name="XLocateWSService" targetNamespace="http://jwsdp.xlocate.xserver.ptvag.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:ns2="http://common.xserver.ptvag.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jwsdp.xlocate.xserver.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://exception.core.jabba.ptvag.com" name="XLocateWSService" targetNamespace="http://jwsdp.xlocate.xserver.ptvag.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema xmlns:tns="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://wrappertypes.service.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://exception.core.jabba.ptvag.com">
       <xsd:complexType name="StackElement">
@@ -260,19 +260,20 @@
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://exception.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://exception.core.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://wrappertypes.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://value.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
-      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:complexType name="RequestOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedResponseGeometry" nillable="true" type="tns:ArrayOfGeometryEncoding" />
             </xsd:sequence>
             <xsd:attribute name="coordFormat" type="tns:CoordFormat" use="required" />
             <xsd:attribute name="profile" type="xsd:string" use="optional" />
             <xsd:attribute name="profileXMLSnippet" type="xsd:string" use="optional" />
+            <xsd:attribute name="srId" type="xsd:string" use="optional" />
           </xsd:extension>
         </xsd:complexContent>
       </xsd:complexType>
@@ -313,6 +314,7 @@
           <xsd:enumeration value="PTV_CONFORM" />
           <xsd:enumeration value="PTV_SUPERCONFORM" />
           <xsd:enumeration value="PTV_SMARTUNITS" />
+          <xsd:enumeration value="OG_SRID" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfCoordFormat">
@@ -327,7 +329,7 @@
       </xsd:complexType>
       <xsd:complexType name="BoundingBox">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="leftTop" nillable="true" type="tns:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="rightBottom" nillable="true" type="tns:Point" />
@@ -501,7 +503,7 @@
       </xsd:complexType>
       <xsd:complexType name="XServiceException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns0:BusinessException">
+          <xsd:extension base="ns2:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -661,7 +663,7 @@
       </xsd:complexType>
       <xsd:complexType name="PlainGeometryBase">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -698,7 +700,7 @@
       </xsd:complexType>
       <xsd:complexType name="EncodedGeometryBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -736,9 +738,9 @@
       </xsd:complexType>
       <xsd:complexType name="KML">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns2:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns1:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="kml" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -777,7 +779,7 @@
       </xsd:complexType>
       <xsd:complexType name="Job">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="progress" nillable="true" type="tns:JobProgress" />
             </xsd:sequence>
@@ -799,7 +801,7 @@
       </xsd:complexType>
       <xsd:complexType name="JobProgress" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -855,7 +857,7 @@
       </xsd:complexType>
       <xsd:complexType name="WatchOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumPollingPeriod" type="xsd:int" use="optional" />
             <xsd:attribute name="progressUpdatePeriod" type="xsd:int" use="optional" />
@@ -895,7 +897,7 @@
       </xsd:complexType>
       <xsd:complexType name="DistanceMatrixCalculationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="currentDistanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
             </xsd:sequence>
@@ -917,7 +919,7 @@
       </xsd:complexType>
       <xsd:complexType name="ImprovementProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="bestPlan" nillable="true" type="tns:KeyFigures" />
               <xsd:element minOccurs="0" maxOccurs="1" name="currentPlan" nillable="true" type="tns:KeyFigures" />
@@ -942,7 +944,7 @@
       </xsd:complexType>
       <xsd:complexType name="KeyFigures">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="costOfObjectiveFunction" type="xsd:int" use="required" />
             <xsd:attribute name="numberOfInfeasibleOrders" type="xsd:int" use="required" />
@@ -972,7 +974,7 @@
       </xsd:complexType>
       <xsd:complexType name="OptimizationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="currentLoopIndex" type="xsd:int" use="required" />
             <xsd:attribute name="lastLoopIndex" type="xsd:int" use="required" />
@@ -1011,12 +1013,52 @@
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfClusterProgress" nillable="true" type="tns:ArrayOfClusterProgress" />
         </xsd:sequence>
       </xsd:complexType>
+      <xsd:complexType name="TerritoryProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="distanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TerritoryProgress" nillable="true" type="tns:TerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfTerritoryProgress" nillable="true" type="tns:ArrayOfTerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZoneLoadingProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence />
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ZoneLoadingProgress" nillable="true" type="tns:ZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfZoneLoadingProgress" nillable="true" type="tns:ArrayOfZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://value.core.jabba.ptvag.com" xmlns:tns="http://xlocate.xserver.ptvag.com" xmlns:ns1="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://wrappertypes.service.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://xlocate.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://xlocate.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xlocate.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
+      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:import namespace="http://common.xserver.ptvag.com" />
       <xsd:import namespace="http://value.core.jabba.ptvag.com" />
-      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:simpleType name="SortOrder">
         <xsd:restriction base="xsd:string">
           <xsd:enumeration value="ASCENDING" />
@@ -1146,6 +1188,7 @@
           <xsd:enumeration value="CITY_LEVEL" />
           <xsd:enumeration value="STREETNUMBER" />
           <xsd:enumeration value="HOUSENR_ATINPUTCOORDINATESIDE" />
+          <xsd:enumeration value="PROVINCE" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfResultField">
@@ -1192,7 +1235,7 @@
       </xsd:complexType>
       <xsd:complexType name="XLocateException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:BusinessException">
+          <xsd:extension base="ns3:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -1262,6 +1305,8 @@
           <xsd:enumeration value="ENGINE_SEARCHRANGE" />
           <xsd:enumeration value="ENGINE_SEARCHDETAILLEVEL" />
           <xsd:enumeration value="ENGINE_MINPOPULATION" />
+          <xsd:enumeration value="ENGINE_MINSIZE" />
+          <xsd:enumeration value="ENGINE_RETURNALLEQUALDISTANCES" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfReverseSearchParameter">
@@ -1315,7 +1360,7 @@
       </xsd:complexType>
       <xsd:complexType name="Location">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="coordinate" nillable="true" type="ns0:Point" />
             </xsd:sequence>
@@ -1334,7 +1379,7 @@
       </xsd:complexType>
       <xsd:complexType name="Address">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="city" type="xsd:string" use="optional" />
             <xsd:attribute name="city2" type="xsd:string" use="optional" />
@@ -1399,7 +1444,7 @@
       </xsd:complexType>
       <xsd:complexType name="ResultCombinedTransport">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedCombinedTransportFields" nillable="true" type="tns:ArrayOfAdditionalField" />
               <xsd:element minOccurs="0" maxOccurs="1" name="destination" nillable="true" type="tns:CombinedTransportLocation" />
@@ -1474,7 +1519,7 @@
       </xsd:complexType>
       <xsd:complexType name="CombinedTransportLocation">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="coordinate" nillable="true" type="ns0:Point" />
             </xsd:sequence>
@@ -1495,7 +1540,7 @@
       </xsd:complexType>
       <xsd:complexType name="SortOption">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="field" type="tns:ResultField" use="required" />
             <xsd:attribute name="order" type="tns:SortOrder" use="required" />
@@ -1604,7 +1649,7 @@
       </xsd:complexType>
       <xsd:complexType name="AdditionalField">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="field" type="tns:ResultField" use="required" />
             <xsd:attribute name="value" type="xsd:string" use="optional" />
@@ -1659,7 +1704,7 @@
       </xsd:complexType>
       <xsd:complexType name="DatabaseFieldBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="field" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -1695,7 +1740,7 @@
       </xsd:complexType>
       <xsd:complexType name="SearchOptionBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="value" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -1713,7 +1758,7 @@
       </xsd:complexType>
       <xsd:complexType name="AddressResponse">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultAddress" />
             </xsd:sequence>
@@ -1734,7 +1779,7 @@
       </xsd:complexType>
       <xsd:complexType name="CombinedTransportResponse">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultCombinedTransport" />
             </xsd:sequence>
@@ -1755,7 +1800,7 @@
       </xsd:complexType>
       <xsd:complexType name="PoiAddressResponse">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfPoiResultAddress" />
             </xsd:sequence>
@@ -1776,7 +1821,7 @@
       </xsd:complexType>
       <xsd:complexType name="ObjectResponse">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedResultList" nillable="true" type="tns:ArrayOfResultObject" />
             </xsd:sequence>
@@ -1797,7 +1842,7 @@
       </xsd:complexType>
       <xsd:complexType name="ResultObject">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="address" nillable="true" type="tns:ResultAddress" />
               <xsd:element minOccurs="0" maxOccurs="1" name="combinedTransport" nillable="true" type="tns:ResultCombinedTransport" />
@@ -1817,7 +1862,7 @@
       </xsd:complexType>
       <xsd:complexType name="SuggestionResponse">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedSuggestionList" nillable="true" type="tns:ArrayOfSuggestion" />
             </xsd:sequence>
@@ -1838,7 +1883,7 @@
       </xsd:complexType>
       <xsd:complexType name="Suggestion">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAdditionalFields" nillable="true" type="tns:ArrayOfAdditionalField" />
             </xsd:sequence>
@@ -1857,7 +1902,7 @@
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://xlocate.xserver.ptvag.com" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://types.xlocate.xserver.ptvag.com" xmlns:common="http://common.xserver.ptvag.com" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://baseservices.service.jabba.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://types.xlocate.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://xlocate.xserver.ptvag.com" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://types.xlocate.xserver.ptvag.com" xmlns:ns1="http://xlocate.xserver.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://types.xlocate.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:common="http://common.xserver.ptvag.com" xmlns:ns3="http://baseservices.service.jabba.ptvag.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://types.xlocate.xserver.ptvag.com">
       <xsd:complexType name="fetchAddressResponses">
         <xsd:sequence>
           <xsd:element name="String_1" nillable="true" type="xsd:string" />
@@ -2249,454 +2294,454 @@
       <xsd:element name="stopJobResponse" type="tns:stopJobResponse" />
     </xsd:schema>
   </types>
-  <message name="XLocateWS_startFindLocationsResponse">
-    <part name="parameters" element="ns0:startFindLocationsResponse" />
-  </message>
-  <message name="XLocateWS_findPoiByLocation">
-    <part name="parameters" element="ns0:findPoiByLocation" />
-  </message>
-  <message name="XLocateWS_startFindPoiByAddresses">
-    <part name="parameters" element="ns0:startFindPoiByAddresses" />
-  </message>
-  <message name="SystemException">
-    <part name="SystemException" element="ns3:SystemException" />
-  </message>
-  <message name="XLocateWS_startFindPoiByLocationsResponse">
-    <part name="parameters" element="ns0:startFindPoiByLocationsResponse" />
-  </message>
-  <message name="XLocateWS_startFindPoiByAddressesResponse">
-    <part name="parameters" element="ns0:startFindPoiByAddressesResponse" />
-  </message>
-  <message name="XLocateWS_findLocation">
-    <part name="parameters" element="ns0:findLocation" />
-  </message>
-  <message name="XLocateWS_findPoiByLocationsResponse">
-    <part name="parameters" element="ns0:findPoiByLocationsResponse" />
-  </message>
-  <message name="XLocateWS_findSuggestion">
-    <part name="parameters" element="ns0:findSuggestion" />
-  </message>
-  <message name="XLocateWS_findAddress">
-    <part name="parameters" element="ns0:findAddress" />
-  </message>
-  <message name="XLocateWS_startFindAddresses">
-    <part name="parameters" element="ns0:startFindAddresses" />
-  </message>
-  <message name="XLocateWS_findCombinedTransportByLocationResponse">
-    <part name="parameters" element="ns0:findCombinedTransportByLocationResponse" />
-  </message>
-  <message name="XLocateWS_stopJobResponse">
-    <part name="parameters" element="ns0:stopJobResponse" />
-  </message>
-  <message name="XLocateWS_findLocations">
-    <part name="parameters" element="ns0:findLocations" />
-  </message>
-  <message name="XLocateWS_matchAddressResponse">
-    <part name="parameters" element="ns0:matchAddressResponse" />
-  </message>
-  <message name="XLocateWS_matchAddresses">
-    <part name="parameters" element="ns0:matchAddresses" />
-  </message>
-  <message name="XLocateWS_matchLocationResponse">
-    <part name="parameters" element="ns0:matchLocationResponse" />
-  </message>
-  <message name="XLocateWS_matchAddress">
-    <part name="parameters" element="ns0:matchAddress" />
-  </message>
-  <message name="UnexpectedException">
-    <part name="UnexpectedException" element="ns3:UnexpectedException" />
-  </message>
-  <message name="XLocateWS_findPoiByLocations">
-    <part name="parameters" element="ns0:findPoiByLocations" />
-  </message>
-  <message name="XLocateWS_findPoiByAddresses">
-    <part name="parameters" element="ns0:findPoiByAddresses" />
-  </message>
-  <message name="ConstraintViolationException">
-    <part name="ConstraintViolationException" element="ns3:ConstraintViolationException" />
-  </message>
-  <message name="XLocateWS_findLocationResponse">
-    <part name="parameters" element="ns0:findLocationResponse" />
-  </message>
-  <message name="XLocateWS_findAddressByTextResponse">
-    <part name="parameters" element="ns0:findAddressByTextResponse" />
-  </message>
-  <message name="XLocateWS_findCombinedTransportByLocation">
-    <part name="parameters" element="ns0:findCombinedTransportByLocation" />
-  </message>
-  <message name="XLocateWS_fetchPoiAddressResponsesResponse">
-    <part name="parameters" element="ns0:fetchPoiAddressResponsesResponse" />
-  </message>
-  <message name="XLocateWS_findAddressesResponse">
-    <part name="parameters" element="ns0:findAddressesResponse" />
-  </message>
-  <message name="XLocateWS_findObjectByText">
-    <part name="parameters" element="ns0:findObjectByText" />
-  </message>
-  <message name="XLocateWS_watchJobResponse">
-    <part name="parameters" element="ns0:watchJobResponse" />
-  </message>
-  <message name="XLocateWS_matchAddressesResponse">
-    <part name="parameters" element="ns0:matchAddressesResponse" />
-  </message>
-  <message name="XLocateWS_deleteJob">
-    <part name="parameters" element="ns0:deleteJob" />
-  </message>
-  <message name="XLocateWS_matchLocationsResponse">
-    <part name="parameters" element="ns0:matchLocationsResponse" />
+  <message name="XLocateWS_startFindAddressesResponse">
+    <part name="parameters" element="ns0:startFindAddressesResponse" />
   </message>
   <message name="XLocateWS_matchLocation">
     <part name="parameters" element="ns0:matchLocation" />
   </message>
-  <message name="XLocateWS_findLocationsResponse">
-    <part name="parameters" element="ns0:findLocationsResponse" />
-  </message>
-  <message name="XLocateWS_findAddresses">
-    <part name="parameters" element="ns0:findAddresses" />
-  </message>
-  <message name="XLocateWS_findPoiByAddressesResponse">
-    <part name="parameters" element="ns0:findPoiByAddressesResponse" />
-  </message>
-  <message name="XLocateWS_fetchPoiAddressResponses">
-    <part name="parameters" element="ns0:fetchPoiAddressResponses" />
-  </message>
-  <message name="XLocateWS_startFindAddressesResponse">
-    <part name="parameters" element="ns0:startFindAddressesResponse" />
-  </message>
-  <message name="XLocateWS_stopJob">
-    <part name="parameters" element="ns0:stopJob" />
-  </message>
-  <message name="XLocateWS_matchLocations">
-    <part name="parameters" element="ns0:matchLocations" />
-  </message>
-  <message name="XLocateWS_fetchAddressResponses">
-    <part name="parameters" element="ns0:fetchAddressResponses" />
-  </message>
-  <message name="XLocateWS_watchJob">
-    <part name="parameters" element="ns0:watchJob" />
-  </message>
-  <message name="TableNotFoundException">
-    <part name="TableNotFoundException" element="ns3:TableNotFoundException" />
-  </message>
-  <message name="XLocateWS_startFindLocations">
-    <part name="parameters" element="ns0:startFindLocations" />
-  </message>
-  <message name="XLocateWS_findPoiByAddressResponse">
-    <part name="parameters" element="ns0:findPoiByAddressResponse" />
-  </message>
-  <message name="OptimisticRollbackException">
-    <part name="OptimisticRollbackException" element="ns3:OptimisticRollbackException" />
-  </message>
-  <message name="XLocateWS_findAddressByText">
-    <part name="parameters" element="ns0:findAddressByText" />
-  </message>
-  <message name="XLocateWS_findAddressResponse">
-    <part name="parameters" element="ns0:findAddressResponse" />
-  </message>
   <message name="DatabaseException">
     <part name="DatabaseException" element="ns3:DatabaseException" />
-  </message>
-  <message name="XLocateWS_findPoiByLocationResponse">
-    <part name="parameters" element="ns0:findPoiByLocationResponse" />
-  </message>
-  <message name="XLocateWS_deleteJobResponse">
-    <part name="parameters" element="ns0:deleteJobResponse" />
-  </message>
-  <message name="XLocateWS_findSuggestionResponse">
-    <part name="parameters" element="ns0:findSuggestionResponse" />
-  </message>
-  <message name="XLocateWS_startFindPoiByLocations">
-    <part name="parameters" element="ns0:startFindPoiByLocations" />
-  </message>
-  <message name="XLocateWS_findObjectByTextResponse">
-    <part name="parameters" element="ns0:findObjectByTextResponse" />
-  </message>
-  <message name="XServiceException">
-    <part name="XServiceException" element="ns2:XServiceException" />
   </message>
   <message name="XLocateWS_fetchAddressResponsesResponse">
     <part name="parameters" element="ns0:fetchAddressResponsesResponse" />
   </message>
-  <message name="XLocateException">
-    <part name="XLocateException" element="ns1:XLocateException" />
+  <message name="XLocateWS_watchJobResponse">
+    <part name="parameters" element="ns0:watchJobResponse" />
+  </message>
+  <message name="XLocateWS_findSuggestion">
+    <part name="parameters" element="ns0:findSuggestion" />
+  </message>
+  <message name="XLocateWS_findLocations">
+    <part name="parameters" element="ns0:findLocations" />
+  </message>
+  <message name="XLocateWS_findLocationsResponse">
+    <part name="parameters" element="ns0:findLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findObjectByText">
+    <part name="parameters" element="ns0:findObjectByText" />
+  </message>
+  <message name="UnexpectedException">
+    <part name="UnexpectedException" element="ns3:UnexpectedException" />
+  </message>
+  <message name="XLocateWS_findAddressesResponse">
+    <part name="parameters" element="ns0:findAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocations">
+    <part name="parameters" element="ns0:findPoiByLocations" />
+  </message>
+  <message name="XLocateWS_findLocationResponse">
+    <part name="parameters" element="ns0:findLocationResponse" />
+  </message>
+  <message name="OptimisticRollbackException">
+    <part name="OptimisticRollbackException" element="ns3:OptimisticRollbackException" />
+  </message>
+  <message name="XLocateWS_fetchPoiAddressResponsesResponse">
+    <part name="parameters" element="ns0:fetchPoiAddressResponsesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocation">
+    <part name="parameters" element="ns0:findPoiByLocation" />
+  </message>
+  <message name="XLocateWS_deleteJobResponse">
+    <part name="parameters" element="ns0:deleteJobResponse" />
+  </message>
+  <message name="XLocateWS_startFindPoiByLocationsResponse">
+    <part name="parameters" element="ns0:startFindPoiByLocationsResponse" />
+  </message>
+  <message name="TableNotFoundException">
+    <part name="TableNotFoundException" element="ns3:TableNotFoundException" />
+  </message>
+  <message name="XLocateWS_startFindPoiByLocations">
+    <part name="parameters" element="ns0:startFindPoiByLocations" />
+  </message>
+  <message name="XLocateWS_startFindLocations">
+    <part name="parameters" element="ns0:startFindLocations" />
+  </message>
+  <message name="XLocateWS_deleteJob">
+    <part name="parameters" element="ns0:deleteJob" />
+  </message>
+  <message name="XLocateWS_startFindPoiByAddressesResponse">
+    <part name="parameters" element="ns0:startFindPoiByAddressesResponse" />
+  </message>
+  <message name="XLocateWS_stopJob">
+    <part name="parameters" element="ns0:stopJob" />
+  </message>
+  <message name="ConstraintViolationException">
+    <part name="ConstraintViolationException" element="ns3:ConstraintViolationException" />
+  </message>
+  <message name="XLocateWS_matchLocationsResponse">
+    <part name="parameters" element="ns0:matchLocationsResponse" />
+  </message>
+  <message name="XLocateWS_matchAddressesResponse">
+    <part name="parameters" element="ns0:matchAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocationsResponse">
+    <part name="parameters" element="ns0:findPoiByLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByAddressesResponse">
+    <part name="parameters" element="ns0:findPoiByAddressesResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByAddresses">
+    <part name="parameters" element="ns0:findPoiByAddresses" />
+  </message>
+  <message name="XLocateWS_matchLocations">
+    <part name="parameters" element="ns0:matchLocations" />
+  </message>
+  <message name="XLocateWS_findAddressByText">
+    <part name="parameters" element="ns0:findAddressByText" />
+  </message>
+  <message name="XLocateWS_findCombinedTransportByLocationResponse">
+    <part name="parameters" element="ns0:findCombinedTransportByLocationResponse" />
+  </message>
+  <message name="XLocateWS_fetchPoiAddressResponses">
+    <part name="parameters" element="ns0:fetchPoiAddressResponses" />
+  </message>
+  <message name="XLocateWS_watchJob">
+    <part name="parameters" element="ns0:watchJob" />
+  </message>
+  <message name="XLocateWS_findAddressResponse">
+    <part name="parameters" element="ns0:findAddressResponse" />
   </message>
   <message name="XLocateWS_findPoiByAddress">
     <part name="parameters" element="ns0:findPoiByAddress" />
+  </message>
+  <message name="XServiceException">
+    <part name="XServiceException" element="ns2:XServiceException" />
+  </message>
+  <message name="XLocateWS_findAddresses">
+    <part name="parameters" element="ns0:findAddresses" />
+  </message>
+  <message name="XLocateWS_findCombinedTransportByLocation">
+    <part name="parameters" element="ns0:findCombinedTransportByLocation" />
+  </message>
+  <message name="XLocateWS_fetchAddressResponses">
+    <part name="parameters" element="ns0:fetchAddressResponses" />
+  </message>
+  <message name="XLocateException">
+    <part name="XLocateException" element="ns1:XLocateException" />
+  </message>
+  <message name="XLocateWS_startFindPoiByAddresses">
+    <part name="parameters" element="ns0:startFindPoiByAddresses" />
+  </message>
+  <message name="XLocateWS_matchLocationResponse">
+    <part name="parameters" element="ns0:matchLocationResponse" />
+  </message>
+  <message name="XLocateWS_startFindAddresses">
+    <part name="parameters" element="ns0:startFindAddresses" />
+  </message>
+  <message name="XLocateWS_findPoiByAddressResponse">
+    <part name="parameters" element="ns0:findPoiByAddressResponse" />
+  </message>
+  <message name="SystemException">
+    <part name="SystemException" element="ns3:SystemException" />
+  </message>
+  <message name="XLocateWS_findAddressByTextResponse">
+    <part name="parameters" element="ns0:findAddressByTextResponse" />
+  </message>
+  <message name="XLocateWS_startFindLocationsResponse">
+    <part name="parameters" element="ns0:startFindLocationsResponse" />
+  </message>
+  <message name="XLocateWS_findObjectByTextResponse">
+    <part name="parameters" element="ns0:findObjectByTextResponse" />
+  </message>
+  <message name="XLocateWS_findPoiByLocationResponse">
+    <part name="parameters" element="ns0:findPoiByLocationResponse" />
+  </message>
+  <message name="XLocateWS_findLocation">
+    <part name="parameters" element="ns0:findLocation" />
+  </message>
+  <message name="XLocateWS_matchAddressResponse">
+    <part name="parameters" element="ns0:matchAddressResponse" />
+  </message>
+  <message name="XLocateWS_findSuggestionResponse">
+    <part name="parameters" element="ns0:findSuggestionResponse" />
+  </message>
+  <message name="XLocateWS_stopJobResponse">
+    <part name="parameters" element="ns0:stopJobResponse" />
+  </message>
+  <message name="XLocateWS_findAddress">
+    <part name="parameters" element="ns0:findAddress" />
+  </message>
+  <message name="XLocateWS_matchAddress">
+    <part name="parameters" element="ns0:matchAddress" />
+  </message>
+  <message name="XLocateWS_matchAddresses">
+    <part name="parameters" element="ns0:matchAddresses" />
   </message>
   <portType name="XLocateWS">
     <operation name="fetchAddressResponses">
       <input message="tns:XLocateWS_fetchAddressResponses" />
       <output message="tns:XLocateWS_fetchAddressResponsesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="SystemException" message="tns:SystemException" />
       <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="fetchPoiAddressResponses">
       <input message="tns:XLocateWS_fetchPoiAddressResponses" />
       <output message="tns:XLocateWS_fetchPoiAddressResponsesResponse" />
+      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="SystemException" message="tns:SystemException" />
       <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="findAddress">
       <input message="tns:XLocateWS_findAddress" />
       <output message="tns:XLocateWS_findAddressResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findAddressByText">
       <input message="tns:XLocateWS_findAddressByText" />
       <output message="tns:XLocateWS_findAddressByTextResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findAddresses">
       <input message="tns:XLocateWS_findAddresses" />
       <output message="tns:XLocateWS_findAddressesResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findCombinedTransportByLocation">
       <input message="tns:XLocateWS_findCombinedTransportByLocation" />
       <output message="tns:XLocateWS_findCombinedTransportByLocationResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findLocation">
       <input message="tns:XLocateWS_findLocation" />
       <output message="tns:XLocateWS_findLocationResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findLocations">
       <input message="tns:XLocateWS_findLocations" />
       <output message="tns:XLocateWS_findLocationsResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findObjectByText">
       <input message="tns:XLocateWS_findObjectByText" />
       <output message="tns:XLocateWS_findObjectByTextResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findPoiByAddress">
       <input message="tns:XLocateWS_findPoiByAddress" />
       <output message="tns:XLocateWS_findPoiByAddressResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findPoiByAddresses">
       <input message="tns:XLocateWS_findPoiByAddresses" />
       <output message="tns:XLocateWS_findPoiByAddressesResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findPoiByLocation">
       <input message="tns:XLocateWS_findPoiByLocation" />
       <output message="tns:XLocateWS_findPoiByLocationResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findPoiByLocations">
       <input message="tns:XLocateWS_findPoiByLocations" />
       <output message="tns:XLocateWS_findPoiByLocationsResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="findSuggestion">
       <input message="tns:XLocateWS_findSuggestion" />
       <output message="tns:XLocateWS_findSuggestionResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="matchAddress">
       <input message="tns:XLocateWS_matchAddress" />
       <output message="tns:XLocateWS_matchAddressResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="matchAddresses">
       <input message="tns:XLocateWS_matchAddresses" />
       <output message="tns:XLocateWS_matchAddressesResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="matchLocation">
       <input message="tns:XLocateWS_matchLocation" />
       <output message="tns:XLocateWS_matchLocationResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="matchLocations">
       <input message="tns:XLocateWS_matchLocations" />
       <output message="tns:XLocateWS_matchLocationsResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="startFindAddresses">
       <input message="tns:XLocateWS_startFindAddresses" />
       <output message="tns:XLocateWS_startFindAddressesResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="startFindLocations">
       <input message="tns:XLocateWS_startFindLocations" />
       <output message="tns:XLocateWS_startFindLocationsResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="startFindPoiByAddresses">
       <input message="tns:XLocateWS_startFindPoiByAddresses" />
       <output message="tns:XLocateWS_startFindPoiByAddressesResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="startFindPoiByLocations">
       <input message="tns:XLocateWS_startFindPoiByLocations" />
       <output message="tns:XLocateWS_startFindPoiByLocationsResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
-      <fault name="XLocateException" message="tns:XLocateException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
-      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
-      <fault name="DatabaseException" message="tns:DatabaseException" />
       <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
+      <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
+      <fault name="XLocateException" message="tns:XLocateException" />
+      <fault name="DatabaseException" message="tns:DatabaseException" />
     </operation>
     <operation name="watchJob">
       <input message="tns:XLocateWS_watchJob" />
       <output message="tns:XLocateWS_watchJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="deleteJob">
       <input message="tns:XLocateWS_deleteJob" />
       <output message="tns:XLocateWS_deleteJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="stopJob">
       <input message="tns:XLocateWS_stopJob" />
       <output message="tns:XLocateWS_stopJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
   </portType>
   <binding name="XLocateWSBinding" type="tns:XLocateWS">
@@ -2709,17 +2754,17 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
       <fault name="SystemException">
         <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
       <fault name="XLocateException">
         <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="fetchPoiAddressResponses">
@@ -2730,17 +2775,17 @@
       <output>
         <soap:body use="literal" />
       </output>
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
+      </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
       <fault name="SystemException">
         <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
       <fault name="XLocateException">
         <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findAddress">
@@ -2751,29 +2796,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findAddressByText">
@@ -2784,29 +2829,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findAddresses">
@@ -2817,29 +2862,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findCombinedTransportByLocation">
@@ -2850,29 +2895,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findLocation">
@@ -2883,29 +2928,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findLocations">
@@ -2916,29 +2961,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findObjectByText">
@@ -2949,29 +2994,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findPoiByAddress">
@@ -2982,29 +3027,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findPoiByAddresses">
@@ -3015,29 +3060,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findPoiByLocation">
@@ -3048,29 +3093,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findPoiByLocations">
@@ -3081,29 +3126,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findSuggestion">
@@ -3114,29 +3159,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="matchAddress">
@@ -3147,29 +3192,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="matchAddresses">
@@ -3180,29 +3225,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="matchLocation">
@@ -3213,29 +3258,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="matchLocations">
@@ -3246,29 +3291,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startFindAddresses">
@@ -3279,29 +3324,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startFindLocations">
@@ -3312,29 +3357,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startFindPoiByAddresses">
@@ -3345,29 +3390,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startFindPoiByLocations">
@@ -3378,29 +3423,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
-      <fault name="XLocateException">
-        <soap:fault use="literal" name="XLocateException" namespace="" />
-      </fault>
-      <fault name="UnexpectedException">
-        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="TableNotFoundException">
         <soap:fault use="literal" name="TableNotFoundException" namespace="" />
       </fault>
+      <fault name="UnexpectedException">
+        <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
+      </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
+      <fault name="XLocateException">
+        <soap:fault use="literal" name="XLocateException" namespace="" />
+      </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="watchJob">
@@ -3411,11 +3456,11 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="deleteJob">
@@ -3426,11 +3471,11 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="stopJob">
@@ -3441,17 +3486,17 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
   </binding>
   <service name="XLocateWSService">
     <port name="XLocateWSPort" binding="tns:XLocateWSBinding">
-      <soap:address location="https://xlocate-eu-n-test.cloud.ptvgroup.com/xlocate/ws/XLocate" />
+      <soap:address location="https://xlocate-eu-n-test.cloud.ptvgroup.com:443/xlocate/ws/XLocate" />
     </port>
   </service>
 </definitions>
