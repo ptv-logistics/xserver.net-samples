@@ -9,7 +9,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="D5F40131-49C6-47BE-BB9E-70657D365F40" Center="8.4, 49" Zoom="10" />
+        <mapcore:WpfMap Name="Map0" Grid.Column="0" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="Insert your xToken here" Center="8.4, 49" Zoom="10" />
         <Border Grid.Column="0" Background="White" BorderBrush="Black" BorderThickness="2" Padding="8" HorizontalAlignment="Left"  VerticalAlignment="Center">
         <StackPanel Margin="8,8,8,8"  >
             <Label Content="xMap Profile" />
@@ -19,7 +19,7 @@
                 <RadioButton Content="Gravelpit"  Checked="RadioButton_Checked" />
             </StackPanel>
         </Border>
-        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="D5F40131-49C6-47BE-BB9E-70657D365F40" Center="8.4, 49" Zoom="10" />
-        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" XMapCredentials="D5F40131-49C6-47BE-BB9E-70657D365F40" Zoom="10" />
+        <mapcore:WpfMap Name="Map1" Grid.Column="1" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" XMapCredentials="Insert your xToken here" Center="8.4, 49" Zoom="10" />
+        <mapcore:WpfMap Name="Map2" Grid.Column="2" XMapUrl="https://api-test.cloud.ptvgroup.com/xmap/ws/XMap" Center="8.4, 49" XMapCredentials="Insert your xToken here" Zoom="10" />
     </Grid>
 </Window>
