@@ -21,8 +21,8 @@ namespace TourPlanningDemo.XTourServiceReference {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XTourException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XTourException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(IllegalParameterException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ParameterNotSetException))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
@@ -35,8 +35,8 @@ namespace TourPlanningDemo.XTourServiceReference {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusinessException))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XTourException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XTourException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(IllegalParameterException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ParameterNotSetException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SystemException))]
@@ -186,6 +186,21 @@ namespace TourPlanningDemo.XTourServiceReference {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WatchOptions))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OptimizationProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(KeyFigures))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ImprovementProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixCalculationProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(JobProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ZoneLoadingProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TerritoryProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClusterProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlanProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BulkProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Job))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BoundingBox))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RequestOptions))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssignVehicleProposal))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AssignVehicleInstruction))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(InsertOrderInstruction))]
@@ -225,6 +240,26 @@ namespace TourPlanningDemo.XTourServiceReference {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TotalCosts))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Costs))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VehicleCosts))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryBase))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryCollection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLinearRing))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(KML))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometryBase))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometry))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(LogisticPoint))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Depot))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TransportPoint))]
@@ -269,41 +304,6 @@ namespace TourPlanningDemo.XTourServiceReference {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Interval))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(NightTourRestrictions))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Restrictions))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(WatchOptions))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(OptimizationProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(KeyFigures))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ImprovementProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixCalculationProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(JobProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ZoneLoadingProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TerritoryProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClusterProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlanProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BulkProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Job))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryBase))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryCollection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLinearRing))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(KML))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometryBase))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometry))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BoundingBox))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(RequestOptions))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContextProperty))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContext))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
@@ -321,6 +321,1579 @@ namespace TourPlanningDemo.XTourServiceReference {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class WatchOptions : TransientVO {
+        
+        private int maximumPollingPeriodField;
+        
+        private bool maximumPollingPeriodFieldSpecified;
+        
+        private int progressUpdatePeriodField;
+        
+        private bool progressUpdatePeriodFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int maximumPollingPeriod {
+            get {
+                return this.maximumPollingPeriodField;
+            }
+            set {
+                this.maximumPollingPeriodField = value;
+                this.RaisePropertyChanged("maximumPollingPeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool maximumPollingPeriodSpecified {
+            get {
+                return this.maximumPollingPeriodFieldSpecified;
+            }
+            set {
+                this.maximumPollingPeriodFieldSpecified = value;
+                this.RaisePropertyChanged("maximumPollingPeriodSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int progressUpdatePeriod {
+            get {
+                return this.progressUpdatePeriodField;
+            }
+            set {
+                this.progressUpdatePeriodField = value;
+                this.RaisePropertyChanged("progressUpdatePeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool progressUpdatePeriodSpecified {
+            get {
+                return this.progressUpdatePeriodFieldSpecified;
+            }
+            set {
+                this.progressUpdatePeriodFieldSpecified = value;
+                this.RaisePropertyChanged("progressUpdatePeriodSpecified");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class OptimizationProgress : TransientVO {
+        
+        private int currentLoopIndexField;
+        
+        private int lastLoopIndexField;
+        
+        private int progressField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int currentLoopIndex {
+            get {
+                return this.currentLoopIndexField;
+            }
+            set {
+                this.currentLoopIndexField = value;
+                this.RaisePropertyChanged("currentLoopIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lastLoopIndex {
+            get {
+                return this.lastLoopIndexField;
+            }
+            set {
+                this.lastLoopIndexField = value;
+                this.RaisePropertyChanged("lastLoopIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int progress {
+            get {
+                return this.progressField;
+            }
+            set {
+                this.progressField = value;
+                this.RaisePropertyChanged("progress");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class KeyFigures : TransientVO {
+        
+        private int costOfObjectiveFunctionField;
+        
+        private int numberOfInfeasibleOrdersField;
+        
+        private int numberOfScheduledOrdersField;
+        
+        private int numberOfScheduledVehiclesField;
+        
+        private int numberOfUnscheduledOrdersField;
+        
+        private int totalChainCostField;
+        
+        private int totalChainPeriodField;
+        
+        private int totalTourCostField;
+        
+        private int totalTourCountField;
+        
+        private int totalTourDistanceField;
+        
+        private int totalTourDrivingPeriodField;
+        
+        private int totalTourPeriodField;
+        
+        private int totalTourWaitingPeriodField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int costOfObjectiveFunction {
+            get {
+                return this.costOfObjectiveFunctionField;
+            }
+            set {
+                this.costOfObjectiveFunctionField = value;
+                this.RaisePropertyChanged("costOfObjectiveFunction");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int numberOfInfeasibleOrders {
+            get {
+                return this.numberOfInfeasibleOrdersField;
+            }
+            set {
+                this.numberOfInfeasibleOrdersField = value;
+                this.RaisePropertyChanged("numberOfInfeasibleOrders");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int numberOfScheduledOrders {
+            get {
+                return this.numberOfScheduledOrdersField;
+            }
+            set {
+                this.numberOfScheduledOrdersField = value;
+                this.RaisePropertyChanged("numberOfScheduledOrders");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int numberOfScheduledVehicles {
+            get {
+                return this.numberOfScheduledVehiclesField;
+            }
+            set {
+                this.numberOfScheduledVehiclesField = value;
+                this.RaisePropertyChanged("numberOfScheduledVehicles");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int numberOfUnscheduledOrders {
+            get {
+                return this.numberOfUnscheduledOrdersField;
+            }
+            set {
+                this.numberOfUnscheduledOrdersField = value;
+                this.RaisePropertyChanged("numberOfUnscheduledOrders");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalChainCost {
+            get {
+                return this.totalChainCostField;
+            }
+            set {
+                this.totalChainCostField = value;
+                this.RaisePropertyChanged("totalChainCost");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalChainPeriod {
+            get {
+                return this.totalChainPeriodField;
+            }
+            set {
+                this.totalChainPeriodField = value;
+                this.RaisePropertyChanged("totalChainPeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourCost {
+            get {
+                return this.totalTourCostField;
+            }
+            set {
+                this.totalTourCostField = value;
+                this.RaisePropertyChanged("totalTourCost");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourCount {
+            get {
+                return this.totalTourCountField;
+            }
+            set {
+                this.totalTourCountField = value;
+                this.RaisePropertyChanged("totalTourCount");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourDistance {
+            get {
+                return this.totalTourDistanceField;
+            }
+            set {
+                this.totalTourDistanceField = value;
+                this.RaisePropertyChanged("totalTourDistance");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourDrivingPeriod {
+            get {
+                return this.totalTourDrivingPeriodField;
+            }
+            set {
+                this.totalTourDrivingPeriodField = value;
+                this.RaisePropertyChanged("totalTourDrivingPeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourPeriod {
+            get {
+                return this.totalTourPeriodField;
+            }
+            set {
+                this.totalTourPeriodField = value;
+                this.RaisePropertyChanged("totalTourPeriod");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int totalTourWaitingPeriod {
+            get {
+                return this.totalTourWaitingPeriodField;
+            }
+            set {
+                this.totalTourWaitingPeriodField = value;
+                this.RaisePropertyChanged("totalTourWaitingPeriod");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class ImprovementProgress : TransientVO {
+        
+        private KeyFigures bestPlanField;
+        
+        private KeyFigures currentPlanField;
+        
+        private KeyFigures initialPlanField;
+        
+        private int availableMachineTimeField;
+        
+        private int iterationIndexField;
+        
+        private int numberOfImprovementsField;
+        
+        private int usedMachineTimeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public KeyFigures bestPlan {
+            get {
+                return this.bestPlanField;
+            }
+            set {
+                this.bestPlanField = value;
+                this.RaisePropertyChanged("bestPlan");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public KeyFigures currentPlan {
+            get {
+                return this.currentPlanField;
+            }
+            set {
+                this.currentPlanField = value;
+                this.RaisePropertyChanged("currentPlan");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
+        public KeyFigures initialPlan {
+            get {
+                return this.initialPlanField;
+            }
+            set {
+                this.initialPlanField = value;
+                this.RaisePropertyChanged("initialPlan");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int availableMachineTime {
+            get {
+                return this.availableMachineTimeField;
+            }
+            set {
+                this.availableMachineTimeField = value;
+                this.RaisePropertyChanged("availableMachineTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int iterationIndex {
+            get {
+                return this.iterationIndexField;
+            }
+            set {
+                this.iterationIndexField = value;
+                this.RaisePropertyChanged("iterationIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int numberOfImprovements {
+            get {
+                return this.numberOfImprovementsField;
+            }
+            set {
+                this.numberOfImprovementsField = value;
+                this.RaisePropertyChanged("numberOfImprovements");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int usedMachineTime {
+            get {
+                return this.usedMachineTimeField;
+            }
+            set {
+                this.usedMachineTimeField = value;
+                this.RaisePropertyChanged("usedMachineTime");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class DistanceMatrixCalculationProgress : TransientVO {
+        
+        private DistanceMatrixProgress currentDistanceMatrixProgressField;
+        
+        private int currentDimaIndexField;
+        
+        private int dimaIdField;
+        
+        private int lastDimaIndexField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public DistanceMatrixProgress currentDistanceMatrixProgress {
+            get {
+                return this.currentDistanceMatrixProgressField;
+            }
+            set {
+                this.currentDistanceMatrixProgressField = value;
+                this.RaisePropertyChanged("currentDistanceMatrixProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int currentDimaIndex {
+            get {
+                return this.currentDimaIndexField;
+            }
+            set {
+                this.currentDimaIndexField = value;
+                this.RaisePropertyChanged("currentDimaIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int dimaId {
+            get {
+                return this.dimaIdField;
+            }
+            set {
+                this.dimaIdField = value;
+                this.RaisePropertyChanged("dimaId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lastDimaIndex {
+            get {
+                return this.lastDimaIndexField;
+            }
+            set {
+                this.lastDimaIndexField = value;
+                this.RaisePropertyChanged("lastDimaIndex");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class DistanceMatrixProgress : JobProgress {
+        
+        private int currentRowIndexField;
+        
+        private int lastRowIndexField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int currentRowIndex {
+            get {
+                return this.currentRowIndexField;
+            }
+            set {
+                this.currentRowIndexField = value;
+                this.RaisePropertyChanged("currentRowIndex");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int lastRowIndex {
+            get {
+                return this.lastRowIndexField;
+            }
+            set {
+                this.lastRowIndexField = value;
+                this.RaisePropertyChanged("lastRowIndex");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ZoneLoadingProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TerritoryProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClusterProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlanProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixProgress))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BulkProgress))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public abstract partial class JobProgress : TransientVO {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class ZoneLoadingProgress : JobProgress {
+        
+        private string actionField;
+        
+        private int optimizationProgressField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int optimizationProgress {
+            get {
+                return this.optimizationProgressField;
+            }
+            set {
+                this.optimizationProgressField = value;
+                this.RaisePropertyChanged("optimizationProgress");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class TerritoryProgress : JobProgress {
+        
+        private DistanceMatrixProgress distanceMatrixProgressField;
+        
+        private string actionField;
+        
+        private int optimizationProgressField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public DistanceMatrixProgress distanceMatrixProgress {
+            get {
+                return this.distanceMatrixProgressField;
+            }
+            set {
+                this.distanceMatrixProgressField = value;
+                this.RaisePropertyChanged("distanceMatrixProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int optimizationProgress {
+            get {
+                return this.optimizationProgressField;
+            }
+            set {
+                this.optimizationProgressField = value;
+                this.RaisePropertyChanged("optimizationProgress");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class ClusterProgress : JobProgress {
+        
+        private DistanceMatrixProgress distanceMatrixProgressField;
+        
+        private OptimizationProgress optimizationProgressField;
+        
+        private string actionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public DistanceMatrixProgress distanceMatrixProgress {
+            get {
+                return this.distanceMatrixProgressField;
+            }
+            set {
+                this.distanceMatrixProgressField = value;
+                this.RaisePropertyChanged("distanceMatrixProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public OptimizationProgress optimizationProgress {
+            get {
+                return this.optimizationProgressField;
+            }
+            set {
+                this.optimizationProgressField = value;
+                this.RaisePropertyChanged("optimizationProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlanProgress : JobProgress {
+        
+        private DistanceMatrixCalculationProgress distanceMatrixCalculationProgressField;
+        
+        private ImprovementProgress improvementProgressField;
+        
+        private string actionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public DistanceMatrixCalculationProgress distanceMatrixCalculationProgress {
+            get {
+                return this.distanceMatrixCalculationProgressField;
+            }
+            set {
+                this.distanceMatrixCalculationProgressField = value;
+                this.RaisePropertyChanged("distanceMatrixCalculationProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public ImprovementProgress improvementProgress {
+            get {
+                return this.improvementProgressField;
+            }
+            set {
+                this.improvementProgressField = value;
+                this.RaisePropertyChanged("improvementProgress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action {
+            get {
+                return this.actionField;
+            }
+            set {
+                this.actionField = value;
+                this.RaisePropertyChanged("action");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class BulkProgress : JobProgress {
+        
+        private int failedField;
+        
+        private int remainingField;
+        
+        private int successfulField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int failed {
+            get {
+                return this.failedField;
+            }
+            set {
+                this.failedField = value;
+                this.RaisePropertyChanged("failed");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int remaining {
+            get {
+                return this.remainingField;
+            }
+            set {
+                this.remainingField = value;
+                this.RaisePropertyChanged("remaining");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int successful {
+            get {
+                return this.successfulField;
+            }
+            set {
+                this.successfulField = value;
+                this.RaisePropertyChanged("successful");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class Job : TransientVO {
+        
+        private JobProgress progressField;
+        
+        private int elapsedTimeField;
+        
+        private string idField;
+        
+        private JobStatus statusField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public JobProgress progress {
+            get {
+                return this.progressField;
+            }
+            set {
+                this.progressField = value;
+                this.RaisePropertyChanged("progress");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int elapsedTime {
+            get {
+                return this.elapsedTimeField;
+            }
+            set {
+                this.elapsedTimeField = value;
+                this.RaisePropertyChanged("elapsedTime");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+                this.RaisePropertyChanged("id");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public JobStatus status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+                this.RaisePropertyChanged("status");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public enum JobStatus {
+        
+        /// <remarks/>
+        QUEUING,
+        
+        /// <remarks/>
+        RUNNING,
+        
+        /// <remarks/>
+        STOPPING,
+        
+        /// <remarks/>
+        SUCCEEDED,
+        
+        /// <remarks/>
+        FAILED,
+        
+        /// <remarks/>
+        DELETED,
+        
+        /// <remarks/>
+        UNKNOWN,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class BoundingBox : TransientVO {
+        
+        private Point leftTopField;
+        
+        private Point rightBottomField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public Point leftTop {
+            get {
+                return this.leftTopField;
+            }
+            set {
+                this.leftTopField = value;
+                this.RaisePropertyChanged("leftTop");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
+        public Point rightBottom {
+            get {
+                return this.rightBottomField;
+            }
+            set {
+                this.rightBottomField = value;
+                this.RaisePropertyChanged("rightBottom");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class Point : EncodedGeometry {
+        
+        private PlainPoint pointField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainPoint point {
+            get {
+                return this.pointField;
+            }
+            set {
+                this.pointField = value;
+                this.RaisePropertyChanged("point");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainPoint : PlainGeometryBase {
+        
+        private double xField;
+        
+        private double yField;
+        
+        private double zField;
+        
+        private bool zFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public double x {
+            get {
+                return this.xField;
+            }
+            set {
+                this.xField = value;
+                this.RaisePropertyChanged("x");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public double y {
+            get {
+                return this.yField;
+            }
+            set {
+                this.yField = value;
+                this.RaisePropertyChanged("y");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public double z {
+            get {
+                return this.zField;
+            }
+            set {
+                this.zField = value;
+                this.RaisePropertyChanged("z");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool zSpecified {
+            get {
+                return this.zFieldSpecified;
+            }
+            set {
+                this.zFieldSpecified = value;
+                this.RaisePropertyChanged("zSpecified");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryCollection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLinearRing))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainGeometryBase : TransientVO {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainGeometryCollection : PlainGeometryBase {
+        
+        private PlainGeometryBase[] wrappedGeometriesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainGeometryBase[] wrappedGeometries {
+            get {
+                return this.wrappedGeometriesField;
+            }
+            set {
+                this.wrappedGeometriesField = value;
+                this.RaisePropertyChanged("wrappedGeometries");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainMultiPolygon : PlainGeometryBase {
+        
+        private PlainPolygon[] wrappedPolygonsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainPolygon[] wrappedPolygons {
+            get {
+                return this.wrappedPolygonsField;
+            }
+            set {
+                this.wrappedPolygonsField = value;
+                this.RaisePropertyChanged("wrappedPolygons");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainPolygon : PlainGeometryBase {
+        
+        private PlainLinearRing[] wrappedLinearRingsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainLinearRing[] wrappedLinearRings {
+            get {
+                return this.wrappedLinearRingsField;
+            }
+            set {
+                this.wrappedLinearRingsField = value;
+                this.RaisePropertyChanged("wrappedLinearRings");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainLinearRing : PlainGeometryBase {
+        
+        private PlainPoint[] wrappedPointsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainPoint[] wrappedPoints {
+            get {
+                return this.wrappedPointsField;
+            }
+            set {
+                this.wrappedPointsField = value;
+                this.RaisePropertyChanged("wrappedPoints");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainMultiLineString : PlainGeometryBase {
+        
+        private PlainLineString[] wrappedLineStringsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainLineString[] wrappedLineStrings {
+            get {
+                return this.wrappedLineStringsField;
+            }
+            set {
+                this.wrappedLineStringsField = value;
+                this.RaisePropertyChanged("wrappedLineStrings");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainLineString : PlainGeometryBase {
+        
+        private PlainPoint[] wrappedPointsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainPoint[] wrappedPoints {
+            get {
+                return this.wrappedPointsField;
+            }
+            set {
+                this.wrappedPointsField = value;
+                this.RaisePropertyChanged("wrappedPoints");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class PlainMultiPoint : PlainGeometryBase {
+        
+        private PlainPoint[] wrappedPointsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public PlainPoint[] wrappedPoints {
+            get {
+                return this.wrappedPointsField;
+            }
+            set {
+                this.wrappedPointsField = value;
+                this.RaisePropertyChanged("wrappedPoints");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public abstract partial class EncodedGeometry : EncodedGeometryBase {
+        
+        private KML kmlField;
+        
+        private byte[] wkbField;
+        
+        private string wktField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public KML kml {
+            get {
+                return this.kmlField;
+            }
+            set {
+                this.kmlField = value;
+                this.RaisePropertyChanged("kml");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="base64Binary")]
+        public byte[] wkb {
+            get {
+                return this.wkbField;
+            }
+            set {
+                this.wkbField = value;
+                this.RaisePropertyChanged("wkb");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string wkt {
+            get {
+                return this.wktField;
+            }
+            set {
+                this.wktField = value;
+                this.RaisePropertyChanged("wkt");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class KML : TransientVO {
+        
+        private string[] wrappedPlacemarksField;
+        
+        private string kmlField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("String", Namespace="http://wrappertypes.service.jabba.ptvag.com")]
+        public string[] wrappedPlacemarks {
+            get {
+                return this.wrappedPlacemarksField;
+            }
+            set {
+                this.wrappedPlacemarksField = value;
+                this.RaisePropertyChanged("wrappedPlacemarks");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string kml {
+            get {
+                return this.kmlField;
+            }
+            set {
+                this.kmlField = value;
+                this.RaisePropertyChanged("kml");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometry))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public abstract partial class EncodedGeometryBase : TransientVO {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class GeometryCollection : EncodedGeometry {
+        
+        private PlainGeometryCollection geometryCollectionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainGeometryCollection geometryCollection {
+            get {
+                return this.geometryCollectionField;
+            }
+            set {
+                this.geometryCollectionField = value;
+                this.RaisePropertyChanged("geometryCollection");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class MultiPolygon : EncodedGeometry {
+        
+        private PlainMultiPolygon multiPolygonField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainMultiPolygon multiPolygon {
+            get {
+                return this.multiPolygonField;
+            }
+            set {
+                this.multiPolygonField = value;
+                this.RaisePropertyChanged("multiPolygon");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class MultiLineString : EncodedGeometry {
+        
+        private PlainMultiLineString multiLineStringField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainMultiLineString multiLineString {
+            get {
+                return this.multiLineStringField;
+            }
+            set {
+                this.multiLineStringField = value;
+                this.RaisePropertyChanged("multiLineString");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class MultiPoint : EncodedGeometry {
+        
+        private PlainMultiPoint multiPointField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainMultiPoint multiPoint {
+            get {
+                return this.multiPointField;
+            }
+            set {
+                this.multiPointField = value;
+                this.RaisePropertyChanged("multiPoint");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class LineString : EncodedGeometry {
+        
+        private PlainLineString lineStringField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainLineString lineString {
+            get {
+                return this.lineStringField;
+            }
+            set {
+                this.lineStringField = value;
+                this.RaisePropertyChanged("lineString");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class Polygon : EncodedGeometry {
+        
+        private PlainPolygon polygonField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainPolygon polygon {
+            get {
+                return this.polygonField;
+            }
+            set {
+                this.polygonField = value;
+                this.RaisePropertyChanged("polygon");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class LinearRing : EncodedGeometry {
+        
+        private PlainLinearRing linearRingField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public PlainLinearRing linearRing {
+            get {
+                return this.linearRingField;
+            }
+            set {
+                this.linearRingField = value;
+                this.RaisePropertyChanged("linearRing");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public partial class RequestOptions : TransientVO {
+        
+        private GeometryEncoding[] wrappedResponseGeometryField;
+        
+        private CoordFormat coordFormatField;
+        
+        private string profileField;
+        
+        private string profileXMLSnippetField;
+        
+        private string srIdField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public GeometryEncoding[] wrappedResponseGeometry {
+            get {
+                return this.wrappedResponseGeometryField;
+            }
+            set {
+                this.wrappedResponseGeometryField = value;
+                this.RaisePropertyChanged("wrappedResponseGeometry");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public CoordFormat coordFormat {
+            get {
+                return this.coordFormatField;
+            }
+            set {
+                this.coordFormatField = value;
+                this.RaisePropertyChanged("coordFormat");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string profile {
+            get {
+                return this.profileField;
+            }
+            set {
+                this.profileField = value;
+                this.RaisePropertyChanged("profile");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string profileXMLSnippet {
+            get {
+                return this.profileXMLSnippetField;
+            }
+            set {
+                this.profileXMLSnippetField = value;
+                this.RaisePropertyChanged("profileXMLSnippet");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string srId {
+            get {
+                return this.srIdField;
+            }
+            set {
+                this.srIdField = value;
+                this.RaisePropertyChanged("srId");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public enum GeometryEncoding {
+        
+        /// <remarks/>
+        PLAIN,
+        
+        /// <remarks/>
+        WKB,
+        
+        /// <remarks/>
+        WKT,
+        
+        /// <remarks/>
+        KML,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
+    public enum CoordFormat {
+        
+        /// <remarks/>
+        OG_GEODECIMAL,
+        
+        /// <remarks/>
+        PTV_MERCATOR,
+        
+        /// <remarks/>
+        PTV_GEOMINSEC,
+        
+        /// <remarks/>
+        PTV_GEODECIMAL,
+        
+        /// <remarks/>
+        PTV_CONFORM,
+        
+        /// <remarks/>
+        PTV_SUPERCONFORM,
+        
+        /// <remarks/>
+        PTV_SMARTUNITS,
+        
+        /// <remarks/>
+        OG_SRID,
     }
     
     /// <remarks/>
@@ -2304,548 +3877,6 @@ namespace TourPlanningDemo.XTourServiceReference {
             set {
                 this.intermediatePeriodFieldSpecified = value;
                 this.RaisePropertyChanged("intermediatePeriodSpecified");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class Point : EncodedGeometry {
-        
-        private PlainPoint pointField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainPoint point {
-            get {
-                return this.pointField;
-            }
-            set {
-                this.pointField = value;
-                this.RaisePropertyChanged("point");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainPoint : PlainGeometryBase {
-        
-        private double xField;
-        
-        private double yField;
-        
-        private double zField;
-        
-        private bool zFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public double x {
-            get {
-                return this.xField;
-            }
-            set {
-                this.xField = value;
-                this.RaisePropertyChanged("x");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public double y {
-            get {
-                return this.yField;
-            }
-            set {
-                this.yField = value;
-                this.RaisePropertyChanged("y");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public double z {
-            get {
-                return this.zField;
-            }
-            set {
-                this.zField = value;
-                this.RaisePropertyChanged("z");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool zSpecified {
-            get {
-                return this.zFieldSpecified;
-            }
-            set {
-                this.zFieldSpecified = value;
-                this.RaisePropertyChanged("zSpecified");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainGeometryCollection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainMultiPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlainLinearRing))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainGeometryBase : TransientVO {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainGeometryCollection : PlainGeometryBase {
-        
-        private PlainGeometryBase[] wrappedGeometriesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainGeometryBase[] wrappedGeometries {
-            get {
-                return this.wrappedGeometriesField;
-            }
-            set {
-                this.wrappedGeometriesField = value;
-                this.RaisePropertyChanged("wrappedGeometries");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainMultiPolygon : PlainGeometryBase {
-        
-        private PlainPolygon[] wrappedPolygonsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainPolygon[] wrappedPolygons {
-            get {
-                return this.wrappedPolygonsField;
-            }
-            set {
-                this.wrappedPolygonsField = value;
-                this.RaisePropertyChanged("wrappedPolygons");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainPolygon : PlainGeometryBase {
-        
-        private PlainLinearRing[] wrappedLinearRingsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainLinearRing[] wrappedLinearRings {
-            get {
-                return this.wrappedLinearRingsField;
-            }
-            set {
-                this.wrappedLinearRingsField = value;
-                this.RaisePropertyChanged("wrappedLinearRings");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainLinearRing : PlainGeometryBase {
-        
-        private PlainPoint[] wrappedPointsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainPoint[] wrappedPoints {
-            get {
-                return this.wrappedPointsField;
-            }
-            set {
-                this.wrappedPointsField = value;
-                this.RaisePropertyChanged("wrappedPoints");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainMultiLineString : PlainGeometryBase {
-        
-        private PlainLineString[] wrappedLineStringsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainLineString[] wrappedLineStrings {
-            get {
-                return this.wrappedLineStringsField;
-            }
-            set {
-                this.wrappedLineStringsField = value;
-                this.RaisePropertyChanged("wrappedLineStrings");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainLineString : PlainGeometryBase {
-        
-        private PlainPoint[] wrappedPointsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainPoint[] wrappedPoints {
-            get {
-                return this.wrappedPointsField;
-            }
-            set {
-                this.wrappedPointsField = value;
-                this.RaisePropertyChanged("wrappedPoints");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlainMultiPoint : PlainGeometryBase {
-        
-        private PlainPoint[] wrappedPointsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public PlainPoint[] wrappedPoints {
-            get {
-                return this.wrappedPointsField;
-            }
-            set {
-                this.wrappedPointsField = value;
-                this.RaisePropertyChanged("wrappedPoints");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public abstract partial class EncodedGeometry : EncodedGeometryBase {
-        
-        private KML kmlField;
-        
-        private byte[] wkbField;
-        
-        private string wktField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public KML kml {
-            get {
-                return this.kmlField;
-            }
-            set {
-                this.kmlField = value;
-                this.RaisePropertyChanged("kml");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(DataType="base64Binary")]
-        public byte[] wkb {
-            get {
-                return this.wkbField;
-            }
-            set {
-                this.wkbField = value;
-                this.RaisePropertyChanged("wkb");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string wkt {
-            get {
-                return this.wktField;
-            }
-            set {
-                this.wktField = value;
-                this.RaisePropertyChanged("wkt");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class KML : TransientVO {
-        
-        private string[] wrappedPlacemarksField;
-        
-        private string kmlField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("String", Namespace="http://wrappertypes.service.jabba.ptvag.com")]
-        public string[] wrappedPlacemarks {
-            get {
-                return this.wrappedPlacemarksField;
-            }
-            set {
-                this.wrappedPlacemarksField = value;
-                this.RaisePropertyChanged("wrappedPlacemarks");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string kml {
-            get {
-                return this.kmlField;
-            }
-            set {
-                this.kmlField = value;
-                this.RaisePropertyChanged("kml");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncodedGeometry))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GeometryCollection))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPolygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiLineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultiPoint))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Point))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LineString))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Polygon))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(LinearRing))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public abstract partial class EncodedGeometryBase : TransientVO {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class GeometryCollection : EncodedGeometry {
-        
-        private PlainGeometryCollection geometryCollectionField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainGeometryCollection geometryCollection {
-            get {
-                return this.geometryCollectionField;
-            }
-            set {
-                this.geometryCollectionField = value;
-                this.RaisePropertyChanged("geometryCollection");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class MultiPolygon : EncodedGeometry {
-        
-        private PlainMultiPolygon multiPolygonField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainMultiPolygon multiPolygon {
-            get {
-                return this.multiPolygonField;
-            }
-            set {
-                this.multiPolygonField = value;
-                this.RaisePropertyChanged("multiPolygon");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class MultiLineString : EncodedGeometry {
-        
-        private PlainMultiLineString multiLineStringField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainMultiLineString multiLineString {
-            get {
-                return this.multiLineStringField;
-            }
-            set {
-                this.multiLineStringField = value;
-                this.RaisePropertyChanged("multiLineString");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class MultiPoint : EncodedGeometry {
-        
-        private PlainMultiPoint multiPointField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainMultiPoint multiPoint {
-            get {
-                return this.multiPointField;
-            }
-            set {
-                this.multiPointField = value;
-                this.RaisePropertyChanged("multiPoint");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class LineString : EncodedGeometry {
-        
-        private PlainLineString lineStringField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainLineString lineString {
-            get {
-                return this.lineStringField;
-            }
-            set {
-                this.lineStringField = value;
-                this.RaisePropertyChanged("lineString");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class Polygon : EncodedGeometry {
-        
-        private PlainPolygon polygonField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainPolygon polygon {
-            get {
-                return this.polygonField;
-            }
-            set {
-                this.polygonField = value;
-                this.RaisePropertyChanged("polygon");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class LinearRing : EncodedGeometry {
-        
-        private PlainLinearRing linearRingField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public PlainLinearRing linearRing {
-            get {
-                return this.linearRingField;
-            }
-            set {
-                this.linearRingField = value;
-                this.RaisePropertyChanged("linearRing");
             }
         }
     }
@@ -8690,1037 +9721,6 @@ namespace TourPlanningDemo.XTourServiceReference {
         
         /// <remarks/>
         QUANTITY,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class WatchOptions : TransientVO {
-        
-        private int maximumPollingPeriodField;
-        
-        private bool maximumPollingPeriodFieldSpecified;
-        
-        private int progressUpdatePeriodField;
-        
-        private bool progressUpdatePeriodFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int maximumPollingPeriod {
-            get {
-                return this.maximumPollingPeriodField;
-            }
-            set {
-                this.maximumPollingPeriodField = value;
-                this.RaisePropertyChanged("maximumPollingPeriod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool maximumPollingPeriodSpecified {
-            get {
-                return this.maximumPollingPeriodFieldSpecified;
-            }
-            set {
-                this.maximumPollingPeriodFieldSpecified = value;
-                this.RaisePropertyChanged("maximumPollingPeriodSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int progressUpdatePeriod {
-            get {
-                return this.progressUpdatePeriodField;
-            }
-            set {
-                this.progressUpdatePeriodField = value;
-                this.RaisePropertyChanged("progressUpdatePeriod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool progressUpdatePeriodSpecified {
-            get {
-                return this.progressUpdatePeriodFieldSpecified;
-            }
-            set {
-                this.progressUpdatePeriodFieldSpecified = value;
-                this.RaisePropertyChanged("progressUpdatePeriodSpecified");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class OptimizationProgress : TransientVO {
-        
-        private int currentLoopIndexField;
-        
-        private int lastLoopIndexField;
-        
-        private int progressField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int currentLoopIndex {
-            get {
-                return this.currentLoopIndexField;
-            }
-            set {
-                this.currentLoopIndexField = value;
-                this.RaisePropertyChanged("currentLoopIndex");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int lastLoopIndex {
-            get {
-                return this.lastLoopIndexField;
-            }
-            set {
-                this.lastLoopIndexField = value;
-                this.RaisePropertyChanged("lastLoopIndex");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int progress {
-            get {
-                return this.progressField;
-            }
-            set {
-                this.progressField = value;
-                this.RaisePropertyChanged("progress");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class KeyFigures : TransientVO {
-        
-        private int costOfObjectiveFunctionField;
-        
-        private int numberOfInfeasibleOrdersField;
-        
-        private int numberOfScheduledOrdersField;
-        
-        private int numberOfScheduledVehiclesField;
-        
-        private int numberOfUnscheduledOrdersField;
-        
-        private int totalChainCostField;
-        
-        private int totalChainPeriodField;
-        
-        private int totalTourCostField;
-        
-        private int totalTourCountField;
-        
-        private int totalTourDistanceField;
-        
-        private int totalTourDrivingPeriodField;
-        
-        private int totalTourPeriodField;
-        
-        private int totalTourWaitingPeriodField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int costOfObjectiveFunction {
-            get {
-                return this.costOfObjectiveFunctionField;
-            }
-            set {
-                this.costOfObjectiveFunctionField = value;
-                this.RaisePropertyChanged("costOfObjectiveFunction");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int numberOfInfeasibleOrders {
-            get {
-                return this.numberOfInfeasibleOrdersField;
-            }
-            set {
-                this.numberOfInfeasibleOrdersField = value;
-                this.RaisePropertyChanged("numberOfInfeasibleOrders");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int numberOfScheduledOrders {
-            get {
-                return this.numberOfScheduledOrdersField;
-            }
-            set {
-                this.numberOfScheduledOrdersField = value;
-                this.RaisePropertyChanged("numberOfScheduledOrders");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int numberOfScheduledVehicles {
-            get {
-                return this.numberOfScheduledVehiclesField;
-            }
-            set {
-                this.numberOfScheduledVehiclesField = value;
-                this.RaisePropertyChanged("numberOfScheduledVehicles");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int numberOfUnscheduledOrders {
-            get {
-                return this.numberOfUnscheduledOrdersField;
-            }
-            set {
-                this.numberOfUnscheduledOrdersField = value;
-                this.RaisePropertyChanged("numberOfUnscheduledOrders");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalChainCost {
-            get {
-                return this.totalChainCostField;
-            }
-            set {
-                this.totalChainCostField = value;
-                this.RaisePropertyChanged("totalChainCost");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalChainPeriod {
-            get {
-                return this.totalChainPeriodField;
-            }
-            set {
-                this.totalChainPeriodField = value;
-                this.RaisePropertyChanged("totalChainPeriod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourCost {
-            get {
-                return this.totalTourCostField;
-            }
-            set {
-                this.totalTourCostField = value;
-                this.RaisePropertyChanged("totalTourCost");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourCount {
-            get {
-                return this.totalTourCountField;
-            }
-            set {
-                this.totalTourCountField = value;
-                this.RaisePropertyChanged("totalTourCount");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourDistance {
-            get {
-                return this.totalTourDistanceField;
-            }
-            set {
-                this.totalTourDistanceField = value;
-                this.RaisePropertyChanged("totalTourDistance");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourDrivingPeriod {
-            get {
-                return this.totalTourDrivingPeriodField;
-            }
-            set {
-                this.totalTourDrivingPeriodField = value;
-                this.RaisePropertyChanged("totalTourDrivingPeriod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourPeriod {
-            get {
-                return this.totalTourPeriodField;
-            }
-            set {
-                this.totalTourPeriodField = value;
-                this.RaisePropertyChanged("totalTourPeriod");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int totalTourWaitingPeriod {
-            get {
-                return this.totalTourWaitingPeriodField;
-            }
-            set {
-                this.totalTourWaitingPeriodField = value;
-                this.RaisePropertyChanged("totalTourWaitingPeriod");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class ImprovementProgress : TransientVO {
-        
-        private KeyFigures bestPlanField;
-        
-        private KeyFigures currentPlanField;
-        
-        private KeyFigures initialPlanField;
-        
-        private int availableMachineTimeField;
-        
-        private int iterationIndexField;
-        
-        private int numberOfImprovementsField;
-        
-        private int usedMachineTimeField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public KeyFigures bestPlan {
-            get {
-                return this.bestPlanField;
-            }
-            set {
-                this.bestPlanField = value;
-                this.RaisePropertyChanged("bestPlan");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public KeyFigures currentPlan {
-            get {
-                return this.currentPlanField;
-            }
-            set {
-                this.currentPlanField = value;
-                this.RaisePropertyChanged("currentPlan");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=2)]
-        public KeyFigures initialPlan {
-            get {
-                return this.initialPlanField;
-            }
-            set {
-                this.initialPlanField = value;
-                this.RaisePropertyChanged("initialPlan");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int availableMachineTime {
-            get {
-                return this.availableMachineTimeField;
-            }
-            set {
-                this.availableMachineTimeField = value;
-                this.RaisePropertyChanged("availableMachineTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int iterationIndex {
-            get {
-                return this.iterationIndexField;
-            }
-            set {
-                this.iterationIndexField = value;
-                this.RaisePropertyChanged("iterationIndex");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int numberOfImprovements {
-            get {
-                return this.numberOfImprovementsField;
-            }
-            set {
-                this.numberOfImprovementsField = value;
-                this.RaisePropertyChanged("numberOfImprovements");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int usedMachineTime {
-            get {
-                return this.usedMachineTimeField;
-            }
-            set {
-                this.usedMachineTimeField = value;
-                this.RaisePropertyChanged("usedMachineTime");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class DistanceMatrixCalculationProgress : TransientVO {
-        
-        private DistanceMatrixProgress currentDistanceMatrixProgressField;
-        
-        private int currentDimaIndexField;
-        
-        private int dimaIdField;
-        
-        private int lastDimaIndexField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public DistanceMatrixProgress currentDistanceMatrixProgress {
-            get {
-                return this.currentDistanceMatrixProgressField;
-            }
-            set {
-                this.currentDistanceMatrixProgressField = value;
-                this.RaisePropertyChanged("currentDistanceMatrixProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int currentDimaIndex {
-            get {
-                return this.currentDimaIndexField;
-            }
-            set {
-                this.currentDimaIndexField = value;
-                this.RaisePropertyChanged("currentDimaIndex");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int dimaId {
-            get {
-                return this.dimaIdField;
-            }
-            set {
-                this.dimaIdField = value;
-                this.RaisePropertyChanged("dimaId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int lastDimaIndex {
-            get {
-                return this.lastDimaIndexField;
-            }
-            set {
-                this.lastDimaIndexField = value;
-                this.RaisePropertyChanged("lastDimaIndex");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class DistanceMatrixProgress : JobProgress {
-        
-        private int currentRowIndexField;
-        
-        private int lastRowIndexField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int currentRowIndex {
-            get {
-                return this.currentRowIndexField;
-            }
-            set {
-                this.currentRowIndexField = value;
-                this.RaisePropertyChanged("currentRowIndex");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int lastRowIndex {
-            get {
-                return this.lastRowIndexField;
-            }
-            set {
-                this.lastRowIndexField = value;
-                this.RaisePropertyChanged("lastRowIndex");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ZoneLoadingProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TerritoryProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClusterProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(PlanProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistanceMatrixProgress))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BulkProgress))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public abstract partial class JobProgress : TransientVO {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class ZoneLoadingProgress : JobProgress {
-        
-        private string actionField;
-        
-        private int optimizationProgressField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int optimizationProgress {
-            get {
-                return this.optimizationProgressField;
-            }
-            set {
-                this.optimizationProgressField = value;
-                this.RaisePropertyChanged("optimizationProgress");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class TerritoryProgress : JobProgress {
-        
-        private DistanceMatrixProgress distanceMatrixProgressField;
-        
-        private string actionField;
-        
-        private int optimizationProgressField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public DistanceMatrixProgress distanceMatrixProgress {
-            get {
-                return this.distanceMatrixProgressField;
-            }
-            set {
-                this.distanceMatrixProgressField = value;
-                this.RaisePropertyChanged("distanceMatrixProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int optimizationProgress {
-            get {
-                return this.optimizationProgressField;
-            }
-            set {
-                this.optimizationProgressField = value;
-                this.RaisePropertyChanged("optimizationProgress");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class ClusterProgress : JobProgress {
-        
-        private DistanceMatrixProgress distanceMatrixProgressField;
-        
-        private OptimizationProgress optimizationProgressField;
-        
-        private string actionField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public DistanceMatrixProgress distanceMatrixProgress {
-            get {
-                return this.distanceMatrixProgressField;
-            }
-            set {
-                this.distanceMatrixProgressField = value;
-                this.RaisePropertyChanged("distanceMatrixProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public OptimizationProgress optimizationProgress {
-            get {
-                return this.optimizationProgressField;
-            }
-            set {
-                this.optimizationProgressField = value;
-                this.RaisePropertyChanged("optimizationProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class PlanProgress : JobProgress {
-        
-        private DistanceMatrixCalculationProgress distanceMatrixCalculationProgressField;
-        
-        private ImprovementProgress improvementProgressField;
-        
-        private string actionField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public DistanceMatrixCalculationProgress distanceMatrixCalculationProgress {
-            get {
-                return this.distanceMatrixCalculationProgressField;
-            }
-            set {
-                this.distanceMatrixCalculationProgressField = value;
-                this.RaisePropertyChanged("distanceMatrixCalculationProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public ImprovementProgress improvementProgress {
-            get {
-                return this.improvementProgressField;
-            }
-            set {
-                this.improvementProgressField = value;
-                this.RaisePropertyChanged("improvementProgress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-                this.RaisePropertyChanged("action");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class BulkProgress : JobProgress {
-        
-        private int failedField;
-        
-        private int remainingField;
-        
-        private int successfulField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int failed {
-            get {
-                return this.failedField;
-            }
-            set {
-                this.failedField = value;
-                this.RaisePropertyChanged("failed");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int remaining {
-            get {
-                return this.remainingField;
-            }
-            set {
-                this.remainingField = value;
-                this.RaisePropertyChanged("remaining");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int successful {
-            get {
-                return this.successfulField;
-            }
-            set {
-                this.successfulField = value;
-                this.RaisePropertyChanged("successful");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class Job : TransientVO {
-        
-        private JobProgress progressField;
-        
-        private int elapsedTimeField;
-        
-        private string idField;
-        
-        private JobStatus statusField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public JobProgress progress {
-            get {
-                return this.progressField;
-            }
-            set {
-                this.progressField = value;
-                this.RaisePropertyChanged("progress");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int elapsedTime {
-            get {
-                return this.elapsedTimeField;
-            }
-            set {
-                this.elapsedTimeField = value;
-                this.RaisePropertyChanged("elapsedTime");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-                this.RaisePropertyChanged("id");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public JobStatus status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-                this.RaisePropertyChanged("status");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public enum JobStatus {
-        
-        /// <remarks/>
-        QUEUING,
-        
-        /// <remarks/>
-        RUNNING,
-        
-        /// <remarks/>
-        STOPPING,
-        
-        /// <remarks/>
-        SUCCEEDED,
-        
-        /// <remarks/>
-        FAILED,
-        
-        /// <remarks/>
-        DELETED,
-        
-        /// <remarks/>
-        UNKNOWN,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class BoundingBox : TransientVO {
-        
-        private Point leftTopField;
-        
-        private Point rightBottomField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public Point leftTop {
-            get {
-                return this.leftTopField;
-            }
-            set {
-                this.leftTopField = value;
-                this.RaisePropertyChanged("leftTop");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=1)]
-        public Point rightBottom {
-            get {
-                return this.rightBottomField;
-            }
-            set {
-                this.rightBottomField = value;
-                this.RaisePropertyChanged("rightBottom");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public partial class RequestOptions : TransientVO {
-        
-        private GeometryEncoding[] wrappedResponseGeometryField;
-        
-        private CoordFormat coordFormatField;
-        
-        private string profileField;
-        
-        private string profileXMLSnippetField;
-        
-        private string srIdField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public GeometryEncoding[] wrappedResponseGeometry {
-            get {
-                return this.wrappedResponseGeometryField;
-            }
-            set {
-                this.wrappedResponseGeometryField = value;
-                this.RaisePropertyChanged("wrappedResponseGeometry");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public CoordFormat coordFormat {
-            get {
-                return this.coordFormatField;
-            }
-            set {
-                this.coordFormatField = value;
-                this.RaisePropertyChanged("coordFormat");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string profile {
-            get {
-                return this.profileField;
-            }
-            set {
-                this.profileField = value;
-                this.RaisePropertyChanged("profile");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string profileXMLSnippet {
-            get {
-                return this.profileXMLSnippetField;
-            }
-            set {
-                this.profileXMLSnippetField = value;
-                this.RaisePropertyChanged("profileXMLSnippet");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string srId {
-            get {
-                return this.srIdField;
-            }
-            set {
-                this.srIdField = value;
-                this.RaisePropertyChanged("srId");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public enum GeometryEncoding {
-        
-        /// <remarks/>
-        PLAIN,
-        
-        /// <remarks/>
-        WKB,
-        
-        /// <remarks/>
-        WKT,
-        
-        /// <remarks/>
-        KML,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
-    public enum CoordFormat {
-        
-        /// <remarks/>
-        OG_GEODECIMAL,
-        
-        /// <remarks/>
-        PTV_MERCATOR,
-        
-        /// <remarks/>
-        PTV_GEOMINSEC,
-        
-        /// <remarks/>
-        PTV_GEODECIMAL,
-        
-        /// <remarks/>
-        PTV_CONFORM,
-        
-        /// <remarks/>
-        PTV_SUPERCONFORM,
-        
-        /// <remarks/>
-        PTV_SMARTUNITS,
-        
-        /// <remarks/>
-        OG_SRID,
     }
     
     /// <remarks/>

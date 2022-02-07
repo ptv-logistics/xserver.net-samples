@@ -21,10 +21,10 @@ namespace TourPlanningDemo.XLocateServiceReference {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XLocateException))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(IllegalParameterException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ParameterNotSetException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XLocateException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -35,10 +35,10 @@ namespace TourPlanningDemo.XLocateServiceReference {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BusinessException))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XLocateException))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(IllegalParameterException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ParameterNotSetException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XLocateException))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(XServiceException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SystemException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FinderException))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ObjectNotFoundException))]
@@ -186,6 +186,8 @@ namespace TourPlanningDemo.XLocateServiceReference {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContextProperty))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContext))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Suggestion))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SuggestionResponse))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultObject))]
@@ -213,8 +215,6 @@ namespace TourPlanningDemo.XLocateServiceReference {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PoiAddress))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Location))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PoiLocation))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContextProperty))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CallerContext))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WatchOptions))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(OptimizationProgress))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(KeyFigures))]
@@ -263,6 +263,108 @@ namespace TourPlanningDemo.XLocateServiceReference {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://baseservices.service.jabba.ptvag.com")]
+    public partial class CallerContextProperty : TransientVO {
+        
+        private string keyField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string key {
+            get {
+                return this.keyField;
+            }
+            set {
+                this.keyField = value;
+                this.RaisePropertyChanged("key");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+                this.RaisePropertyChanged("value");
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://baseservices.service.jabba.ptvag.com")]
+    public partial class CallerContext : TransientVO {
+        
+        private CallerContextProperty[] wrappedPropertiesField;
+        
+        private string log1Field;
+        
+        private string log2Field;
+        
+        private string log3Field;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
+        public CallerContextProperty[] wrappedProperties {
+            get {
+                return this.wrappedPropertiesField;
+            }
+            set {
+                this.wrappedPropertiesField = value;
+                this.RaisePropertyChanged("wrappedProperties");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string log1 {
+            get {
+                return this.log1Field;
+            }
+            set {
+                this.log1Field = value;
+                this.RaisePropertyChanged("log1");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string log2 {
+            get {
+                return this.log2Field;
+            }
+            set {
+                this.log2Field = value;
+                this.RaisePropertyChanged("log2");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string log3 {
+            get {
+                return this.log3Field;
+            }
+            set {
+                this.log3Field = value;
+                this.RaisePropertyChanged("log3");
             }
         }
     }
@@ -2542,108 +2644,6 @@ namespace TourPlanningDemo.XLocateServiceReference {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://baseservices.service.jabba.ptvag.com")]
-    public partial class CallerContextProperty : TransientVO {
-        
-        private string keyField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string key {
-            get {
-                return this.keyField;
-            }
-            set {
-                this.keyField = value;
-                this.RaisePropertyChanged("key");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-                this.RaisePropertyChanged("value");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://baseservices.service.jabba.ptvag.com")]
-    public partial class CallerContext : TransientVO {
-        
-        private CallerContextProperty[] wrappedPropertiesField;
-        
-        private string log1Field;
-        
-        private string log2Field;
-        
-        private string log3Field;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true, Order=0)]
-        public CallerContextProperty[] wrappedProperties {
-            get {
-                return this.wrappedPropertiesField;
-            }
-            set {
-                this.wrappedPropertiesField = value;
-                this.RaisePropertyChanged("wrappedProperties");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string log1 {
-            get {
-                return this.log1Field;
-            }
-            set {
-                this.log1Field = value;
-                this.RaisePropertyChanged("log1");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string log2 {
-            get {
-                return this.log2Field;
-            }
-            set {
-                this.log2Field = value;
-                this.RaisePropertyChanged("log2");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string log3 {
-            get {
-                return this.log3Field;
-            }
-            set {
-                this.log3Field = value;
-                this.RaisePropertyChanged("log3");
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://common.xserver.ptvag.com")]
     public partial class WatchOptions : TransientVO {
         
@@ -3794,15 +3794,6 @@ namespace TourPlanningDemo.XLocateServiceReference {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xlocate.xserver.ptvag.com")]
-    public partial class XLocateException : BusinessException {
-    }
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ParameterNotSetException))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
@@ -3819,6 +3810,15 @@ namespace TourPlanningDemo.XLocateServiceReference {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://exception.core.jabba.ptvag.com")]
     public partial class ParameterNotSetException : IllegalParameterException {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://xlocate.xserver.ptvag.com")]
+    public partial class XLocateException : BusinessException {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
