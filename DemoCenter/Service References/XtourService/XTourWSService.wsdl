@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://common.xserver.ptvag.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jwsdp.xtour.xserver.ptvag.com" xmlns:ns1="http://xtour.xserver.ptvag.com" xmlns:ns0="http://types.xtour.xserver.ptvag.com" xmlns:ns3="http://exception.core.jabba.ptvag.com" name="XTourWSService" targetNamespace="http://jwsdp.xtour.xserver.ptvag.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:ns2="http://common.xserver.ptvag.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jwsdp.xtour.xserver.ptvag.com" xmlns:ns1="http://xtour.xserver.ptvag.com" xmlns:ns0="http://types.xtour.xserver.ptvag.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns3="http://exception.core.jabba.ptvag.com" name="XTourWSService" targetNamespace="http://jwsdp.xtour.xserver.ptvag.com" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xsd:schema xmlns:tns="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://wrappertypes.service.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://exception.core.jabba.ptvag.com">
       <xsd:complexType name="StackElement">
@@ -260,13 +260,13 @@
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://exception.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://exception.core.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://wrappertypes.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://value.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
-      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:complexType name="RequestOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedResponseGeometry" nillable="true" type="tns:ArrayOfGeometryEncoding" />
             </xsd:sequence>
@@ -329,7 +329,7 @@
       </xsd:complexType>
       <xsd:complexType name="BoundingBox">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="leftTop" nillable="true" type="tns:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="rightBottom" nillable="true" type="tns:Point" />
@@ -503,7 +503,7 @@
       </xsd:complexType>
       <xsd:complexType name="XServiceException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns0:BusinessException">
+          <xsd:extension base="ns2:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -663,7 +663,7 @@
       </xsd:complexType>
       <xsd:complexType name="PlainGeometryBase">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -700,7 +700,7 @@
       </xsd:complexType>
       <xsd:complexType name="EncodedGeometryBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -738,9 +738,9 @@
       </xsd:complexType>
       <xsd:complexType name="KML">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns2:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns1:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="kml" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -779,7 +779,7 @@
       </xsd:complexType>
       <xsd:complexType name="Job">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="progress" nillable="true" type="tns:JobProgress" />
             </xsd:sequence>
@@ -801,7 +801,7 @@
       </xsd:complexType>
       <xsd:complexType name="JobProgress" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -857,7 +857,7 @@
       </xsd:complexType>
       <xsd:complexType name="WatchOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumPollingPeriod" type="xsd:int" use="optional" />
             <xsd:attribute name="progressUpdatePeriod" type="xsd:int" use="optional" />
@@ -897,7 +897,7 @@
       </xsd:complexType>
       <xsd:complexType name="DistanceMatrixCalculationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="currentDistanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
             </xsd:sequence>
@@ -919,7 +919,7 @@
       </xsd:complexType>
       <xsd:complexType name="ImprovementProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="bestPlan" nillable="true" type="tns:KeyFigures" />
               <xsd:element minOccurs="0" maxOccurs="1" name="currentPlan" nillable="true" type="tns:KeyFigures" />
@@ -944,7 +944,7 @@
       </xsd:complexType>
       <xsd:complexType name="KeyFigures">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="costOfObjectiveFunction" type="xsd:int" use="required" />
             <xsd:attribute name="numberOfInfeasibleOrders" type="xsd:int" use="required" />
@@ -974,7 +974,7 @@
       </xsd:complexType>
       <xsd:complexType name="OptimizationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="currentLoopIndex" type="xsd:int" use="required" />
             <xsd:attribute name="lastLoopIndex" type="xsd:int" use="required" />
@@ -1013,15 +1013,55 @@
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfClusterProgress" nillable="true" type="tns:ArrayOfClusterProgress" />
         </xsd:sequence>
       </xsd:complexType>
+      <xsd:complexType name="TerritoryProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="distanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
+            </xsd:sequence>
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TerritoryProgress" nillable="true" type="tns:TerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfTerritoryProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfTerritoryProgress" nillable="true" type="tns:ArrayOfTerritoryProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZoneLoadingProgress">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:JobProgress">
+            <xsd:sequence />
+            <xsd:attribute name="action" type="xsd:string" use="optional" />
+            <xsd:attribute name="optimizationProgress" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ZoneLoadingProgress" nillable="true" type="tns:ZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfZoneLoadingProgress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfZoneLoadingProgress" nillable="true" type="tns:ArrayOfZoneLoadingProgress" />
+        </xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://value.core.jabba.ptvag.com" xmlns:tns="http://xtour.xserver.ptvag.com" xmlns:ns1="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://wrappertypes.service.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://xtour.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://xtour.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xtour.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
+      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:import namespace="http://common.xserver.ptvag.com" />
       <xsd:import namespace="http://value.core.jabba.ptvag.com" />
-      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:complexType name="XTourException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:BusinessException">
+          <xsd:extension base="ns3:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -1066,12 +1106,14 @@
       </xsd:complexType>
       <xsd:complexType name="Restrictions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="nightTourRestrictions" nillable="true" type="tns:NightTourRestrictions" />
               <xsd:element minOccurs="0" maxOccurs="1" name="tourRestrictions" nillable="true" type="tns:TourRestrictions" />
             </xsd:sequence>
             <xsd:attribute name="maxTourCount" type="xsd:int" use="optional" />
             <xsd:attribute name="maxTransportPointCountPerTour" type="xsd:int" use="optional" />
+            <xsd:attribute name="mergeTransportPointCountPerSite" type="xsd:boolean" use="required" />
           </xsd:extension>
         </xsd:complexContent>
       </xsd:complexType>
@@ -1087,7 +1129,7 @@
       </xsd:complexType>
       <xsd:complexType name="LoadingFunction">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="quantityDependentPeriods" nillable="true" type="tns:QuantityDependentPeriods" />
             </xsd:sequence>
@@ -1111,9 +1153,9 @@
       </xsd:complexType>
       <xsd:complexType name="QuantityDependentPeriods">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedSecondsPerQuantityUnit" nillable="true" type="ns3:ArrayOfDouble" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedSecondsPerQuantityUnit" nillable="true" type="ns2:ArrayOfDouble" />
             </xsd:sequence>
           </xsd:extension>
         </xsd:complexContent>
@@ -1130,7 +1172,7 @@
       </xsd:complexType>
       <xsd:complexType name="PlanningParams" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDistanceMatrixCalculation" nillable="true" type="tns:ArrayOfDistanceMatrixCalculation" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedLoadingFunctions" nillable="true" type="tns:ArrayOfLoadingFunction" />
@@ -1138,10 +1180,15 @@
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedRegulations" nillable="true" type="tns:ArrayOfRegulationsBase" />
               <xsd:element minOccurs="0" maxOccurs="1" name="restrictions" nillable="true" type="tns:Restrictions" />
             </xsd:sequence>
+            <xsd:attribute name="avoidEarlyRecreations" type="xsd:boolean" use="required" />
             <xsd:attribute name="coDriverTransportPointLoadingFactor" type="xsd:double" use="optional" />
             <xsd:attribute name="coDriverTransportPointsInSeparateTours" type="xsd:boolean" use="required" />
             <xsd:attribute name="directDistanceFactor" type="xsd:double" use="optional" />
             <xsd:attribute name="directVelocity" type="xsd:int" use="optional" />
+            <xsd:attribute name="enableMultiCompartmentConstraint" type="xsd:boolean" use="required" />
+            <xsd:attribute name="indexOfBlockedQuantity" type="xsd:int" use="optional" />
+            <xsd:attribute name="indexOfBlockingQuantity" type="xsd:int" use="optional" />
+            <xsd:attribute name="useDirectDistanceFallback" type="xsd:boolean" use="required" />
           </xsd:extension>
         </xsd:complexContent>
       </xsd:complexType>
@@ -1285,7 +1332,7 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractTransportOrder" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="id" type="xsd:int" use="required" />
             <xsd:attribute name="priority" type="xsd:int" use="optional" />
@@ -1350,9 +1397,9 @@
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="maxLoadingArea" nillable="true" type="tns:LoadingArea" />
               <xsd:element minOccurs="0" maxOccurs="1" name="minLoadingArea" nillable="true" type="tns:LoadingArea" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleCategories" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleExclusions" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleRequirements" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleCategories" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleExclusions" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleRequirements" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="areaNumber" type="xsd:int" use="optional" />
             <xsd:attribute name="trailerLoadingForbidden" type="xsd:boolean" use="required" />
@@ -1455,7 +1502,7 @@
           <xsd:extension base="tns:TransportOrder">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="deliveryQuantities" nillable="true" type="tns:Quantities" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDepotIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDepotIds" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="0" maxOccurs="1" name="pickupQuantities" nillable="true" type="tns:Quantities" />
               <xsd:element minOccurs="0" maxOccurs="1" name="transportPoint" nillable="true" type="tns:TransportPoint" />
             </xsd:sequence>
@@ -1478,7 +1525,7 @@
       </xsd:complexType>
       <xsd:complexType name="LogisticPoint" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="location" nillable="true" type="ns0:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedOpeningIntervals" nillable="true" type="tns:ArrayOfInterval" />
@@ -1504,7 +1551,7 @@
       </xsd:complexType>
       <xsd:complexType name="Interval">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="from" type="xsd:int" use="required" />
             <xsd:attribute name="till" type="xsd:int" use="required" />
@@ -1525,13 +1572,13 @@
         <xsd:complexContent mixed="false">
           <xsd:extension base="tns:BaseVehicle">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAreaNumbers" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAreaNumbers" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="0" maxOccurs="1" name="endLocation" nillable="true" type="ns0:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="maxLoadingArea" nillable="true" type="tns:LoadingArea" />
               <xsd:element minOccurs="0" maxOccurs="1" name="minLoadingArea" nillable="true" type="tns:LoadingArea" />
               <xsd:element minOccurs="0" maxOccurs="1" name="restrictions" nillable="true" type="tns:VehicleRestrictions" />
               <xsd:element minOccurs="0" maxOccurs="1" name="startLocation" nillable="true" type="ns0:Point" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTransportEquipments" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTransportEquipments" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="category" type="xsd:int" use="optional" />
             <xsd:attribute name="description" type="xsd:string" use="optional" />
@@ -1553,7 +1600,7 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractCosts" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="costsPerKm" type="xsd:double" use="required" />
             <xsd:attribute name="fixedCosts" type="xsd:double" use="required" />
@@ -1605,7 +1652,7 @@
       </xsd:complexType>
       <xsd:complexType name="Plan">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedChains" nillable="true" type="tns:ArrayOfChain" />
               <xsd:element minOccurs="0" maxOccurs="1" name="result" nillable="true" type="tns:PlanResult" />
@@ -1642,13 +1689,13 @@
       </xsd:complexType>
       <xsd:complexType name="PlanResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledOrderIds" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledVehicleIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledOrderIds" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledVehicleIds" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderAnalysisResults" nillable="true" type="tns:ArrayOfUnscheduledOrderAnalysisResult" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIds" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledVehicleIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIds" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledVehicleIds" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="totalChainCosts" type="xsd:double" use="required" />
             <xsd:attribute name="totalTourCosts" type="xsd:double" use="required" />
@@ -1671,7 +1718,7 @@
       </xsd:complexType>
       <xsd:complexType name="SequencingPlan">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="result" nillable="true" type="tns:SequencingPlanResult" />
               <xsd:element minOccurs="0" maxOccurs="1" name="tour" nillable="true" type="tns:SequencingTour" />
@@ -1708,7 +1755,7 @@
       </xsd:complexType>
       <xsd:complexType name="Chain">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="result" nillable="true" type="tns:ChainResult" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTours" nillable="true" type="tns:ArrayOfTour" />
@@ -1729,7 +1776,7 @@
       </xsd:complexType>
       <xsd:complexType name="ChainResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTourEvents" nillable="true" type="tns:ArrayOfTourEvent" />
             </xsd:sequence>
@@ -1775,10 +1822,10 @@
       </xsd:complexType>
       <xsd:complexType name="TourPointResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="currentQuantities" nillable="true" type="tns:Quantities" />
-              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedTourPointViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedTourPointViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="arrivalTime" type="xsd:int" use="required" />
             <xsd:attribute name="breakPeriodAtTourPoint" type="xsd:int" use="required" />
@@ -1875,6 +1922,12 @@
           <xsd:enumeration value="TOUR_POINT_CODRIVER_NO_SEPARATE_TOUR" />
           <xsd:enumeration value="TOUR_POINT_LOADING_AREA" />
           <xsd:enumeration value="TOUR_POINT_FIXATION" />
+          <xsd:enumeration value="BREAK_AND_REST_REGULATION" />
+          <xsd:enumeration value="INCOMPATIBLE_PRODUCTS" />
+          <xsd:enumeration value="ONLY_ONE_TOUR_PER_VEHICLE_INTERVAL" />
+          <xsd:enumeration value="INTERMEDIATE_PERIOD" />
+          <xsd:enumeration value="INACCESSIBLE_RELATIONS_USED" />
+          <xsd:enumeration value="MAX_PERIOD_PER_NIGHT_TOUR" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfTourViolation">
@@ -1950,8 +2003,8 @@
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="maxLoadingArea" nillable="true" type="tns:LoadingArea" />
               <xsd:element minOccurs="0" maxOccurs="1" name="minLoadingArea" nillable="true" type="tns:LoadingArea" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleExclusions" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleRequirements" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleExclusions" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleRequirements" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="trailerDescription" type="xsd:string" use="optional" />
             <xsd:attribute name="trainDescription" type="xsd:string" use="optional" />
@@ -1970,7 +2023,7 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractTour" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="startTimeEarliest" type="xsd:int" use="optional" />
             <xsd:attribute name="startTimeFixed" type="xsd:boolean" use="required" />
@@ -1989,7 +2042,7 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractTourPoint" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="result" nillable="true" type="tns:TourPointResult" />
             </xsd:sequence>
@@ -2011,13 +2064,13 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractTourResult" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="deliveryQuantities" nillable="true" type="tns:Quantities" />
               <xsd:element minOccurs="0" maxOccurs="1" name="maxQuantities" nillable="true" type="tns:Quantities" />
               <xsd:element minOccurs="0" maxOccurs="1" name="pickupQuantities" nillable="true" type="tns:Quantities" />
               <xsd:element minOccurs="0" maxOccurs="1" name="totalCosts" nillable="true" type="tns:TotalCosts" />
-              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="breakPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="coDriverRequired" type="xsd:boolean" use="required" />
@@ -2066,8 +2119,10 @@
             <xsd:attribute name="depotUploadingFunctionId" type="xsd:int" use="optional" />
             <xsd:attribute name="dimaId" type="xsd:int" use="optional" />
             <xsd:attribute name="drivingPeriodFactor" type="xsd:double" use="optional" />
+            <xsd:attribute name="ignoreProductIncompatibilities" type="xsd:boolean" use="optional" />
             <xsd:attribute name="ignoreTransportPointServicePeriod" type="xsd:boolean" use="required" />
             <xsd:attribute name="isPreloaded" type="xsd:boolean" use="required" />
+            <xsd:attribute name="minimumFreeCapacityForBlockingCompartment" type="xsd:int" use="optional" />
             <xsd:attribute name="servicePeriodFactor" type="xsd:double" use="optional" />
             <xsd:attribute name="toursMustFitIntoSingleOperatingInterval" type="xsd:boolean" use="required" />
             <xsd:attribute name="transportPointUnloadingFunctionId" type="xsd:int" use="optional" />
@@ -2091,6 +2146,7 @@
             <xsd:sequence />
             <xsd:attribute name="deleteAfterUsage" type="xsd:boolean" use="required" />
             <xsd:attribute name="deleteBeforeUsage" type="xsd:boolean" use="required" />
+            <xsd:attribute name="enforceHighPerformanceRouting" type="xsd:boolean" use="optional" />
             <xsd:attribute name="profileName" type="xsd:string" use="optional" />
             <xsd:attribute name="referenceTime" type="xsd:dateTime" use="optional" />
           </xsd:extension>
@@ -2108,7 +2164,7 @@
       </xsd:complexType>
       <xsd:complexType name="DistanceMatrixCalculation" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="dimaId" type="xsd:int" use="required" />
           </xsd:extension>
@@ -2126,7 +2182,7 @@
       </xsd:complexType>
       <xsd:complexType name="AbstractVehicle" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedOperatingIntervals" nillable="true" type="tns:ArrayOfInterval" />
             </xsd:sequence>
@@ -2147,7 +2203,7 @@
       </xsd:complexType>
       <xsd:complexType name="Fleet">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTrailers" nillable="true" type="tns:ArrayOfTrailer" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTrains" nillable="true" type="tns:ArrayOfTrain" />
@@ -2187,15 +2243,15 @@
       </xsd:complexType>
       <xsd:complexType name="Train">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="capacities" nillable="true" type="tns:Capacities" />
               <xsd:element minOccurs="0" maxOccurs="1" name="costs" nillable="true" type="tns:Costs" />
               <xsd:element minOccurs="0" maxOccurs="1" name="maxLoadingArea" nillable="true" type="tns:LoadingArea" />
               <xsd:element minOccurs="0" maxOccurs="1" name="minLoadingArea" nillable="true" type="tns:LoadingArea" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTrailerIds" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTransportEquipments" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTrailerIds" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTransportEquipments" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleIds" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="category" type="xsd:int" use="optional" />
             <xsd:attribute name="description" type="xsd:string" use="optional" />
@@ -2274,7 +2330,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourRestrictions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maxDistance" type="xsd:int" use="optional" />
             <xsd:attribute name="maxDistanceBetweenTransportPoints" type="xsd:int" use="optional" />
@@ -2296,9 +2352,9 @@
       </xsd:complexType>
       <xsd:complexType name="Quantities">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedQuantities" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedQuantities" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
           </xsd:extension>
         </xsd:complexContent>
@@ -2315,7 +2371,7 @@
       </xsd:complexType>
       <xsd:complexType name="Capacities">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedCapacities" nillable="true" type="tns:ArrayOfQuantities" />
             </xsd:sequence>
@@ -2334,8 +2390,9 @@
       </xsd:complexType>
       <xsd:complexType name="VehicleRestrictions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
+            <xsd:attribute name="maxDistancePerTour" type="xsd:int" use="optional" />
             <xsd:attribute name="maxDrivingPeriodPerChain" type="xsd:int" use="optional" />
             <xsd:attribute name="maxTourCountPerChain" type="xsd:int" use="optional" />
             <xsd:attribute name="maxTransportPointCountPerTour" type="xsd:int" use="optional" />
@@ -2354,12 +2411,12 @@
       </xsd:complexType>
       <xsd:complexType name="SequencingPlanResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledOrderIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedScheduledOrderIds" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTourEvents" nillable="true" type="tns:ArrayOfTourEvent" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderAnalysisResults" nillable="true" type="tns:ArrayOfUnscheduledOrderAnalysisResult" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIds" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIds" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="remainingPeriods" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -2434,7 +2491,7 @@
         <xsd:complexContent mixed="false">
           <xsd:extension base="tns:CalculationParams">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIdsToBeAnalyzed" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedUnscheduledOrderIdsToBeAnalyzed" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
           </xsd:extension>
         </xsd:complexContent>
@@ -2451,7 +2508,7 @@
       </xsd:complexType>
       <xsd:complexType name="UnscheduledOrderAnalysisResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTourViolations" nillable="true" type="tns:ArrayOfTourViolations" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedVehicleViolations" nillable="true" type="tns:ArrayOfVehicleViolations" />
@@ -2473,9 +2530,9 @@
       </xsd:complexType>
       <xsd:complexType name="VehicleViolations">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="trailerId" type="xsd:int" use="required" />
             <xsd:attribute name="trainId" type="xsd:int" use="required" />
@@ -2495,9 +2552,9 @@
       </xsd:complexType>
       <xsd:complexType name="TourViolations">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="tourId" type="xsd:int" use="required" />
           </xsd:extension>
@@ -2532,7 +2589,7 @@
       </xsd:complexType>
       <xsd:complexType name="InsertOrderProposal">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="insertInstruction" nillable="true" type="tns:InsertOrderInstruction" />
             </xsd:sequence>
@@ -2561,10 +2618,11 @@
       </xsd:complexType>
       <xsd:complexType name="InsertOrderInstruction">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="chainPosition" type="xsd:int" use="required" />
             <xsd:attribute name="orderId" type="xsd:int" use="required" />
+            <xsd:attribute name="partnerPositionNumber" type="xsd:int" use="optional" />
             <xsd:attribute name="positionNumber" type="xsd:int" use="required" />
             <xsd:attribute name="tourId" type="xsd:int" use="required" />
             <xsd:attribute name="trailerId" type="xsd:int" use="required" />
@@ -2625,7 +2683,7 @@
       </xsd:complexType>
       <xsd:complexType name="AssignVehicleInstruction">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="chainPosition" type="xsd:int" use="required" />
             <xsd:attribute name="tourId" type="xsd:int" use="required" />
@@ -2647,7 +2705,7 @@
       </xsd:complexType>
       <xsd:complexType name="AssignVehicleProposal">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="assignVehicleInstruction" nillable="true" type="tns:AssignVehicleInstruction" />
             </xsd:sequence>
@@ -2713,7 +2771,7 @@
       </xsd:complexType>
       <xsd:complexType name="LoadingArea">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="height" type="xsd:int" use="required" />
             <xsd:attribute name="length" type="xsd:int" use="required" />
@@ -2751,7 +2809,7 @@
       </xsd:complexType>
       <xsd:complexType name="GoalImportance">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="chainPeriodRank" type="xsd:int" use="required" />
             <xsd:attribute name="tourCountRank" type="xsd:int" use="required" />
@@ -2775,8 +2833,10 @@
       </xsd:complexType>
       <xsd:complexType name="DriverSettings">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
-            <xsd:sequence />
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="maximumTourPeriodRestriction" nillable="true" type="tns:MaximumTourPeriodRestriction" />
+            </xsd:sequence>
             <xsd:attribute name="breakRuleActive" type="xsd:boolean" use="required" />
             <xsd:attribute name="dailyRestRuleActive" type="xsd:boolean" use="required" />
             <xsd:attribute name="regulationsId" type="xsd:int" use="required" />
@@ -2839,7 +2899,7 @@
       </xsd:complexType>
       <xsd:complexType name="BreakRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod1" type="xsd:int" use="required" />
             <xsd:attribute name="breakPeriod2" type="xsd:int" use="required" />
@@ -2859,7 +2919,7 @@
       </xsd:complexType>
       <xsd:complexType name="DailyRestRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="extendedDrivingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="firstSplitRestPeriod" type="xsd:int" use="required" />
@@ -2885,7 +2945,7 @@
       </xsd:complexType>
       <xsd:complexType name="WeeklyRestRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumBiweeklyDrivingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="maximumPeriodBetweenWeeklyRests" type="xsd:int" use="required" />
@@ -2906,7 +2966,7 @@
       </xsd:complexType>
       <xsd:complexType name="WorkingRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="dailyRestPeriod" type="xsd:int" use="required" />
@@ -2931,7 +2991,7 @@
       </xsd:complexType>
       <xsd:complexType name="BreakIntervals">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedIntervals" nillable="true" type="tns:ArrayOfInterval" />
             </xsd:sequence>
@@ -2951,7 +3011,7 @@
       </xsd:complexType>
       <xsd:complexType name="RegulationsBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="id" type="xsd:int" use="required" />
           </xsd:extension>
@@ -2969,10 +3029,10 @@
       </xsd:complexType>
       <xsd:complexType name="TourEvent">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDescriptions" nillable="true" type="ns3:ArrayOfString" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDescriptions" nillable="true" type="ns2:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="logisticPointId" type="xsd:int" use="required" />
             <xsd:attribute name="period" type="xsd:int" use="required" />
@@ -3038,7 +3098,7 @@
       </xsd:complexType>
       <xsd:complexType name="ProductIncompatibility">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="incompatibilityType" type="tns:ProductIncompatibilityType" use="required" />
             <xsd:attribute name="productId1" type="xsd:int" use="required" />
@@ -3076,7 +3136,7 @@
         <xsd:complexContent mixed="false">
           <xsd:extension base="tns:StandardParams">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedOvernightStayPattern" nillable="true" type="ns3:ArrayOfBoolean" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedOvernightStayPattern" nillable="true" type="ns2:ArrayOfBoolean" />
             </xsd:sequence>
             <xsd:attribute name="costPerOvernightStay" type="xsd:double" use="required" />
             <xsd:attribute name="costPerUnplannedCustomer" type="xsd:double" use="required" />
@@ -3094,8 +3154,49 @@
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfOvernightParams" nillable="true" type="tns:ArrayOfOvernightParams" />
         </xsd:sequence>
       </xsd:complexType>
+      <xsd:complexType name="MaximumTourPeriodRestriction">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence />
+            <xsd:attribute name="maximumAllowableTourPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="maximumNetTourPeriod" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMaximumTourPeriodRestriction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MaximumTourPeriodRestriction" nillable="true" type="tns:MaximumTourPeriodRestriction" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfMaximumTourPeriodRestriction">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfMaximumTourPeriodRestriction" nillable="true" type="tns:ArrayOfMaximumTourPeriodRestriction" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="NightTourRestrictions">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="ns1:TransientVO">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedNightIntervals" nillable="true" type="tns:ArrayOfInterval" />
+            </xsd:sequence>
+            <xsd:attribute name="maximumNightTourChainPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="maximumNightTourPeriod" type="xsd:int" use="required" />
+            <xsd:attribute name="nightTourThreshold" type="xsd:int" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfNightTourRestrictions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="NightTourRestrictions" nillable="true" type="tns:NightTourRestrictions" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfNightTourRestrictions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfNightTourRestrictions" nillable="true" type="tns:ArrayOfNightTourRestrictions" />
+        </xsd:sequence>
+      </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://xtour.xserver.ptvag.com" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://types.xtour.xserver.ptvag.com" xmlns:common="http://common.xserver.ptvag.com" xmlns:ns0="http://types.xtour.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://baseservices.service.jabba.ptvag.com" xmlns:ns1="http://xtour.xserver.ptvag.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://types.xtour.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://xtour.xserver.ptvag.com" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://types.xtour.xserver.ptvag.com" xmlns:ns1="http://xtour.xserver.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://types.xtour.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:common="http://common.xserver.ptvag.com" xmlns:ns3="http://baseservices.service.jabba.ptvag.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified" targetNamespace="http://types.xtour.xserver.ptvag.com">
       <xsd:complexType name="fetchPlan">
         <xsd:sequence>
           <xsd:element name="String_1" nillable="true" type="xsd:string" />
@@ -3338,274 +3439,274 @@
       <xsd:element name="stopJobResponse" type="tns:stopJobResponse" />
     </xsd:schema>
   </types>
-  <message name="XTourWS_findToursForUnscheduledOrder">
-    <part name="parameters" element="ns0:findToursForUnscheduledOrder" />
-  </message>
-  <message name="XTourWS_planOvernightTours">
-    <part name="parameters" element="ns0:planOvernightTours" />
-  </message>
-  <message name="XTourWS_fetchSequencingPlanResponse">
-    <part name="parameters" element="ns0:fetchSequencingPlanResponse" />
-  </message>
-  <message name="UnexpectedException">
-    <part name="UnexpectedException" element="ns3:UnexpectedException" />
-  </message>
-  <message name="XTourWS_startPlanBasicToursResponse">
-    <part name="parameters" element="ns0:startPlanBasicToursResponse" />
-  </message>
-  <message name="DatabaseException">
-    <part name="DatabaseException" element="ns3:DatabaseException" />
-  </message>
-  <message name="XTourWS_planOvernightToursResponse">
-    <part name="parameters" element="ns0:planOvernightToursResponse" />
-  </message>
-  <message name="XTourWS_startPlanBasicTours">
-    <part name="parameters" element="ns0:startPlanBasicTours" />
-  </message>
-  <message name="XTourWS_planSequence">
-    <part name="parameters" element="ns0:planSequence" />
-  </message>
-  <message name="XTourWS_findToursForUnscheduledOrderResponse">
-    <part name="parameters" element="ns0:findToursForUnscheduledOrderResponse" />
-  </message>
-  <message name="XTourWS_deleteJob">
-    <part name="parameters" element="ns0:deleteJob" />
-  </message>
-  <message name="XTourWS_startPlanOvernightToursResponse">
-    <part name="parameters" element="ns0:startPlanOvernightToursResponse" />
-  </message>
-  <message name="XTourWS_watchJobResponse">
-    <part name="parameters" element="ns0:watchJobResponse" />
-  </message>
-  <message name="XTourWS_startPlanSequence">
-    <part name="parameters" element="ns0:startPlanSequence" />
-  </message>
-  <message name="ConstraintViolationException">
-    <part name="ConstraintViolationException" element="ns3:ConstraintViolationException" />
-  </message>
-  <message name="XServiceException">
-    <part name="XServiceException" element="ns2:XServiceException" />
-  </message>
-  <message name="XTourWS_deleteJobResponse">
-    <part name="parameters" element="ns0:deleteJobResponse" />
-  </message>
-  <message name="SystemException">
-    <part name="SystemException" element="ns3:SystemException" />
-  </message>
-  <message name="XTourWS_stopJob">
-    <part name="parameters" element="ns0:stopJob" />
-  </message>
-  <message name="XTourWS_fetchSequencingPlan">
-    <part name="parameters" element="ns0:fetchSequencingPlan" />
-  </message>
-  <message name="XTourException">
-    <part name="XTourException" element="ns1:XTourException" />
-  </message>
-  <message name="XTourWS_findToursForVehicle">
-    <part name="parameters" element="ns0:findToursForVehicle" />
-  </message>
-  <message name="XTourWS_planBasicToursResponse">
-    <part name="parameters" element="ns0:planBasicToursResponse" />
-  </message>
-  <message name="XTourWS_fetchPlanResponse">
-    <part name="parameters" element="ns0:fetchPlanResponse" />
-  </message>
-  <message name="XTourWS_startPlanOvernightTours">
-    <part name="parameters" element="ns0:startPlanOvernightTours" />
-  </message>
-  <message name="XTourWS_planBasicTours">
-    <part name="parameters" element="ns0:planBasicTours" />
-  </message>
-  <message name="XTourWS_findVehiclesForTourResponse">
-    <part name="parameters" element="ns0:findVehiclesForTourResponse" />
-  </message>
-  <message name="XTourWS_findToursForVehicleResponse">
-    <part name="parameters" element="ns0:findToursForVehicleResponse" />
-  </message>
-  <message name="XTourWS_findVehiclesForTour">
-    <part name="parameters" element="ns0:findVehiclesForTour" />
-  </message>
-  <message name="OptimisticRollbackException">
-    <part name="OptimisticRollbackException" element="ns3:OptimisticRollbackException" />
-  </message>
-  <message name="XTourWS_watchJob">
-    <part name="parameters" element="ns0:watchJob" />
-  </message>
-  <message name="XTourWS_startPlanSequenceResponse">
-    <part name="parameters" element="ns0:startPlanSequenceResponse" />
-  </message>
-  <message name="XTourWS_planSequenceResponse">
-    <part name="parameters" element="ns0:planSequenceResponse" />
+  <message name="XTourWS_findUnscheduledOrdersForTourResponse">
+    <part name="parameters" element="ns0:findUnscheduledOrdersForTourResponse" />
   </message>
   <message name="XTourWS_findUnscheduledOrdersForTour">
     <part name="parameters" element="ns0:findUnscheduledOrdersForTour" />
   </message>
-  <message name="XTourWS_findUnscheduledOrdersForTourResponse">
-    <part name="parameters" element="ns0:findUnscheduledOrdersForTourResponse" />
+  <message name="DatabaseException">
+    <part name="DatabaseException" element="ns3:DatabaseException" />
   </message>
-  <message name="XTourWS_stopJobResponse">
-    <part name="parameters" element="ns0:stopJobResponse" />
+  <message name="XTourWS_fetchPlanResponse">
+    <part name="parameters" element="ns0:fetchPlanResponse" />
+  </message>
+  <message name="XTourWS_planBasicTours">
+    <part name="parameters" element="ns0:planBasicTours" />
+  </message>
+  <message name="XTourWS_startPlanSequenceResponse">
+    <part name="parameters" element="ns0:startPlanSequenceResponse" />
+  </message>
+  <message name="XTourWS_startPlanBasicToursResponse">
+    <part name="parameters" element="ns0:startPlanBasicToursResponse" />
+  </message>
+  <message name="XTourWS_stopJob">
+    <part name="parameters" element="ns0:stopJob" />
+  </message>
+  <message name="XTourWS_fetchSequencingPlanResponse">
+    <part name="parameters" element="ns0:fetchSequencingPlanResponse" />
+  </message>
+  <message name="XTourWS_fetchSequencingPlan">
+    <part name="parameters" element="ns0:fetchSequencingPlan" />
+  </message>
+  <message name="UnexpectedException">
+    <part name="UnexpectedException" element="ns3:UnexpectedException" />
+  </message>
+  <message name="XTourException">
+    <part name="XTourException" element="ns1:XTourException" />
+  </message>
+  <message name="XServiceException">
+    <part name="XServiceException" element="ns2:XServiceException" />
+  </message>
+  <message name="XTourWS_fetchPlan">
+    <part name="parameters" element="ns0:fetchPlan" />
+  </message>
+  <message name="OptimisticRollbackException">
+    <part name="OptimisticRollbackException" element="ns3:OptimisticRollbackException" />
+  </message>
+  <message name="XTourWS_findToursForVehicle">
+    <part name="parameters" element="ns0:findToursForVehicle" />
+  </message>
+  <message name="XTourWS_watchJob">
+    <part name="parameters" element="ns0:watchJob" />
+  </message>
+  <message name="SystemException">
+    <part name="SystemException" element="ns3:SystemException" />
+  </message>
+  <message name="XTourWS_planBasicToursResponse">
+    <part name="parameters" element="ns0:planBasicToursResponse" />
+  </message>
+  <message name="XTourWS_planOvernightToursResponse">
+    <part name="parameters" element="ns0:planOvernightToursResponse" />
+  </message>
+  <message name="XTourWS_startPlanSequence">
+    <part name="parameters" element="ns0:startPlanSequence" />
   </message>
   <message name="TableNotFoundException">
     <part name="TableNotFoundException" element="ns3:TableNotFoundException" />
   </message>
-  <message name="XTourWS_fetchPlan">
-    <part name="parameters" element="ns0:fetchPlan" />
+  <message name="XTourWS_startPlanOvernightTours">
+    <part name="parameters" element="ns0:startPlanOvernightTours" />
+  </message>
+  <message name="XTourWS_findToursForUnscheduledOrderResponse">
+    <part name="parameters" element="ns0:findToursForUnscheduledOrderResponse" />
+  </message>
+  <message name="XTourWS_findVehiclesForTourResponse">
+    <part name="parameters" element="ns0:findVehiclesForTourResponse" />
+  </message>
+  <message name="ConstraintViolationException">
+    <part name="ConstraintViolationException" element="ns3:ConstraintViolationException" />
+  </message>
+  <message name="XTourWS_findToursForUnscheduledOrder">
+    <part name="parameters" element="ns0:findToursForUnscheduledOrder" />
+  </message>
+  <message name="XTourWS_findToursForVehicleResponse">
+    <part name="parameters" element="ns0:findToursForVehicleResponse" />
+  </message>
+  <message name="XTourWS_startPlanOvernightToursResponse">
+    <part name="parameters" element="ns0:startPlanOvernightToursResponse" />
+  </message>
+  <message name="XTourWS_stopJobResponse">
+    <part name="parameters" element="ns0:stopJobResponse" />
+  </message>
+  <message name="XTourWS_planOvernightTours">
+    <part name="parameters" element="ns0:planOvernightTours" />
+  </message>
+  <message name="XTourWS_startPlanBasicTours">
+    <part name="parameters" element="ns0:startPlanBasicTours" />
+  </message>
+  <message name="XTourWS_watchJobResponse">
+    <part name="parameters" element="ns0:watchJobResponse" />
+  </message>
+  <message name="XTourWS_deleteJob">
+    <part name="parameters" element="ns0:deleteJob" />
+  </message>
+  <message name="XTourWS_deleteJobResponse">
+    <part name="parameters" element="ns0:deleteJobResponse" />
+  </message>
+  <message name="XTourWS_findVehiclesForTour">
+    <part name="parameters" element="ns0:findVehiclesForTour" />
+  </message>
+  <message name="XTourWS_planSequenceResponse">
+    <part name="parameters" element="ns0:planSequenceResponse" />
+  </message>
+  <message name="XTourWS_planSequence">
+    <part name="parameters" element="ns0:planSequence" />
   </message>
   <portType name="XTourWS">
     <operation name="fetchPlan">
       <input message="tns:XTourWS_fetchPlan" />
       <output message="tns:XTourWS_fetchPlanResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="fetchSequencingPlan">
       <input message="tns:XTourWS_fetchSequencingPlan" />
       <output message="tns:XTourWS_fetchSequencingPlanResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="findToursForUnscheduledOrder">
       <input message="tns:XTourWS_findToursForUnscheduledOrder" />
       <output message="tns:XTourWS_findToursForUnscheduledOrderResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="findToursForVehicle">
       <input message="tns:XTourWS_findToursForVehicle" />
       <output message="tns:XTourWS_findToursForVehicleResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="findUnscheduledOrdersForTour">
       <input message="tns:XTourWS_findUnscheduledOrdersForTour" />
       <output message="tns:XTourWS_findUnscheduledOrdersForTourResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="findVehiclesForTour">
       <input message="tns:XTourWS_findVehiclesForTour" />
       <output message="tns:XTourWS_findVehiclesForTourResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="planBasicTours">
       <input message="tns:XTourWS_planBasicTours" />
       <output message="tns:XTourWS_planBasicToursResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="planOvernightTours">
       <input message="tns:XTourWS_planOvernightTours" />
       <output message="tns:XTourWS_planOvernightToursResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="planSequence">
       <input message="tns:XTourWS_planSequence" />
       <output message="tns:XTourWS_planSequenceResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="startPlanBasicTours">
       <input message="tns:XTourWS_startPlanBasicTours" />
       <output message="tns:XTourWS_startPlanBasicToursResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="startPlanOvernightTours">
       <input message="tns:XTourWS_startPlanOvernightTours" />
       <output message="tns:XTourWS_startPlanOvernightToursResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="startPlanSequence">
       <input message="tns:XTourWS_startPlanSequence" />
       <output message="tns:XTourWS_startPlanSequenceResponse" />
-      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
-      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="XServiceException" message="tns:XServiceException" />
       <fault name="XTourException" message="tns:XTourException" />
-      <fault name="UnexpectedException" message="tns:UnexpectedException" />
       <fault name="TableNotFoundException" message="tns:TableNotFoundException" />
+      <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
+      <fault name="OptimisticRollbackException" message="tns:OptimisticRollbackException" />
       <fault name="ConstraintViolationException" message="tns:ConstraintViolationException" />
       <fault name="DatabaseException" message="tns:DatabaseException" />
-      <fault name="XServiceException" message="tns:XServiceException" />
     </operation>
     <operation name="watchJob">
       <input message="tns:XTourWS_watchJob" />
       <output message="tns:XTourWS_watchJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="deleteJob">
       <input message="tns:XTourWS_deleteJob" />
       <output message="tns:XTourWS_deleteJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
     <operation name="stopJob">
       <input message="tns:XTourWS_stopJob" />
       <output message="tns:XTourWS_stopJobResponse" />
-      <fault name="SystemException" message="tns:SystemException" />
       <fault name="UnexpectedException" message="tns:UnexpectedException" />
+      <fault name="SystemException" message="tns:SystemException" />
     </operation>
   </portType>
   <binding name="XTourWSBinding" type="tns:XTourWS">
@@ -3618,8 +3719,8 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
@@ -3627,8 +3728,8 @@
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="fetchSequencingPlan">
@@ -3639,8 +3740,8 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
@@ -3648,8 +3749,8 @@
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="findToursForUnscheduledOrder">
@@ -3660,29 +3761,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findToursForVehicle">
@@ -3693,29 +3794,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findUnscheduledOrdersForTour">
@@ -3726,29 +3827,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="findVehiclesForTour">
@@ -3759,29 +3860,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="planBasicTours">
@@ -3792,29 +3893,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="planOvernightTours">
@@ -3825,29 +3926,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="planSequence">
@@ -3858,29 +3959,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startPlanBasicTours">
@@ -3891,29 +3992,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startPlanOvernightTours">
@@ -3924,29 +4025,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="startPlanSequence">
@@ -3957,29 +4058,29 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="OptimisticRollbackException">
-        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
-      </fault>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
+      <fault name="XServiceException">
+        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
       <fault name="XTourException">
         <soap:fault use="literal" name="XTourException" namespace="" />
       </fault>
+      <fault name="TableNotFoundException">
+        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
       </fault>
-      <fault name="TableNotFoundException">
-        <soap:fault use="literal" name="TableNotFoundException" namespace="" />
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
+      </fault>
+      <fault name="OptimisticRollbackException">
+        <soap:fault use="literal" name="OptimisticRollbackException" namespace="" />
       </fault>
       <fault name="ConstraintViolationException">
         <soap:fault use="literal" name="ConstraintViolationException" namespace="" />
       </fault>
       <fault name="DatabaseException">
         <soap:fault use="literal" name="DatabaseException" namespace="" />
-      </fault>
-      <fault name="XServiceException">
-        <soap:fault use="literal" name="XServiceException" namespace="" />
       </fault>
     </operation>
     <operation name="watchJob">
@@ -3990,11 +4091,11 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="deleteJob">
@@ -4005,11 +4106,11 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
     <operation name="stopJob">
@@ -4020,17 +4121,17 @@
       <output>
         <soap:body use="literal" />
       </output>
-      <fault name="SystemException">
-        <soap:fault use="literal" name="SystemException" namespace="" />
-      </fault>
       <fault name="UnexpectedException">
         <soap:fault use="literal" name="UnexpectedException" namespace="" />
+      </fault>
+      <fault name="SystemException">
+        <soap:fault use="literal" name="SystemException" namespace="" />
       </fault>
     </operation>
   </binding>
   <service name="XTourWSService">
     <port name="XTourWSPort" binding="tns:XTourWSBinding">
-      <soap:address location="https://xtour-eu-n-test.cloud.ptvgroup.com/xtour/ws/XTour" />
+      <soap:address location="https://xtour-eu-n-test.cloud.ptvgroup.com:443/xtour/ws/XTour" />
     </port>
   </service>
 </definitions>

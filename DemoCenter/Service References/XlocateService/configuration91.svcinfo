@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="/HY40KiIYQ9Xm1SMR/EibHmj4kI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Z2M+tkr//hm/rkbNjjJN+DaHSXkskOiP+uGwhlVPsl8=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="XLocateWSBinding">
+    <bindingConfiguration bindingType="basicHttpBinding" name="XLocateWSBinding1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>XLocateWSBinding</serializedValue>
+          <serializedValue>XLocateWSBinding1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -94,7 +94,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Auflistung)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/realm" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="XLocateWSBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="XLocateWSBinding2">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>XLocateWSBinding1</serializedValue>
+          <serializedValue>XLocateWSBinding2</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -203,7 +203,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Auflistung)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/realm" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="XLocateWSPort" contract="XlocateService.XLocateWS" bindingType="basicHttpBinding" address="https://xlocate-eu-n-test.cloud.ptvgroup.com/xlocate/ws/XLocate" bindingConfiguration="XLocateWSBinding">
+    <endpoint name="XLocateWSPort1" contract="XlocateService.XLocateWS" bindingType="basicHttpBinding" address="https://xlocate-eu-n-test.cloud.ptvgroup.com/xlocate/ws/XLocate" bindingConfiguration="XLocateWSBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://xlocate-eu-n-test.cloud.ptvgroup.com/xlocate/ws/XLocate</serializedValue>
+          <serializedValue>https://xlocate-eu-n-test.cloud.ptvgroup.com:443/xlocate/ws/XLocate</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -233,7 +233,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>XLocateWSBinding</serializedValue>
+          <serializedValue>XLocateWSBinding1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>XlocateService.XLocateWS</serializedValue>
@@ -296,7 +296,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>XLocateWSPort</serializedValue>
+          <serializedValue>XLocateWSPort1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
