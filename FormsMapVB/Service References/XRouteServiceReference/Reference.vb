@@ -15,7 +15,7 @@ Option Explicit On
 Namespace XRouteServiceReference
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -27,9 +27,9 @@ Namespace XRouteServiceReference
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(IllegalParameterException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ParameterNotSetException)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(XServiceException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(XRouteException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(XServiceException)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -42,8 +42,8 @@ Namespace XRouteServiceReference
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(BusinessException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(IllegalParameterException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ParameterNotSetException)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(XServiceException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(XRouteException)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(XServiceException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(SystemException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(FinderException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ObjectNotFoundException)),  _
@@ -56,7 +56,7 @@ Namespace XRouteServiceReference
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DatabaseException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TableNotFoundException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ConstraintViolationException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -104,7 +104,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -195,22 +195,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(WatchOptions)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(OptimizationProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(KeyFigures)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(ImprovementProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixCalculationProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(JobProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(ZoneLoadingProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(TerritoryProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(ClusterProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlanProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(BulkProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(Job)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(BoundingBox)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(RequestOptions)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(CallerContextProperty)),  _
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(CallerContextProperty)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CallerContext)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TransportPeriodRestriction)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TourRestrictions)),  _
@@ -282,6 +267,8 @@ Namespace XRouteServiceReference
      System.Xml.Serialization.XmlIncludeAttribute(GetType(EmissionsHBEFA31)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissionConversionFactors)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissions)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(CO2EDecreeFrance2017)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(AustraliaNGA2015)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissions2012)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(UKDefra2014)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AustraliaNGA2011)),  _
@@ -298,6 +285,23 @@ Namespace XRouteServiceReference
      System.Xml.Serialization.XmlIncludeAttribute(GetType(VehicleOption)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(RoutingOption)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(UniqueGeoID)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(WaypointDesc)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(TourPointDesc)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(CommuterTravelTrend)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(RouteInfo)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(WatchOptions)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(OptimizationProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(KeyFigures)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(ImprovementProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixCalculationProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(JobProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(ZoneLoadingProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(TerritoryProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(ClusterProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlanProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(BulkProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(Job)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainGeometryBase)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainGeometryCollection)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiPolygon)),  _
@@ -318,11 +322,9 @@ Namespace XRouteServiceReference
      System.Xml.Serialization.XmlIncludeAttribute(GetType(LineString)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(Polygon)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(LinearRing)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(WaypointDesc)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(TourPointDesc)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(CommuterTravelTrend)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(RouteInfo)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(BoundingBox)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(RequestOptions)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -342,1615 +344,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class WatchOptions
-        Inherits TransientVO
-        
-        Private maximumPollingPeriodField As Integer
-        
-        Private maximumPollingPeriodFieldSpecified As Boolean
-        
-        Private progressUpdatePeriodField As Integer
-        
-        Private progressUpdatePeriodFieldSpecified As Boolean
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property maximumPollingPeriod() As Integer
-            Get
-                Return Me.maximumPollingPeriodField
-            End Get
-            Set
-                Me.maximumPollingPeriodField = value
-                Me.RaisePropertyChanged("maximumPollingPeriod")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
-        Public Property maximumPollingPeriodSpecified() As Boolean
-            Get
-                Return Me.maximumPollingPeriodFieldSpecified
-            End Get
-            Set
-                Me.maximumPollingPeriodFieldSpecified = value
-                Me.RaisePropertyChanged("maximumPollingPeriodSpecified")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property progressUpdatePeriod() As Integer
-            Get
-                Return Me.progressUpdatePeriodField
-            End Get
-            Set
-                Me.progressUpdatePeriodField = value
-                Me.RaisePropertyChanged("progressUpdatePeriod")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
-        Public Property progressUpdatePeriodSpecified() As Boolean
-            Get
-                Return Me.progressUpdatePeriodFieldSpecified
-            End Get
-            Set
-                Me.progressUpdatePeriodFieldSpecified = value
-                Me.RaisePropertyChanged("progressUpdatePeriodSpecified")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class OptimizationProgress
-        Inherits TransientVO
-        
-        Private currentLoopIndexField As Integer
-        
-        Private lastLoopIndexField As Integer
-        
-        Private progressField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property currentLoopIndex() As Integer
-            Get
-                Return Me.currentLoopIndexField
-            End Get
-            Set
-                Me.currentLoopIndexField = value
-                Me.RaisePropertyChanged("currentLoopIndex")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property lastLoopIndex() As Integer
-            Get
-                Return Me.lastLoopIndexField
-            End Get
-            Set
-                Me.lastLoopIndexField = value
-                Me.RaisePropertyChanged("lastLoopIndex")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property progress() As Integer
-            Get
-                Return Me.progressField
-            End Get
-            Set
-                Me.progressField = value
-                Me.RaisePropertyChanged("progress")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class KeyFigures
-        Inherits TransientVO
-        
-        Private costOfObjectiveFunctionField As Integer
-        
-        Private numberOfInfeasibleOrdersField As Integer
-        
-        Private numberOfScheduledOrdersField As Integer
-        
-        Private numberOfScheduledVehiclesField As Integer
-        
-        Private numberOfUnscheduledOrdersField As Integer
-        
-        Private totalChainCostField As Integer
-        
-        Private totalChainPeriodField As Integer
-        
-        Private totalTourCostField As Integer
-        
-        Private totalTourCountField As Integer
-        
-        Private totalTourDistanceField As Integer
-        
-        Private totalTourDrivingPeriodField As Integer
-        
-        Private totalTourPeriodField As Integer
-        
-        Private totalTourWaitingPeriodField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property costOfObjectiveFunction() As Integer
-            Get
-                Return Me.costOfObjectiveFunctionField
-            End Get
-            Set
-                Me.costOfObjectiveFunctionField = value
-                Me.RaisePropertyChanged("costOfObjectiveFunction")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property numberOfInfeasibleOrders() As Integer
-            Get
-                Return Me.numberOfInfeasibleOrdersField
-            End Get
-            Set
-                Me.numberOfInfeasibleOrdersField = value
-                Me.RaisePropertyChanged("numberOfInfeasibleOrders")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property numberOfScheduledOrders() As Integer
-            Get
-                Return Me.numberOfScheduledOrdersField
-            End Get
-            Set
-                Me.numberOfScheduledOrdersField = value
-                Me.RaisePropertyChanged("numberOfScheduledOrders")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property numberOfScheduledVehicles() As Integer
-            Get
-                Return Me.numberOfScheduledVehiclesField
-            End Get
-            Set
-                Me.numberOfScheduledVehiclesField = value
-                Me.RaisePropertyChanged("numberOfScheduledVehicles")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property numberOfUnscheduledOrders() As Integer
-            Get
-                Return Me.numberOfUnscheduledOrdersField
-            End Get
-            Set
-                Me.numberOfUnscheduledOrdersField = value
-                Me.RaisePropertyChanged("numberOfUnscheduledOrders")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalChainCost() As Integer
-            Get
-                Return Me.totalChainCostField
-            End Get
-            Set
-                Me.totalChainCostField = value
-                Me.RaisePropertyChanged("totalChainCost")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalChainPeriod() As Integer
-            Get
-                Return Me.totalChainPeriodField
-            End Get
-            Set
-                Me.totalChainPeriodField = value
-                Me.RaisePropertyChanged("totalChainPeriod")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourCost() As Integer
-            Get
-                Return Me.totalTourCostField
-            End Get
-            Set
-                Me.totalTourCostField = value
-                Me.RaisePropertyChanged("totalTourCost")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourCount() As Integer
-            Get
-                Return Me.totalTourCountField
-            End Get
-            Set
-                Me.totalTourCountField = value
-                Me.RaisePropertyChanged("totalTourCount")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourDistance() As Integer
-            Get
-                Return Me.totalTourDistanceField
-            End Get
-            Set
-                Me.totalTourDistanceField = value
-                Me.RaisePropertyChanged("totalTourDistance")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourDrivingPeriod() As Integer
-            Get
-                Return Me.totalTourDrivingPeriodField
-            End Get
-            Set
-                Me.totalTourDrivingPeriodField = value
-                Me.RaisePropertyChanged("totalTourDrivingPeriod")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourPeriod() As Integer
-            Get
-                Return Me.totalTourPeriodField
-            End Get
-            Set
-                Me.totalTourPeriodField = value
-                Me.RaisePropertyChanged("totalTourPeriod")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property totalTourWaitingPeriod() As Integer
-            Get
-                Return Me.totalTourWaitingPeriodField
-            End Get
-            Set
-                Me.totalTourWaitingPeriodField = value
-                Me.RaisePropertyChanged("totalTourWaitingPeriod")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class ImprovementProgress
-        Inherits TransientVO
-        
-        Private bestPlanField As KeyFigures
-        
-        Private currentPlanField As KeyFigures
-        
-        Private initialPlanField As KeyFigures
-        
-        Private availableMachineTimeField As Integer
-        
-        Private iterationIndexField As Integer
-        
-        Private numberOfImprovementsField As Integer
-        
-        Private usedMachineTimeField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property bestPlan() As KeyFigures
-            Get
-                Return Me.bestPlanField
-            End Get
-            Set
-                Me.bestPlanField = value
-                Me.RaisePropertyChanged("bestPlan")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
-        Public Property currentPlan() As KeyFigures
-            Get
-                Return Me.currentPlanField
-            End Get
-            Set
-                Me.currentPlanField = value
-                Me.RaisePropertyChanged("currentPlan")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=2)>  _
-        Public Property initialPlan() As KeyFigures
-            Get
-                Return Me.initialPlanField
-            End Get
-            Set
-                Me.initialPlanField = value
-                Me.RaisePropertyChanged("initialPlan")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property availableMachineTime() As Integer
-            Get
-                Return Me.availableMachineTimeField
-            End Get
-            Set
-                Me.availableMachineTimeField = value
-                Me.RaisePropertyChanged("availableMachineTime")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property iterationIndex() As Integer
-            Get
-                Return Me.iterationIndexField
-            End Get
-            Set
-                Me.iterationIndexField = value
-                Me.RaisePropertyChanged("iterationIndex")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property numberOfImprovements() As Integer
-            Get
-                Return Me.numberOfImprovementsField
-            End Get
-            Set
-                Me.numberOfImprovementsField = value
-                Me.RaisePropertyChanged("numberOfImprovements")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property usedMachineTime() As Integer
-            Get
-                Return Me.usedMachineTimeField
-            End Get
-            Set
-                Me.usedMachineTimeField = value
-                Me.RaisePropertyChanged("usedMachineTime")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class DistanceMatrixCalculationProgress
-        Inherits TransientVO
-        
-        Private currentDistanceMatrixProgressField As DistanceMatrixProgress
-        
-        Private currentDimaIndexField As Integer
-        
-        Private dimaIdField As Integer
-        
-        Private lastDimaIndexField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property currentDistanceMatrixProgress() As DistanceMatrixProgress
-            Get
-                Return Me.currentDistanceMatrixProgressField
-            End Get
-            Set
-                Me.currentDistanceMatrixProgressField = value
-                Me.RaisePropertyChanged("currentDistanceMatrixProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property currentDimaIndex() As Integer
-            Get
-                Return Me.currentDimaIndexField
-            End Get
-            Set
-                Me.currentDimaIndexField = value
-                Me.RaisePropertyChanged("currentDimaIndex")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property dimaId() As Integer
-            Get
-                Return Me.dimaIdField
-            End Get
-            Set
-                Me.dimaIdField = value
-                Me.RaisePropertyChanged("dimaId")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property lastDimaIndex() As Integer
-            Get
-                Return Me.lastDimaIndexField
-            End Get
-            Set
-                Me.lastDimaIndexField = value
-                Me.RaisePropertyChanged("lastDimaIndex")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class DistanceMatrixProgress
-        Inherits JobProgress
-        
-        Private currentRowIndexField As Integer
-        
-        Private lastRowIndexField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property currentRowIndex() As Integer
-            Get
-                Return Me.currentRowIndexField
-            End Get
-            Set
-                Me.currentRowIndexField = value
-                Me.RaisePropertyChanged("currentRowIndex")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property lastRowIndex() As Integer
-            Get
-                Return Me.lastRowIndexField
-            End Get
-            Set
-                Me.lastRowIndexField = value
-                Me.RaisePropertyChanged("lastRowIndex")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(ZoneLoadingProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(TerritoryProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(ClusterProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlanProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixProgress)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(BulkProgress)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public MustInherit Class JobProgress
-        Inherits TransientVO
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class ZoneLoadingProgress
-        Inherits JobProgress
-        
-        Private actionField As String
-        
-        Private optimizationProgressField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property action() As String
-            Get
-                Return Me.actionField
-            End Get
-            Set
-                Me.actionField = value
-                Me.RaisePropertyChanged("action")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property optimizationProgress() As Integer
-            Get
-                Return Me.optimizationProgressField
-            End Get
-            Set
-                Me.optimizationProgressField = value
-                Me.RaisePropertyChanged("optimizationProgress")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class TerritoryProgress
-        Inherits JobProgress
-        
-        Private distanceMatrixProgressField As DistanceMatrixProgress
-        
-        Private actionField As String
-        
-        Private optimizationProgressField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property distanceMatrixProgress() As DistanceMatrixProgress
-            Get
-                Return Me.distanceMatrixProgressField
-            End Get
-            Set
-                Me.distanceMatrixProgressField = value
-                Me.RaisePropertyChanged("distanceMatrixProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property action() As String
-            Get
-                Return Me.actionField
-            End Get
-            Set
-                Me.actionField = value
-                Me.RaisePropertyChanged("action")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property optimizationProgress() As Integer
-            Get
-                Return Me.optimizationProgressField
-            End Get
-            Set
-                Me.optimizationProgressField = value
-                Me.RaisePropertyChanged("optimizationProgress")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class ClusterProgress
-        Inherits JobProgress
-        
-        Private distanceMatrixProgressField As DistanceMatrixProgress
-        
-        Private optimizationProgressField As OptimizationProgress
-        
-        Private actionField As String
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property distanceMatrixProgress() As DistanceMatrixProgress
-            Get
-                Return Me.distanceMatrixProgressField
-            End Get
-            Set
-                Me.distanceMatrixProgressField = value
-                Me.RaisePropertyChanged("distanceMatrixProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
-        Public Property optimizationProgress() As OptimizationProgress
-            Get
-                Return Me.optimizationProgressField
-            End Get
-            Set
-                Me.optimizationProgressField = value
-                Me.RaisePropertyChanged("optimizationProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property action() As String
-            Get
-                Return Me.actionField
-            End Get
-            Set
-                Me.actionField = value
-                Me.RaisePropertyChanged("action")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlanProgress
-        Inherits JobProgress
-        
-        Private distanceMatrixCalculationProgressField As DistanceMatrixCalculationProgress
-        
-        Private improvementProgressField As ImprovementProgress
-        
-        Private actionField As String
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property distanceMatrixCalculationProgress() As DistanceMatrixCalculationProgress
-            Get
-                Return Me.distanceMatrixCalculationProgressField
-            End Get
-            Set
-                Me.distanceMatrixCalculationProgressField = value
-                Me.RaisePropertyChanged("distanceMatrixCalculationProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
-        Public Property improvementProgress() As ImprovementProgress
-            Get
-                Return Me.improvementProgressField
-            End Get
-            Set
-                Me.improvementProgressField = value
-                Me.RaisePropertyChanged("improvementProgress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property action() As String
-            Get
-                Return Me.actionField
-            End Get
-            Set
-                Me.actionField = value
-                Me.RaisePropertyChanged("action")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class BulkProgress
-        Inherits JobProgress
-        
-        Private failedField As Integer
-        
-        Private remainingField As Integer
-        
-        Private successfulField As Integer
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property failed() As Integer
-            Get
-                Return Me.failedField
-            End Get
-            Set
-                Me.failedField = value
-                Me.RaisePropertyChanged("failed")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property remaining() As Integer
-            Get
-                Return Me.remainingField
-            End Get
-            Set
-                Me.remainingField = value
-                Me.RaisePropertyChanged("remaining")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property successful() As Integer
-            Get
-                Return Me.successfulField
-            End Get
-            Set
-                Me.successfulField = value
-                Me.RaisePropertyChanged("successful")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class Job
-        Inherits TransientVO
-        
-        Private progressField As JobProgress
-        
-        Private elapsedTimeField As Integer
-        
-        Private idField As String
-        
-        Private statusField As JobStatus
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property progress() As JobProgress
-            Get
-                Return Me.progressField
-            End Get
-            Set
-                Me.progressField = value
-                Me.RaisePropertyChanged("progress")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property elapsedTime() As Integer
-            Get
-                Return Me.elapsedTimeField
-            End Get
-            Set
-                Me.elapsedTimeField = value
-                Me.RaisePropertyChanged("elapsedTime")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property id() As String
-            Get
-                Return Me.idField
-            End Get
-            Set
-                Me.idField = value
-                Me.RaisePropertyChanged("id")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property status() As JobStatus
-            Get
-                Return Me.statusField
-            End Get
-            Set
-                Me.statusField = value
-                Me.RaisePropertyChanged("status")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Public Enum JobStatus
-        
-        '''<remarks/>
-        QUEUING
-        
-        '''<remarks/>
-        RUNNING
-        
-        '''<remarks/>
-        STOPPING
-        
-        '''<remarks/>
-        SUCCEEDED
-        
-        '''<remarks/>
-        FAILED
-        
-        '''<remarks/>
-        DELETED
-        
-        '''<remarks/>
-        UNKNOWN
-    End Enum
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class BoundingBox
-        Inherits TransientVO
-        
-        Private leftTopField As Point
-        
-        Private rightBottomField As Point
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property leftTop() As Point
-            Get
-                Return Me.leftTopField
-            End Get
-            Set
-                Me.leftTopField = value
-                Me.RaisePropertyChanged("leftTop")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
-        Public Property rightBottom() As Point
-            Get
-                Return Me.rightBottomField
-            End Get
-            Set
-                Me.rightBottomField = value
-                Me.RaisePropertyChanged("rightBottom")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class Point
-        Inherits EncodedGeometry
-        
-        Private pointField As PlainPoint
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property point() As PlainPoint
-            Get
-                Return Me.pointField
-            End Get
-            Set
-                Me.pointField = value
-                Me.RaisePropertyChanged("point")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainPoint
-        Inherits PlainGeometryBase
-        
-        Private xField As Double
-        
-        Private yField As Double
-        
-        Private zField As Double
-        
-        Private zFieldSpecified As Boolean
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property x() As Double
-            Get
-                Return Me.xField
-            End Get
-            Set
-                Me.xField = value
-                Me.RaisePropertyChanged("x")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property y() As Double
-            Get
-                Return Me.yField
-            End Get
-            Set
-                Me.yField = value
-                Me.RaisePropertyChanged("y")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property z() As Double
-            Get
-                Return Me.zField
-            End Get
-            Set
-                Me.zField = value
-                Me.RaisePropertyChanged("z")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
-        Public Property zSpecified() As Boolean
-            Get
-                Return Me.zFieldSpecified
-            End Get
-            Set
-                Me.zFieldSpecified = value
-                Me.RaisePropertyChanged("zSpecified")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainGeometryCollection)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiPolygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiLineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiPoint)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainLineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainPolygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainPoint)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainLinearRing)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainGeometryBase
-        Inherits TransientVO
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainGeometryCollection
-        Inherits PlainGeometryBase
-        
-        Private wrappedGeometriesField() As PlainGeometryBase
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedGeometries() As PlainGeometryBase()
-            Get
-                Return Me.wrappedGeometriesField
-            End Get
-            Set
-                Me.wrappedGeometriesField = value
-                Me.RaisePropertyChanged("wrappedGeometries")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainMultiPolygon
-        Inherits PlainGeometryBase
-        
-        Private wrappedPolygonsField() As PlainPolygon
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedPolygons() As PlainPolygon()
-            Get
-                Return Me.wrappedPolygonsField
-            End Get
-            Set
-                Me.wrappedPolygonsField = value
-                Me.RaisePropertyChanged("wrappedPolygons")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainPolygon
-        Inherits PlainGeometryBase
-        
-        Private wrappedLinearRingsField() As PlainLinearRing
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedLinearRings() As PlainLinearRing()
-            Get
-                Return Me.wrappedLinearRingsField
-            End Get
-            Set
-                Me.wrappedLinearRingsField = value
-                Me.RaisePropertyChanged("wrappedLinearRings")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainLinearRing
-        Inherits PlainGeometryBase
-        
-        Private wrappedPointsField() As PlainPoint
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedPoints() As PlainPoint()
-            Get
-                Return Me.wrappedPointsField
-            End Get
-            Set
-                Me.wrappedPointsField = value
-                Me.RaisePropertyChanged("wrappedPoints")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainMultiLineString
-        Inherits PlainGeometryBase
-        
-        Private wrappedLineStringsField() As PlainLineString
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedLineStrings() As PlainLineString()
-            Get
-                Return Me.wrappedLineStringsField
-            End Get
-            Set
-                Me.wrappedLineStringsField = value
-                Me.RaisePropertyChanged("wrappedLineStrings")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainLineString
-        Inherits PlainGeometryBase
-        
-        Private wrappedPointsField() As PlainPoint
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedPoints() As PlainPoint()
-            Get
-                Return Me.wrappedPointsField
-            End Get
-            Set
-                Me.wrappedPointsField = value
-                Me.RaisePropertyChanged("wrappedPoints")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class PlainMultiPoint
-        Inherits PlainGeometryBase
-        
-        Private wrappedPointsField() As PlainPoint
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedPoints() As PlainPoint()
-            Get
-                Return Me.wrappedPointsField
-            End Get
-            Set
-                Me.wrappedPointsField = value
-                Me.RaisePropertyChanged("wrappedPoints")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(GeometryCollection)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPolygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiLineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPoint)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(Point)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(LineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(Polygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(LinearRing)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public MustInherit Class EncodedGeometry
-        Inherits EncodedGeometryBase
-        
-        Private kmlField As KML
-        
-        Private wkbField() As Byte
-        
-        Private wktField As String
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property kml() As KML
-            Get
-                Return Me.kmlField
-            End Get
-            Set
-                Me.kmlField = value
-                Me.RaisePropertyChanged("kml")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute(DataType:="base64Binary")>  _
-        Public Property wkb() As Byte()
-            Get
-                Return Me.wkbField
-            End Get
-            Set
-                Me.wkbField = value
-                Me.RaisePropertyChanged("wkb")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property wkt() As String
-            Get
-                Return Me.wktField
-            End Get
-            Set
-                Me.wktField = value
-                Me.RaisePropertyChanged("wkt")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class KML
-        Inherits TransientVO
-        
-        Private wrappedPlacemarksField() As String
-        
-        Private kmlField As String
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0),  _
-         System.Xml.Serialization.XmlArrayItemAttribute("String", [Namespace]:="http://wrappertypes.service.jabba.ptvag.com")>  _
-        Public Property wrappedPlacemarks() As String()
-            Get
-                Return Me.wrappedPlacemarksField
-            End Get
-            Set
-                Me.wrappedPlacemarksField = value
-                Me.RaisePropertyChanged("wrappedPlacemarks")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property kml() As String
-            Get
-                Return Me.kmlField
-            End Get
-            Set
-                Me.kmlField = value
-                Me.RaisePropertyChanged("kml")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(EncodedGeometry)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(GeometryCollection)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPolygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiLineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPoint)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(Point)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(LineString)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(Polygon)),  _
-     System.Xml.Serialization.XmlIncludeAttribute(GetType(LinearRing)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public MustInherit Class EncodedGeometryBase
-        Inherits TransientVO
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class GeometryCollection
-        Inherits EncodedGeometry
-        
-        Private geometryCollectionField As PlainGeometryCollection
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property geometryCollection() As PlainGeometryCollection
-            Get
-                Return Me.geometryCollectionField
-            End Get
-            Set
-                Me.geometryCollectionField = value
-                Me.RaisePropertyChanged("geometryCollection")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class MultiPolygon
-        Inherits EncodedGeometry
-        
-        Private multiPolygonField As PlainMultiPolygon
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property multiPolygon() As PlainMultiPolygon
-            Get
-                Return Me.multiPolygonField
-            End Get
-            Set
-                Me.multiPolygonField = value
-                Me.RaisePropertyChanged("multiPolygon")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class MultiLineString
-        Inherits EncodedGeometry
-        
-        Private multiLineStringField As PlainMultiLineString
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property multiLineString() As PlainMultiLineString
-            Get
-                Return Me.multiLineStringField
-            End Get
-            Set
-                Me.multiLineStringField = value
-                Me.RaisePropertyChanged("multiLineString")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class MultiPoint
-        Inherits EncodedGeometry
-        
-        Private multiPointField As PlainMultiPoint
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property multiPoint() As PlainMultiPoint
-            Get
-                Return Me.multiPointField
-            End Get
-            Set
-                Me.multiPointField = value
-                Me.RaisePropertyChanged("multiPoint")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class LineString
-        Inherits EncodedGeometry
-        
-        Private lineStringField As PlainLineString
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property lineString() As PlainLineString
-            Get
-                Return Me.lineStringField
-            End Get
-            Set
-                Me.lineStringField = value
-                Me.RaisePropertyChanged("lineString")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class Polygon
-        Inherits EncodedGeometry
-        
-        Private polygonField As PlainPolygon
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property polygon() As PlainPolygon
-            Get
-                Return Me.polygonField
-            End Get
-            Set
-                Me.polygonField = value
-                Me.RaisePropertyChanged("polygon")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class LinearRing
-        Inherits EncodedGeometry
-        
-        Private linearRingField As PlainLinearRing
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property linearRing() As PlainLinearRing
-            Get
-                Return Me.linearRingField
-            End Get
-            Set
-                Me.linearRingField = value
-                Me.RaisePropertyChanged("linearRing")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.ComponentModel.DesignerCategoryAttribute("code"),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Partial Public Class RequestOptions
-        Inherits TransientVO
-        
-        Private wrappedResponseGeometryField() As GeometryEncoding
-        
-        Private coordFormatField As CoordFormat
-        
-        Private profileField As String
-        
-        Private profileXMLSnippetField As String
-        
-        Private srIdField As String
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
-        Public Property wrappedResponseGeometry() As GeometryEncoding()
-            Get
-                Return Me.wrappedResponseGeometryField
-            End Get
-            Set
-                Me.wrappedResponseGeometryField = value
-                Me.RaisePropertyChanged("wrappedResponseGeometry")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property coordFormat() As CoordFormat
-            Get
-                Return Me.coordFormatField
-            End Get
-            Set
-                Me.coordFormatField = value
-                Me.RaisePropertyChanged("coordFormat")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property profile() As String
-            Get
-                Return Me.profileField
-            End Get
-            Set
-                Me.profileField = value
-                Me.RaisePropertyChanged("profile")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property profileXMLSnippet() As String
-            Get
-                Return Me.profileXMLSnippetField
-            End Get
-            Set
-                Me.profileXMLSnippetField = value
-                Me.RaisePropertyChanged("profileXMLSnippet")
-            End Set
-        End Property
-        
-        '''<remarks/>
-        <System.Xml.Serialization.XmlAttributeAttribute()>  _
-        Public Property srId() As String
-            Get
-                Return Me.srIdField
-            End Get
-            Set
-                Me.srIdField = value
-                Me.RaisePropertyChanged("srId")
-            End Set
-        End Property
-    End Class
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Public Enum GeometryEncoding
-        
-        '''<remarks/>
-        PLAIN
-        
-        '''<remarks/>
-        WKB
-        
-        '''<remarks/>
-        WKT
-        
-        '''<remarks/>
-        KML
-    End Enum
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
-     System.SerializableAttribute(),  _
-     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
-    Public Enum CoordFormat
-        
-        '''<remarks/>
-        OG_GEODECIMAL
-        
-        '''<remarks/>
-        PTV_MERCATOR
-        
-        '''<remarks/>
-        PTV_GEOMINSEC
-        
-        '''<remarks/>
-        PTV_GEODECIMAL
-        
-        '''<remarks/>
-        PTV_CONFORM
-        
-        '''<remarks/>
-        PTV_SUPERCONFORM
-        
-        '''<remarks/>
-        PTV_SMARTUNITS
-        
-        '''<remarks/>
-        OG_SRID
-    End Enum
-    
-    '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -1988,7 +382,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2054,7 +448,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2106,7 +500,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2158,7 +552,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2196,7 +590,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2234,7 +628,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2300,7 +694,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2422,7 +816,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2488,7 +882,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2624,7 +1018,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2676,7 +1070,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2714,7 +1108,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2782,7 +1176,7 @@ Namespace XRouteServiceReference
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(DriverRegulationsAUS)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DriverRegulations)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2792,7 +1186,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2844,7 +1238,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -2924,7 +1318,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3144,7 +1538,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3266,7 +1660,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3318,7 +1712,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3412,7 +1806,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3464,7 +1858,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum ErrorCode
@@ -3531,6 +1925,9 @@ Namespace XRouteServiceReference
         
         '''<remarks/>
         INACCURATE_EXCEPTIONPATH_DESC
+        
+        '''<remarks/>
+        EXCEPTIONPATH_INTERSECTINGLINE_CANNOT_BE_USED
         
         '''<remarks/>
         WAYPOINTDESC_WITHOUT_COORDS
@@ -3812,7 +2209,13 @@ Namespace XRouteServiceReference
         MISSING_TIMEZONES_FEATURELAYER
         
         '''<remarks/>
+        FEATURE_LAYER_DATA_NOT_AVAILABLE
+        
+        '''<remarks/>
         INVALID_HIGH_PERFORMANCE_ROUTING_CONFIGURATION
+        
+        '''<remarks/>
+        CONFLICT_MAP_COMPATIBILITY_VERSION_AND_PROFILE
         
         '''<remarks/>
         INVALID_XML_PROFILE_SNIPPET
@@ -3822,7 +2225,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3846,7 +2249,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3898,7 +2301,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -3978,7 +2381,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4016,7 +2419,569 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class Point
+        Inherits EncodedGeometry
+        
+        Private pointField As PlainPoint
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property point() As PlainPoint
+            Get
+                Return Me.pointField
+            End Get
+            Set
+                Me.pointField = value
+                Me.RaisePropertyChanged("point")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainPoint
+        Inherits PlainGeometryBase
+        
+        Private xField As Double
+        
+        Private yField As Double
+        
+        Private zField As Double
+        
+        Private zFieldSpecified As Boolean
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property x() As Double
+            Get
+                Return Me.xField
+            End Get
+            Set
+                Me.xField = value
+                Me.RaisePropertyChanged("x")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property y() As Double
+            Get
+                Return Me.yField
+            End Get
+            Set
+                Me.yField = value
+                Me.RaisePropertyChanged("y")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property z() As Double
+            Get
+                Return Me.zField
+            End Get
+            Set
+                Me.zField = value
+                Me.RaisePropertyChanged("z")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
+        Public Property zSpecified() As Boolean
+            Get
+                Return Me.zFieldSpecified
+            End Get
+            Set
+                Me.zFieldSpecified = value
+                Me.RaisePropertyChanged("zSpecified")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainGeometryCollection)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiPolygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiLineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainMultiPoint)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainLineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainPolygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainPoint)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlainLinearRing)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainGeometryBase
+        Inherits TransientVO
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainGeometryCollection
+        Inherits PlainGeometryBase
+        
+        Private wrappedGeometriesField() As PlainGeometryBase
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedGeometries() As PlainGeometryBase()
+            Get
+                Return Me.wrappedGeometriesField
+            End Get
+            Set
+                Me.wrappedGeometriesField = value
+                Me.RaisePropertyChanged("wrappedGeometries")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainMultiPolygon
+        Inherits PlainGeometryBase
+        
+        Private wrappedPolygonsField() As PlainPolygon
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedPolygons() As PlainPolygon()
+            Get
+                Return Me.wrappedPolygonsField
+            End Get
+            Set
+                Me.wrappedPolygonsField = value
+                Me.RaisePropertyChanged("wrappedPolygons")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainPolygon
+        Inherits PlainGeometryBase
+        
+        Private wrappedLinearRingsField() As PlainLinearRing
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedLinearRings() As PlainLinearRing()
+            Get
+                Return Me.wrappedLinearRingsField
+            End Get
+            Set
+                Me.wrappedLinearRingsField = value
+                Me.RaisePropertyChanged("wrappedLinearRings")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainLinearRing
+        Inherits PlainGeometryBase
+        
+        Private wrappedPointsField() As PlainPoint
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedPoints() As PlainPoint()
+            Get
+                Return Me.wrappedPointsField
+            End Get
+            Set
+                Me.wrappedPointsField = value
+                Me.RaisePropertyChanged("wrappedPoints")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainMultiLineString
+        Inherits PlainGeometryBase
+        
+        Private wrappedLineStringsField() As PlainLineString
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedLineStrings() As PlainLineString()
+            Get
+                Return Me.wrappedLineStringsField
+            End Get
+            Set
+                Me.wrappedLineStringsField = value
+                Me.RaisePropertyChanged("wrappedLineStrings")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainLineString
+        Inherits PlainGeometryBase
+        
+        Private wrappedPointsField() As PlainPoint
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedPoints() As PlainPoint()
+            Get
+                Return Me.wrappedPointsField
+            End Get
+            Set
+                Me.wrappedPointsField = value
+                Me.RaisePropertyChanged("wrappedPoints")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlainMultiPoint
+        Inherits PlainGeometryBase
+        
+        Private wrappedPointsField() As PlainPoint
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedPoints() As PlainPoint()
+            Get
+                Return Me.wrappedPointsField
+            End Get
+            Set
+                Me.wrappedPointsField = value
+                Me.RaisePropertyChanged("wrappedPoints")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(GeometryCollection)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPolygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiLineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPoint)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(Point)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(LineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(Polygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(LinearRing)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public MustInherit Class EncodedGeometry
+        Inherits EncodedGeometryBase
+        
+        Private kmlField As KML
+        
+        Private wkbField() As Byte
+        
+        Private wktField As String
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property kml() As KML
+            Get
+                Return Me.kmlField
+            End Get
+            Set
+                Me.kmlField = value
+                Me.RaisePropertyChanged("kml")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute(DataType:="base64Binary")>  _
+        Public Property wkb() As Byte()
+            Get
+                Return Me.wkbField
+            End Get
+            Set
+                Me.wkbField = value
+                Me.RaisePropertyChanged("wkb")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property wkt() As String
+            Get
+                Return Me.wktField
+            End Get
+            Set
+                Me.wktField = value
+                Me.RaisePropertyChanged("wkt")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class KML
+        Inherits TransientVO
+        
+        Private wrappedPlacemarksField() As String
+        
+        Private kmlField As String
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0),  _
+         System.Xml.Serialization.XmlArrayItemAttribute("String", [Namespace]:="http://wrappertypes.service.jabba.ptvag.com")>  _
+        Public Property wrappedPlacemarks() As String()
+            Get
+                Return Me.wrappedPlacemarksField
+            End Get
+            Set
+                Me.wrappedPlacemarksField = value
+                Me.RaisePropertyChanged("wrappedPlacemarks")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property kml() As String
+            Get
+                Return Me.kmlField
+            End Get
+            Set
+                Me.kmlField = value
+                Me.RaisePropertyChanged("kml")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(EncodedGeometry)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(GeometryCollection)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPolygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiLineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(MultiPoint)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(Point)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(LineString)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(Polygon)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(LinearRing)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public MustInherit Class EncodedGeometryBase
+        Inherits TransientVO
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class GeometryCollection
+        Inherits EncodedGeometry
+        
+        Private geometryCollectionField As PlainGeometryCollection
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property geometryCollection() As PlainGeometryCollection
+            Get
+                Return Me.geometryCollectionField
+            End Get
+            Set
+                Me.geometryCollectionField = value
+                Me.RaisePropertyChanged("geometryCollection")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class MultiPolygon
+        Inherits EncodedGeometry
+        
+        Private multiPolygonField As PlainMultiPolygon
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property multiPolygon() As PlainMultiPolygon
+            Get
+                Return Me.multiPolygonField
+            End Get
+            Set
+                Me.multiPolygonField = value
+                Me.RaisePropertyChanged("multiPolygon")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class MultiLineString
+        Inherits EncodedGeometry
+        
+        Private multiLineStringField As PlainMultiLineString
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property multiLineString() As PlainMultiLineString
+            Get
+                Return Me.multiLineStringField
+            End Get
+            Set
+                Me.multiLineStringField = value
+                Me.RaisePropertyChanged("multiLineString")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class MultiPoint
+        Inherits EncodedGeometry
+        
+        Private multiPointField As PlainMultiPoint
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property multiPoint() As PlainMultiPoint
+            Get
+                Return Me.multiPointField
+            End Get
+            Set
+                Me.multiPointField = value
+                Me.RaisePropertyChanged("multiPoint")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class LineString
+        Inherits EncodedGeometry
+        
+        Private lineStringField As PlainLineString
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property lineString() As PlainLineString
+            Get
+                Return Me.lineStringField
+            End Get
+            Set
+                Me.lineStringField = value
+                Me.RaisePropertyChanged("lineString")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class Polygon
+        Inherits EncodedGeometry
+        
+        Private polygonField As PlainPolygon
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property polygon() As PlainPolygon
+            Get
+                Return Me.polygonField
+            End Get
+            Set
+                Me.polygonField = value
+                Me.RaisePropertyChanged("polygon")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class LinearRing
+        Inherits EncodedGeometry
+        
+        Private linearRingField As PlainLinearRing
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property linearRing() As PlainLinearRing
+            Get
+                Return Me.linearRingField
+            End Get
+            Set
+                Me.linearRingField = value
+                Me.RaisePropertyChanged("linearRing")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4040,7 +3005,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4148,7 +3113,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4187,7 +3152,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum ExpansionType
@@ -4200,7 +3165,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum LinkType
@@ -4231,7 +3196,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum RoutingDirectionType
@@ -4244,7 +3209,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4282,7 +3247,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4334,7 +3299,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4372,7 +3337,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4424,7 +3389,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4518,7 +3483,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4570,7 +3535,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum IsochroneDetail
@@ -4586,7 +3551,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum PolygonCalculationMode
@@ -4599,7 +3564,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4638,7 +3603,7 @@ Namespace XRouteServiceReference
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(CountryInfoVehicleOptions)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4887,7 +3852,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4911,7 +3876,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -4949,7 +3914,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum VehicleParameter
@@ -5025,7 +3990,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5203,7 +4168,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5255,7 +4220,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5365,7 +4330,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5599,7 +4564,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5707,7 +4672,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -5787,7 +4752,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum TimeEventType
@@ -5855,7 +4820,7 @@ Namespace XRouteServiceReference
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(ExtWayPoint)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6075,7 +5040,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6169,12 +5134,14 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissions2012)),  _
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(CO2EDecreeFrance2017)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(AustraliaNGA2015)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissions2012)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(UKDefra2014)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AustraliaNGA2011)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CO2DecreeFrance2011)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CENEmissions2011)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6184,7 +5151,167 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
+    Partial Public Class CO2EDecreeFrance2017
+        Inherits CENEmissions
+        
+        Private co2eWell2TankField As Double
+        
+        Private co2eWell2WheelField As Double
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property co2eWell2Tank() As Double
+            Get
+                Return Me.co2eWell2TankField
+            End Get
+            Set
+                Me.co2eWell2TankField = value
+                Me.RaisePropertyChanged("co2eWell2Tank")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property co2eWell2Wheel() As Double
+            Get
+                Return Me.co2eWell2WheelField
+            End Get
+            Set
+                Me.co2eWell2WheelField = value
+                Me.RaisePropertyChanged("co2eWell2Wheel")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
+    Partial Public Class AustraliaNGA2015
+        Inherits CENEmissions
+        
+        Private ch4Tank2WheelField As Double
+        
+        Private co2Tank2WheelField As Double
+        
+        Private co2eTank2WheelField As Double
+        
+        Private co2eWell2TankField As Double
+        
+        Private co2eWell2TankFieldSpecified As Boolean
+        
+        Private energyUseTank2WheelField As Double
+        
+        Private fuelConsumptionField As Double
+        
+        Private n2oTank2WheelField As Double
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property ch4Tank2Wheel() As Double
+            Get
+                Return Me.ch4Tank2WheelField
+            End Get
+            Set
+                Me.ch4Tank2WheelField = value
+                Me.RaisePropertyChanged("ch4Tank2Wheel")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property co2Tank2Wheel() As Double
+            Get
+                Return Me.co2Tank2WheelField
+            End Get
+            Set
+                Me.co2Tank2WheelField = value
+                Me.RaisePropertyChanged("co2Tank2Wheel")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property co2eTank2Wheel() As Double
+            Get
+                Return Me.co2eTank2WheelField
+            End Get
+            Set
+                Me.co2eTank2WheelField = value
+                Me.RaisePropertyChanged("co2eTank2Wheel")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property co2eWell2Tank() As Double
+            Get
+                Return Me.co2eWell2TankField
+            End Get
+            Set
+                Me.co2eWell2TankField = value
+                Me.RaisePropertyChanged("co2eWell2Tank")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
+        Public Property co2eWell2TankSpecified() As Boolean
+            Get
+                Return Me.co2eWell2TankFieldSpecified
+            End Get
+            Set
+                Me.co2eWell2TankFieldSpecified = value
+                Me.RaisePropertyChanged("co2eWell2TankSpecified")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property energyUseTank2Wheel() As Double
+            Get
+                Return Me.energyUseTank2WheelField
+            End Get
+            Set
+                Me.energyUseTank2WheelField = value
+                Me.RaisePropertyChanged("energyUseTank2Wheel")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property fuelConsumption() As Double
+            Get
+                Return Me.fuelConsumptionField
+            End Get
+            Set
+                Me.fuelConsumptionField = value
+                Me.RaisePropertyChanged("fuelConsumption")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property n2oTank2Wheel() As Double
+            Get
+                Return Me.n2oTank2WheelField
+            End Get
+            Set
+                Me.n2oTank2WheelField = value
+                Me.RaisePropertyChanged("n2oTank2Wheel")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6292,7 +5419,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6400,7 +5527,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6522,7 +5649,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6560,7 +5687,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6626,7 +5753,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6666,7 +5793,7 @@ Namespace XRouteServiceReference
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(EmissionsHBEFA32)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(EmissionsHBEFA31)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6886,7 +6013,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6938,7 +6065,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -6990,7 +6117,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum WayPointType
@@ -7006,7 +6133,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7142,7 +6269,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum ManoeuvreType
@@ -7191,7 +6318,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum TurnOrient
@@ -7207,7 +6334,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum TurnWeight
@@ -7223,7 +6350,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7289,7 +6416,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7327,7 +6454,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum ManoeuvreGroupType
@@ -7340,7 +6467,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7575,7 +6702,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7655,7 +6782,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7945,7 +7072,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -7997,7 +7124,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8133,7 +7260,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8185,7 +7312,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum DetailLevel
@@ -8213,7 +7340,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum InfoNodeType
@@ -8250,7 +7377,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8597,7 +7724,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8649,7 +7776,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8687,7 +7814,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum NormSpeedType
@@ -8703,7 +7830,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -8965,7 +8092,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum BrunnelCode
@@ -8999,7 +8126,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9023,7 +8150,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9061,7 +8188,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum NetworkClass
@@ -9092,7 +8219,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9186,7 +8313,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum Currency
@@ -9286,7 +8413,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum TollType
@@ -9329,7 +8456,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9367,7 +8494,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9405,7 +8532,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9499,7 +8626,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum TollManoeuvreType
@@ -9518,7 +8645,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -9752,7 +8879,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10004,7 +9131,7 @@ Namespace XRouteServiceReference
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(AdvancedTour)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(Tour)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10056,7 +9183,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10206,7 +9333,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10258,7 +9385,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10282,7 +9409,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10349,13 +9476,15 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Partial Public Class ExceptionPath
         Inherits TransientVO
+        
+        Private intersectingLineField As LineString
         
         Private wrappedNodesField() As UniqueGeoID
         
@@ -10374,7 +9503,19 @@ Namespace XRouteServiceReference
         Private streetField As String
         
         '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property intersectingLine() As LineString
+            Get
+                Return Me.intersectingLineField
+            End Get
+            Set
+                Me.intersectingLineField = value
+                Me.RaisePropertyChanged("intersectingLine")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=1)>  _
         Public Property wrappedNodes() As UniqueGeoID()
             Get
                 Return Me.wrappedNodesField
@@ -10386,7 +9527,7 @@ Namespace XRouteServiceReference
         End Property
         
         '''<remarks/>
-        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=2)>  _
         Public Property polyline() As LineString
             Get
                 Return Me.polylineField
@@ -10471,7 +9612,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10495,7 +9636,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum HBEFAVersion
@@ -10517,7 +9658,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10541,7 +9682,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum EmissionLevel
@@ -10563,7 +9704,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10601,7 +9742,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -10709,7 +9850,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum CENVersion
@@ -10724,14 +9865,20 @@ Namespace XRouteServiceReference
         CO2_DECREE_FRANCE_2011
         
         '''<remarks/>
+        CO2E_DECREE_FRANCE_2017
+        
+        '''<remarks/>
         AUSTRALIA_NGA_2011
         
         '''<remarks/>
         UK_DEFRA_2014
+        
+        '''<remarks/>
+        AUSTRALIA_NGA_2015
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11273,7 +10420,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11297,7 +10444,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum ViaTypeEnum
@@ -11316,7 +10463,7 @@ Namespace XRouteServiceReference
     End Enum
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11354,7 +10501,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://xroute.xserver.ptvag.com")>  _
     Public Enum RoutingParameter
@@ -11475,11 +10622,17 @@ Namespace XRouteServiceReference
         
         '''<remarks/>
         REMAINING_DRIVING_TIMES
+        
+        '''<remarks/>
+        IS_LOCAL_TIME_AT_LOCATION
+        
+        '''<remarks/>
+        ENFORCE_HIGH_PERFORMANCE_ROUTING
     End Enum
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(TourPointDesc)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11658,7 +10811,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11780,6 +10933,1052 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class WatchOptions
+        Inherits TransientVO
+        
+        Private maximumPollingPeriodField As Integer
+        
+        Private maximumPollingPeriodFieldSpecified As Boolean
+        
+        Private progressUpdatePeriodField As Integer
+        
+        Private progressUpdatePeriodFieldSpecified As Boolean
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property maximumPollingPeriod() As Integer
+            Get
+                Return Me.maximumPollingPeriodField
+            End Get
+            Set
+                Me.maximumPollingPeriodField = value
+                Me.RaisePropertyChanged("maximumPollingPeriod")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
+        Public Property maximumPollingPeriodSpecified() As Boolean
+            Get
+                Return Me.maximumPollingPeriodFieldSpecified
+            End Get
+            Set
+                Me.maximumPollingPeriodFieldSpecified = value
+                Me.RaisePropertyChanged("maximumPollingPeriodSpecified")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property progressUpdatePeriod() As Integer
+            Get
+                Return Me.progressUpdatePeriodField
+            End Get
+            Set
+                Me.progressUpdatePeriodField = value
+                Me.RaisePropertyChanged("progressUpdatePeriod")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlIgnoreAttribute()>  _
+        Public Property progressUpdatePeriodSpecified() As Boolean
+            Get
+                Return Me.progressUpdatePeriodFieldSpecified
+            End Get
+            Set
+                Me.progressUpdatePeriodFieldSpecified = value
+                Me.RaisePropertyChanged("progressUpdatePeriodSpecified")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class OptimizationProgress
+        Inherits TransientVO
+        
+        Private currentLoopIndexField As Integer
+        
+        Private lastLoopIndexField As Integer
+        
+        Private progressField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property currentLoopIndex() As Integer
+            Get
+                Return Me.currentLoopIndexField
+            End Get
+            Set
+                Me.currentLoopIndexField = value
+                Me.RaisePropertyChanged("currentLoopIndex")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property lastLoopIndex() As Integer
+            Get
+                Return Me.lastLoopIndexField
+            End Get
+            Set
+                Me.lastLoopIndexField = value
+                Me.RaisePropertyChanged("lastLoopIndex")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property progress() As Integer
+            Get
+                Return Me.progressField
+            End Get
+            Set
+                Me.progressField = value
+                Me.RaisePropertyChanged("progress")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class KeyFigures
+        Inherits TransientVO
+        
+        Private costOfObjectiveFunctionField As Integer
+        
+        Private numberOfInfeasibleOrdersField As Integer
+        
+        Private numberOfScheduledOrdersField As Integer
+        
+        Private numberOfScheduledVehiclesField As Integer
+        
+        Private numberOfUnscheduledOrdersField As Integer
+        
+        Private totalChainCostField As Integer
+        
+        Private totalChainPeriodField As Integer
+        
+        Private totalTourCostField As Integer
+        
+        Private totalTourCountField As Integer
+        
+        Private totalTourDistanceField As Integer
+        
+        Private totalTourDrivingPeriodField As Integer
+        
+        Private totalTourPeriodField As Integer
+        
+        Private totalTourWaitingPeriodField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property costOfObjectiveFunction() As Integer
+            Get
+                Return Me.costOfObjectiveFunctionField
+            End Get
+            Set
+                Me.costOfObjectiveFunctionField = value
+                Me.RaisePropertyChanged("costOfObjectiveFunction")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property numberOfInfeasibleOrders() As Integer
+            Get
+                Return Me.numberOfInfeasibleOrdersField
+            End Get
+            Set
+                Me.numberOfInfeasibleOrdersField = value
+                Me.RaisePropertyChanged("numberOfInfeasibleOrders")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property numberOfScheduledOrders() As Integer
+            Get
+                Return Me.numberOfScheduledOrdersField
+            End Get
+            Set
+                Me.numberOfScheduledOrdersField = value
+                Me.RaisePropertyChanged("numberOfScheduledOrders")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property numberOfScheduledVehicles() As Integer
+            Get
+                Return Me.numberOfScheduledVehiclesField
+            End Get
+            Set
+                Me.numberOfScheduledVehiclesField = value
+                Me.RaisePropertyChanged("numberOfScheduledVehicles")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property numberOfUnscheduledOrders() As Integer
+            Get
+                Return Me.numberOfUnscheduledOrdersField
+            End Get
+            Set
+                Me.numberOfUnscheduledOrdersField = value
+                Me.RaisePropertyChanged("numberOfUnscheduledOrders")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalChainCost() As Integer
+            Get
+                Return Me.totalChainCostField
+            End Get
+            Set
+                Me.totalChainCostField = value
+                Me.RaisePropertyChanged("totalChainCost")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalChainPeriod() As Integer
+            Get
+                Return Me.totalChainPeriodField
+            End Get
+            Set
+                Me.totalChainPeriodField = value
+                Me.RaisePropertyChanged("totalChainPeriod")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourCost() As Integer
+            Get
+                Return Me.totalTourCostField
+            End Get
+            Set
+                Me.totalTourCostField = value
+                Me.RaisePropertyChanged("totalTourCost")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourCount() As Integer
+            Get
+                Return Me.totalTourCountField
+            End Get
+            Set
+                Me.totalTourCountField = value
+                Me.RaisePropertyChanged("totalTourCount")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourDistance() As Integer
+            Get
+                Return Me.totalTourDistanceField
+            End Get
+            Set
+                Me.totalTourDistanceField = value
+                Me.RaisePropertyChanged("totalTourDistance")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourDrivingPeriod() As Integer
+            Get
+                Return Me.totalTourDrivingPeriodField
+            End Get
+            Set
+                Me.totalTourDrivingPeriodField = value
+                Me.RaisePropertyChanged("totalTourDrivingPeriod")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourPeriod() As Integer
+            Get
+                Return Me.totalTourPeriodField
+            End Get
+            Set
+                Me.totalTourPeriodField = value
+                Me.RaisePropertyChanged("totalTourPeriod")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property totalTourWaitingPeriod() As Integer
+            Get
+                Return Me.totalTourWaitingPeriodField
+            End Get
+            Set
+                Me.totalTourWaitingPeriodField = value
+                Me.RaisePropertyChanged("totalTourWaitingPeriod")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class ImprovementProgress
+        Inherits TransientVO
+        
+        Private bestPlanField As KeyFigures
+        
+        Private currentPlanField As KeyFigures
+        
+        Private initialPlanField As KeyFigures
+        
+        Private availableMachineTimeField As Integer
+        
+        Private iterationIndexField As Integer
+        
+        Private numberOfImprovementsField As Integer
+        
+        Private usedMachineTimeField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property bestPlan() As KeyFigures
+            Get
+                Return Me.bestPlanField
+            End Get
+            Set
+                Me.bestPlanField = value
+                Me.RaisePropertyChanged("bestPlan")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
+        Public Property currentPlan() As KeyFigures
+            Get
+                Return Me.currentPlanField
+            End Get
+            Set
+                Me.currentPlanField = value
+                Me.RaisePropertyChanged("currentPlan")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=2)>  _
+        Public Property initialPlan() As KeyFigures
+            Get
+                Return Me.initialPlanField
+            End Get
+            Set
+                Me.initialPlanField = value
+                Me.RaisePropertyChanged("initialPlan")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property availableMachineTime() As Integer
+            Get
+                Return Me.availableMachineTimeField
+            End Get
+            Set
+                Me.availableMachineTimeField = value
+                Me.RaisePropertyChanged("availableMachineTime")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property iterationIndex() As Integer
+            Get
+                Return Me.iterationIndexField
+            End Get
+            Set
+                Me.iterationIndexField = value
+                Me.RaisePropertyChanged("iterationIndex")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property numberOfImprovements() As Integer
+            Get
+                Return Me.numberOfImprovementsField
+            End Get
+            Set
+                Me.numberOfImprovementsField = value
+                Me.RaisePropertyChanged("numberOfImprovements")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property usedMachineTime() As Integer
+            Get
+                Return Me.usedMachineTimeField
+            End Get
+            Set
+                Me.usedMachineTimeField = value
+                Me.RaisePropertyChanged("usedMachineTime")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class DistanceMatrixCalculationProgress
+        Inherits TransientVO
+        
+        Private currentDistanceMatrixProgressField As DistanceMatrixProgress
+        
+        Private currentDimaIndexField As Integer
+        
+        Private dimaIdField As Integer
+        
+        Private lastDimaIndexField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property currentDistanceMatrixProgress() As DistanceMatrixProgress
+            Get
+                Return Me.currentDistanceMatrixProgressField
+            End Get
+            Set
+                Me.currentDistanceMatrixProgressField = value
+                Me.RaisePropertyChanged("currentDistanceMatrixProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property currentDimaIndex() As Integer
+            Get
+                Return Me.currentDimaIndexField
+            End Get
+            Set
+                Me.currentDimaIndexField = value
+                Me.RaisePropertyChanged("currentDimaIndex")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property dimaId() As Integer
+            Get
+                Return Me.dimaIdField
+            End Get
+            Set
+                Me.dimaIdField = value
+                Me.RaisePropertyChanged("dimaId")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property lastDimaIndex() As Integer
+            Get
+                Return Me.lastDimaIndexField
+            End Get
+            Set
+                Me.lastDimaIndexField = value
+                Me.RaisePropertyChanged("lastDimaIndex")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class DistanceMatrixProgress
+        Inherits JobProgress
+        
+        Private currentRowIndexField As Integer
+        
+        Private lastRowIndexField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property currentRowIndex() As Integer
+            Get
+                Return Me.currentRowIndexField
+            End Get
+            Set
+                Me.currentRowIndexField = value
+                Me.RaisePropertyChanged("currentRowIndex")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property lastRowIndex() As Integer
+            Get
+                Return Me.lastRowIndexField
+            End Get
+            Set
+                Me.lastRowIndexField = value
+                Me.RaisePropertyChanged("lastRowIndex")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(ZoneLoadingProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(TerritoryProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(ClusterProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(PlanProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(DistanceMatrixProgress)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(BulkProgress)),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public MustInherit Class JobProgress
+        Inherits TransientVO
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class ZoneLoadingProgress
+        Inherits JobProgress
+        
+        Private actionField As String
+        
+        Private optimizationProgressField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property action() As String
+            Get
+                Return Me.actionField
+            End Get
+            Set
+                Me.actionField = value
+                Me.RaisePropertyChanged("action")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property optimizationProgress() As Integer
+            Get
+                Return Me.optimizationProgressField
+            End Get
+            Set
+                Me.optimizationProgressField = value
+                Me.RaisePropertyChanged("optimizationProgress")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class TerritoryProgress
+        Inherits JobProgress
+        
+        Private distanceMatrixProgressField As DistanceMatrixProgress
+        
+        Private actionField As String
+        
+        Private optimizationProgressField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property distanceMatrixProgress() As DistanceMatrixProgress
+            Get
+                Return Me.distanceMatrixProgressField
+            End Get
+            Set
+                Me.distanceMatrixProgressField = value
+                Me.RaisePropertyChanged("distanceMatrixProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property action() As String
+            Get
+                Return Me.actionField
+            End Get
+            Set
+                Me.actionField = value
+                Me.RaisePropertyChanged("action")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property optimizationProgress() As Integer
+            Get
+                Return Me.optimizationProgressField
+            End Get
+            Set
+                Me.optimizationProgressField = value
+                Me.RaisePropertyChanged("optimizationProgress")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class ClusterProgress
+        Inherits JobProgress
+        
+        Private distanceMatrixProgressField As DistanceMatrixProgress
+        
+        Private optimizationProgressField As OptimizationProgress
+        
+        Private actionField As String
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property distanceMatrixProgress() As DistanceMatrixProgress
+            Get
+                Return Me.distanceMatrixProgressField
+            End Get
+            Set
+                Me.distanceMatrixProgressField = value
+                Me.RaisePropertyChanged("distanceMatrixProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
+        Public Property optimizationProgress() As OptimizationProgress
+            Get
+                Return Me.optimizationProgressField
+            End Get
+            Set
+                Me.optimizationProgressField = value
+                Me.RaisePropertyChanged("optimizationProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property action() As String
+            Get
+                Return Me.actionField
+            End Get
+            Set
+                Me.actionField = value
+                Me.RaisePropertyChanged("action")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class PlanProgress
+        Inherits JobProgress
+        
+        Private distanceMatrixCalculationProgressField As DistanceMatrixCalculationProgress
+        
+        Private improvementProgressField As ImprovementProgress
+        
+        Private actionField As String
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property distanceMatrixCalculationProgress() As DistanceMatrixCalculationProgress
+            Get
+                Return Me.distanceMatrixCalculationProgressField
+            End Get
+            Set
+                Me.distanceMatrixCalculationProgressField = value
+                Me.RaisePropertyChanged("distanceMatrixCalculationProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
+        Public Property improvementProgress() As ImprovementProgress
+            Get
+                Return Me.improvementProgressField
+            End Get
+            Set
+                Me.improvementProgressField = value
+                Me.RaisePropertyChanged("improvementProgress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property action() As String
+            Get
+                Return Me.actionField
+            End Get
+            Set
+                Me.actionField = value
+                Me.RaisePropertyChanged("action")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class BulkProgress
+        Inherits JobProgress
+        
+        Private failedField As Integer
+        
+        Private remainingField As Integer
+        
+        Private successfulField As Integer
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property failed() As Integer
+            Get
+                Return Me.failedField
+            End Get
+            Set
+                Me.failedField = value
+                Me.RaisePropertyChanged("failed")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property remaining() As Integer
+            Get
+                Return Me.remainingField
+            End Get
+            Set
+                Me.remainingField = value
+                Me.RaisePropertyChanged("remaining")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property successful() As Integer
+            Get
+                Return Me.successfulField
+            End Get
+            Set
+                Me.successfulField = value
+                Me.RaisePropertyChanged("successful")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class Job
+        Inherits TransientVO
+        
+        Private progressField As JobProgress
+        
+        Private elapsedTimeField As Integer
+        
+        Private idField As String
+        
+        Private statusField As JobStatus
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property progress() As JobProgress
+            Get
+                Return Me.progressField
+            End Get
+            Set
+                Me.progressField = value
+                Me.RaisePropertyChanged("progress")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property elapsedTime() As Integer
+            Get
+                Return Me.elapsedTimeField
+            End Get
+            Set
+                Me.elapsedTimeField = value
+                Me.RaisePropertyChanged("elapsedTime")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property id() As String
+            Get
+                Return Me.idField
+            End Get
+            Set
+                Me.idField = value
+                Me.RaisePropertyChanged("id")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property status() As JobStatus
+            Get
+                Return Me.statusField
+            End Get
+            Set
+                Me.statusField = value
+                Me.RaisePropertyChanged("status")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Public Enum JobStatus
+        
+        '''<remarks/>
+        QUEUING
+        
+        '''<remarks/>
+        RUNNING
+        
+        '''<remarks/>
+        STOPPING
+        
+        '''<remarks/>
+        SUCCEEDED
+        
+        '''<remarks/>
+        FAILED
+        
+        '''<remarks/>
+        DELETED
+        
+        '''<remarks/>
+        UNKNOWN
+    End Enum
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class BoundingBox
+        Inherits TransientVO
+        
+        Private leftTopField As Point
+        
+        Private rightBottomField As Point
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property leftTop() As Point
+            Get
+                Return Me.leftTopField
+            End Get
+            Set
+                Me.leftTopField = value
+                Me.RaisePropertyChanged("leftTop")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(IsNullable:=true, Order:=1)>  _
+        Public Property rightBottom() As Point
+            Get
+                Return Me.rightBottomField
+            End Get
+            Set
+                Me.rightBottomField = value
+                Me.RaisePropertyChanged("rightBottom")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Partial Public Class RequestOptions
+        Inherits TransientVO
+        
+        Private wrappedResponseGeometryField() As GeometryEncoding
+        
+        Private coordFormatField As CoordFormat
+        
+        Private profileField As String
+        
+        Private profileXMLSnippetField As String
+        
+        Private srIdField As String
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlArrayAttribute(IsNullable:=true, Order:=0)>  _
+        Public Property wrappedResponseGeometry() As GeometryEncoding()
+            Get
+                Return Me.wrappedResponseGeometryField
+            End Get
+            Set
+                Me.wrappedResponseGeometryField = value
+                Me.RaisePropertyChanged("wrappedResponseGeometry")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property coordFormat() As CoordFormat
+            Get
+                Return Me.coordFormatField
+            End Get
+            Set
+                Me.coordFormatField = value
+                Me.RaisePropertyChanged("coordFormat")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property profile() As String
+            Get
+                Return Me.profileField
+            End Get
+            Set
+                Me.profileField = value
+                Me.RaisePropertyChanged("profile")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property profileXMLSnippet() As String
+            Get
+                Return Me.profileXMLSnippetField
+            End Get
+            Set
+                Me.profileXMLSnippetField = value
+                Me.RaisePropertyChanged("profileXMLSnippet")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlAttributeAttribute()>  _
+        Public Property srId() As String
+            Get
+                Return Me.srIdField
+            End Get
+            Set
+                Me.srIdField = value
+                Me.RaisePropertyChanged("srId")
+            End Set
+        End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Public Enum GeometryEncoding
+        
+        '''<remarks/>
+        PLAIN
+        
+        '''<remarks/>
+        WKB
+        
+        '''<remarks/>
+        WKT
+        
+        '''<remarks/>
+        KML
+    End Enum
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
+     System.SerializableAttribute(),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://common.xserver.ptvag.com")>  _
+    Public Enum CoordFormat
+        
+        '''<remarks/>
+        OG_GEODECIMAL
+        
+        '''<remarks/>
+        PTV_MERCATOR
+        
+        '''<remarks/>
+        PTV_GEOMINSEC
+        
+        '''<remarks/>
+        PTV_GEODECIMAL
+        
+        '''<remarks/>
+        PTV_CONFORM
+        
+        '''<remarks/>
+        PTV_SUPERCONFORM
+        
+        '''<remarks/>
+        PTV_SMARTUNITS
+        
+        '''<remarks/>
+        OG_SRID
+    End Enum
+    
+    '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(FinderException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ObjectNotFoundException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(RemoveException)),  _
@@ -11791,7 +11990,7 @@ Namespace XRouteServiceReference
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DatabaseException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TableNotFoundException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ConstraintViolationException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11802,7 +12001,7 @@ Namespace XRouteServiceReference
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(ObjectNotFoundException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11812,7 +12011,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11822,7 +12021,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11833,7 +12032,7 @@ Namespace XRouteServiceReference
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(DuplicateKeyException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11843,7 +12042,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11853,7 +12052,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11863,7 +12062,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11873,7 +12072,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11885,7 +12084,7 @@ Namespace XRouteServiceReference
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(TableNotFoundException)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ConstraintViolationException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11895,7 +12094,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11905,7 +12104,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11916,7 +12115,7 @@ Namespace XRouteServiceReference
     
     '''<remarks/>
     <System.Xml.Serialization.XmlIncludeAttribute(GetType(ParameterNotSetException)),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11926,7 +12125,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -11936,7 +12135,7 @@ Namespace XRouteServiceReference
     End Class
     
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.81.0"),  _
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0"),  _
      System.SerializableAttribute(),  _
      System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _

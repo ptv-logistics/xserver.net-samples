@@ -260,13 +260,13 @@
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://exception.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://exception.core.jabba.ptvag.com" xmlns:tns="http://common.xserver.ptvag.com" xmlns:ns1="http://wrappertypes.service.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://value.core.jabba.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://exception.core.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://common.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
-      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
+      <xsd:import namespace="http://value.core.jabba.ptvag.com" />
       <xsd:complexType name="RequestOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedResponseGeometry" nillable="true" type="tns:ArrayOfGeometryEncoding" />
             </xsd:sequence>
@@ -329,7 +329,7 @@
       </xsd:complexType>
       <xsd:complexType name="BoundingBox">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="leftTop" nillable="true" type="tns:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="rightBottom" nillable="true" type="tns:Point" />
@@ -503,7 +503,7 @@
       </xsd:complexType>
       <xsd:complexType name="XServiceException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns0:BusinessException">
+          <xsd:extension base="ns2:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -663,7 +663,7 @@
       </xsd:complexType>
       <xsd:complexType name="PlainGeometryBase">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -700,7 +700,7 @@
       </xsd:complexType>
       <xsd:complexType name="EncodedGeometryBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -738,9 +738,9 @@
       </xsd:complexType>
       <xsd:complexType name="KML">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns2:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPlacemarks" nillable="true" type="ns1:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="kml" type="xsd:string" use="optional" />
           </xsd:extension>
@@ -779,7 +779,7 @@
       </xsd:complexType>
       <xsd:complexType name="Job">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="progress" nillable="true" type="tns:JobProgress" />
             </xsd:sequence>
@@ -801,7 +801,7 @@
       </xsd:complexType>
       <xsd:complexType name="JobProgress" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -857,7 +857,7 @@
       </xsd:complexType>
       <xsd:complexType name="WatchOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumPollingPeriod" type="xsd:int" use="optional" />
             <xsd:attribute name="progressUpdatePeriod" type="xsd:int" use="optional" />
@@ -897,7 +897,7 @@
       </xsd:complexType>
       <xsd:complexType name="DistanceMatrixCalculationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="currentDistanceMatrixProgress" nillable="true" type="tns:DistanceMatrixProgress" />
             </xsd:sequence>
@@ -919,7 +919,7 @@
       </xsd:complexType>
       <xsd:complexType name="ImprovementProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="bestPlan" nillable="true" type="tns:KeyFigures" />
               <xsd:element minOccurs="0" maxOccurs="1" name="currentPlan" nillable="true" type="tns:KeyFigures" />
@@ -944,7 +944,7 @@
       </xsd:complexType>
       <xsd:complexType name="KeyFigures">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="costOfObjectiveFunction" type="xsd:int" use="required" />
             <xsd:attribute name="numberOfInfeasibleOrders" type="xsd:int" use="required" />
@@ -974,7 +974,7 @@
       </xsd:complexType>
       <xsd:complexType name="OptimizationProgress">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:TransientVO">
+          <xsd:extension base="ns0:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="currentLoopIndex" type="xsd:int" use="required" />
             <xsd:attribute name="lastLoopIndex" type="xsd:int" use="required" />
@@ -1054,14 +1054,14 @@
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
-    <xsd:schema xmlns:ns2="http://value.core.jabba.ptvag.com" xmlns:tns="http://xroute.xserver.ptvag.com" xmlns:ns1="http://exception.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://wrappertypes.service.jabba.ptvag.com" elementFormDefault="qualified" targetNamespace="http://xroute.xserver.ptvag.com">
+    <xsd:schema xmlns:ns2="http://wrappertypes.service.jabba.ptvag.com" xmlns:tns="http://xroute.xserver.ptvag.com" xmlns:ns1="http://value.core.jabba.ptvag.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://common.xserver.ptvag.com" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xroute.xserver.ptvag.com">
       <xsd:import namespace="http://wrappertypes.service.jabba.ptvag.com" />
+      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:import namespace="http://common.xserver.ptvag.com" />
       <xsd:import namespace="http://value.core.jabba.ptvag.com" />
-      <xsd:import namespace="http://exception.core.jabba.ptvag.com" />
       <xsd:complexType name="RouteInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTravelTrend" nillable="true" type="tns:ArrayOfCommuterTravelTrend" />
             </xsd:sequence>
@@ -1084,7 +1084,7 @@
       </xsd:complexType>
       <xsd:complexType name="WaypointDesc">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedCoords" nillable="true" type="ns0:ArrayOfPoint" />
               <xsd:element minOccurs="0" maxOccurs="1" name="nodeID" nillable="true" type="tns:UniqueGeoID" />
@@ -1174,6 +1174,8 @@
           <xsd:enumeration value="ENABLE_DYNAMIC_WITH_FREE_FLOW_SPEED" />
           <xsd:enumeration value="GEODATASOURCE_LAYER" />
           <xsd:enumeration value="REMAINING_DRIVING_TIMES" />
+          <xsd:enumeration value="IS_LOCAL_TIME_AT_LOCATION" />
+          <xsd:enumeration value="ENFORCE_HIGH_PERFORMANCE_ROUTING" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfRoutingParameter">
@@ -1188,7 +1190,7 @@
       </xsd:complexType>
       <xsd:complexType name="RouteManoeuvre">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="brunnelManoeuvre" nillable="true" type="tns:BrunnelManoeuvre" />
               <xsd:element minOccurs="0" maxOccurs="1" name="manoeuvreAttr" nillable="true" type="tns:ManoeuvreAttributes" />
@@ -1226,7 +1228,7 @@
       </xsd:complexType>
       <xsd:complexType name="RouteListSegment">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="cenEmissions" nillable="true" type="tns:CENEmissionScenarios" />
               <xsd:element minOccurs="0" maxOccurs="1" name="emissions" nillable="true" type="tns:Emissions" />
@@ -1234,7 +1236,7 @@
               <xsd:element minOccurs="0" maxOccurs="1" name="normSpeed" nillable="true" type="tns:NormSpeed" />
               <xsd:element minOccurs="0" maxOccurs="1" name="segmentAttr" nillable="true" type="tns:SegmentAttributes" />
               <xsd:element minOccurs="0" maxOccurs="1" name="speedLimits" nillable="true" type="tns:SpeedLimits" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="accDist" type="xsd:int" use="required" />
             <xsd:attribute name="accTime" type="xsd:int" use="required" />
@@ -1266,7 +1268,7 @@
       </xsd:complexType>
       <xsd:complexType name="ResultListOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="cenEmissionConfiguration" nillable="true" type="tns:CENEmissionConfiguration" />
               <xsd:element minOccurs="0" maxOccurs="1" name="destDetail" nillable="true" type="tns:DetailDescriptionOption" />
@@ -1314,7 +1316,7 @@
       </xsd:complexType>
       <xsd:complexType name="UniqueGeoID">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="iuCode" type="xsd:int" use="required" />
             <xsd:attribute name="n" type="xsd:int" use="required" />
@@ -1336,8 +1338,9 @@
       </xsd:complexType>
       <xsd:complexType name="ExceptionPath">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
+              <xsd:element minOccurs="0" maxOccurs="1" name="intersectingLine" nillable="true" type="ns0:LineString" />
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedNodes" nillable="true" type="tns:ArrayOfUniqueGeoID" />
               <xsd:element minOccurs="0" maxOccurs="1" name="polyline" nillable="true" type="ns0:LineString" />
             </xsd:sequence>
@@ -1361,7 +1364,7 @@
       </xsd:complexType>
       <xsd:complexType name="SegmentAttributes">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="additionalInfo" type="xsd:string" use="optional" />
             <xsd:attribute name="additionalRE" type="xsd:string" use="optional" />
@@ -1524,7 +1527,7 @@
       </xsd:complexType>
       <xsd:complexType name="DynamicInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="distanceDiff" type="xsd:int" use="optional" />
             <xsd:attribute name="timeBenefit" type="xsd:int" use="required" />
@@ -1545,10 +1548,10 @@
       </xsd:complexType>
       <xsd:complexType name="MatrixOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedExceptionPaths" nillable="true" type="tns:ArrayOfExceptionPath" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedNcFilter" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedNcFilter" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="toll" type="xsd:boolean" use="required" />
             <xsd:attribute name="travelTrendDepartureTime" type="xsd:boolean" use="required" />
@@ -1567,7 +1570,7 @@
       </xsd:complexType>
       <xsd:complexType name="MatrixInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedMatrixInfo" nillable="true" type="tns:ArrayOfRouteInfo" />
             </xsd:sequence>
@@ -1586,7 +1589,7 @@
       </xsd:complexType>
       <xsd:complexType name="ManoeuvreAttributes">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="isBlockingEnd" type="xsd:boolean" use="required" />
             <xsd:attribute name="isBlockingStart" type="xsd:boolean" use="required" />
@@ -1612,7 +1615,7 @@
       </xsd:complexType>
       <xsd:complexType name="BrunnelManoeuvre">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="brunnelDist" type="xsd:int" use="required" />
             <xsd:attribute name="brunnelEndIdx" type="xsd:int" use="required" />
@@ -1632,7 +1635,7 @@
       </xsd:complexType>
       <xsd:complexType name="UrbanManoeuvre">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="additionalUrbanIdx" type="xsd:int" use="optional" />
             <xsd:attribute name="urbanIdx" type="xsd:int" use="required" />
@@ -1651,7 +1654,7 @@
       </xsd:complexType>
       <xsd:complexType name="DetailDescriptionOption">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="minLevel" type="tns:DetailLevel" use="required" />
             <xsd:attribute name="radius" type="xsd:int" use="required" />
@@ -1670,7 +1673,7 @@
       </xsd:complexType>
       <xsd:complexType name="XRouteException">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns1:BusinessException">
+          <xsd:extension base="ns3:BusinessException">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -1721,6 +1724,7 @@
           <xsd:enumeration value="CONFLICT_MATRIX_EXPATH_STREET" />
           <xsd:enumeration value="DYNAMIC_TIME_ON_STATICROUTE_NOT_SUPPORTED" />
           <xsd:enumeration value="INACCURATE_EXCEPTIONPATH_DESC" />
+          <xsd:enumeration value="EXCEPTIONPATH_INTERSECTINGLINE_CANNOT_BE_USED" />
           <xsd:enumeration value="WAYPOINTDESC_WITHOUT_COORDS" />
           <xsd:enumeration value="WAYPOINTDESC_EXPLICITLINKING_AND_COORDS" />
           <xsd:enumeration value="WAYPOINTDESC_EXPLICITLINKING_WITH_NODE_AND_SEGMENT" />
@@ -1814,7 +1818,9 @@
           <xsd:enumeration value="INVALID_ROUTINGOPTION_AVOID_NATIONALNAMEDTOLL_ROADS" />
           <xsd:enumeration value="INVALID_FEATURELAYER_CONFIGURATION" />
           <xsd:enumeration value="MISSING_TIMEZONES_FEATURELAYER" />
+          <xsd:enumeration value="FEATURE_LAYER_DATA_NOT_AVAILABLE" />
           <xsd:enumeration value="INVALID_HIGH_PERFORMANCE_ROUTING_CONFIGURATION" />
+          <xsd:enumeration value="CONFLICT_MAP_COMPATIBILITY_VERSION_AND_PROFILE" />
           <xsd:enumeration value="INVALID_XML_PROFILE_SNIPPET" />
           <xsd:enumeration value="INVALID_PROFILE" />
         </xsd:restriction>
@@ -1831,7 +1837,7 @@
       </xsd:complexType>
       <xsd:complexType name="ExtendedRoute">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedCountryInfos" nillable="true" type="tns:ArrayOfCountryInfo" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPartTollCosts" nillable="true" type="tns:ArrayOfPartTollCosts" />
@@ -1852,12 +1858,12 @@
       </xsd:complexType>
       <xsd:complexType name="CountryInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="partRouteInfo" nillable="true" type="tns:RouteInfo" />
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedPerNCRouteInfo" nillable="true" type="tns:ArrayOfRouteInfo" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPerTypeTollDistance" nillable="true" type="ns3:ArrayOfInt" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPerTypeTollPrice" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPerTypeTollDistance" nillable="true" type="ns2:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedPerTypeTollPrice" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedTollCostInfos" nillable="true" type="tns:ArrayOfTollCostInfo" />
               <xsd:element minOccurs="0" maxOccurs="1" name="tollTotals" nillable="true" type="tns:TollTotals" />
             </xsd:sequence>
@@ -1885,7 +1891,7 @@
       </xsd:complexType>
       <xsd:complexType name="TollCostInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="tollStationFrom" nillable="true" type="tns:TollStationDescription" />
               <xsd:element minOccurs="0" maxOccurs="1" name="tollStationTo" nillable="true" type="tns:TollStationDescription" />
@@ -1917,9 +1923,9 @@
       </xsd:complexType>
       <xsd:complexType name="CountryInfoOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedReductionIDs" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedReductionIDs" nillable="true" type="ns2:ArrayOfInt" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTollScenarios" nillable="true" type="tns:ArrayOfTollScenario" />
             </xsd:sequence>
             <xsd:attribute name="allEuro" type="xsd:boolean" use="required" />
@@ -1972,7 +1978,7 @@
       </xsd:complexType>
       <xsd:complexType name="ManoeuvreGroup">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="extend" nillable="true" type="tns:BoundingRectangle" />
             </xsd:sequence>
@@ -2055,7 +2061,7 @@
       </xsd:complexType>
       <xsd:complexType name="TollStationDescription">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="manoeuvreType" type="tns:TollManoeuvreType" use="required" />
             <xsd:attribute name="routeListIndex" type="xsd:int" use="required" />
@@ -2078,7 +2084,7 @@
       </xsd:complexType>
       <xsd:complexType name="BoundingRectangle">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="leftBottom" nillable="true" type="ns0:Point" />
               <xsd:element minOccurs="0" maxOccurs="1" name="rightTop" nillable="true" type="ns0:Point" />
@@ -2098,7 +2104,7 @@
       </xsd:complexType>
       <xsd:complexType name="WayPoint">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="cenEmissions" nillable="true" type="tns:CENEmissionScenarios" />
               <xsd:element minOccurs="0" maxOccurs="1" name="emissions" nillable="true" type="tns:Emissions" />
@@ -2257,7 +2263,7 @@
       </xsd:complexType>
       <xsd:complexType name="ReachInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="branchNode" nillable="true" type="tns:UniqueGeoID" />
               <xsd:element minOccurs="0" maxOccurs="1" name="routeInfo" nillable="true" type="tns:RouteInfo" />
@@ -2278,7 +2284,7 @@
       </xsd:complexType>
       <xsd:complexType name="IsochroneSegment">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedSegmentID" nillable="true" type="tns:ArrayOfUniqueGeoID" />
             </xsd:sequence>
@@ -2302,7 +2308,7 @@
       </xsd:complexType>
       <xsd:complexType name="IsochroneInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="isoSegments" nillable="true" type="tns:IsochroneSegment" />
               <xsd:element minOccurs="0" maxOccurs="1" name="polys" nillable="true" type="ns0:LineString" />
@@ -2339,7 +2345,7 @@
       </xsd:complexType>
       <xsd:complexType name="IsochroneOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="expansionDesc" nillable="true" type="tns:ExpansionDescription" />
             </xsd:sequence>
@@ -2360,9 +2366,9 @@
       </xsd:complexType>
       <xsd:complexType name="ExpansionDescription">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedHorizons" nillable="true" type="ns3:ArrayOfInt" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedHorizons" nillable="true" type="ns2:ArrayOfInt" />
             </xsd:sequence>
             <xsd:attribute name="expansionType" type="tns:ExpansionType" use="required" />
           </xsd:extension>
@@ -2380,7 +2386,7 @@
       </xsd:complexType>
       <xsd:complexType name="Isochrone">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedIsochrones" nillable="true" type="tns:ArrayOfIsochroneInfo" />
             </xsd:sequence>
@@ -2400,7 +2406,7 @@
       </xsd:complexType>
       <xsd:complexType name="Reach">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedReachInfo" nillable="true" type="tns:ArrayOfReachInfo" />
             </xsd:sequence>
@@ -2483,7 +2489,7 @@
       </xsd:complexType>
       <xsd:complexType name="VehicleOption">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="parameter" type="tns:VehicleParameter" use="required" />
             <xsd:attribute name="value" type="xsd:string" use="optional" />
@@ -2545,7 +2551,7 @@
       </xsd:complexType>
       <xsd:complexType name="Interval">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="from" type="xsd:dateTime" use="optional" />
             <xsd:attribute name="till" type="xsd:dateTime" use="optional" />
@@ -2564,7 +2570,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourPoint">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="arrivalTime" type="xsd:int" use="required" />
             <xsd:attribute name="departureTime" type="xsd:int" use="required" />
@@ -2609,7 +2615,7 @@
       </xsd:complexType>
       <xsd:complexType name="TimeEvent">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="period" type="xsd:int" use="required" />
             <xsd:attribute name="segmentIdx" type="xsd:int" use="required" />
@@ -2631,7 +2637,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourSummary">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="drivingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="earliness" type="xsd:int" use="required" />
@@ -2712,7 +2718,7 @@
       </xsd:complexType>
       <xsd:complexType name="Emissions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="ammonia" type="xsd:double" use="required" />
             <xsd:attribute name="benzene" type="xsd:double" use="required" />
@@ -2744,7 +2750,7 @@
       </xsd:complexType>
       <xsd:complexType name="EmissionType">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="emissionLevel" type="tns:EmissionLevel" use="required" />
           </xsd:extension>
@@ -2762,7 +2768,7 @@
       </xsd:complexType>
       <xsd:complexType name="CommuterTravelTrend">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="departureTime" type="xsd:dateTime" use="optional" />
             <xsd:attribute name="travelTime" type="xsd:int" use="required" />
@@ -2798,7 +2804,7 @@
       </xsd:complexType>
       <xsd:complexType name="NormSpeed">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="normSpeed" type="xsd:int" use="required" />
             <xsd:attribute name="normSpeedType" type="tns:NormSpeedType" use="required" />
@@ -2817,7 +2823,7 @@
       </xsd:complexType>
       <xsd:complexType name="ReachableObjectsOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedAdditionalObjects" nillable="true" type="tns:ArrayOfReachableObjectDescr" />
               <xsd:element minOccurs="0" maxOccurs="1" name="expansionDesc" nillable="true" type="tns:ExpansionDescription" />
@@ -2841,7 +2847,7 @@
       </xsd:complexType>
       <xsd:complexType name="ReachableObjects">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedReachableObject" nillable="true" type="tns:ArrayOfReachableObject" />
             </xsd:sequence>
@@ -2860,7 +2866,7 @@
       </xsd:complexType>
       <xsd:complexType name="ReachableObject">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="branchNode" nillable="true" type="tns:UniqueGeoID" />
               <xsd:element minOccurs="0" maxOccurs="1" name="object" nillable="true" type="tns:ReachableObjectDescr" />
@@ -2881,7 +2887,7 @@
       </xsd:complexType>
       <xsd:complexType name="ReachableObjectDescr">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="coord" nillable="true" type="ns0:Point" />
             </xsd:sequence>
@@ -2956,7 +2962,7 @@
       </xsd:complexType>
       <xsd:complexType name="HBEFAType">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="version" type="tns:HBEFAVersion" use="required" />
           </xsd:extension>
@@ -2974,7 +2980,7 @@
       </xsd:complexType>
       <xsd:complexType name="ViaType">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="viaType" type="tns:ViaTypeEnum" use="required" />
           </xsd:extension>
@@ -3010,7 +3016,7 @@
       </xsd:complexType>
       <xsd:complexType name="TollScenario">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="iuCode" type="xsd:int" use="required" />
             <xsd:attribute name="scenarioId" type="xsd:int" use="required" />
@@ -3047,7 +3053,7 @@
       </xsd:complexType>
       <xsd:complexType name="PartTollCosts">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedCosts" nillable="true" type="tns:ArrayOfTollCost" />
             </xsd:sequence>
@@ -3067,7 +3073,7 @@
       </xsd:complexType>
       <xsd:complexType name="TollCost">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="cost" type="xsd:int" use="required" />
             <xsd:attribute name="currency" type="tns:Currency" use="required" />
@@ -3090,7 +3096,7 @@
       </xsd:complexType>
       <xsd:complexType name="RoutingOption">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="parameter" type="tns:RoutingParameter" use="required" />
             <xsd:attribute name="value" type="xsd:string" use="optional" />
@@ -3130,7 +3136,7 @@
       </xsd:complexType>
       <xsd:complexType name="CENEmissionScenarios">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="actualFuelConsumption" nillable="true" type="tns:CENEmissions" />
               <xsd:element minOccurs="0" maxOccurs="1" name="basedOnHBEFA" nillable="true" type="tns:CENEmissions" />
@@ -3154,7 +3160,7 @@
       </xsd:complexType>
       <xsd:complexType name="CENEmissionConfiguration">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="actualFuelConsumptionForThisRoute" type="xsd:double" use="optional" />
             <xsd:attribute name="cenVersion" type="tns:CENVersion" use="required" />
@@ -3178,8 +3184,10 @@
           <xsd:enumeration value="CEN_2011" />
           <xsd:enumeration value="CEN_2012" />
           <xsd:enumeration value="CO2_DECREE_FRANCE_2011" />
+          <xsd:enumeration value="CO2E_DECREE_FRANCE_2017" />
           <xsd:enumeration value="AUSTRALIA_NGA_2011" />
           <xsd:enumeration value="UK_DEFRA_2014" />
+          <xsd:enumeration value="AUSTRALIA_NGA_2015" />
         </xsd:restriction>
       </xsd:simpleType>
       <xsd:complexType name="ArrayOfCENVersion">
@@ -3194,7 +3202,7 @@
       </xsd:complexType>
       <xsd:complexType name="CENEmissions" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -3211,7 +3219,7 @@
       </xsd:complexType>
       <xsd:complexType name="TollTotals">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="cost" type="xsd:int" use="required" />
             <xsd:attribute name="distance" type="xsd:int" use="required" />
@@ -3230,7 +3238,7 @@
       </xsd:complexType>
       <xsd:complexType name="BulkRouteInfo">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedBulkRouteInfoResult" nillable="true" type="tns:ArrayOfBulkRouteInfoResult" />
             </xsd:sequence>
@@ -3249,7 +3257,7 @@
       </xsd:complexType>
       <xsd:complexType name="BulkRouteInfoResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="routeInfo" nillable="true" type="tns:RouteInfo" />
             </xsd:sequence>
@@ -3270,7 +3278,7 @@
       </xsd:complexType>
       <xsd:complexType name="SpeedLimit">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="condition" type="xsd:string" use="optional" />
             <xsd:attribute name="limitVelocity" type="xsd:int" use="required" />
@@ -3289,7 +3297,7 @@
       </xsd:complexType>
       <xsd:complexType name="SpeedLimits">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedSpeedLimit" nillable="true" type="tns:ArrayOfSpeedLimit" />
             </xsd:sequence>
@@ -3324,7 +3332,7 @@
       </xsd:complexType>
       <xsd:complexType name="CENEmissionConversionFactors">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="conversionFactors" nillable="true" type="tns:CENEmissions" />
             </xsd:sequence>
@@ -3344,7 +3352,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourOptions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="driverSettings" nillable="true" type="tns:DriverSettings" />
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedOperatingIntervals" nillable="true" type="tns:ArrayOfInterval" />
@@ -3396,10 +3404,10 @@
       </xsd:complexType>
       <xsd:complexType name="TourEvent">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDescriptions" nillable="true" type="ns3:ArrayOfString" />
-              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedDescriptions" nillable="true" type="ns2:ArrayOfString" />
+              <xsd:element minOccurs="0" maxOccurs="1" name="wrappedViolations" nillable="true" type="ns2:ArrayOfString" />
             </xsd:sequence>
             <xsd:attribute name="period" type="xsd:int" use="required" />
             <xsd:attribute name="segmentIndex" type="xsd:int" use="required" />
@@ -3465,7 +3473,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourPointResult">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="recreationPeriodsAtTourPoint" nillable="true" type="tns:RecreationPeriods" />
               <xsd:element minOccurs="0" maxOccurs="1" name="recreationPeriodsOnRoad" nillable="true" type="tns:RecreationPeriods" />
@@ -3491,7 +3499,7 @@
       </xsd:complexType>
       <xsd:complexType name="RecreationPeriods">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="dailyRestPeriod" type="xsd:int" use="required" />
@@ -3511,7 +3519,7 @@
       </xsd:complexType>
       <xsd:complexType name="TransportPeriodRestriction">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="destinationTourPointIndex" type="xsd:int" use="required" />
             <xsd:attribute name="maxPeriodBetweenServices" type="xsd:int" use="required" />
@@ -3531,7 +3539,7 @@
       </xsd:complexType>
       <xsd:complexType name="Route">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedBoundingRectangles" nillable="true" type="tns:ArrayOfBoundingRectangle" />
               <xsd:element minOccurs="0" maxOccurs="1" name="cenEmissions" nillable="true" type="tns:CENEmissionScenarios" />
@@ -3544,7 +3552,7 @@
               <xsd:element minOccurs="0" maxOccurs="1" name="polygon" nillable="true" type="ns0:LineString" />
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedSegments" nillable="true" type="tns:ArrayOfRouteListSegment" />
               <xsd:element minOccurs="1" maxOccurs="1" name="wrappedStations" nillable="true" type="tns:ArrayOfWayPoint" />
-              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedTexts" nillable="true" type="ns3:ArrayOfString" />
+              <xsd:element minOccurs="1" maxOccurs="1" name="wrappedTexts" nillable="true" type="ns2:ArrayOfString" />
               <xsd:element minOccurs="0" maxOccurs="1" name="totalRectangle" nillable="true" type="tns:BoundingRectangle" />
               <xsd:element minOccurs="0" maxOccurs="1" name="vehicleRelatedEmissions" nillable="true" type="tns:Emissions" />
             </xsd:sequence>
@@ -3565,7 +3573,7 @@
       </xsd:complexType>
       <xsd:complexType name="TourRestrictions">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedTransportPeriodRestrictions" nillable="true" type="tns:ArrayOfTransportPeriodRestriction" />
             </xsd:sequence>
@@ -3585,7 +3593,7 @@
       </xsd:complexType>
       <xsd:complexType name="BreakIntervals">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence>
               <xsd:element minOccurs="0" maxOccurs="1" name="wrappedIntervals" nillable="true" type="tns:ArrayOfInterval" />
             </xsd:sequence>
@@ -3671,7 +3679,7 @@
       </xsd:complexType>
       <xsd:complexType name="RegulationsBase" abstract="true">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
           </xsd:extension>
         </xsd:complexContent>
@@ -3688,7 +3696,7 @@
       </xsd:complexType>
       <xsd:complexType name="DriverSettings">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakRuleAUSDisabled" type="xsd:boolean" use="optional" />
             <xsd:attribute name="breakRuleDisabled" type="xsd:boolean" use="optional" />
@@ -3713,7 +3721,7 @@
       </xsd:complexType>
       <xsd:complexType name="BreakRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod1" type="xsd:int" use="required" />
             <xsd:attribute name="breakPeriod2" type="xsd:int" use="required" />
@@ -3733,7 +3741,7 @@
       </xsd:complexType>
       <xsd:complexType name="DailyRestRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="extendedDrivingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="firstSplitRestPeriod" type="xsd:int" use="required" />
@@ -3759,7 +3767,7 @@
       </xsd:complexType>
       <xsd:complexType name="WeeklyRestRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumBiweeklyDrivingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="maximumPeriodBetweenWeeklyRests" type="xsd:int" use="required" />
@@ -3780,7 +3788,7 @@
       </xsd:complexType>
       <xsd:complexType name="WorkingRule">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="dailyRestPeriod" type="xsd:int" use="required" />
@@ -3805,7 +3813,7 @@
       </xsd:complexType>
       <xsd:complexType name="FeatureDescription">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="description" type="xsd:string" use="optional" />
             <xsd:attribute name="themeId" type="xsd:string" use="optional" />
@@ -3866,7 +3874,7 @@
       </xsd:complexType>
       <xsd:complexType name="BreakRuleAUS">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="breakPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="observationPeriodForFourBreaks" type="xsd:int" use="required" />
@@ -3887,7 +3895,7 @@
       </xsd:complexType>
       <xsd:complexType name="DailyRestRuleAUS">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="dailyRestPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="maximumDailyWorkingPeriod" type="xsd:int" use="required" />
@@ -3906,7 +3914,7 @@
       </xsd:complexType>
       <xsd:complexType name="WeeklyRestRuleAUS">
         <xsd:complexContent mixed="false">
-          <xsd:extension base="ns2:TransientVO">
+          <xsd:extension base="ns1:TransientVO">
             <xsd:sequence />
             <xsd:attribute name="maximumWeeklyWorkingPeriod" type="xsd:int" use="required" />
             <xsd:attribute name="weeklyRestPeriod" type="xsd:int" use="required" />
@@ -3968,6 +3976,49 @@
       <xsd:complexType name="ArrayOfArrayOfCENEmissions2012">
         <xsd:sequence>
           <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCENEmissions2012" nillable="true" type="tns:ArrayOfCENEmissions2012" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AustraliaNGA2015">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:CENEmissions">
+            <xsd:sequence />
+            <xsd:attribute name="ch4Tank2Wheel" type="xsd:double" use="required" />
+            <xsd:attribute name="co2Tank2Wheel" type="xsd:double" use="required" />
+            <xsd:attribute name="co2eTank2Wheel" type="xsd:double" use="required" />
+            <xsd:attribute name="co2eWell2Tank" type="xsd:double" use="optional" />
+            <xsd:attribute name="energyUseTank2Wheel" type="xsd:double" use="required" />
+            <xsd:attribute name="fuelConsumption" type="xsd:double" use="required" />
+            <xsd:attribute name="n2oTank2Wheel" type="xsd:double" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfAustraliaNGA2015">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AustraliaNGA2015" nillable="true" type="tns:AustraliaNGA2015" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfAustraliaNGA2015">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAustraliaNGA2015" nillable="true" type="tns:ArrayOfAustraliaNGA2015" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CO2EDecreeFrance2017">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns:CENEmissions">
+            <xsd:sequence />
+            <xsd:attribute name="co2eWell2Tank" type="xsd:double" use="required" />
+            <xsd:attribute name="co2eWell2Wheel" type="xsd:double" use="required" />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCO2EDecreeFrance2017">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CO2EDecreeFrance2017" nillable="true" type="tns:CO2EDecreeFrance2017" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfArrayOfCO2EDecreeFrance2017">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfCO2EDecreeFrance2017" nillable="true" type="tns:ArrayOfCO2EDecreeFrance2017" />
         </xsd:sequence>
       </xsd:complexType>
     </xsd:schema>
@@ -5028,7 +5079,7 @@
   </binding>
   <service name="XRouteWSService">
     <port name="XRouteWSPort" binding="tns:XRouteWSBinding">
-      <soap:address location="https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute" />
+      <soap:address location="https://xroute-eu-n-test.cloud.ptvgroup.com:443/xroute/ws/XRoute" />
     </port>
   </service>
 </definitions>

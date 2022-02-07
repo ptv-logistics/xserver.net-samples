@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="startCalculateBulkRouteInfoResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>FormsMapVB.XRouteServiceReference.startCalculateBulkRouteInfoResponse, Service References.XRouteServiceReference.Reference.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>FormsMapVB.XRouteServiceReference.startCalculateBulkRouteInfoResponse, Service References.XRouteServiceReference.Reference.vb.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
