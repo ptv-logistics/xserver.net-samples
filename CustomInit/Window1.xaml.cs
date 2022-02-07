@@ -21,28 +21,29 @@ namespace CustomInit
             InitializeComponent();
 
             const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            const string token = "DA3D1A15-BC41-47BC-B0CE-7C23D05B99C0"; // just a test-token here. Use your own token
+            const string token = "Insert your xToken here"; 
 
-
-Map1.Layers.Add(new TiledLayer("Background")
-{
-    TiledProvider = new RemoteTiledProvider()
-    {
-        MinZoom = 0,
-        MaxZoom = 22,
-        RequestBuilderDelegate = (x, y, z) => 
-        $"https://s0{1+(x+y)%4}-xserver2-test.cloud.ptvgroup.com/services/rest/XMap/tile/{z}/{x}/{y}?xtok={token}",
-    },
-    Copyright = $"© { DateTime.Now.Year } PTV AG, HERE",
-    IsBaseMapLayer = true,
-    Caption = MapLocalizer.GetString(MapStringId.Background),
-    Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")
-});
-            //// v1: Use Meta info
-            //InitializeMap(Map1, url, token);
+            // v1: Use Meta info
+            InitializeMap(Map1, url, token);
 
             // v2: direct initialization for xServer-internet
- //           InsertXMapBaseLayers(Map2.Layers, url, "PTV AG, TomTom", new Size(3840, 2400), "xtok", token);
+            InsertXMapBaseLayers(Map2.Layers, url, "PTV AG, TomTom", new Size(3840, 2400), "xtok", token);
+
+            // v3: direct initialization for xserver-internet-2
+            Map3.Layers.Add(new TiledLayer("Background")
+            {
+                TiledProvider = new RemoteTiledProvider()
+                {
+                    MinZoom = 0,
+                    MaxZoom = 22,
+                    RequestBuilderDelegate = (x, y, z) =>
+                    $"https://s0{1 + (x + y) % 4}-xserver2-test.cloud.ptvgroup.com/services/rest/XMap/tile/{z}/{x}/{y}?xtok={token}",
+                },
+                Copyright = $"Â© { DateTime.Now.Year } PTV AG, HERE",
+                IsBaseMapLayer = true,
+                Caption = MapLocalizer.GetString(MapStringId.Background),
+                Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png")
+            });
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ Map1.Layers.Add(new TiledLayer("Background")
         // Initialize the xServer base map layers
         public void InsertXMapBaseLayers(LayerCollection layers, string url, string copyrightText, Size maxRequestSize, string user, string password)
         {
-            var baseLayer = new TiledLayer("Background") 
+            var baseLayer = new TiledLayer("Background")
             {
                 TiledProvider = new XMapTiledProvider(url, XMapMode.Background) { User = user, Password = password, ContextKey = "in case of context key" },
                 Copyright = copyrightText,

@@ -7,8 +7,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <mapcore:WpfMap Grid.Column="0" Name="Map1" Center="8.4, 49" Zoom="14"/>
         <mapcore:WpfMap Grid.Column="1" Name="Map2" Center="8.4, 49" Zoom="14"/>
+        <mapcore:WpfMap Grid.Column="2" Name="Map3" Center="8.4, 49" Zoom="14"/>
     </Grid>
 </Window>
