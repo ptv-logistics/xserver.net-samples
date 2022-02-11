@@ -41,10 +41,10 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="Ptv.Components.Projections, Version=1.7.8.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ptv.XServer.Net.1.7.8\lib\Ptv.Components.Projections.dll</HintPath>
+      <HintPath>..\packages\Ptv.XServer.Net.1.7.9\lib\Ptv.Components.Projections.dll</HintPath>
     </Reference>
     <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.8.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ptv.XServer.Net.1.7.8\lib\Ptv.XServer.Controls.Map.dll</HintPath>
+      <HintPath>..\packages\Ptv.XServer.Net.1.7.9\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />

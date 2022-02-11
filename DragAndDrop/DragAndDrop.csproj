@@ -37,7 +37,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Ptv.XServer.Controls.Map, Version=1.7.8.0, Culture=neutral, PublicKeyToken=ff6c7957783adf19, processorArchitecture=MSIL">
-      <HintPath>packages\Ptv.XServer.Net.1.7.8\lib\Ptv.XServer.Controls.Map.dll</HintPath>
+      <HintPath>packages\Ptv.XServer.Net.1.7.9\lib\Ptv.XServer.Controls.Map.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
