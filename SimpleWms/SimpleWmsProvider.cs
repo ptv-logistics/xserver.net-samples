@@ -42,7 +42,7 @@ namespace Ptv.XServer.Controls.Map.TileProviders
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
             //request.ServicePoint.ConnectionLimit = 4;
-            request.KeepAlive = false;
+            request.KeepAlive = true;
 
             return request.GetResponse().GetResponseStream();
         }

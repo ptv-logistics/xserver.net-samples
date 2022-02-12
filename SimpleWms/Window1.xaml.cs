@@ -26,7 +26,7 @@ namespace Circles
                 Caption = "Base Map",
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Background.png"),
                 TiledProvider = new WmsProvider(
-                    "http://ows.terrestris.de/osm-gray/service?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2fpng&LAYERS=OSM-WMS&STYLES=,&TILED=true&SRS=EPSG%3a3857", 19),
+                    "https://ows.terrestris.de/osm-gray/service?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2fpng&LAYERS=OSM-WMS&STYLES=,&TILED=true&SRS=EPSG%3a3857", 19),
                 Copyright = "© terrestris",
                 IsBaseMapLayer = true // overlay layers cannot be moved under a basemap layer
             });
