@@ -24,26 +24,6 @@ Insert-XS.Net-Token.exe -path "base directory of xserver.net-samples project"
 
 ### The samples
 
-#### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) \#new \#xserver-2
-Demonstrates the API for native Xmap2/FeatureLayer support.
-
-<img src="Screenshots/Xmap2LayerFactoryTest.png" width="360" title="Xmap2LayerFactoryTest">
-
-#### [DemoCenter](DemoCenter) \#new \#xserver-1
-Source code for xServer.NET demo center.
-
-<img src="Screenshots/DemoCenter.png" width="360" title="DemoCenter">
-
-#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) \#new #interop \#sharpmap \#shapefile \#javascript \#leaflet
-Build responsive map applications for web and desktop
-
-<img src="Screenshots/SharpMap.Win.png" width="360" title="SharpMap.Widgets">
-
-#### [leaflet-vb6](https://github.com/ptv-logistics/leaflet-vb6) \#new #interop \#vb6 \#javascript \#leaflet
-Embed leaflet-based maps within classic desktop applications
-
-<img src="https://github.com/ptv-logistics/leaflet-vb6/blob/master/screenshot.png" width="360" title="leaflet-vb6">
-
 #### [ActiveX](ActiveX) \#interop
 Shows how to use the map as ActiveX control
 
@@ -80,6 +60,11 @@ Shows how to change the default behavior for pan/zoom interaction.
 
 <img src="Screenshots/CustomPanAndZoom.png" width="360" title="CustomPanAndZoom">
 
+#### [DemoCenter](DemoCenter) \#xserver-1
+Source code for xServer.NET demo center.
+
+<img src="Screenshots/DemoCenter.png" width="360" title="DemoCenter">
+
 #### [DrawMode](DrawMode) \#customize
 The basic code to add an interactor for drawing custom polygons
 
@@ -107,6 +92,11 @@ Shows how to add the map to a Windows Forms application in C#
 Shows how to add the map to a Windows Forms application in VB.NET
 
 <img src="Screenshots/FormsMapVB.png" width="360" title="FormsMapVB">
+
+#### [leaflet-vb6](https://github.com/ptv-logistics/leaflet-vb6) \#featured \#interop \#vb6 \#javascript \#leaflet
+Embed leaflet-based maps within classic desktop applications
+
+<img src="https://github.com/ptv-logistics/leaflet-vb6/blob/master/screenshot.png" width="360" title="leaflet-vb6">
 
 #### [Mandelbrot](Mandelbrot) \#customize
 Shows how to implement a client-side tile provider and demonstrates the "Infinite Zoom" feature
@@ -167,6 +157,11 @@ Shows how to render additional xMap layers with tooltip interaction
 
 <img src="Screenshots/ServerSideRendering.png" width="360" title="ServerSideRendering">
 
+#### [SharpMap.Widgets](https://github.com/ptv-logistics/SharpMap.Widgets) #interop \#featured \#leaflet
+Build responsive map applications for web and desktop
+
+<img src="Screenshots/SharpMap.Win.png" width="360" title="SharpMap.Widgets">
+
 #### [SimpleWms](SimpleWms) \#3rd-party
 Shows how to add simple WMS (with "Google" EPSG:3857) layers to the control
 
@@ -196,6 +191,14 @@ Benchmark for different settings that influence performance on Virtual Desktop E
 Demonstrates the integration and initialization of a layer showing Web Map Tile Service (WMTS) content.
 
 <img src="Screenshots/WMTSLayer.png" width="360" title="WMTSLayer">
+
+#### [Xmap1Rest](Xmap1Rest) \#xserver-1
+Shows how to initialize the base map using the Xmap1 tile and wms APIs.
+
+#### [Xmap2LayerFactoryTest](Xmap2LayerFactoryTest) \#xserver-2
+Demonstrates the API for native Xmap2/FeatureLayer support.
+
+<img src="Screenshots/Xmap2LayerFactoryTest.png" width="360" title="Xmap2LayerFactoryTest">
 
 #### [XYNSegments](XYNSegments) \#xserver-1
 Shows how to select and render xServer XYN-Segments
