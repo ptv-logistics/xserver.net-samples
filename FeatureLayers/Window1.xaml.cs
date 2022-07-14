@@ -24,6 +24,9 @@ namespace FeatureLayers
 
         private void Map_Loaded(object sender, RoutedEventArgs e)
         {
+            // increase number of parallel connections (default = 2)
+            System.Net.ServicePointManager.DefaultConnectionLimit = 8;
+
             referenceTime.Value = DateTime.Now;
 
             // for on-premis: Map.XMapUrl = "http://127.0.0.1:50010/xmap/ws/XMap");
