@@ -119,6 +119,6 @@
   </resheader>
   <assembly alias="WindowsBase" name="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   <data name="formsMap.Center" type="System.Windows.Point, WindowsBase">
-    <value>0,-2.85131757576515E-15</value>
+    <value>0,0</value>
   </data>
 </root>
