@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="XTourWSPort1" contract="XTourServiceReference.XTourWS" bindingType="basicHttpBinding" address="https://xtour-eu-n-test.cloud.ptvgroup.com/xtour/ws/XTour" bindingConfiguration="XTourWSBinding1">
+    <endpoint name="XTourWSPort1" contract="XTourServiceReference.XTourWS" bindingType="basicHttpBinding" address="https://xtour-eu-n-test.cloud.ptvlogistics.com/xtour/ws/XTour" bindingConfiguration="XTourWSBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://xtour-eu-n-test.cloud.ptvgroup.com:443/xtour/ws/XTour</serializedValue>
+          <serializedValue>https://xtour-eu-n-test.cloud.ptvlogistics.com:443/xtour/ws/XTour</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

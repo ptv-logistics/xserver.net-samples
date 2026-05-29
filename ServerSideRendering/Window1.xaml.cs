@@ -27,7 +27,7 @@ namespace ServerSideRendering
 
             Map.SetMapLocation(new Point(9.182778, 48.775556), 12);
 
-            var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvgroup.com/xmap/ws/XMap");
+            var xmapMetaInfo = new XMapMetaInfo("https://xmap-" + cluster + ".cloud.ptvlogistics.com/xmap/ws/XMap");
             xmapMetaInfo.SetCredentials("xtok", "Insert your xToken here");
             InsertXMapBaseLayers(Map.Layers, xmapMetaInfo, "gravelpit");
 
@@ -57,7 +57,7 @@ namespace ServerSideRendering
                 {
                     User = meta.User, Password = meta.Password, ContextKey = "in case of context key",
                     CustomProfile = profile + "-fg"
-                },               
+                },
                 Copyright = meta.CopyrightText,
                 MaxRequestSize = meta.MaxRequestSize,
                 Caption = MapLocalizer.GetString(MapStringId.Labels),

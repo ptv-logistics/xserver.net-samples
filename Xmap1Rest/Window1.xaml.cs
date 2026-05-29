@@ -29,7 +29,7 @@ namespace Circles
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) =>
-                            $"https://api{1+(x+y)%4}-test.cloud.ptvgroup.com/WMS/GetTile/xmap-silkysand-bg/{x}/{y}/{z}.png",
+                            $"https://api{1+(x+y)%4}-test.cloud.ptvlogistics.com/WMS/GetTile/xmap-silkysand-bg/{x}/{y}/{z}.png",
                 },
                 Copyright = $"© { DateTime.Now.Year } PTV AG, TomTom",
                 IsBaseMapLayer = true,
@@ -42,7 +42,7 @@ namespace Circles
             Map.Layers.Add(new UntiledLayer("Labels")
             {
                 UntiledProvider = new WmsUntiledProvider(
-                    $"https://api-test.cloud.ptvgroup.com/WMS/WMS?xtok={token}&service=WMS&request=GetMap&version=1.1.1&layers=xmap-silkysand-fg&styles=&format=image%2Fpng&transparent=true&srs=EPSG%3A3857", 19),
+                    $"https://api-test.cloud.ptvlogistics.com/WMS/WMS?xtok={token}&service=WMS&request=GetMap&version=1.1.1&layers=xmap-silkysand-fg&styles=&format=image%2Fpng&transparent=true&srs=EPSG%3A3857", 19),
                 Copyright = $"© { DateTime.Now.Year } PTV AG, TomTom",
                 Caption = MapLocalizer.GetString(MapStringId.Labels),
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/Labels.png")

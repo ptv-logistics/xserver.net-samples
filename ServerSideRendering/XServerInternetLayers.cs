@@ -1,7 +1,7 @@
 ﻿//--------------------------------------------------------------
 // Copyright (c) PTV Group
-// 
-// For license details, please refer to the file COPYING, which 
+//
+// For license details, please refer to the file COPYING, which
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
@@ -28,22 +28,22 @@ namespace Ptv.XServer.Demo.Tools
         /// <param name="layerCaption">The layer caption, used e.g. in the quick settings of the map control.</param>
         /// <remarks>
         /// Due to a restriction of xMap Server, road editor rendering is dependent on the street layer and requires
-        /// the street layer to be visible. If the street layer is invisible, the road editor content will be invisible 
-        /// also. By default, the provider used by XMapLayer turns the street layer off, so it must explicitly be enabled 
-        /// through XMapLayer.CustomXMapLayers. As a side effect, enabling the street layer makes its contents visible in 
-        /// the map. To hide this content, to display only the road editor content, a special rendering profile will 
-        /// usually be used. For this reason this method provides an additional profile parameter where the rendering 
+        /// the street layer to be visible. If the street layer is invisible, the road editor content will be invisible
+        /// also. By default, the provider used by XMapLayer turns the street layer off, so it must explicitly be enabled
+        /// through XMapLayer.CustomXMapLayers. As a side effect, enabling the street layer makes its contents visible in
+        /// the map. To hide this content, to display only the road editor content, a special rendering profile will
+        /// usually be used. For this reason this method provides an additional profile parameter where the rendering
         /// profile can be specified.
-        /// 
-        /// The demo server incorporated into this sample was deployed with the necessary profiles to display Truck 
-        /// Attributes correctly. The xMap Server profile along with its rendering profile can be viewed / downloaded 
+        ///
+        /// The demo server incorporated into this sample was deployed with the necessary profiles to display Truck
+        /// Attributes correctly. The xMap Server profile along with its rendering profile can be viewed / downloaded
         /// using the following management console links:
-        /// 
-        /// xMap profile: 
-        /// https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/rrxmap/pages/viewConfFileFormatted.jsp?name=xmap-truckattributes.properties
-        /// 
+        ///
+        /// xMap profile:
+        /// https://xroute-eu-n-test.cloud.ptvlogistics.com/xroute/rrxmap/pages/viewConfFileFormatted.jsp?name=xmap-truckattributes.properties
+        ///
         /// Corresponding rendering profile:
-        /// https://xroute-eu-n-test.cloud.ptvgroup.com/xroute//rrxmap/pages/viewConfFileFormatted.jsp?name=truckattributes.ini
+        /// https://xroute-eu-n-test.cloud.ptvlogistics.com/xroute//rrxmap/pages/viewConfFileFormatted.jsp?name=truckattributes.ini
         /// </remarks>
         public static void InsertRoadEditorLayer(this Map map, XMapMetaInfo xMapMetaInfo, string layerName, string xmapName, string xmapProfile, string layerCaption)
         {
@@ -54,22 +54,22 @@ namespace Ptv.XServer.Demo.Tools
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 14,
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/RoadEditor.png"),
-                CustomXMapLayers = new Layer[] {  
-                    new RoadEditorLayer { 
-                        // Road Editor element. Request REFERENCEPOINT based object 
+                CustomXMapLayers = new Layer[] {
+                    new RoadEditorLayer {
+                        // Road Editor element. Request REFERENCEPOINT based object
                         // information to provide tool tips on the signs.
-                        name = xmapName, 
-                        // Request REFERENCEPOINT based object information to 
+                        name = xmapName,
+                        // Request REFERENCEPOINT based object information to
                         // provide tool tips on the signs.
-                        objectInfos=ObjectInfoType.REFERENCEPOINT, 
-                        visible = true                        
+                        objectInfos=ObjectInfoType.REFERENCEPOINT,
+                        visible = true
                     },
                     new StaticPoiLayer {
                         // see remarks above about street layer element
-                        name = "street", 
-                        visible = true, 
-                        category = -1, 
-                        detailLevel = 0 
+                        name = "street",
+                        visible = true,
+                        category = -1,
+                        detailLevel = 0
                     }
                 }
             };
@@ -86,11 +86,11 @@ namespace Ptv.XServer.Demo.Tools
         /// <param name="xmapName">The xMap Server layer name. See remarks below.</param>
         /// <param name="layerCaption">The layer caption, used e.g. in the quick settings of the map control.</param>
         /// <remarks>
-        /// The Traffic Information layer does not require a special profile. Note that the layer requests 
-        /// object information of type xserver.ObjectInfoType.FULLGEOMETRY to enable tool tips along the 
+        /// The Traffic Information layer does not require a special profile. Note that the layer requests
+        /// object information of type xserver.ObjectInfoType.FULLGEOMETRY to enable tool tips along the
         /// lines displayed.
-        /// 
-        /// xmapName has to be provided in the form &lt;configuration&gt;.&lt;layername&gt;[.&lt;profile&gt;][;&lt;SQL Filter&gt;] as 
+        ///
+        /// xmapName has to be provided in the form &lt;configuration&gt;.&lt;layername&gt;[.&lt;profile&gt;][;&lt;SQL Filter&gt;] as
         /// specified by xMap Server. Please refer to the xMap Server documentation for details.
         /// </remarks>
         public static void InsertTrafficInfoLayer(this Map map, XMapMetaInfo xMapMetaInfo, string layerName, string xmapName, string layerCaption)
@@ -100,14 +100,14 @@ namespace Ptv.XServer.Demo.Tools
                 Caption = layerCaption,
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 10,
-                CustomXMapLayers = new Layer[] {  
+                CustomXMapLayers = new Layer[] {
                     new SMOLayer
-                    { 
-                        name = xmapName, 
-                        // request object information of type FULLGEOMETRY 
+                    {
+                        name = xmapName,
+                        // request object information of type FULLGEOMETRY
                         // to enable tool tips along the lines displayed.
-                        objectInfos=ObjectInfoType.FULLGEOMETRY, 
-                        visible = true 
+                        objectInfos=ObjectInfoType.FULLGEOMETRY,
+                        visible = true
                     }
                 }
             };
@@ -124,8 +124,8 @@ namespace Ptv.XServer.Demo.Tools
         /// <param name="xmapName">The xMap Server layer name. See remarks below.</param>
         /// <param name="layerCaption">The layer caption, for example used in the quick settings of the map control.</param>
         /// <remarks>
-        /// The POI layer does not require a special profile. xmapName has to be provided in the form 
-        /// &lt;configuration&gt;.&lt;layername&gt;[.&lt;profile&gt;][;&lt;SQL Filter&gt;] as specified by xMap Server. Please 
+        /// The POI layer does not require a special profile. xmapName has to be provided in the form
+        /// &lt;configuration&gt;.&lt;layername&gt;[.&lt;profile&gt;][;&lt;SQL Filter&gt;] as specified by xMap Server. Please
         /// refer to the xMap Server documentation for details.
         /// </remarks>
         public static void InsertPoiLayer(this Map map, XMapMetaInfo xMapMetaInfo, string layerName, string xmapName, string layerCaption)
@@ -136,13 +136,13 @@ namespace Ptv.XServer.Demo.Tools
                 MaxRequestSize = new System.Windows.Size(2048, 2048),
                 MinLevel = 14,
                 Icon = ResourceHelper.LoadBitmapFromResource("Ptv.XServer.Controls.Map;component/Resources/POI.png"),
-                CustomXMapLayers = new Layer[] {  
+                CustomXMapLayers = new Layer[] {
                     new SMOLayer
-                    { 
-                        name = xmapName, 
+                    {
+                        name = xmapName,
                         // Request REFERENCEPOINT based object information to provide tool tips on the icons.
-                        objectInfos = ObjectInfoType.REFERENCEPOINT, 
-                        visible = true 
+                        objectInfos = ObjectInfoType.REFERENCEPOINT,
+                        visible = true
                     }
                 }
             };

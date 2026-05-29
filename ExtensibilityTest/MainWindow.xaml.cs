@@ -1,7 +1,7 @@
 //--------------------------------------------------------------
 // Copyright (c) PTV Group
-// 
-// For license details, please refer to the file COPYING, which 
+//
+// For license details, please refer to the file COPYING, which
 // should have been provided with this distribution.
 //--------------------------------------------------------------
 
@@ -34,7 +34,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // add xmap base layers
-            mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
             mapControl1.XMapCredentials = "Insert your xToken here";
 
             // goto KA
@@ -60,7 +60,7 @@ namespace Ptv.XServer.Net.ExtensibilityTest
                         x, y, level)}
                 });
 
-            // client-side tile Layer - insert before Labels   
+            // client-side tile Layer - insert before Labels
             mapControl1.Layers.Insert(
                 mapControl1.Layers.IndexOf(mapControl1.Layers["Labels"]),
                 new TiledLayer("TiledOverlay")

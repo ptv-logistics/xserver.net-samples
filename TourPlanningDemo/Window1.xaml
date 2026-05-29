@@ -2,10 +2,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:TourPlanningDemo"
-    xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map" 
+    xmlns:mapcore="clr-namespace:Ptv.XServer.Controls.Map;assembly=Ptv.XServer.Controls.Map"
     Title="Tour Planning Demo" Height="600" Width="800">
     <Grid>
-        <mapcore:WpfMap Name="Map" XMapUrl="https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap" 
+        <mapcore:WpfMap Name="Map" XMapUrl="https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap"
                         XMapCredentials="{x:Static local:Window1.XMapCredentials}" XMapStyle="Silkysand" />
         <StackPanel VerticalAlignment="Bottom" Background="LightGray" HorizontalAlignment="Left" Margin="8,0,0,38">
             <ComboBox Name="ScenarioComboBox" SelectionChanged="ComboBox_SelectionChanged">
@@ -20,8 +20,8 @@
                 <ComboBoxItem Content="hpr-truck-7.5t-ta"></ComboBoxItem>
                 <ComboBoxItem Content="hpr-car"></ComboBoxItem>
                 <ComboBoxItem Content="hpr-truck-40t-ta"></ComboBoxItem>
-                <ComboBoxItem Content="hpr-transporter"></ComboBoxItem>                
-            </ComboBox>            
+                <ComboBoxItem Content="hpr-transporter"></ComboBoxItem>
+            </ComboBox>
             <ProgressBar Height="24" HorizontalAlignment="Left" Name="progressBar1" VerticalAlignment="Top" Width="300" />
             <Label Content="Initializing..." Name="statusLabel" />
             <Button Name="StartButton" IsEnabled="false" Content="Plan" Click="StartClick"></Button>

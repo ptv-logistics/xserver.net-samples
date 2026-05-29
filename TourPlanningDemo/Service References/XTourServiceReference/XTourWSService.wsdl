@@ -4131,7 +4131,7 @@
   </binding>
   <service name="XTourWSService">
     <port name="XTourWSPort" binding="tns:XTourWSBinding">
-      <soap:address location="https://xtour-eu-n-test.cloud.ptvgroup.com:443/xtour/ws/XTour" />
+      <soap:address location="https://xtour-eu-n-test.cloud.ptvlogistics.com:443/xtour/ws/XTour" />
     </port>
   </service>
 </definitions>

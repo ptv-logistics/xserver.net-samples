@@ -20,8 +20,8 @@ namespace CustomInit
         {
             InitializeComponent();
 
-            const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            const string token = "Insert your xToken here"; 
+            const string url = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
+            const string token = "Insert your xToken here";
 
             // v1: Use Meta info
             InitializeMap(Map1, url, token);
@@ -37,7 +37,7 @@ namespace CustomInit
                     MinZoom = 0,
                     MaxZoom = 22,
                     RequestBuilderDelegate = (x, y, z) =>
-                    $"https://s0{1 + (x + y) % 4}-xserver2-test.cloud.ptvgroup.com/services/rest/XMap/tile/{z}/{x}/{y}?xtok={token}",
+                    $"https://s0{1 + (x + y) % 4}-xserver2-test.cloud.ptvlogistics.com/services/rest/XMap/tile/{z}/{x}/{y}?xtok={token}",
                 },
                 Copyright = $"© { DateTime.Now.Year } PTV AG, HERE",
                 IsBaseMapLayer = true,

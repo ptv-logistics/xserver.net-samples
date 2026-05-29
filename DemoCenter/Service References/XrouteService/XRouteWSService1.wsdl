@@ -5079,7 +5079,7 @@
   </binding>
   <service name="XRouteWSService">
     <port name="XRouteWSPort" binding="tns:XRouteWSBinding">
-      <soap:address location="https://xroute-eu-n-test.cloud.ptvgroup.com:443/xroute/ws/XRoute" />
+      <soap:address location="https://xroute-eu-n-test.cloud.ptvlogistics.com:443/xroute/ws/XRoute" />
     </port>
   </service>
 </definitions>

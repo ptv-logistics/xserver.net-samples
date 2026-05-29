@@ -22,7 +22,7 @@ namespace BasemapTooltips
         {
             // initialize base map (for xServer internet)
             // Use your on-premise xServer when migrating the code
-            formsMap1.XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            formsMap1.XMapUrl = "https://api-test.cloud.ptvlogistics.com/xmap/ws/XMap";
             formsMap1.XMapCredentials = token;
 
             // initialize our tool tip handler

@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://api-test.cloud.ptvgroup.com/xlocate/ws/XLocate?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://api-test.cloud.ptvlogistics.com/xlocate/ws/XLocate?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="XLocateWSService.wsdl" MetadataType="Wsdl" ID="6da344d9-bfcc-4005-9d7c-3e62c9b921f5" SourceId="1" SourceUrl="https://api-test.cloud.ptvgroup.com/xlocate/ws/XLocate?WSDL" />
+    <MetadataFile FileName="XLocateWSService.wsdl" MetadataType="Wsdl" ID="6da344d9-bfcc-4005-9d7c-3e62c9b921f5" SourceId="1" SourceUrl="https://api-test.cloud.ptvlogistics.com/xlocate/ws/XLocate?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

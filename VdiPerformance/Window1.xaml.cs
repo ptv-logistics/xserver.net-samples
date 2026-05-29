@@ -62,7 +62,7 @@ namespace VdiPerformance
 
         private bool usePanSimpleShape = false; // use a simple / non-filled shape for the drag/select rectangle
         private bool usePanMoveWhileDragging = true; // move the map while panning
-        
+
         // some /random coordinates
         private List<Point> coordinates;
 
@@ -77,7 +77,7 @@ namespace VdiPerformance
             hardwareLevel.Text = "Hardware Level: " + (RenderCapability.Tier >> 16);
 
             var center = new Point(8.4, 49); // KA
-                
+
             InitializeBasemap();
 
             // Map.MouseDragMode = DragMode.SelectOnShift;
@@ -104,7 +104,7 @@ namespace VdiPerformance
         public void CreateCoordinates(Point center)
         {
             const int radius = 1; // radius in degrees of latitude
-            
+
             var rand = new Random();
             Func<Point, double, Point> randomCoordinate = (c, r) =>
             {
@@ -144,7 +144,7 @@ namespace VdiPerformance
             var maxRequestSize = new Size(3840, 2400);
             const string user = "xtok";
             const string password = "Insert your xToken here"; // this token is only for test purpose
-            const string url = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            const string url = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
 
             ILayer baseLayer;
             if (singleTileBackground || useSingleLayerBM)
@@ -295,7 +295,7 @@ namespace VdiPerformance
         private void useFilledShape_Click(object sender, RoutedEventArgs e)
         {
             usePanSimpleShape = !useFilledShape.IsChecked.Value;
-            customPanAndZoom.UseSimpleSelectShape = usePanSimpleShape; 
+            customPanAndZoom.UseSimpleSelectShape = usePanSimpleShape;
         }
 
         private void moveWhileDragging_Click(object sender, RoutedEventArgs e)

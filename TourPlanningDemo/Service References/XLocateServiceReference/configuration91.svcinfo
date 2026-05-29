@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="XLocateWSPort1" contract="XLocateServiceReference.XLocateWS" bindingType="basicHttpBinding" address="https://xlocate-eu-n-test.cloud.ptvgroup.com/xlocate/ws/XLocate" bindingConfiguration="XLocateWSBinding1">
+    <endpoint name="XLocateWSPort1" contract="XLocateServiceReference.XLocateWS" bindingType="basicHttpBinding" address="https://xlocate-eu-n-test.cloud.ptvlogistics.com/xlocate/ws/XLocate" bindingConfiguration="XLocateWSBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://xlocate-eu-n-test.cloud.ptvgroup.com:443/xlocate/ws/XLocate</serializedValue>
+          <serializedValue>https://xlocate-eu-n-test.cloud.ptvlogistics.com:443/xlocate/ws/XLocate</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

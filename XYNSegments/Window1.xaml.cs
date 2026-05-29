@@ -34,7 +34,7 @@ namespace XynSegments
 
             Map.Layers.Clear();
 
-            var meta = new XMapMetaInfo("https://api-test.cloud.ptvgroup.com/xmap/ws/XMap");
+            var meta = new XMapMetaInfo("https://api-test.cloud.ptvlogistics.com/xmap/ws/XMap");
             meta.SetCredentials("xtok", token);
             XMapLayerFactory.InsertXMapBaseLayers(Map.Layers, meta);
             Map.XMapStyle = "gravelpit";

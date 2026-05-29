@@ -3496,7 +3496,7 @@
   </binding>
   <service name="XLocateWSService">
     <port name="XLocateWSPort" binding="tns:XLocateWSBinding">
-      <soap:address location="https://xlocate-eu-n-test.cloud.ptvgroup.com:443/xlocate/ws/XLocate" />
+      <soap:address location="https://xlocate-eu-n-test.cloud.ptvlogistics.com:443/xlocate/ws/XLocate" />
     </port>
   </service>
 </definitions>

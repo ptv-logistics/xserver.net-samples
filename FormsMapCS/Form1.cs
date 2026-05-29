@@ -29,7 +29,7 @@ namespace FormsMapCS
         public async void Initialize()
         {
             // initialize base map (for xServer internet)
-            formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
             formsMap1.XMapCredentials = token;
 
             // add a new Shape Layer

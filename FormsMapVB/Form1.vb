@@ -15,7 +15,7 @@ Public Class Form1
 
     Private Async Sub Initialize()
         ' initialize base map (for xServer internet)
-        FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap"
+        FormsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap"
         FormsMap1.XMapCredentials = token
 
         ' add a new Shape Layer

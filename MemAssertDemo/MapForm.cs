@@ -27,7 +27,7 @@ namespace MemoryDemo
             InitializeComponent();
 
             // initialize the map
-            formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            formsMap1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
             formsMap1.XMapCredentials = "Insert your xToken here";
 
             // This event-listener will create a reference from the map-control to the form.
@@ -40,7 +40,7 @@ namespace MemoryDemo
             // add a new Shape Layer
             layer = new ShapeLayer("MyShapes");
             formsMap1.Layers.Add(layer);
-           
+
             // this will create a memory leak if not properly detach on finalization!
             owner.AddTruckButton.Click += button2_Click;
         }

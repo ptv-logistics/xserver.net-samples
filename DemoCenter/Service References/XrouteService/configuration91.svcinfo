@@ -221,10 +221,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="XRouteWSPort1" contract="XrouteService.XRouteWS" bindingType="basicHttpBinding" address="https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute" bindingConfiguration="XRouteWSBinding1">
+    <endpoint name="XRouteWSPort1" contract="XrouteService.XRouteWS" bindingType="basicHttpBinding" address="https://xroute-eu-n-test.cloud.ptvlogistics.com/xroute/ws/XRoute" bindingConfiguration="XRouteWSBinding1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>https://xroute-eu-n-test.cloud.ptvgroup.com:443/xroute/ws/XRoute</serializedValue>
+          <serializedValue>https://xroute-eu-n-test.cloud.ptvlogistics.com:443/xroute/ws/XRoute</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

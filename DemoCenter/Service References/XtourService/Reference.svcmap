@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://xtour-eu-n-test.cloud.ptvgroup.com/xtour/ws/XTour?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://xtour-eu-n-test.cloud.ptvlogistics.com/xtour/ws/XTour?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="XTourWSService.wsdl" MetadataType="Wsdl" ID="0343f7ec-ede8-42f8-9154-ca2a21ef66b5" SourceId="1" SourceUrl="https://xtour-eu-n-test.cloud.ptvgroup.com/xtour/ws/XTour?WSDL" />
+    <MetadataFile FileName="XTourWSService.wsdl" MetadataType="Wsdl" ID="0343f7ec-ede8-42f8-9154-ca2a21ef66b5" SourceId="1" SourceUrl="https://xtour-eu-n-test.cloud.ptvlogistics.com/xtour/ws/XTour?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://xroute-eu-n-test.cloud.ptvlogistics.com/xroute/ws/XRoute?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="XRouteWSService.wsdl" MetadataType="Wsdl" ID="b1cda508-f2ca-4b41-b369-07efe0fa0402" SourceId="1" SourceUrl="https://xroute-eu-n-test.cloud.ptvgroup.com/xroute/ws/XRoute?WSDL" />
+    <MetadataFile FileName="XRouteWSService.wsdl" MetadataType="Wsdl" ID="b1cda508-f2ca-4b41-b369-07efe0fa0402" SourceId="1" SourceUrl="https://xroute-eu-n-test.cloud.ptvlogistics.com/xroute/ws/XRoute?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

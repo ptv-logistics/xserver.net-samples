@@ -12,10 +12,10 @@ using System.Windows.Media;
 namespace Ptv.XServer.Controls
 {
     /// <summary>
-    /// This is the main control that embeds PTV xServer .NET's map and exposes this map to COM as an ActiveX control. 
-    /// The control defines the necessary class attributes for COM to be supported, implements IMapControl as its main 
+    /// This is the main control that embeds PTV xServer .NET's map and exposes this map to COM as an ActiveX control.
+    /// The control defines the necessary class attributes for COM to be supported, implements IMapControl as its main
     /// interfaces and exposes some events through its source interface IMapEvents.
-    /// 
+    ///
     /// Please refer to the sample documentation for further details.
     /// </summary>
     [ComVisible(true)]
@@ -30,7 +30,7 @@ namespace Ptv.XServer.Controls
         {
             InitializeComponent();
 
-            // WORKAROUND: In some cases (e.g. Delphi 2006) WPF controls are rendered with a black background. This is no 
+            // WORKAROUND: In some cases (e.g. Delphi 2006) WPF controls are rendered with a black background. This is no
             // WPF map specific problem. The following lines force the background to System.Drawing.SystemColors.Control.
             var bkColor = System.Drawing.SystemColors.Control;
             formsMap.WrappedMap.Background = new SolidColorBrush(Color.FromRgb(bkColor.R, bkColor.G, bkColor.B));
@@ -44,8 +44,8 @@ namespace Ptv.XServer.Controls
             base.OnLoad(e);
 
             // test initialization
-            XMapUrl = "https://api-test.cloud.ptvgroup.com/xmap/ws/XMap";
-            XMapCredentials = "Insert your xToken here"; 
+            XMapUrl = "https://api-test.cloud.ptvlogistics.com/xmap/ws/XMap";
+            XMapCredentials = "Insert your xToken here";
             Shapes.AddMarker(42, 8.3, 49, 30, "#f00", "Pin", "Hello");
 
             SetMapLocation(8.3, 49, 10);
@@ -98,7 +98,7 @@ namespace Ptv.XServer.Controls
 
         /// <inheritdoc/>
         public IShapes Shapes { get; }
-        
+
 
         /// <summary>
         /// Fires a <see cref="OnShapeClicked"/> event.
@@ -115,20 +115,20 @@ namespace Ptv.XServer.Controls
 
         /// <summary> The delegate type used for the <see cref="OnShapeClicked"/> event. </summary>
         /// <param name="id">ID of the shape that was clicked.</param>
-        /// <remarks>Can be marked [ComVisible(false)] by convention. As a COM event delegate this delegate has 
+        /// <remarks>Can be marked [ComVisible(false)] by convention. As a COM event delegate this delegate has
         /// (to have) the same signature as the corresponding event method defined through <see cref="IMapEvents"/>.</remarks>
         [ComVisible(false)]
         public delegate void OnShapeClickDelegate(int id);
 
         /// <summary>
-        /// Fired, when the user clicks on a shape. This is (sort of) the event implementation of the corresponding 
+        /// Fired, when the user clicks on a shape. This is (sort of) the event implementation of the corresponding
         /// event method defined through the COM source interface <see cref="IMapEvents"/>.
         /// </summary>
         public event OnShapeClickDelegate OnShapeClicked;
 
 
         /// <summary>
-        /// Hook that writes additional information to the Windows' registry allowing this control 
+        /// Hook that writes additional information to the Windows' registry allowing this control
         /// to be used as an ActiveX control.
         /// </summary>
         /// <param name="key">The key of the control to be registered.</param>
@@ -140,11 +140,11 @@ namespace Ptv.XServer.Controls
         }
 
         /// <summary>
-        /// Hook that removes additional information written by <see cref="RegisterClass"/> 
+        /// Hook that removes additional information written by <see cref="RegisterClass"/>
         /// from to the Windows' registry, fully unregistering this control as an ActiveX control.
         /// </summary>
         /// <param name="key">The key of the control to be registered.</param>
-        /// <remarks>Please refer to the sample documentation for further information. 
+        /// <remarks>Please refer to the sample documentation for further information.
         /// See also <see cref="Registrar"/>.</remarks>
         [ComUnregisterFunction]
         public static void UnregisterClass(string key)
@@ -156,7 +156,7 @@ namespace Ptv.XServer.Controls
     /// <summary>
     /// Provides an implementation of <see cref="IShapes"/>, as returned by <see cref="IMapControl"/>.
     /// </summary>
-    /// <remarks>Class can be marked [ComVisible(false)], as it is solely 
+    /// <remarks>Class can be marked [ComVisible(false)], as it is solely
     /// used through its main interface, <see cref="IShapes"/>.</remarks>
     [ComVisible(false)]
     internal class Shapes : IShapes
@@ -180,7 +180,7 @@ namespace Ptv.XServer.Controls
         /// The map in which to display shapes.
         /// </summary>
         private readonly FormsMap formsMap;
-        
+
         /// <summary>
         /// Initializes a Shapes instance.
         /// </summary>
@@ -215,13 +215,13 @@ namespace Ptv.XServer.Controls
         /// Used to create a symbol, given a symbol name.
         /// </summary>
         /// <param name="Symbol">Name of the symbol to create.</param>
-        /// <returns>The symbol instance, returned as a FrameworkElement. 
+        /// <returns>The symbol instance, returned as a FrameworkElement.
         /// The default symbol, used on any error, is a Pin.</returns>
-        /// <remarks>See remarks on <see cref="AddMarker"/> for further information 
+        /// <remarks>See remarks on <see cref="AddMarker"/> for further information
         /// and the valid values for the Symbol parameter.</remarks>
         private FrameworkElement CreateSymbol(string Symbol)
         {
-            try 
+            try
             {
                 Symbol = Symbol.ToLower();
 
@@ -248,7 +248,7 @@ namespace Ptv.XServer.Controls
         /// </summary>
         /// <param name="size">The size of the symbol, in pixels.</param>
         /// <param name="argbColor">The color of the symbol, specified as string.</param>
-        /// <returns>The symbol instance, returned as a FrameworkElement. 
+        /// <returns>The symbol instance, returned as a FrameworkElement.
         /// The default symbol, used on any error, is a Pin.</returns>
         /// <remarks>See remarks on <see cref="AddMarker"/> for further information.</remarks>
         private static FrameworkElement CreateSymbol(int size, string argbColor)
@@ -330,11 +330,11 @@ namespace Ptv.XServer.Controls
         /// Checks if a given object possibly contains a co-ordinate array.
         /// </summary>
         /// <param name="coordinates">Object to check.</param>
-        /// <returns>True, if coordinate evaluation can continue. 
+        /// <returns>True, if coordinate evaluation can continue.
         /// False, if the given object is definitely invalid.</returns>
-        /// <remarks>It is necessary to support coordinates being specified through an object (or 
-        /// object array) as the type support may be very limited in COM. Plain variant arrays are 
-        /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped 
+        /// <remarks>It is necessary to support coordinates being specified through an object (or
+        /// object array) as the type support may be very limited in COM. Plain variant arrays are
+        /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped
         /// objects on the .NET side.</remarks>
         private static bool CoordinatesAreValid(object coordinates)
         {
@@ -346,9 +346,9 @@ namespace Ptv.XServer.Controls
         /// </summary>
         /// <param name="coordinates">The object array to convert.</param>
         /// <returns>Points read from the coordinates array, returned in a <see cref="PointCollection"/>.</returns>
-        /// <remarks>It is necessary to support coordinates being specified through an object (or 
-        /// object array) as the type support may be very limited in COM. Plain variant arrays are 
-        /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped 
+        /// <remarks>It is necessary to support coordinates being specified through an object (or
+        /// object array) as the type support may be very limited in COM. Plain variant arrays are
+        /// the preferred way e.g. in VBA, always resulting in unstructured and somewhat untyped
         /// objects on the .NET side.</remarks>
         private static PointCollection ConvertCoordinates(Array coordinates)
         {
@@ -372,7 +372,7 @@ namespace Ptv.XServer.Controls
                 return false;
 
             // create and initialize the polyline
-            var mapPolyline = new MapPolyline 
+            var mapPolyline = new MapPolyline
             {
                 MapStrokeThickness = size,
                 StrokeLineJoin = PenLineJoin.Round,

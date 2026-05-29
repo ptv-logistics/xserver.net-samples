@@ -24,7 +24,7 @@ namespace MemoryPressureTest
             // This is default for 32-Bit but disabled for 64-Bit applications
             // Must be called before the first initialization of the map control!
             GlobalOptions.MemoryPressureMode = MemoryPressureMode.Enable;
-            
+
             // decrease the tile cache, the default is 512
             // Must be called before the first initialization of the map control!
             GlobalOptions.TileCacheSize = 128;
@@ -42,7 +42,7 @@ namespace MemoryPressureTest
         {
 
             // add xmap base layers
-            mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvgroup.com/xmap/ws/XMap";
+            mapControl1.XMapUrl = "https://xmap-eu-n-test.cloud.ptvlogistics.com/xmap/ws/XMap";
             mapControl1.XMapCredentials = "Insert your xToken here";
 
             // goto KA
